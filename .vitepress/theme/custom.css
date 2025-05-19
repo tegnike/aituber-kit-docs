@@ -1,0 +1,44 @@
+.VPHero .main .text {
+  font-size: 32px !important;
+  /* デフォルトは40px程度、taglineは24px程度なので、その中間値 */
+  line-height: 1.4;
+}
+
+/* ヘッダーのロゴサイズを調整 */
+.VPNav .VPNavBar .VPNavBarTitle .logo {
+  height: 100% !important;
+  /* ロゴの高さを調整 */
+  width: auto;
+  /* 幅を自動調整して縦横比を維持 */
+}
+
+/* カスタムCSSをここに追加できます */
+:root {
+  /* カスタム変数をここで定義できます */
+}
+
+/* vue3-beautiful-chat のランチャーが開いている時の閉じるアイコンのサイズ調整 */
+.sc-chat-window {
+  z-index: 50 !important;
+}
+
+.sc-launcher.opened .sc-closed-icon {
+  width: 24px !important;
+  /* お好みのサイズに調整してください */
+  height: 24px !important;
+  /* お好みのサイズに調整してください */
+  /* 位置調整: Flexboxで中央揃えを試みる */
+  position: absolute !important;
+  /* 必要に応じて */
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* 親要素にも Flexbox を適用して内部要素を中央揃えにする試み */
+.sc-launcher.opened {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+}
