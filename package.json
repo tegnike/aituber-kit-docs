@@ -14,8 +14,7 @@
   "dependencies": {
     "@ai-sdk/xai": "^1.2.16",
     "autoprefixer": "^10.4.21",
-    "vitepress": "^1.6.3",
-    "vue3-beautiful-chat": "^3.4.2"
+    "vitepress": "^1.6.3"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"

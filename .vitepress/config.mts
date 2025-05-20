@@ -100,7 +100,6 @@ export default defineConfig({
                   selectText: '選択',
                   navigateText: '切替',
                   closeText: '閉じる',
-                  searchByText: '検索提供元',
                 },
                 noResultsScreen: {
                   noResultsText: '関連する結果が見つかりませんでした',
@@ -141,7 +140,6 @@ export default defineConfig({
                   selectText: 'Select',
                   navigateText: 'Navigate',
                   closeText: 'Close',
-                  searchByText: 'Search by',
                 },
                 noResultsScreen: {
                   noResultsText: 'No results for',
@@ -182,7 +180,6 @@ export default defineConfig({
                   selectText: '选择',
                   navigateText: '切换',
                   closeText: '关闭',
-                  searchByText: '搜索提供者',
                 },
                 noResultsScreen: {
                   noResultsText: '无法找到相关结果',
