@@ -41,6 +41,14 @@ You can select "VRM" or "Live2D" as the character's model type. The setting item
 - [VRM Settings](./vrm.md)
 - [Live2D Settings](./live2d.md)
 
+## Character Position
+
+You can fix the character's position and orientation. For VRM, the camera position is saved, and for Live2D, the model position is saved.
+
+- **Fix Position** - Saves the current character's position and orientation
+- **Release Fix** - Releases the saved position settings and allows free movement
+- **Reset Position** - Returns the character's position to its initial state
+
 ## Character Prompt
 
 Set the system prompt that defines the character's personality and response style. This prompt is used when generating AI responses and is an important element that determines the character's individuality.

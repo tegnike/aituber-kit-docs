@@ -17,35 +17,9 @@ NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 ## 支持的模型
 
-AITuberKit支持以下兼容多模态的AI服务和模型：
+支持多模态的模型标记如下。
 
-### OpenAI
-
-- gpt-4o-2024-11-20
-- gpt-4.5-preview-2025-02-27
-- gpt-4o-mini-2024-07-18
-- chatgpt-4o-latest
-- gpt-4.1-2025-04-14
-- gpt-4.1-nano-2025-04-14
-- gpt-4.1-mini-2025-04-14
-
-### Anthropic
-
-- claude-3-5-sonnet-20241022
-- claude-3-7-sonnet-20250219
-- claude-3-opus-20240229
-- claude-3-5-haiku-20241022
-
-### Google Gemini
-
-- gemini-2.0-flash-001
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b-latest
-- gemini-1.5-pro-latest
-
-### Azure OpenAI Service
-
-- 取决于Azure门户中的设置
+![多模态兼容模型](/images/ai_vay45.png)
 
 ## 使用方法
 
@@ -74,12 +48,16 @@ AITuberKit支持以下兼容多模态的AI服务和模型：
 #### 2. 共享屏幕/网络摄像头视频
 
 显示来自共享屏幕或网络摄像头的视频。
+此视频框可以通过拖拽移动。
+您还可以通过点击并拖拽四角来调整视频显示区域的大小。
+
 当此屏幕显示时发送消息，消息将包含发送消息时的图像。
 但是，如果此视频下方有图像，则优先发送该图像。
 
 **视频操作按钮**:
 
 - **共享屏幕/摄像头切换按钮**：在共享屏幕和网络摄像头视频之间切换
+- **背景切换按钮**：将共享屏幕或网络摄像头视频切换为背景
 - **快门按钮**：拍摄共享屏幕或网络摄像头视频的快照
 
 #### 3. 捕获/上传的图像

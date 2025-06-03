@@ -17,35 +17,9 @@ NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 ## Supported Models
 
-AITuberKit supports the following multimodal-compatible AI services and models:
+Multimodal-compatible models are marked as follows.
 
-### OpenAI
-
-- gpt-4o-2024-11-20
-- gpt-4.5-preview-2025-02-27
-- gpt-4o-mini-2024-07-18
-- chatgpt-4o-latest
-- gpt-4.1-2025-04-14
-- gpt-4.1-nano-2025-04-14
-- gpt-4.1-mini-2025-04-14
-
-### Anthropic
-
-- claude-3-5-sonnet-20241022
-- claude-3-7-sonnet-20250219
-- claude-3-opus-20240229
-- claude-3-5-haiku-20241022
-
-### Google Gemini
-
-- gemini-2.0-flash-001
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b-latest
-- gemini-1.5-pro-latest
-
-### Azure OpenAI Service
-
-- Depends on settings in the Azure portal
+![Multimodal Compatible Models](/images/ai_vay45.png)
 
 ## How to Use
 
@@ -74,12 +48,16 @@ These are displayed when a multimodal-compatible model is selected.
 #### 2. Shared Screen/Webcam Video
 
 Displays the video from the shared screen or webcam.
+This video frame can be moved by dragging.
+You can also resize the video display area by clicking and dragging the corners.
+
 When you send a message while this screen is displayed, the message will include the image at the time the message is sent.
 However, if there is an image below this video, that image will be sent with priority.
 
 **Video Operation Buttons**:
 
 - **Shared Screen/Camera Switch Button**: Switches between shared screen and webcam video
+- **Background Switch Button**: Switches the shared screen or webcam video as background
 - **Shutter Button**: Takes a snapshot of the shared screen or webcam video
 
 #### 3. Captured/Uploaded Images

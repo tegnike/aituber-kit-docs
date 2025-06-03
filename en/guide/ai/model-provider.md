@@ -79,10 +79,13 @@ API keys can be obtained from [Google AI Studio](https://aistudio.google.com/app
 #### Google Search Grounding Feature
 
 With Google Gemini, you can use the "Search Grounding" feature, which utilizes real-time web searches when generating AI responses.
+Additionally, for some models, you can set a dynamic threshold to determine whether to use the Search Grounding feature. A value of 0 will always execute searches, while a value of 1 will never execute searches.
 
 ```bash
 # Enable Search Grounding feature
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+# Dynamic threshold for Search Grounding feature
+NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
 ```
 
 ::: tip

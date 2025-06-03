@@ -79,10 +79,13 @@ APIキーは[Google AI Studio](https://aistudio.google.com/app/apikey?hl=ja)か�
 #### Googleサーチグラウンディング機能
 
 Google Geminiでは、AIの回答生成時にリアルタイムでウェブ検索を活用する「サーチグラウンディング」機能が利用できます。
+また、一部のモデルでは、サーチグラウンディング機能を使用するかどうかを判定する動的しきい値を設定することが可能です。0の場合は常に検索を実行し、1の場合は検索を実行しません。
 
 ```bash
 # サーチグラウンディング機能の有効化
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+# サーチグラウンディング機能の動的しきい値
+NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
 ```
 
 ::: tip

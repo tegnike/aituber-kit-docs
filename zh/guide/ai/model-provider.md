@@ -79,10 +79,13 @@ GOOGLE_API_KEY=...
 #### Google搜索接地功能
 
 使用Google Gemini，您可以使用"搜索接地"功能，该功能在生成AI响应时利用实时网络搜索。
+此外，对于某些模型，您可以设置动态阈值来判断是否使用搜索接地功能。值为0时将始终执行搜索，值为1时将不执行搜索。
 
 ```bash
 # 启用搜索接地功能
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+# 搜索接地功能的动态阈值
+NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
 ```
 
 ::: tip
