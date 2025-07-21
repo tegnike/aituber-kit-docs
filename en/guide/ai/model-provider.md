@@ -25,6 +25,8 @@ AITuberKit supports the following AI services:
 - Dify - Custom chatbot building platform
 - Custom API - Use your own API
 
+Most AI services allow you to select models from predefined choices, but if you want to use a custom model, please enable "Use Custom Model".
+
 ## OpenAI
 
 ```bash

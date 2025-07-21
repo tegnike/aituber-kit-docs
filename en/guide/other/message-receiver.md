@@ -9,14 +9,18 @@ Settings for accepting instructions to the AI character from external sources. W
 ```bash
 # Enable external instruction acceptance setting (true/false)
 NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
+
+# Client ID
+NEXT_PUBLIC_CLIENT_ID=""
 ```
 
 ## Enabling the Feature
 
-You can toggle ON/OFF the feature to accept instructions from external sources. When turned ON, a client ID is automatically generated.
+You can toggle ON/OFF the feature to accept instructions from external sources. When turned ON, a client ID is automatically generated.<br>
+You can also edit the client ID to any value you prefer.
 
 :::tip Hint
-The generated client ID is required when sending messages from external sources.
+The client ID is required when sending messages from external sources.
 :::
 
 ## Message Sending Page

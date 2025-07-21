@@ -68,6 +68,10 @@ Once uploaded, the image can be selected from the settings screen at any time.
 
 You can also specify the default background image using an environment variable.
 
+::: tip
+You can also select a green screen. When setting via environment variables, specify `green`.
+:::
+
 ## Show Answer Box
 
 You can set whether to display the AI's response text on the screen when the conversation history is not displayed.
@@ -107,3 +111,7 @@ If you are using a smartphone, you can also display it by long-pressing the top 
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 ```
+
+## Color Theme
+
+You can select the color theme for the application. The selected theme will be applied immediately.

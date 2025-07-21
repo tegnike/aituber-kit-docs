@@ -68,6 +68,10 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
 您还可以使用环境变量指定默认的背景图像。
 
+::: tip
+您也可以选择绿幕。通过环境变量设置时，请指定 `green`。
+:::
+
 ## 显示回答框
 
 您可以设置在不显示对话历史时是否在屏幕上显示AI的回答文本。
@@ -107,3 +111,7 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 控制面板显示设置（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 ```
+
+## 颜色主题
+
+您可以选择应用程序的颜色主题。选择的主题将立即应用。

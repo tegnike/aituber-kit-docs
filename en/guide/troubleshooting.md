@@ -4,6 +4,15 @@
 
 This page summarizes common problems and their solutions when using AITuberKit. We will continue to add typical errors and issues along with their causes and solutions, providing detailed explanations based on specific cases to support smooth operation.
 
+## AI Repeats the Same Response
+
+AI characters sometimes repeat the same content twice in one response. This is likely caused by the AI being influenced by previous responses.<br>
+This can be resolved by the following methods:
+
+- Edit or delete conversation history
+- Add instructions in the AI character's prompt settings to not repeat the same response.
+  - Example: `Please respond without repeating the same content.`
+
 ## TypeError: \_currentFrameNo when loading Live2D models
 
 ::: warning Symptoms

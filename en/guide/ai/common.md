@@ -15,6 +15,9 @@ NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 # Selected AI model name
 NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
+# Whether to use custom model
+NEXT_PUBLIC_CUSTOM_MODEL="false"
+
 # Number of past messages to retain
 NEXT_PUBLIC_MAX_PAST_MESSAGES=10
 

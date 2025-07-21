@@ -71,6 +71,9 @@ NEXT_PUBLIC_CHARACTER_PRESET5="You are an AI assistant named Nike."
 ```bash
 # Path to the selected VRM model
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRM character lighting intensity (0.1-3.0)
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ### Live2D Settings
@@ -105,12 +108,15 @@ For details, see [AI Settings](/guide/ai/common).
 
 ```bash
 # AI service selection
-# openai, anthropic, google, azure, , xai, groq, cohere,
+# openai, anthropic, google, azure, xai, groq, cohere,
 # mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # Selected AI model name
 NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
+
+# Whether to use custom model
+NEXT_PUBLIC_CUSTOM_MODEL="false"
 
 # Number of past messages to retain
 NEXT_PUBLIC_MAX_PAST_MESSAGES=10
@@ -142,6 +148,9 @@ AZURE_API_KEY=...
 # Azure OpenAI endpoint
 AZURE_ENDPOINT="https://RESOURCE_NAME.openai.azure.com/openai/deployments/DEPLOYMENT_NAME/chat/completions?api-version=API_VERSION"
 
+# xAI API key
+XAI_API_KEY=...
+
 # Groq API key
 GROQ_API_KEY=...
 
@@ -159,6 +168,9 @@ FIREWORKS_API_KEY=...
 
 # DeepSeek API key
 DEEPSEEK_API_KEY=...
+
+# OpenRouter API key
+OPENROUTER_API_KEY=...
 
 # Local LLM URL
 # ex. Ollama: http://localhost:11434/v1/chat/completions
@@ -180,6 +192,24 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # Enable system messages in custom API (true/false)
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+```
+
+### Multimodal Settings
+
+```bash
+# Enable multimodal feature for Azure, OpenRouter, Local LLM, Custom API and other models when custom model is selected
+NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# Setting for when to use multimodal feature
+# ai-decide: AI decides, always: Always use, never: Never use
+NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
+
+# Prompt for AI to decide whether to use multimodal feature when ai-decide is selected
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="You are an assistant that determines whether an image is relevant to the user's question or conversation context. Consider the recent conversation history and user message, and answer only 'yes' or 'no'."
+
+# Image display position setting
+# input: Input area, side: Side panel, icon: Icon
+NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 ```
 
 ### Realtime API Settings
@@ -411,6 +441,9 @@ For details, see [API Settings](/guide/other/message-receiver).
 ```bash
 # Enable external instruction reception (true/false)
 NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
+
+# Client ID
+NEXT_PUBLIC_CLIENT_ID=""
 ```
 
 ### Others
@@ -421,4 +454,7 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # Chat log width
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# Always prioritize environment variables on page reload
+NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```

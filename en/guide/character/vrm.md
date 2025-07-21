@@ -9,6 +9,9 @@ VRM (Virtual Reality Model) is a 3D character model format, and in AITuberKit, y
 ```bash
 # Path to the selected VRM model
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRM character lighting intensity (0.1-3.0)
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ## Preparing VRM Models
@@ -45,6 +48,10 @@ The 3D model can be freely adjusted with the following mouse operations:
 - **Mouse wheel scroll**: Enlarges or reduces the avatar's size
 
 By combining these operations, you can adjust the placement of the avatar on the screen to an optimal state. Feel free to customize how the character appears to match your screen composition.
+
+### Lighting Intensity
+
+The lighting intensity of VRM characters can be adjusted using the environment variable `NEXT_PUBLIC_LIGHTING_INTENSITY`. Values can be set in the range of 0.1 to 3.0.
 
 ## Notes About Models
 

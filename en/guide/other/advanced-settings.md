@@ -10,7 +10,7 @@ When you perform a reset operation, all settings except conversation history wil
 
 ## Background Video Settings
 
-Only when multimodal functionality is enabled, you can use shared screen or webcam video as a background.
+You can use shared screen or webcam video as a background. When using multimodal functionality, it's also possible to send screenshots of the background video to the AI.
 
 **Environment Variables**:
 

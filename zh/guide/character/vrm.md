@@ -9,6 +9,9 @@ VRM（Virtual Reality Model）是一种3D角色模型格式，在AITuberKit中�
 ```bash
 # 选择的VRM模型路径
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRM角色的照明强度（0.1-3.0）
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ## 准备VRM模型
@@ -45,6 +48,10 @@ AITuberKit支持以下VRM版本：
 - **鼠标滚轮滚动**：放大或缩小头像的大小
 
 通过组合这些操作，您可以将屏幕上的头像放置调整到最佳状态。根据屏幕构成自由定制角色的外观。
+
+### 照明强度
+
+VRM角色的照明强度可以通过环境变数 `NEXT_PUBLIC_LIGHTING_INTENSITY` 进行调整。值可以设置在0.1到3.0的范围内。
 
 ## 关于模型的注意事项
 

@@ -71,6 +71,9 @@ NEXT_PUBLIC_CHARACTER_PRESET5="你是一个名叫Nike的AI助手。"
 ```bash
 # 所选VRM模型的路径
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRM角色的照明强度（0.1-3.0）
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ### Live2D设置
@@ -111,6 +114,9 @@ NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 所选AI模型名称
 NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
+
+# 是否使用自定义模型
+NEXT_PUBLIC_CUSTOM_MODEL="false"
 
 # 保留的过去消息数量
 NEXT_PUBLIC_MAX_PAST_MESSAGES=10
@@ -186,6 +192,24 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # 在自定义API中启用系统消息（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+```
+
+### 多模态设置
+
+```bash
+# 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时启用多模态功能的设置
+NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# 何时使用多模态功能的设置
+# ai-decide: AI判断, always: 始终使用, never: 不使用
+NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
+
+# 选择ai-decide时，供AI判断是否使用多模态功能的提示
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="您是一个助手，用于判断图像是否与用户的问题或对话上下文相关。请考虑最近的对话历史和用户消息，只回答'是'或'否'。"
+
+# 图像显示位置设置
+# input: 输入区域, side: 侧边栏, icon: 图标
+NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 ```
 
 ### 实时API设置
@@ -417,6 +441,9 @@ NEXT_PUBLIC_PRESET_QUESTIONS=
 ```bash
 # 启用外部指令接收（true/false）
 NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
+
+# 客户端ID
+NEXT_PUBLIC_CLIENT_ID=""
 ```
 
 ### 其他
@@ -427,4 +454,7 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # 聊天日志宽度
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# 页面重新加载时始终优先使用环境变量的设置
+NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```
