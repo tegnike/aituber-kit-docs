@@ -68,6 +68,10 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
 環境変数でデフォルトの背景画像を指定することも可能です。
 
+::: tip
+グリーンバックを選択することも可能です。環境変数で設定する場合は、`green` と指定してください。
+:::
+
 ## 回答欄を表示する
 
 会話履歴が表示されていないときに、AIの回答テキストを画面上に表示するかどうかを設定できます。
@@ -106,4 +110,22 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 ```bash
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
+```
+
+## カラーテーマ
+
+アプリケーションのカラーテーマを選択できます。選択したテーマは即座に適用されます。
+
+- デフォルト
+- モノクロ
+- クール
+- オーシャン
+- フォレスト
+- サンセット
+
+![カラーテーマの変更](/images/usage-tips_lfsd4.png)
+
+```bash
+# default, mono, cool, ocean, forest, sunset
+NEXT_PUBLIC_COLOR_THEME="default"
 ```

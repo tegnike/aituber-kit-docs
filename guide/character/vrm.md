@@ -9,6 +9,9 @@ VRM（Virtual Reality Model）は3Dキャラクターモデル形式で、AITube
 ```bash
 # 選択するVRMモデルのパス
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRMキャラクターの照明強度（0.1-3.0）
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ## VRMモデルの準備
@@ -45,6 +48,10 @@ VRMモデルを使用するには、以下の手順に従ってください：
 - **マウスホイールのスクロール**：アバターのサイズを拡大・縮小できます
 
 これらの操作を組み合わせることで、画面内のアバターの配置を最適な状態に調整できます。画面の構成に合わせてキャラクターの見え方を自由にカスタマイズしましょう。
+
+### 照明強度
+
+VRMキャラクターの照明強度は、環境変数 `NEXT_PUBLIC_LIGHTING_INTENSITY` で調整できます。値は0.1から3.0の範囲で設定可能です。
 
 ## モデルについての注意点
 

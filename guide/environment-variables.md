@@ -71,6 +71,9 @@ NEXT_PUBLIC_CHARACTER_PRESET5="あなたはニケという名前のAIアシス�
 ```bash
 # 選択するVRMモデルのパス
 NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+
+# VRMキャラクターの照明強度（0.1-3.0）
+NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 ```
 
 ### Live2D設定
@@ -111,6 +114,9 @@ NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 選択するAIモデル名
 NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
+
+# カスタムモデルを利用の有無
+NEXT_PUBLIC_CUSTOM_MODEL="false"
 
 # 過去のメッセージ保持数
 NEXT_PUBLIC_MAX_PAST_MESSAGES=10
@@ -186,6 +192,24 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # カスタムAPIでシステムメッセージを含めるかどうか（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+```
+
+### マルチモーダル設定
+
+```bash
+# Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時のマルチモーダル機能の有効化設定
+NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# マルチモーダル機能をいつ使用するかの設定
+# ai-decide: AIが判断, always: 常に利用, never: 利用
+NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
+
+# ai-decideを選択した場合にAIがマルチモーダル機能を使用するかを判断するためのプロンプト
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="あなたは画像がユーザーの質問や会話の文脈に関連するかどうかを判断するアシスタントです。直近の会話履歴とユーザーメッセージを考慮して、「はい」または「いいえ」のみで答えてください。"
+
+# 画像表示位置設定
+# input: 入力エリア, side: サイドパネル, icon: アイコン
+NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 ```
 
 ### リアルタイムAPI設定
@@ -417,6 +441,9 @@ NEXT_PUBLIC_PRESET_QUESTIONS=
 ```bash
 # 外部指示受け付け有効化設定（true/false）
 NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
+
+# クライアントID / Client ID
+NEXT_PUBLIC_CLIENT_ID=""
 ```
 
 ### その他
@@ -427,4 +454,7 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # チャットログの幅
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# ページリロード時に常に環境変数を優先する設定
+NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```
