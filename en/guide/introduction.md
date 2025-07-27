@@ -53,8 +53,10 @@ AITuberKit is an open-source toolkit that allows anyone to easily build web appl
 - Google Text-to-Speech
 - Style-Bert-VITS2
 - AivisSpeech
+- Aivis Cloud API
 - GSVI TTS
 - ElevenLabs
+- Cartesia
 - OpenAI
 - Azure OpenAI
 - Nijivoice

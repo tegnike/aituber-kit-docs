@@ -4,13 +4,36 @@
 
 This page summarizes common problems and their solutions when using AITuberKit. We will continue to add typical errors and issues along with their causes and solutions, providing detailed explanations based on specific cases to support smooth operation.
 
+## High CPU Usage in Chrome or Brave Browser on Windows
+
+::: warning Symptoms
+On Windows environments, running AITuberKit in Chrome or Brave browser causes abnormally high CPU usage (70%) and may freeze.
+:::
+
+### Cause
+
+This appears to be a compatibility issue between Chromium-based browsers and Windows environments. This phenomenon does not occur when using Chrome on Mac.
+
+### Solution
+
+**Use Microsoft Edge browser**
+- Edge browser keeps CPU usage around 15% and operates normally
+- You can also try other browsers like Firefox or Safari
+
 ## AI Repeats the Same Response
 
-AI characters sometimes repeat the same content twice in one response. This is likely caused by the AI being influenced by previous responses.<br>
-This can be resolved by the following methods:
+::: warning Symptoms
+AI characters sometimes repeat the same content twice in one response.
+:::
+
+### Cause
+
+This is likely caused by the AI being influenced by previous responses.
+
+### Solution
 
 - Edit or delete conversation history
-- Add instructions in the AI character's prompt settings to not repeat the same response.
+- Add instructions in the AI character's prompt settings to not repeat the same response
   - Example: `Please respond without repeating the same content.`
 
 ## TypeError: \_currentFrameNo when loading Live2D models

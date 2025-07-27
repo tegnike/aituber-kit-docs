@@ -35,7 +35,7 @@ AITuberKit supports multiple languages, and you can choose from the following:
 - Vietnamese
 
 ::: warning Note
-If you select a language other than Japanese and have a Japanese-only voice service (VOICEVOX, KOEIROMAP, AivisSpeech, NijiVoice) selected, it will automatically switch to Google Text-to-Speech.
+If you select a language other than Japanese and have a Japanese-only voice service (VOICEVOX, KOEIROMAP, AivisSpeech, Aivis Cloud API, NijiVoice) selected, it will automatically switch to Google Text-to-Speech.
 :::
 
 ## English Word Pronunciation Setting

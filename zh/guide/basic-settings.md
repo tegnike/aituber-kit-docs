@@ -35,7 +35,7 @@ AITuberKit支持多种语言，您可以从以下语言中选择：
 - 越南语 (Vietnamese)
 
 ::: warning 注意
-如果选择日语以外的语言，且已选择日语专用的语音服务（VOICEVOX、KOEIROMAP、AivisSpeech、NijiVoice），系统将自动切换到Google语音合成。
+如果选择日语以外的语言，且已选择日语专用的语音服务（VOICEVOX、KOEIROMAP、AivisSpeech、Aivis Cloud API、NijiVoice），系统将自动切换到Google语音合成。
 :::
 
 ## 英语单词读取设置

@@ -34,8 +34,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
-# Character preset menu display setting (true/false)
-NEXT_PUBLIC_SHOW_CHARACTER_PRESET_MENU=true
+# Quick menu display setting (true/false) / 
+# Quick menu display settings (true/false)
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
 ```
 
 ## Character Settings
@@ -261,8 +262,8 @@ For details, see [Voice Synthesis Settings](/guide/voice-settings).
 
 ```bash
 # Voice synthesis engine to use
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech,
-# gsvitts, elevenlabs, openai, azure, nijivoice
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
+# gsvitts, elevenlabs, cartesia, openai, azure, nijivoice
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 
 # VOICEVOX
@@ -311,9 +312,38 @@ NEXT_PUBLIC_AIVIS_SPEECH_SPEAKER=888753760
 # Speed
 NEXT_PUBLIC_AIVIS_SPEECH_SPEED=1.0
 # Pitch
-NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0
-# Intonation
-NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
+NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0# Style strength / Intonation Scale
+NEXT_PUBLIC_AIVIS_SPEECH_INTONATION_SCALE="1.0"
+# Tempo dynamics / Tempo Dynamics
+NEXT_PUBLIC_AIVIS_SPEECH_TEMPO_DYNAMICS="1.0"
+# Pre phoneme silence / Pre Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_SPEECH_PRE_PHONEME_LENGTH="0.1"
+# Post phoneme silence / Post Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
+
+# Aivis Cloud API
+# API Key / API Key
+AIVIS_CLOUD_API_KEY=""
+# Model UUID / Model UUID
+NEXT_PUBLIC_AIVIS_CLOUD_MODEL_UUID=""
+# Style ID / Style ID
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_ID="0"
+# Style Name / Style Name
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_NAME=""
+# Use style name or not (true/false) / Use style name or not (true/false)
+NEXT_PUBLIC_AIVIS_CLOUD_USE_STYLE_NAME="false"
+# Speed / Speed
+NEXT_PUBLIC_AIVIS_CLOUD_SPEED="1.0"
+# Pitch / Pitch
+NEXT_PUBLIC_AIVIS_CLOUD_PITCH="0.0"
+# Emotional intensity / Emotional intensity
+NEXT_PUBLIC_AIVIS_CLOUD_INTONATION_SCALE="1.0"
+# Tempo Dynamics / Tempo Dynamics
+NEXT_PUBLIC_AIVIS_CLOUD_TEMPO_DYNAMICS="1.0"
+# Pre phoneme silence / Pre Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_CLOUD_PRE_PHONEME_LENGTH="0.1"
+# Post phoneme silence / Post Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 # GSVI TTS
 # Server URL
@@ -329,7 +359,13 @@ NEXT_PUBLIC_GSVI_TTS_SPEECH_RATE=1.0
 # API key
 ELEVENLABS_API_KEY=""
 # Voice ID
-ELEVENLABS_VOICE_ID=""
+NEXT_PUBLIC_ELEVENLABS_VOICE_ID=""
+
+# Cartesia
+# API key / API key
+CARTESIA_API_KEY=""
+# Model ID / model ID
+NEXT_PUBLIC_CARTESIA_VOICE_ID=""
 
 # OpenAI TTS
 # API key

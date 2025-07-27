@@ -79,3 +79,4 @@ You can start using AITuberKit by opening [http://localhost:3000](http://localho
 - Configure speech input in [Speech Input Settings](/en/guide/speech-input-settings)
 - Set up AITuber streaming in [Youtube Settings](/en/guide/youtube-settings)
 - Configure slide mode in [Slide Settings](/en/guide/slide-settings)
+- Configure image upload and placement in [Image Settings](/en/guide/image-settings)

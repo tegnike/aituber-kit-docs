@@ -361,6 +361,10 @@ export default defineConfig({
               link: '/en/guide/slide-settings',
             },
             {
+              text: 'Image Settings',
+              link: '/en/guide/image-settings',
+            },
+            {
               text: 'Conversation History',
               link: '/en/guide/conversation-history',
             },
@@ -452,6 +456,10 @@ export default defineConfig({
             {
               text: '幻灯片设置',
               link: '/zh/guide/slide-settings',
+            },
+            {
+              text: '图片设置',
+              link: '/zh/guide/image-settings',
             },
             {
               text: '对话历史',

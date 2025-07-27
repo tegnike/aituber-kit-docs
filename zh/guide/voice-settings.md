@@ -6,7 +6,7 @@
 
 ```bash
 # 使用的语音合成引擎
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech,
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
 # gsvitts, elevenlabs, openai, azure, nijivoice
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
@@ -24,8 +24,10 @@ NEXT_PUBLIC_SELECT_VOICE=voicevox
 - Google Text-to-Speech：支持多种语言的Google Cloud Text-to-Speech服务
 - Style-Bert-VITS2：可控制风格的高质量语音合成引擎（支持日语、英语和中文）
 - AivisSpeech：使Style-Bert-VITS2模型易于使用的日语语音合成引擎
+- Aivis Cloud API：AivisSpeech的云版本
 - GSVI TTS：可定制的语音合成引擎
 - ElevenLabs：支持多种语言的高质量语音合成服务
+- Cartesia：高质量语音合成服务
 - OpenAI TTS：OpenAI提供的支持多种语言的语音合成服务
 - Azure TTS：Microsoft Azure提供的多语言语音合成服务
 - Nijivoice：提供100多种声音的日语语音合成服务
@@ -156,8 +158,14 @@ NEXT_PUBLIC_AIVIS_SPEECH_SPEAKER=888753760
 NEXT_PUBLIC_AIVIS_SPEECH_SPEED=1.0
 # 音高
 NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0
-# 语调
-NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
+# 节拍动态
+NEXT_PUBLIC_AIVIS_SPEECH_TEMPO_DYNAMICS="1.0"
+# 风格强度
+NEXT_PUBLIC_AIVIS_SPEECH_INTONATION_SCALE="1.0"
+# 语音前静音时间
+NEXT_PUBLIC_AIVIS_SPEECH_PRE_PHONEME_LENGTH="0.1"
+# 语音后静音时间
+NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ```
 
 [AivisSpeech](https://aivis-project.com/)是一种日语语音合成引擎。
@@ -174,9 +182,57 @@ NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
 
 - **速度**：可在0.5至2.0范围内调整（值越大，说话越快）
 - **说话者选择**：从可用的说话者中选择
-- **速度**：可在0.5至2.0范围内调整
 - **音高**：可在-0.15至0.15范围内调整
-- **语调**：可在0.0至2.0范围内调整
+- **节拍动态**：可在0.5至2.0范围内调整
+- **风格强度**：可在0.0至2.0范围内调整（受风格影响）
+- **语音前静音时间**：可在0.0至1.0范围内调整
+- **语音后静音时间**：可在0.0至1.0范围内调整
+
+## Aivis Cloud API
+
+```bash
+# API密钥
+AIVIS_CLOUD_API_KEY=""
+# 模型UUID
+NEXT_PUBLIC_AIVIS_CLOUD_MODEL_UUID=""
+# 风格ID
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_ID="0"
+# 风格名称
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_NAME=""
+# 是否使用风格名称（true/false）
+NEXT_PUBLIC_AIVIS_CLOUD_USE_STYLE_NAME="false"
+# 速度
+NEXT_PUBLIC_AIVIS_CLOUD_SPEED="1.0"
+# 音高
+NEXT_PUBLIC_AIVIS_CLOUD_PITCH="0.0"
+# 节拍动态
+NEXT_PUBLIC_AIVIS_CLOUD_TEMPO_DYNAMICS="1.0"
+# 情感表达强度
+NEXT_PUBLIC_AIVIS_CLOUD_INTONATION_SCALE="1.0"
+# 语音前静音时间
+NEXT_PUBLIC_AIVIS_CLOUD_PRE_PHONEME_LENGTH="0.1"
+# 语音后静音时间
+NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
+```
+
+[Aivis Cloud API](https://hub.aivis-project.com/cloud-api/)是AivisSpeech的云版本。
+
+### API密钥
+设置使用Aivis Cloud API的API密钥。您可以从[Aivis Cloud](https://hub.aivis-project.com/cloud-api/)获取API密钥。
+
+### 模型UUID
+设置要使用的模型的UUID。您可以在[AivisHub](https://hub.aivis-project.com/)找到模型列表。
+
+### 风格ID / 风格名称
+设置要使用的风格的ID或名称。您可以从模型详细页面查看。默认为`0`或`Normal`。
+
+### 语音参数调整
+- **速度**：可在0.5至2.0范围内调整（值越大，说话越快）
+- **音高**：可在-0.15至0.15范围内调整（值越大，声音越高）
+- **节拍动态**：可在0.5至2.0范围内调整
+- **情感表达强度**：可在0.0至2.0范围内调整（受风格影响）
+- **语音前静音时间**：可在0.0至1.0范围内调整
+- **语音后静音时间**：可在0.0至1.0范围内调整
 
 ## GSVI TTS
 
@@ -209,7 +265,7 @@ GSVI TTS是一种可定制的语音合成引擎。
 # API密钥
 ELEVENLABS_API_KEY=""
 # 语音ID
-ELEVENLABS_VOICE_ID=""
+NEXT_PUBLIC_ELEVENLABS_VOICE_ID=""
 ```
 
 [ElevenLabs](https://elevenlabs.io/api)是支持多种语言的高质量语音合成服务。
@@ -221,6 +277,24 @@ ELEVENLABS_VOICE_ID=""
 ### 语音ID
 
 设置要使用的语音ID（可从[ElevenLabs API](https://api.elevenlabs.io/v1/voices)查看）
+
+## Cartesia
+
+```bash
+# API密钥
+CARTESIA_API_KEY=""
+# 模型ID
+NEXT_PUBLIC_CARTESIA_VOICE_ID=""
+```
+
+[Cartesia](https://cartesia.ai/)是高质量语音合成服务。
+
+### API密钥
+
+设置使用Cartesia API的API密钥。您可以从[Cartesia](https://cartesia.ai/)获取API密钥。免费可用。
+
+### 模型ID
+设置要使用的语音模型ID。您可以从[这里](https://docs.cartesia.ai/api-reference/voices/list)查看模型。
 
 ## OpenAI TTS
 

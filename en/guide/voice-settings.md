@@ -6,7 +6,7 @@ Voice synthesis settings allow you to configure settings related to AI character
 
 ```bash
 # Voice synthesis engine to use
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech,
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
 # gsvitts, elevenlabs, openai, azure, nijivoice
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
@@ -24,8 +24,10 @@ Select the voice synthesis engine that your AI character will use. The following
 - Google Text-to-Speech: Google Cloud Text-to-Speech service supporting multiple languages
 - Style-Bert-VITS2: High-quality voice synthesis engine with style control (supports Japanese, English, and Chinese)
 - AivisSpeech: Japanese voice synthesis engine that makes Style-Bert-VITS2 models easy to use
+- Aivis Cloud API: Cloud version of AivisSpeech
 - GSVI TTS: Customizable voice synthesis engine
 - ElevenLabs: High-quality voice synthesis service supporting multiple languages
+- Cartesia: High-quality voice synthesis service
 - OpenAI TTS: OpenAI's voice synthesis service supporting multiple languages
 - Azure TTS: Microsoft Azure's multilingual voice synthesis service
 - Nijivoice: Japanese voice synthesis service with over 100 voices available
@@ -156,8 +158,14 @@ NEXT_PUBLIC_AIVIS_SPEECH_SPEAKER=888753760
 NEXT_PUBLIC_AIVIS_SPEECH_SPEED=1.0
 # Pitch
 NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0
-# Intonation
-NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
+# Tempo dynamics
+NEXT_PUBLIC_AIVIS_SPEECH_TEMPO_DYNAMICS="1.0"
+# Style strength
+NEXT_PUBLIC_AIVIS_SPEECH_INTONATION_SCALE="1.0"
+# Pre phoneme silence
+NEXT_PUBLIC_AIVIS_SPEECH_PRE_PHONEME_LENGTH="0.1"
+# Post phoneme silence
+NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ```
 
 [AivisSpeech](https://aivis-project.com/) is a Japanese voice synthesis engine.
@@ -174,9 +182,57 @@ Select from available speakers in AivisSpeech. You can update the speaker list w
 
 - **Speed**: Adjustable in the range of 0.5 to 2.0 (higher values make speech faster)
 - **Speaker Selection**: Select from available speakers
-- **Speed**: Adjustable in the range of 0.5 to 2.0
 - **Pitch**: Adjustable in the range of -0.15 to 0.15
-- **Intonation**: Adjustable in the range of 0.0 to 2.0
+- **Tempo dynamics**: Adjustable in the range of 0.5 to 2.0
+- **Style strength**: Adjustable in the range of 0.0 to 2.0 (affected by style)
+- **Pre phoneme silence**: Adjustable in the range of 0.0 to 1.0
+- **Post phoneme silence**: Adjustable in the range of 0.0 to 1.0
+
+## Aivis Cloud API
+
+```bash
+# API Key
+AIVIS_CLOUD_API_KEY=""
+# Model UUID
+NEXT_PUBLIC_AIVIS_CLOUD_MODEL_UUID=""
+# Style ID
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_ID="0"
+# Style Name
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_NAME=""
+# Use style name or not (true/false)
+NEXT_PUBLIC_AIVIS_CLOUD_USE_STYLE_NAME="false"
+# Speed
+NEXT_PUBLIC_AIVIS_CLOUD_SPEED="1.0"
+# Pitch
+NEXT_PUBLIC_AIVIS_CLOUD_PITCH="0.0"
+# Tempo dynamics
+NEXT_PUBLIC_AIVIS_CLOUD_TEMPO_DYNAMICS="1.0"
+# Emotional intensity
+NEXT_PUBLIC_AIVIS_CLOUD_INTONATION_SCALE="1.0"
+# Pre phoneme silence
+NEXT_PUBLIC_AIVIS_CLOUD_PRE_PHONEME_LENGTH="0.1"
+# Post phoneme silence
+NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
+```
+
+[Aivis Cloud API](https://hub.aivis-project.com/cloud-api/) is the cloud version of AivisSpeech.
+
+### API Key
+Set the API key for using Aivis Cloud API. You can obtain the API key from [Aivis Cloud](https://hub.aivis-project.com/cloud-api/).
+
+### Model UUID
+Set the UUID of the model to use. You can find a list of models at [AivisHub](https://hub.aivis-project.com/).
+
+### Style ID / Style Name
+Set the ID or name of the style to use. You can check this from the model detail page. Default is `0` or `Normal`.
+
+### Voice Parameter Adjustment
+- **Speed**: Adjustable in the range of 0.5 to 2.0 (higher values make speech faster)
+- **Pitch**: Adjustable in the range of -0.15 to 0.15 (higher values make voice higher)
+- **Tempo dynamics**: Adjustable in the range of 0.5 to 2.0
+- **Emotional intensity**: Adjustable in the range of 0.0 to 2.0 (affected by style)
+- **Pre phoneme silence**: Adjustable in the range of 0.0 to 1.0
+- **Post phoneme silence**: Adjustable in the range of 0.0 to 1.0
 
 ## GSVI TTS
 
@@ -209,7 +265,7 @@ Set the URL for the GSVI TTS server. The standard URL for running GSVI TTS local
 # API key
 ELEVENLABS_API_KEY=""
 # Voice ID
-ELEVENLABS_VOICE_ID=""
+NEXT_PUBLIC_ELEVENLABS_VOICE_ID=""
 ```
 
 [ElevenLabs](https://elevenlabs.io/api) is a high-quality voice synthesis service supporting multiple languages.
@@ -221,6 +277,24 @@ Set the API key for using the ElevenLabs API.
 ### Voice ID
 
 Set the ID of the voice to use (can be checked from the [ElevenLabs API](https://api.elevenlabs.io/v1/voices))
+
+## Cartesia
+
+```bash
+# API key
+CARTESIA_API_KEY=""
+# Model ID
+NEXT_PUBLIC_CARTESIA_VOICE_ID=""
+```
+
+[Cartesia](https://cartesia.ai/) is a high-quality voice synthesis service.
+
+### API Key
+
+Set the API key for using Cartesia API. You can obtain the API key from [Cartesia](https://cartesia.ai/). It's available for free.
+
+### Model ID
+Set the model ID of the voice to use. You can check the models from [here](https://docs.cartesia.ai/api-reference/voices/list).
 
 ## OpenAI TTS
 
