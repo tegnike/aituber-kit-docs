@@ -258,6 +258,10 @@ export default defineConfig({
               link: '/guide/slide-settings',
             },
             {
+              text: '画像設定',
+              link: '/guide/image-settings',
+            },
+            {
               text: '会話履歴',
               link: '/guide/conversation-history',
             },

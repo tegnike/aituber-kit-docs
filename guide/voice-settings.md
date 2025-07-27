@@ -6,7 +6,7 @@
 
 ```bash
 # 使用する音声合成エンジン
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech,
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
 # gsvitts, elevenlabs, openai, azure, nijivoice
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
@@ -24,8 +24,10 @@ AIキャラクターが使用する音声合成エンジンを選択します。
 - Google Text-to-Speech：多言語に対応したGoogle Cloud Text-to-Speechサービス
 - Style-Bert-VITS2：スタイル制御可能な高品質音声合成エンジン（日・英・中対応）
 - AivisSpeech：Style-Bert-VITS2モデルが簡単に使用できる日本語音声合成エンジン
+- Aivis Cloud API：AivisSpeechのクラウド版
 - GSVI TTS：カスタマイズ可能な音声合成エンジン
 - ElevenLabs：多言語に対応した高品質音声合成サービス
+- Cartesia：高品質な音声合成サービス
 - OpenAI TTS：多言語に対応したOpenAIの音声合成サービス
 - Azure TTS：Microsoft Azureが提供する多言語音声合成サービス
 - にじボイス：100種類以上の声を利用できる日本語向け音声合成サービス
@@ -157,8 +159,14 @@ NEXT_PUBLIC_AIVIS_SPEECH_SPEAKER=888753760
 NEXT_PUBLIC_AIVIS_SPEECH_SPEED=1.0
 # ピッチ
 NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0
-# 抑揚
-NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
+# テンポの緩急
+NEXT_PUBLIC_AIVIS_SPEECH_TEMPO_DYNAMICS="1.0"
+# スタイルの強さ
+NEXT_PUBLIC_AIVIS_SPEECH_INTONATION_SCALE="1.0"
+# 音声前の無音時間
+NEXT_PUBLIC_AIVIS_SPEECH_PRE_PHONEME_LENGTH="0.1"
+# 音声後の無音時間
+NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ```
 
 [AivisSpeech](https://aivis-project.com/)は日本語音声合成エンジンです。
@@ -176,8 +184,57 @@ AivisSpeechで利用可能な話者から選択します。「話者リストを
 - **話速**：0.5〜2.0の範囲で調整可能（値が大きいほど速く話します）
 - **話者選択**：利用可能な話者から選択します
 - **話速**：0.5〜2.0の範囲で調整可能
-- **音高**：-0.15〜0.15の範囲で調整可能
-- **抑揚**：0.0〜2.0の範囲で調整可能
+- **ピッチ**：-0.15〜0.15の範囲で調整可能
+- **テンポの緩急**：0.5〜2.0の範囲で調整可能
+- **スタイルの強さ**：0.0〜2.0の範囲で調整可能（スタイルの影響を受けます）
+- **音声前の無音時間**：0.0〜1.0の範囲で調整可能
+- **音声後の無音時間**：0.0〜1.0の範囲で調整可能
+
+## Aivis Cloud API
+
+```bash
+# APIキー
+AIVIS_CLOUD_API_KEY=""
+# モデルUUID
+NEXT_PUBLIC_AIVIS_CLOUD_MODEL_UUID=""
+# スタイルID
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_ID="0"
+# スタイル名
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_NAME=""
+# スタイル名を使用するかどうか（true/false）
+NEXT_PUBLIC_AIVIS_CLOUD_USE_STYLE_NAME="false"
+# 速度
+NEXT_PUBLIC_AIVIS_CLOUD_SPEED="1.0"
+# ピッチ
+NEXT_PUBLIC_AIVIS_CLOUD_PITCH="0.0"
+# テンポの緩急
+NEXT_PUBLIC_AIVIS_CLOUD_TEMPO_DYNAMICS="1.0"
+# 感情表現強さ
+NEXT_PUBLIC_AIVIS_CLOUD_INTONATION_SCALE="1.0"
+# 音声前の無音時間
+NEXT_PUBLIC_AIVIS_CLOUD_PRE_PHONEME_LENGTH="0.1"
+# 音声後の無音時間
+NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
+```
+
+[Aivis Cloud API](https://hub.aivis-project.com/cloud-api/)はAivisSpeechのクラウド版です。
+
+### APIキー
+Aivis Cloud APIを使用するためのAPIキーを設定します。 APIキーは[Aivis Cloud](https://hub.aivis-project.com/cloud-api/)から取得できます。
+
+### モデルUUID
+使用するモデルのUUIDを設定します。モデルは[AivisHub](https://hub.aivis-project.com/)に一覧があるので、そちらを参照してください。
+
+### スタイルID / スタイル名
+使用するスタイルのIDまたは名前を設定します。各モデルの詳細画面から確認できます。デフォルトは `0` または `ノーマル` です。
+
+### 音声パラメータ調整
+- **話速**：0.5〜2.0の範囲で調整可能（値が大きいほど速く話します）
+- **ピッチ**：-0.15〜0.15の範囲で調整可能（値が大きいほど高い声になります）
+- **テンポの緩急**：0.5〜2.0の範囲で調整可能
+- **感情表現強さ**：0.0〜2.0の範囲で調整可能（スタイルの影響を受けます）
+- **音声前の無音時間**：0.0〜1.0の範囲で調整可能
+- **音声後の無音時間**：0.0〜1.0の範囲で調整可能
 
 ## GSVI TTS
 
@@ -222,6 +279,24 @@ ElevenLabs APIを使用するためのAPIキーを設定します。
 ### ボイスID
 
 使用する音声のIDを設定します（[ElevenLabs API](https://api.elevenlabs.io/v1/voices)から確認できます）
+
+## Cartesia
+
+```bash
+# APIキー
+CARTESIA_API_KEY=""
+# モデルID
+NEXT_PUBLIC_CARTESIA_VOICE_ID=""
+```
+
+[Cartesia](https://cartesia.ai/)は高品質な音声合成サービスです。
+
+### APIキー
+
+Cartesia APIを使用するためのAPIキーを設定します。 APIキーは[Cartesia](https://cartesia.ai/)から取得できます。無料で利用可能です。
+
+### モデルID
+使用する音声のモデルIDを設定します。モデルは[こちら](https://docs.cartesia.ai/api-reference/voices/list)から確認できます。
 
 ## OpenAI TTS
 

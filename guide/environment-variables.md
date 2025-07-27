@@ -34,8 +34,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
-# キャラクタープリセットメニュー表示設定（true/false）
-NEXT_PUBLIC_SHOW_CHARACTER_PRESET_MENU=true
+# クイックメニュー表示設定（true/false） / 
+# Quick menu display settings (true/false)
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
 ```
 
 ## キャラクター設定
@@ -261,8 +262,8 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 ```bash
 # 使用する音声合成エンジン
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech,
-# gsvitts, elevenlabs, openai, azure, nijivoice
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
+# gsvitts, elevenlabs, cartesia, openai, azure, nijivoice
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 
 # VOICEVOX
@@ -311,9 +312,38 @@ NEXT_PUBLIC_AIVIS_SPEECH_SPEAKER=888753760
 # 速度
 NEXT_PUBLIC_AIVIS_SPEECH_SPEED=1.0
 # ピッチ
-NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0
-# 抑揚
-NEXT_PUBLIC_AIVIS_SPEECH_INTONATION=1.0
+NEXT_PUBLIC_AIVIS_SPEECH_PITCH=0.0# スタイルの強さ / Intonation Scale
+NEXT_PUBLIC_AIVIS_SPEECH_INTONATION_SCALE="1.0"
+# テンポの緩急 / Tempo Dynamics
+NEXT_PUBLIC_AIVIS_SPEECH_TEMPO_DYNAMICS="1.0"
+# 音声前の無音時間 / Pre Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_SPEECH_PRE_PHONEME_LENGTH="0.1"
+# 音声後の無音時間 / Post Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
+
+# Aivis Cloud API
+# APIキー / API Key
+AIVIS_CLOUD_API_KEY=""
+# モデルUUID / Model UUID
+NEXT_PUBLIC_AIVIS_CLOUD_MODEL_UUID=""
+# スタイルID / Style ID
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_ID="0"
+# スタイル名 / Style Name
+NEXT_PUBLIC_AIVIS_CLOUD_STYLE_NAME=""
+# スタイル名を使用するかどうか（true/false） / Use style name or not (true/false)
+NEXT_PUBLIC_AIVIS_CLOUD_USE_STYLE_NAME="false"
+# 速度 / Speed
+NEXT_PUBLIC_AIVIS_CLOUD_SPEED="1.0"
+# ピッチ / Pitch
+NEXT_PUBLIC_AIVIS_CLOUD_PITCH="0.0"
+# 感情表現強さ / Emotional intensity
+NEXT_PUBLIC_AIVIS_CLOUD_INTONATION_SCALE="1.0"
+# テンポの緩急 / Tempo Dynamics
+NEXT_PUBLIC_AIVIS_CLOUD_TEMPO_DYNAMICS="1.0"
+# 音声前の無音時間 / Pre Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_CLOUD_PRE_PHONEME_LENGTH="0.1"
+# 音声後の無音時間 / Post Phoneme Length (seconds)
+NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 # GSVI TTS
 # サーバーURL
@@ -329,7 +359,13 @@ NEXT_PUBLIC_GSVI_TTS_SPEECH_RATE=1.0
 # APIキー
 ELEVENLABS_API_KEY=""
 # ボイスID
-ELEVENLABS_VOICE_ID=""
+NEXT_PUBLIC_ELEVENLABS_VOICE_ID=""
+
+# Cartesia
+# APIキー / API key
+CARTESIA_API_KEY=""
+# モデルID / model ID
+NEXT_PUBLIC_CARTESIA_VOICE_ID=""
 
 # OpenAI TTS
 # APIキー

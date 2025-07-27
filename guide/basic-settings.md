@@ -35,7 +35,7 @@ AITuberKitは多言語対応しており、以下の言語から選択できま�
 - ベトナム語 (Vietnamese)
 
 ::: warning 注意
-日本語以外の言語を選択すると、日本語専用の音声サービス（VOICEVOX、KOEIROMAP、AivisSpeech、NijiVoice）が選択されている場合は、自動的にGoogle音声合成に切り替わります。
+日本語以外の言語を選択すると、日本語専用の音声サービス（VOICEVOX、KOEIROMAP、AivisSpeech、Aivis Cloud API, NijiVoice）が選択されている場合は、自動的にGoogle音声合成に切り替わります。
 :::
 
 ## 英単語読み上げ設定

@@ -79,3 +79,4 @@ npm run dev
 - [音声入力設定](/guide/speech-input-settings)で音声入力の設定を行う
 - [Youtube設定](/guide/youtube-settings)でAITuber配信の設定を行う
 - [スライド設定](/guide/slide-settings)でスライドモードの設定を行う
+- [画像設定](/guide/image-settings)で画像のアップロードと配置を行う
