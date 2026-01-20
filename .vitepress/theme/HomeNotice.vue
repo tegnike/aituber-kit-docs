@@ -5,9 +5,9 @@ const { lang } = useData()
 
 const notices = {
   'ja': {
-    title: '重要なお知らせ',
-    line1: '本プロジェクトは現在開発を停止しています。',
-    line2: 'また、本プロジェクトの譲渡・売却を検討しています。ご興味のある方は',
+    title: 'お知らせ',
+    line1: '本プロジェクトは現在アクティブな開発を停止しています。',
+    line2: 'なお、本プロジェクトの譲渡・売却を検討しています。ご興味のある方は',
     contact: 'X（@tegnike）のDM',
     or: 'または',
     email: 'メール（support@aituberkit.com）',
@@ -15,8 +15,8 @@ const notices = {
     details: '詳細はこちら'
   },
   'en': {
-    title: 'Important Notice',
-    line1: 'Development of this project has been suspended.',
+    title: 'Notice',
+    line1: 'Active development of this project is currently on hold, but it has not stopped entirely. Development continues at a slower pace.',
     line2: 'We are also considering transferring or selling this project. If you are interested, please contact us via',
     contact: 'X (@tegnike) DM',
     or: 'or',
@@ -25,8 +25,8 @@ const notices = {
     details: 'Details here'
   },
   'zh': {
-    title: '重要通知',
-    line1: '本项目目前已停止开发。',
+    title: '通知',
+    line1: '本项目目前暂停了活跃开发，但并未完全停止。开发正在以较慢的节奏继续进行。',
     line2: '我们也在考虑转让或出售本项目。如有兴趣，请通过',
     contact: 'X（@tegnike）私信',
     or: '或',
