@@ -8,9 +8,9 @@ In AITuberKit, you can select and use various AI services (OpenAI, Anthropic, Go
 
 AITuberKit supports the following AI services:
 
-- OpenAI - Provides high-performance models such as GPT-4o, GPT-4.5
-- Anthropic - Provides Claude 3.5 Sonnet, Claude 3.7 Sonnet, etc.
-- Google Gemini - Provides Gemini 2.0 Flash, Gemini 1.5 series
+- OpenAI - Provides high-performance models such as GPT-4.1, o3, o4-mini
+- Anthropic - Provides Claude Opus 4.1, Claude Sonnet 4, etc.
+- Google Gemini - Provides Gemini 2.5 Pro, Gemini 2.5 Flash, etc.
 - Azure OpenAI - OpenAI models on the Azure platform
 - xAI - Provides Grok models
 - Groq - Provides various models specialized for fast inference
@@ -36,9 +36,17 @@ OPENAI_API_KEY=sk-...
 
 **Supported Models**:
 
-- gpt-4o-2024-11-20
-- gpt-4.5-preview-2025-02-27
-- gpt-4o-mini-2024-07-18
+- gpt-4.1 (default)
+- gpt-4.1-mini
+- gpt-4.1-nano
+- gpt-4o
+- gpt-4o-mini
+- o1
+- o1-mini
+- o1-preview
+- o3-mini
+- o3
+- o4-mini
 - chatgpt-4o-latest
 
 **Getting an API Key**:
@@ -53,9 +61,12 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 **Supported Models**:
 
-- claude-3-5-sonnet-20241022
+- claude-opus-4-1-20250805
+- claude-opus-4-20250514
+- claude-sonnet-4-20250514
 - claude-3-7-sonnet-20250219
-- claude-3-opus-20240229
+- claude-3-5-sonnet-20241022 (default)
+- claude-3-5-sonnet-20240620
 - claude-3-5-haiku-20241022
 
 **Getting an API Key**:
@@ -70,10 +81,19 @@ GOOGLE_API_KEY=...
 
 **Supported Models**:
 
-- gemini-2.0-flash-001
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b-latest
+- gemini-2.5-pro
+- gemini-2.5-flash
+- gemini-2.5-flash-lite
+- gemini-2.5-pro-preview-05-06
+- gemini-2.5-flash-preview-04-17
+- gemini-2.5-pro-exp-03-25
+- gemini-2.0-flash
+- gemini-1.5-pro
 - gemini-1.5-pro-latest
+- gemini-1.5-flash
+- gemini-1.5-flash-latest (default)
+- gemini-1.5-flash-8b
+- gemini-1.5-flash-8b-latest
 
 **Getting an API Key**:
 API keys can be obtained from [Google AI Studio](https://aistudio.google.com/app/apikey?hl=en).
@@ -91,7 +111,7 @@ NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
 ```
 
 ::: tip
-The Search Grounding feature is only available with Google Gemini 1.5 Flash, Gemini 1.5 Pro, and Gemini 2.0 Flash models.
+The Search Grounding feature is available with Google Gemini 2.5 series, Gemini 2.0 Flash, and Gemini 1.5 series models.
 :::
 
 ## Azure OpenAI
@@ -115,13 +135,12 @@ XAI_API_KEY=...
 
 **Supported Models**:
 
-- grok-3
+- grok-3 (default)
 - grok-3-fast
 - grok-3-mini
 - grok-3-mini-fast
 - grok-2-1212
 - grok-2-vision-1212
-- grok-beta
 
 **Getting an API Key**:
 API keys can be obtained from the [xAI Dashboard](https://x.ai/api).
@@ -135,10 +154,19 @@ GROQ_API_KEY=...
 
 **Supported Models**:
 
+- meta-llama/llama-4-scout-17b-16e-instruct
 - gemma2-9b-it
 - llama-3.3-70b-versatile
+- llama-3.1-8b-instant
+- llama-guard-3-8b
+- llama3-70b-8192
 - llama3-8b-8192
 - mixtral-8x7b-32768
+- qwen-qwq-32b
+- mistral-saba-24b
+- qwen-2.5-32b
+- deepseek-r1-distill-qwen-32b
+- deepseek-r1-distill-llama-70b
 
 **Getting an API Key**:
 API keys can be obtained from the [Groq Dashboard](https://console.groq.com/keys).
@@ -152,13 +180,11 @@ COHERE_API_KEY=...
 
 **Supported Models**:
 
+- command-a-03-2025
 - command-r-plus
-- command-r-plus-08-2024
 - command-r
-- command-r-08-2024
+- command
 - command-light
-- command-light-nightly
-- command-nightly
 
 **Getting an API Key**:
 API keys can be obtained from the [Cohere Dashboard](https://dashboard.cohere.com/api-keys).
@@ -172,10 +198,12 @@ MISTRALAI_API_KEY=...
 
 **Supported Models**:
 
+- pixtral-large-latest
 - mistral-large-latest
-- open-mistral-nemo
-- codestral-latest
-- mistral-embed
+- mistral-small-latest
+- ministral-3b-latest
+- ministral-8b-latest
+- pixtral-12b-2409
 
 **Getting an API Key**:
 API keys can be obtained from the [Mistral AI Dashboard](https://console.mistral.ai/api-keys/).
@@ -189,11 +217,9 @@ PERPLEXITY_API_KEY=...
 
 **Supported Models**:
 
-- llama-3.1-sonar-small-128k-online
-- llama-3.1-sonar-large-128k-online
-- llama-3.1-sonar-huge-128k-online
-- llama-3.1-sonar-small-128k-chat
-- llama-3.1-sonar-large-128k-chat
+- sonar-pro
+- sonar
+- sonar-deep-research
 
 **Getting an API Key**:
 API keys can be obtained from the [Perplexity Dashboard](https://www.perplexity.ai/settings/api).
@@ -207,13 +233,17 @@ FIREWORKS_API_KEY=...
 
 **Supported Models**:
 
-- firefunction-v2
-- llama-v3p1-405b-instruct
-- llama-v3p1-70b-instruct
-- llama-v3p1-8b-instruct
-- llama-v3-70b-instruct
-- mixtral-8x22b-instruct
-- mixtral-8x7b-instruct
+- accounts/fireworks/models/deepseek-r1
+- accounts/fireworks/models/deepseek-v3
+- accounts/fireworks/models/llama-v3p1-405b-instruct
+- accounts/fireworks/models/llama-v3p1-8b-instruct
+- accounts/fireworks/models/llama-v3p2-3b-instruct
+- accounts/fireworks/models/llama-v3p3-70b-instruct
+- accounts/fireworks/models/mixtral-8x7b-instruct-hf
+- accounts/fireworks/models/mixtral-8x22b-instruct
+- accounts/fireworks/models/qwen2p5-coder-32b-instruct
+- accounts/fireworks/models/llama-v3p2-11b-vision-instruct
+- accounts/fireworks/models/yi-large
 
 **Getting an API Key**:
 API keys can be obtained from the [Fireworks Dashboard](https://fireworks.ai/account/api-keys).

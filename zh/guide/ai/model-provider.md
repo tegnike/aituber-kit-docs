@@ -8,9 +8,9 @@
 
 AITuberKit支持以下AI服务：
 
-- OpenAI - 提供GPT-4o、GPT-4.5等高性能模型
-- Anthropic - 提供Claude 3.5 Sonnet、Claude 3.7 Sonnet等
-- Google Gemini - 提供Gemini 2.0 Flash、Gemini 1.5系列
+- OpenAI - 提供GPT-4.1、o3、o4-mini等高性能模型
+- Anthropic - 提供Claude Opus 4.1、Claude Sonnet 4等
+- Google Gemini - 提供Gemini 2.5 Pro、Gemini 2.5 Flash等
 - Azure OpenAI - Azure平台上的OpenAI模型
 - xAI - 提供Grok模型
 - Groq - 提供专注于快速推理的各种模型
@@ -36,9 +36,17 @@ OPENAI_API_KEY=sk-...
 
 **支持的模型**:
 
-- gpt-4o-2024-11-20
-- gpt-4.5-preview-2025-02-27
-- gpt-4o-mini-2024-07-18
+- gpt-4.1（默认）
+- gpt-4.1-mini
+- gpt-4.1-nano
+- gpt-4o
+- gpt-4o-mini
+- o1
+- o1-mini
+- o1-preview
+- o3-mini
+- o3
+- o4-mini
 - chatgpt-4o-latest
 
 **获取API密钥**:
@@ -53,9 +61,12 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 **支持的模型**:
 
-- claude-3-5-sonnet-20241022
+- claude-opus-4-1-20250805
+- claude-opus-4-20250514
+- claude-sonnet-4-20250514
 - claude-3-7-sonnet-20250219
-- claude-3-opus-20240229
+- claude-3-5-sonnet-20241022（默认）
+- claude-3-5-sonnet-20240620
 - claude-3-5-haiku-20241022
 
 **获取API密钥**:
@@ -70,10 +81,19 @@ GOOGLE_API_KEY=...
 
 **支持的模型**:
 
-- gemini-2.0-flash-001
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b-latest
+- gemini-2.5-pro
+- gemini-2.5-flash
+- gemini-2.5-flash-lite
+- gemini-2.5-pro-preview-05-06
+- gemini-2.5-flash-preview-04-17
+- gemini-2.5-pro-exp-03-25
+- gemini-2.0-flash
+- gemini-1.5-pro
 - gemini-1.5-pro-latest
+- gemini-1.5-flash
+- gemini-1.5-flash-latest（默认）
+- gemini-1.5-flash-8b
+- gemini-1.5-flash-8b-latest
 
 **获取API密钥**:
 可以从[Google AI Studio](https://aistudio.google.com/app/apikey?hl=zh)获取API密钥。
@@ -91,7 +111,7 @@ NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
 ```
 
 ::: tip
-搜索接地功能仅适用于Google Gemini 1.5 Flash、Gemini 1.5 Pro和Gemini 2.0 Flash模型。
+搜索接地功能适用于Google Gemini 2.5系列、Gemini 2.0 Flash和Gemini 1.5系列模型。
 :::
 
 ## Azure OpenAI
@@ -115,13 +135,12 @@ XAI_API_KEY=...
 
 **支持的模型**:
 
-- grok-3
+- grok-3（默认）
 - grok-3-fast
 - grok-3-mini
 - grok-3-mini-fast
 - grok-2-1212
 - grok-2-vision-1212
-- grok-beta
 
 **获取API密钥**:
 可以从[xAI仪表板](https://x.ai/api)获取API密钥。
@@ -135,10 +154,19 @@ GROQ_API_KEY=...
 
 **支持的模型**:
 
+- meta-llama/llama-4-scout-17b-16e-instruct
 - gemma2-9b-it
 - llama-3.3-70b-versatile
+- llama-3.1-8b-instant
+- llama-guard-3-8b
+- llama3-70b-8192
 - llama3-8b-8192
 - mixtral-8x7b-32768
+- qwen-qwq-32b
+- mistral-saba-24b
+- qwen-2.5-32b
+- deepseek-r1-distill-qwen-32b
+- deepseek-r1-distill-llama-70b
 
 **获取API密钥**:
 可以从[Groq仪表板](https://console.groq.com/keys)获取API密钥。
@@ -152,13 +180,11 @@ COHERE_API_KEY=...
 
 **支持的模型**:
 
+- command-a-03-2025
 - command-r-plus
-- command-r-plus-08-2024
 - command-r
-- command-r-08-2024
+- command
 - command-light
-- command-light-nightly
-- command-nightly
 
 **获取API密钥**:
 可以从[Cohere仪表板](https://dashboard.cohere.com/api-keys)获取API密钥。
@@ -172,10 +198,12 @@ MISTRALAI_API_KEY=...
 
 **支持的模型**:
 
+- pixtral-large-latest
 - mistral-large-latest
-- open-mistral-nemo
-- codestral-latest
-- mistral-embed
+- mistral-small-latest
+- ministral-3b-latest
+- ministral-8b-latest
+- pixtral-12b-2409
 
 **获取API密钥**:
 可以从[Mistral AI仪表板](https://console.mistral.ai/api-keys/)获取API密钥。
@@ -189,11 +217,9 @@ PERPLEXITY_API_KEY=...
 
 **支持的模型**:
 
-- llama-3.1-sonar-small-128k-online
-- llama-3.1-sonar-large-128k-online
-- llama-3.1-sonar-huge-128k-online
-- llama-3.1-sonar-small-128k-chat
-- llama-3.1-sonar-large-128k-chat
+- sonar-pro
+- sonar
+- sonar-deep-research
 
 **获取API密钥**:
 可以从[Perplexity仪表板](https://www.perplexity.ai/settings/api)获取API密钥。
@@ -207,13 +233,17 @@ FIREWORKS_API_KEY=...
 
 **支持的模型**:
 
-- firefunction-v2
-- llama-v3p1-405b-instruct
-- llama-v3p1-70b-instruct
-- llama-v3p1-8b-instruct
-- llama-v3-70b-instruct
-- mixtral-8x22b-instruct
-- mixtral-8x7b-instruct
+- accounts/fireworks/models/deepseek-r1
+- accounts/fireworks/models/deepseek-v3
+- accounts/fireworks/models/llama-v3p1-405b-instruct
+- accounts/fireworks/models/llama-v3p1-8b-instruct
+- accounts/fireworks/models/llama-v3p2-3b-instruct
+- accounts/fireworks/models/llama-v3p3-70b-instruct
+- accounts/fireworks/models/mixtral-8x7b-instruct-hf
+- accounts/fireworks/models/mixtral-8x22b-instruct
+- accounts/fireworks/models/qwen2p5-coder-32b-instruct
+- accounts/fireworks/models/llama-v3p2-11b-vision-instruct
+- accounts/fireworks/models/yi-large
 
 **获取API密钥**:
 可以从[Fireworks仪表板](https://fireworks.ai/account/api-keys)获取API密钥。
