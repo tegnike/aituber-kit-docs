@@ -53,6 +53,32 @@ This setting is only displayed when Japanese is selected.
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 ```
 
+## Restricted Mode
+
+When restricted mode is enabled, certain settings such as changing API keys and models will be restricted. Use this when you want to protect settings, such as on demo terminals.
+
+**Environment Variables**:
+
+```bash
+# Enable/disable restricted mode (true/false)
+NEXT_PUBLIC_RESTRICTED_MODE="false"
+```
+
+## Live2D Features
+
+Toggle the Live2D feature on or off. A license agreement with Live2D Inc. is required to use the Live2D feature. It is disabled by default.
+
+**Environment Variables**:
+
+```bash
+# Enable/disable Live2D feature (true/false)
+NEXT_PUBLIC_LIVE2D_ENABLED="false"
+```
+
+::: warning Note
+A license agreement with Live2D Inc. is required to use the Live2D feature. Commercial use without a license agreement is not permitted.
+:::
+
 ## Background Image Settings
 
 **Environment Variables**:

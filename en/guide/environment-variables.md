@@ -22,6 +22,12 @@ NEXT_PUBLIC_SELECT_LANGUAGE=en
 # Setting to pronounce English words in Japanese (true/false)
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
+# Enable/disable restricted mode (true/false)
+NEXT_PUBLIC_RESTRICTED_MODE="false"
+
+# Enable/disable Live2D feature (true/false)
+NEXT_PUBLIC_LIVE2D_ENABLED="false"
+
 # Background image path
 NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
@@ -506,6 +512,102 @@ For details, see [Slide Settings](/guide/slide-settings).
 ```bash
 # Set the initial state of slide mode (true/false)
 NEXT_PUBLIC_SLIDE_MODE=false
+```
+
+## Presence Detection Settings
+
+For details, see [Presence Detection Settings](/guide/presence-settings).
+
+```bash
+# Enable/disable presence detection mode (true/false)
+NEXT_PUBLIC_PRESENCE_DETECTION_ENABLED="false"
+
+# Greeting message
+NEXT_PUBLIC_PRESENCE_GREETING_MESSAGE="Welcome! Is there anything I can help you with?"
+
+# Departure message (empty to disable)
+NEXT_PUBLIC_PRESENCE_DEPARTURE_MESSAGE=""
+
+# Clear chat history on departure (true/false)
+NEXT_PUBLIC_PRESENCE_CLEAR_CHAT_ON_DEPARTURE="true"
+
+# Departure timeout (seconds)
+NEXT_PUBLIC_PRESENCE_DEPARTURE_TIMEOUT="3"
+
+# Cooldown time (seconds)
+NEXT_PUBLIC_PRESENCE_COOLDOWN_TIME="5"
+
+# Detection sensitivity (low/medium/high)
+NEXT_PUBLIC_PRESENCE_DETECTION_SENSITIVITY="medium"
+
+# Detection confirmation time (seconds)
+NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
+
+# Debug mode (true/false)
+NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+```
+
+## Idle Mode Settings
+
+For details, see [Idle Mode Settings](/guide/idle-settings).
+
+```bash
+# Enable/disable idle mode (true/false)
+NEXT_PUBLIC_IDLE_MODE_ENABLED="false"
+
+# Playback mode (sequential/random)
+NEXT_PUBLIC_IDLE_PLAYBACK_MODE="sequential"
+
+# Speech interval (seconds)
+NEXT_PUBLIC_IDLE_INTERVAL="30"
+
+# Default emotion
+NEXT_PUBLIC_IDLE_DEFAULT_EMOTION="neutral"
+
+# Enable/disable time-based greetings
+NEXT_PUBLIC_IDLE_TIME_PERIOD_ENABLED="false"
+
+# Morning greeting phrase
+NEXT_PUBLIC_IDLE_TIME_PERIOD_MORNING=""
+
+# Afternoon greeting phrase
+NEXT_PUBLIC_IDLE_TIME_PERIOD_AFTERNOON=""
+
+# Evening greeting phrase
+NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
+
+# Enable/disable AI auto-generated speech
+NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
+
+# AI auto-generation prompt template
+NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
+```
+
+## Kiosk Mode Settings
+
+For details, see [Kiosk Mode Settings](/guide/kiosk-settings).
+
+```bash
+# Enable/disable kiosk mode (true/false)
+NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
+
+# Passcode
+NEXT_PUBLIC_KIOSK_PASSCODE=""
+
+# Input character limit
+NEXT_PUBLIC_KIOSK_MAX_INPUT_LENGTH="200"
+
+# Enable/disable NG word filter (true/false)
+NEXT_PUBLIC_KIOSK_NG_WORD_ENABLED="false"
+
+# NG words (comma-separated)
+NEXT_PUBLIC_KIOSK_NG_WORDS=""
+
+# Guidance message
+NEXT_PUBLIC_KIOSK_GUIDANCE_MESSAGE=""
+
+# Guidance message display timeout (seconds)
+NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 ```
 
 ## Other Settings

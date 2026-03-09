@@ -4,7 +4,7 @@
 
 To use AITuberKit, you need the following software:
 
-- Node.js: ^25.2.1
+- Node.js: 24.x
 - npm: ^11.6.2
 
 ## Installation Steps

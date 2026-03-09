@@ -263,12 +263,20 @@ export default defineConfig({
               link: '/guide/image-settings',
             },
             {
-              text: '会話履歴',
-              link: '/guide/conversation-history',
-            },
-            {
               text: '記憶設定',
               link: '/guide/memory-settings',
+            },
+            {
+              text: '人感検知設定',
+              link: '/guide/presence-settings',
+            },
+            {
+              text: 'アイドルモード設定',
+              link: '/guide/idle-settings',
+            },
+            {
+              text: 'キオスクモード設定',
+              link: '/guide/kiosk-settings',
             },
             {
               text: 'その他',
@@ -371,12 +379,20 @@ export default defineConfig({
               link: '/en/guide/image-settings',
             },
             {
-              text: 'Conversation History',
-              link: '/en/guide/conversation-history',
-            },
-            {
               text: 'Memory Settings',
               link: '/en/guide/memory-settings',
+            },
+            {
+              text: 'Presence Detection Settings',
+              link: '/en/guide/presence-settings',
+            },
+            {
+              text: 'Idle Mode Settings',
+              link: '/en/guide/idle-settings',
+            },
+            {
+              text: 'Kiosk Mode Settings',
+              link: '/en/guide/kiosk-settings',
             },
             {
               text: 'Others',
@@ -473,12 +489,20 @@ export default defineConfig({
               link: '/zh/guide/image-settings',
             },
             {
-              text: '对话历史',
-              link: '/zh/guide/conversation-history',
-            },
-            {
               text: '记忆设置',
               link: '/zh/guide/memory-settings',
+            },
+            {
+              text: '人感检测设置',
+              link: '/zh/guide/presence-settings',
+            },
+            {
+              text: '待机模式设置',
+              link: '/zh/guide/idle-settings',
+            },
+            {
+              text: '自助终端模式设置',
+              link: '/zh/guide/kiosk-settings',
             },
             {
               text: '其他',

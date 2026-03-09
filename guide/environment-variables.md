@@ -22,6 +22,12 @@ NEXT_PUBLIC_SELECT_LANGUAGE=en
 # 英単語を日本語で読み上げる設定（true/false）
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
+# 制限モードの有効/無効（true/false）
+NEXT_PUBLIC_RESTRICTED_MODE="false"
+
+# Live2D機能の有効/無効（true/false）
+NEXT_PUBLIC_LIVE2D_ENABLED="false"
+
 # 背景画像のパス
 NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
@@ -506,6 +512,102 @@ NEXT_PUBLIC_ONECOMME_PORT=11180
 ```bash
 # スライドモードの初期状態を設定します（true/false）
 NEXT_PUBLIC_SLIDE_MODE=false
+```
+
+## 人感検知設定
+
+詳細については[人感検知設定](/guide/presence-settings)をご覧ください。
+
+```bash
+# 人感検知モードの有効/無効（true/false）
+NEXT_PUBLIC_PRESENCE_DETECTION_ENABLED="false"
+
+# 挨拶メッセージ
+NEXT_PUBLIC_PRESENCE_GREETING_MESSAGE="いらっしゃいませ！何かお手伝いできることはありますか？"
+
+# 離脱時メッセージ（空欄で無効）
+NEXT_PUBLIC_PRESENCE_DEPARTURE_MESSAGE=""
+
+# 離脱時に会話履歴をクリア（true/false）
+NEXT_PUBLIC_PRESENCE_CLEAR_CHAT_ON_DEPARTURE="true"
+
+# 離脱判定時間（秒）
+NEXT_PUBLIC_PRESENCE_DEPARTURE_TIMEOUT="3"
+
+# クールダウン時間（秒）
+NEXT_PUBLIC_PRESENCE_COOLDOWN_TIME="5"
+
+# 検出感度（low/medium/high）
+NEXT_PUBLIC_PRESENCE_DETECTION_SENSITIVITY="medium"
+
+# 検出確定時間（秒）
+NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
+
+# デバッグモード（true/false）
+NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+```
+
+## アイドルモード設定
+
+詳細については[アイドルモード設定](/guide/idle-settings)をご覧ください。
+
+```bash
+# アイドルモードの有効/無効（true/false）
+NEXT_PUBLIC_IDLE_MODE_ENABLED="false"
+
+# 再生モード（sequential/random）
+NEXT_PUBLIC_IDLE_PLAYBACK_MODE="sequential"
+
+# 発話間隔（秒）
+NEXT_PUBLIC_IDLE_INTERVAL="30"
+
+# デフォルト感情
+NEXT_PUBLIC_IDLE_DEFAULT_EMOTION="neutral"
+
+# 時間帯別挨拶の有効/無効
+NEXT_PUBLIC_IDLE_TIME_PERIOD_ENABLED="false"
+
+# 朝の挨拶フレーズ
+NEXT_PUBLIC_IDLE_TIME_PERIOD_MORNING=""
+
+# 昼の挨拶フレーズ
+NEXT_PUBLIC_IDLE_TIME_PERIOD_AFTERNOON=""
+
+# 夕方の挨拶フレーズ
+NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
+
+# AI自動生成発話の有効/無効
+NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
+
+# AI自動生成プロンプトテンプレート
+NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
+```
+
+## キオスクモード設定
+
+詳細については[キオスクモード設定](/guide/kiosk-settings)をご覧ください。
+
+```bash
+# キオスクモードの有効/無効（true/false）
+NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
+
+# パスコード
+NEXT_PUBLIC_KIOSK_PASSCODE=""
+
+# 入力文字数制限
+NEXT_PUBLIC_KIOSK_MAX_INPUT_LENGTH="200"
+
+# NGワードフィルタの有効/無効（true/false）
+NEXT_PUBLIC_KIOSK_NG_WORD_ENABLED="false"
+
+# NGワード（カンマ区切り）
+NEXT_PUBLIC_KIOSK_NG_WORDS=""
+
+# ガイダンスメッセージ
+NEXT_PUBLIC_KIOSK_GUIDANCE_MESSAGE=""
+
+# ガイダンスメッセージ表示時間（秒）
+NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 ```
 
 ## その他の設定

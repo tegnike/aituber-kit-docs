@@ -53,6 +53,32 @@ AITuberKit支持多种语言，您可以从以下语言中选择：
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 ```
 
+## 限制模式
+
+启用限制模式后，API密钥的更改和模型的更改等部分设置将被限制。适用于在演示终端上使用时需要保护设置的场景。
+
+**环境变量**:
+
+```bash
+# 限制模式的启用/禁用（true/false）
+NEXT_PUBLIC_RESTRICTED_MODE="false"
+```
+
+## Live2D功能
+
+切换Live2D功能的启用/禁用。使用Live2D功能需要与Live2D Inc.签订许可协议。默认为禁用状态。
+
+**环境变量**:
+
+```bash
+# Live2D功能的启用/禁用（true/false）
+NEXT_PUBLIC_LIVE2D_ENABLED="false"
+```
+
+::: warning 注意
+使用Live2D功能需要与Live2D Inc.签订许可协议。未签订许可协议不得用于商业用途。
+:::
+
 ## 背景图像设置
 
 **环境变量**:

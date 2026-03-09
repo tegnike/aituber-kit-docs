@@ -23,11 +23,15 @@ AITuberKit is an open-source toolkit that allows anyone to easily build web appl
 - **External Linkage Mode**: Connect with server applications via WebSocket to achieve more advanced features
 - **Slide Mode**: Mode where AI characters automatically present slides
 - **Realtime API Mode**: Low-latency interaction and function execution using OpenAI's Realtime API
+- **Presence Detection Mode**: Auto-detect visitors via camera face detection for greeting and response
+- **Idle Mode**: Character automatically speaks during periods of no input
+- **Kiosk Mode**: Input restrictions, NG word filter, and passcode protection for demo terminals
 
 ## Supported Character Models
 
 - **3D Models**: VRM files
 - **2D Models**: Live2D files (Cubism 3 and later)
+- **PNGTuber**: PNG image-based character
 
 ### Supported LLMs
 
@@ -63,8 +67,8 @@ AITuberKit is an open-source toolkit that allows anyone to easily build web appl
 
 ## System Requirements
 
-- Node.js: ^20.0.0
-- npm: ^10.0.0
+- Node.js: 24.x
+- npm: ^11.6.2
 
 ## Security Considerations
 

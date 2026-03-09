@@ -22,6 +22,12 @@ NEXT_PUBLIC_SELECT_LANGUAGE=en
 # 用日语发音英语单词的设置（true/false）
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
+# 限制模式的启用/禁用（true/false）
+NEXT_PUBLIC_RESTRICTED_MODE="false"
+
+# Live2D功能的启用/禁用（true/false）
+NEXT_PUBLIC_LIVE2D_ENABLED="false"
+
 # 背景图片路径
 NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
@@ -506,6 +512,102 @@ NEXT_PUBLIC_ONECOMME_PORT=11180
 ```bash
 # 设置幻灯片模式的初始状态（true/false）
 NEXT_PUBLIC_SLIDE_MODE=false
+```
+
+## 人感检测设置
+
+详情请参阅[人感检测设置](/zh/guide/presence-settings)。
+
+```bash
+# 人感检测模式的启用/禁用（true/false）
+NEXT_PUBLIC_PRESENCE_DETECTION_ENABLED="false"
+
+# 问候消息
+NEXT_PUBLIC_PRESENCE_GREETING_MESSAGE="いらっしゃいませ！何かお手伝いできることはありますか？"
+
+# 离开时消息（留空则禁用）
+NEXT_PUBLIC_PRESENCE_DEPARTURE_MESSAGE=""
+
+# 离开时清除对话历史（true/false）
+NEXT_PUBLIC_PRESENCE_CLEAR_CHAT_ON_DEPARTURE="true"
+
+# 离开判定时间（秒）
+NEXT_PUBLIC_PRESENCE_DEPARTURE_TIMEOUT="3"
+
+# 冷却时间（秒）
+NEXT_PUBLIC_PRESENCE_COOLDOWN_TIME="5"
+
+# 检测灵敏度（low/medium/high）
+NEXT_PUBLIC_PRESENCE_DETECTION_SENSITIVITY="medium"
+
+# 检测确认时间（秒）
+NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
+
+# 调试模式（true/false）
+NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+```
+
+## 待机模式设置
+
+详情请参阅[待机模式设置](/zh/guide/idle-settings)。
+
+```bash
+# 待机模式的启用/禁用（true/false）
+NEXT_PUBLIC_IDLE_MODE_ENABLED="false"
+
+# 播放模式（sequential/random）
+NEXT_PUBLIC_IDLE_PLAYBACK_MODE="sequential"
+
+# 发言间隔（秒）
+NEXT_PUBLIC_IDLE_INTERVAL="30"
+
+# 默认情感
+NEXT_PUBLIC_IDLE_DEFAULT_EMOTION="neutral"
+
+# 时段问候的启用/禁用
+NEXT_PUBLIC_IDLE_TIME_PERIOD_ENABLED="false"
+
+# 早上的问候短语
+NEXT_PUBLIC_IDLE_TIME_PERIOD_MORNING=""
+
+# 中午的问候短语
+NEXT_PUBLIC_IDLE_TIME_PERIOD_AFTERNOON=""
+
+# 傍晚的问候短语
+NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
+
+# AI自动生成发言的启用/禁用
+NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
+
+# AI自动生成提示模板
+NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
+```
+
+## 自助终端模式设置
+
+详情请参阅[自助终端模式设置](/zh/guide/kiosk-settings)。
+
+```bash
+# 自助终端模式的启用/禁用（true/false）
+NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
+
+# 密码
+NEXT_PUBLIC_KIOSK_PASSCODE=""
+
+# 输入字数限制
+NEXT_PUBLIC_KIOSK_MAX_INPUT_LENGTH="200"
+
+# NG词过滤的启用/禁用（true/false）
+NEXT_PUBLIC_KIOSK_NG_WORD_ENABLED="false"
+
+# NG词（逗号分隔）
+NEXT_PUBLIC_KIOSK_NG_WORDS=""
+
+# 引导消息
+NEXT_PUBLIC_KIOSK_GUIDANCE_MESSAGE=""
+
+# 引导消息显示时间（秒）
+NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 ```
 
 ## 其他设置
