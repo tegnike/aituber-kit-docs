@@ -59,7 +59,6 @@ AITuberKitは、誰でも簡単にAIキャラクターとチャットできるWe
 - Cartesia
 - OpenAI
 - Azure OpenAI
-- にじボイス
 
 ## 動作要件
 

@@ -15,6 +15,12 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTube直播ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# 评论来源选择（youtube-api or onecomme）
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTube评论获取间隔（秒）
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
 ```
 
 ## YouTube模式
@@ -60,6 +66,10 @@ YouTube直播ID是特定直播的ID，而不是频道ID。
 
 您可以通过点击此按钮切换评论获取的开/关状态。
 
+::: warning 注意
+YouTube直播ID是特定直播的ID，而不是频道ID。
+:::
+
 ### 评论处理机制
 
 AITuber Kit按以下流程处理YouTube评论：
@@ -69,6 +79,22 @@ AITuber Kit按以下流程处理YouTube评论：
 3. 依次将队列中的评论发送给AI生成回应
 4. 让角色说出生成的回应
 
+### 评论来源选择
+
+您可以选择评论的获取方式。
+
+- **YouTube API**: 使用YouTube Data API v3直接获取评论
+- **わんコメ（OneComme）**: 通过[わんコメ](https://onecomme.com/)获取评论。使用わんコメ时，需要先启动わんコメ应用程序
+
+```bash
+# わんコメ端口号
+NEXT_PUBLIC_ONECOMME_PORT=11180
+```
+
+### 评论获取间隔
+
+可以以秒为单位设置评论获取间隔。默认为10秒。
+
 ### 错误处理和注意事项
 
 - **评论获取错误**：如果API密钥无效或已达到限制，可能无法获取评论
@@ -76,36 +102,41 @@ AITuber Kit按以下流程处理YouTube评论：
 - **评论过滤**：以"#"开头的评论会被忽略
 - **资源消耗**：在长时间直播中，内存使用量可能会增加
 
-## 对话持续模式（测试版）
+## 会话继续模式
 
 当没有评论时AI自行继续对话的模式。即使一段时间没有评论，AI角色也会主动发展对话。
 
-::: warning 关于测试版
-**此对话持续模式目前作为测试版提供。**
-
-- 规格可能会在没有通知的情况下更改
-- 操作可能不稳定
-- 在生产环境中使用前请进行充分测试
-- 如果您发现任何错误或问题，我们将感谢您的反馈
-  :::
-
-### 支持的AI服务
-
-- OpenAI
-- Anthropic Claude
-- Google Gemini
+内部使用Mastra Workflow，自动评估会话状态并判断"继续"、"生成新话题"、"休眠"三种分支。
 
 ### 功能详情
 
-在对话持续模式下，如果一段时间内没有评论，AI会参考过去的对话上下文，提供新话题以维持自然的对话流程。
+在会话继续模式下，如果一段时间内没有评论，AI会参考过去的对话上下文，提供新话题以维持自然的对话流程。
+
+### 自定义
+
+可以通过环境变量自定义会话继续模式的行为。
+
+```bash
+# 生成新话题前的无评论次数（默认: 3）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+
+# 休眠前的无评论次数（默认: 6）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# 各种提示的自定义（留空使用默认值）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+```
 
 ### 注意事项
 
 ::: warning 关于使用成本
-
-- 由于一次回应会多次调用LLM，API使用费用可能会增加
-  :::
+由于一次回应会多次调用LLM，API使用费用可能会增加。
+:::
 
 ### 使用方法
 
-启用YouTube模式后，您可以通过点击"对话持续模式"按钮切换对话持续模式的开/关状态。
+启用YouTube模式后，您可以通过点击"会话继续模式"按钮切换会话继续模式的开/关状态。

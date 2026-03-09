@@ -15,6 +15,12 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTube live stream ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# Comment source selection (youtube-api or onecomme)
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTube comment fetch interval (seconds)
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
 ```
 
 ## YouTube Mode
@@ -69,6 +75,22 @@ AITuber Kit processes YouTube comments in the following flow:
 3. Sequentially send comments in the queue to AI to generate responses
 4. Have the character speak the generated responses
 
+### Comment Source Selection
+
+You can select how comments are retrieved.
+
+- **YouTube API**: Retrieve comments directly using YouTube Data API v3
+- **OneComme**: Retrieve comments via [OneComme](https://onecomme.com/). When using OneComme, the OneComme application must be running
+
+```bash
+# OneComme port number
+NEXT_PUBLIC_ONECOMME_PORT=11180
+```
+
+### Comment Fetch Interval
+
+You can set the comment fetch interval in seconds. The default is 10 seconds.
+
 ### Error Handling and Notes
 
 - **Comment Retrieval Error**: Comments may not be retrieved if the API key is invalid or has reached its limit
@@ -76,35 +98,40 @@ AITuber Kit processes YouTube comments in the following flow:
 - **Comment Filtering**: Comments starting with "#" are ignored
 - **Resource Consumption**: Memory usage may increase during long live streams
 
-## Conversation Continuation Mode (Beta)
+## Conversation Continuation Mode
 
 A mode where AI continues the conversation on its own when there are no comments. Even if there are no comments for a while, the AI character will proactively develop the conversation.
 
-::: warning About Beta Version
-**This Conversation Continuation Mode is currently provided as a beta version.**
-
-- Specifications may change without notice
-- Operation may be unstable
-- Please thoroughly test before using in a production environment
-- We would appreciate your feedback if you discover any bugs or issues
-  :::
-
-### Supported AI Services
-
-- OpenAI
-- Anthropic Claude
-- Google Gemini
+Internally, it uses Mastra Workflow to evaluate the conversation state and automatically determine one of three branches: "continue", "generate new topic", or "sleep".
 
 ### Feature Details
 
 In Conversation Continuation Mode, if there are no comments for a certain period of time, the AI refers to the past conversation context and provides new topics to maintain the natural flow of conversation.
 
+### Customization
+
+You can customize the behavior of Conversation Continuation Mode with environment variables.
+
+```bash
+# Number of no-comment rounds before generating a new topic (default: 3)
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+
+# Number of no-comment rounds before sleep (default: 6)
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# Prompt customization (leave empty to use defaults)
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+```
+
 ### Notes
 
 ::: warning About Usage Costs
-
-- Since LLM is called multiple times for a single response, API usage fees may increase
-  :::
+Since LLM is called multiple times for a single response, API usage fees may increase.
+:::
 
 ### How to Use
 

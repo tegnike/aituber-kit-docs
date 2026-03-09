@@ -224,6 +224,7 @@ export default defineConfig({
                 { text: '共通設定', link: '/guide/character/common' },
                 { text: 'VRM', link: '/guide/character/vrm' },
                 { text: 'Live2D', link: '/guide/character/live2d' },
+                { text: 'PNGTuber', link: '/guide/character/pngtuber' },
               ],
             },
             {
@@ -264,6 +265,10 @@ export default defineConfig({
             {
               text: '会話履歴',
               link: '/guide/conversation-history',
+            },
+            {
+              text: '記憶設定',
+              link: '/guide/memory-settings',
             },
             {
               text: 'その他',
@@ -328,6 +333,7 @@ export default defineConfig({
                 },
                 { text: 'VRM', link: '/en/guide/character/vrm' },
                 { text: 'Live2D', link: '/en/guide/character/live2d' },
+                { text: 'PNGTuber', link: '/en/guide/character/pngtuber' },
               ],
             },
             {
@@ -367,6 +373,10 @@ export default defineConfig({
             {
               text: 'Conversation History',
               link: '/en/guide/conversation-history',
+            },
+            {
+              text: 'Memory Settings',
+              link: '/en/guide/memory-settings',
             },
             {
               text: 'Others',
@@ -428,6 +438,7 @@ export default defineConfig({
                 { text: '通用设置', link: '/zh/guide/character/common' },
                 { text: 'VRM', link: '/zh/guide/character/vrm' },
                 { text: 'Live2D', link: '/zh/guide/character/live2d' },
+                { text: 'PNGTuber', link: '/zh/guide/character/pngtuber' },
               ],
             },
             {
@@ -464,6 +475,10 @@ export default defineConfig({
             {
               text: '对话历史',
               link: '/zh/guide/conversation-history',
+            },
+            {
+              text: '记忆设置',
+              link: '/zh/guide/memory-settings',
             },
             {
               text: '其他',

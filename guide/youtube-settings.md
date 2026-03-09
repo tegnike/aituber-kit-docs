@@ -15,6 +15,12 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTubeのライブ配信ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# コメントソースの選択（youtube-api or onecomme）
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTubeコメント取得間隔（秒）
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
 ```
 
 ## YouTubeモード
@@ -73,6 +79,22 @@ AITuber Kitでは以下の流れでYouTubeコメントを処理します：
 3. キュー内のコメントを順次AIに送信し、応答を生成
 4. 生成された応答をキャラクターに話させる
 
+### コメントソースの選択
+
+コメントの取得方法を選択できます。
+
+- **YouTube API**: YouTube Data API v3を使用して直接コメントを取得します
+- **わんコメ（OneComme）**: [わんコメ](https://onecomme.com/)経由でコメントを取得します。わんコメを使用する場合は、わんコメアプリケーションを起動しておく必要があります
+
+```bash
+# わんコメのポート番号
+NEXT_PUBLIC_ONECOMME_PORT=11180
+```
+
+### コメント取得間隔
+
+コメントの取得間隔を秒単位で設定できます。デフォルトは10秒です。
+
 ### エラー対応と注意点
 
 - **コメント取得エラー**: APIキーが無効または制限に達した場合、コメントが取得できない場合があります
@@ -80,35 +102,40 @@ AITuber Kitでは以下の流れでYouTubeコメントを処理します：
 - **コメントフィルタリング**: コメントの最初の文字が「#」の場合、そのコメントは無視されます
 - **リソース消費**: 長時間のライブ配信では、メモリ使用量が増加する可能性があります
 
-## 会話継続モード（ベータ版）
+## 会話継続モード
 
 コメントが無いときにAIが自ら会話を継続するモードです。コメントがない状態が続いても、AIキャラクターが自発的に会話を展開します。
 
-::: warning ベータ版について
-**この会話継続モードは現在ベータ版として提供されています。**
-
-- 予告なく仕様が変更される可能性があります
-- 動作が不安定な場合があります
-- 本番環境での使用は十分にテストを行った上でご利用ください
-- バグや問題を発見した場合は、フィードバックをいただけると幸いです
-  :::
-
-### 対応AIサービス
-
-- OpenAI
-- Anthropic Claude
-- Google Gemini
+内部的にはMastra Workflowを使用しており、会話の状態を評価して「継続」「新トピック生成」「スリープ」の3つの分岐を自動的に判断します。
 
 ### 機能の詳細
 
 会話継続モードでは、一定時間コメントがない場合にAIが過去の会話文脈を参照し、自然な会話の流れを維持するための新たな話題を提供します。
 
+### カスタマイズ
+
+会話継続モードの動作を環境変数でカスタマイズできます。
+
+```bash
+# 新トピック生成までのコメント無し回数（デフォルト: 3）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+
+# スリープまでのコメント無し回数（デフォルト: 6）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# 各種プロンプトのカスタマイズ（空欄でデフォルト使用）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+```
+
 ### 注意点
 
 ::: warning 利用コストについて
-
-- 一度の回答で複数回LLMを呼び出すため、API利用料が増加する可能性があります
-  :::
+一度の回答で複数回LLMを呼び出すため、API利用料が増加する可能性があります。
+:::
 
 ### 使用方法
 

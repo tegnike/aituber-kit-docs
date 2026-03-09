@@ -2,7 +2,7 @@
 
 ## 概述
 
-在角色设置界面中，您可以设置AI角色的名称、使用的模型（VRM或Live2D）以及角色提示。
+在角色设置界面中，您可以设置AI角色的名称、使用的模型（VRM、Live2D或PNGTuber）以及角色提示。
 
 **环境变量**:
 
@@ -10,10 +10,13 @@
 # 角色名称
 NEXT_PUBLIC_CHARACTER_NAME=Nike酱
 
-# 使用的模型类型（vrm或live2d）
+# 使用的模型类型（vrm, live2d, pngtuber）
 NEXT_PUBLIC_MODEL_TYPE=vrm
 
-# 字元預設名
+# 用户显示名
+NEXT_PUBLIC_USER_DISPLAY_NAME=YOU
+
+# 自定义预设名
 NEXT_PUBLIC_CUSTOM_PRESET_NAME1="Preset 1"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME2="Preset 2"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME3="Preset 3"
@@ -36,10 +39,11 @@ NEXT_PUBLIC_CHARACTER_PRESET5="您是一位名叫 Nique 的 AI 助理。"
 
 ## 选择角色模型
 
-您可以选择"VRM"或"Live2D"作为角色的模型类型。根据模型类型的不同，设置项目也会有所变化。有关每种模型类型的详细设置，请参阅各模型的设置页面。
+您可以从"VRM"、"Live2D"、"PNGTuber"中选择角色的模型类型。根据模型类型的不同，设置项目也会有所变化。
 
 - [VRM设置](./vrm.md)
 - [Live2D设置](./live2d.md)
+- [PNGTuber设置](./pngtuber.md)
 
 ## 角色位置
 

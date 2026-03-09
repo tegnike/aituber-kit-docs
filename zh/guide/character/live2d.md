@@ -4,6 +4,10 @@
 
 Live2D是一种可以为2D插图添加真实动作的模型格式，在AITuberKit中，您可以使用Live2D模型来显示AI角色。
 
+::: warning Live2D功能默认禁用
+Live2D功能由于许可限制，默认处于禁用状态。要启用Live2D功能，请设置环境变量 `NEXT_PUBLIC_LIVE2D_ENABLED=true`。商业使用需要Live2D许可证。
+:::
+
 **环境变量**:
 
 ```bash

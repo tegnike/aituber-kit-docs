@@ -6,8 +6,8 @@
 
 ```bash
 # 使用する音声合成エンジン
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
-# gsvitts, elevenlabs, openai, azure, nijivoice
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
 
@@ -30,7 +30,6 @@ AIキャラクターが使用する音声合成エンジンを選択します。
 - Cartesia：高品質な音声合成サービス
 - OpenAI TTS：多言語に対応したOpenAIの音声合成サービス
 - Azure TTS：Microsoft Azureが提供する多言語音声合成サービス
-- にじボイス：100種類以上の声を利用できる日本語向け音声合成サービス
 
 ## ボイステスト
 
@@ -351,30 +350,3 @@ Azure TTSのエンドポイントURLを設定します。
 - **ボイスタイプ**：使用する音声タイプを選択します
 - **話速**：0.25〜4.0の範囲で調整可能
 
-## にじボイス
-
-```bash
-# APIキー
-NIJIVOICE_API_KEY=""
-# 話者ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# 話速
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# 感情レベル
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# 音声の長さ
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
-```
-
-[にじボイス](https://app.nijivoice.com/)は日本語向けの音声合成サービスです。
-
-### APIキー
-
-にじボイスAPIキーを設定します。
-
-### 音声パラメータ調整
-
-- **話者ID**：使用する話者を選択します
-- **話速**：0.4〜3.0の範囲で調整可能。デフォルトでは、各キャラクターに推奨される話速が自動的に設定されます
-- **感情レベル**：0〜1.5の範囲で調整可能
-- **音声の長さ**：0〜1.7の範囲で調整可能

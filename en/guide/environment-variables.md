@@ -14,7 +14,7 @@ For details, see [Basic Settings](/guide/basic-settings).
 
 ```bash
 # Default language setting (specify one of the following values)
-# ja: Japanese, en: English, ko: Korean, zh: Chinese (Traditional), vi: Vietnamese
+# ja: Japanese, en: English, ko: Korean, zh-CN: Chinese (Simplified), zh-TW: Chinese (Traditional), vi: Vietnamese
 # fr: French, es: Spanish, pt: Portuguese, de: German
 # ru: Russian, it: Italian, ar: Arabic, hi: Hindi, pl: Polish
 NEXT_PUBLIC_SELECT_LANGUAGE=en
@@ -34,9 +34,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
-# Quick menu display setting (true/false) / 
-# Quick menu display settings (true/false)
-NEXT_PUBLIC_SHOW_QUICK_MENU=true
+# Color theme setting (default, cool, mono, ocean, forest, sunset)
+NEXT_PUBLIC_COLOR_THEME=default
 ```
 
 ## Character Settings
@@ -49,8 +48,11 @@ For details, see [Character Settings](/guide/character/common).
 # Character name
 NEXT_PUBLIC_CHARACTER_NAME=Nike-chan
 
-# Model type to use (vrm or live2d)
+# Model type to use (vrm, live2d, or pngtuber)
 NEXT_PUBLIC_MODEL_TYPE=vrm
+
+# User display name
+NEXT_PUBLIC_USER_DISPLAY_NAME=YOU
 
 # Custom preset names
 NEXT_PUBLIC_CUSTOM_PRESET_NAME1="Preset 1"
@@ -75,6 +77,42 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+```
+
+### PNGTuber Settings
+
+```bash
+# PNGTuber model path
+NEXT_PUBLIC_SELECTED_PNGTUBER_PATH=/pngtuber/nike01
+
+# PNGTuber lip sync sensitivity (0-100)
+NEXT_PUBLIC_PNGTUBER_SENSITIVITY=50
+
+# PNGTuber chroma key settings
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_ENABLED=false
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_COLOR=#00FF00
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_TOLERANCE=50
+
+# PNGTuber position and size settings
+NEXT_PUBLIC_PNGTUBER_SCALE=1.0
+NEXT_PUBLIC_PNGTUBER_OFFSET_X=0
+NEXT_PUBLIC_PNGTUBER_OFFSET_Y=0
+```
+
+### Memory Settings
+
+```bash
+# Enable/disable memory feature
+NEXT_PUBLIC_MEMORY_ENABLED=false
+
+# Similarity threshold (0.1-0.95)
+NEXT_PUBLIC_MEMORY_SIMILARITY_THRESHOLD=0.7
+
+# Search result limit (1-10)
+NEXT_PUBLIC_MEMORY_SEARCH_LIMIT=5
+
+# Maximum context token count
+NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 ```
 
 ### Live2D Settings
@@ -114,7 +152,7 @@ For details, see [AI Settings](/guide/ai/common).
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # Selected AI model name
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
 
 # Whether to use custom model
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -127,6 +165,18 @@ NEXT_PUBLIC_TEMPERATURE=0.7
 
 # Maximum number of tokens
 NEXT_PUBLIC_MAX_TOKENS=4096
+
+# Enable reasoning mode (true/false)
+NEXT_PUBLIC_REASONING_MODE=false
+
+# Reasoning level (low/medium/high)
+NEXT_PUBLIC_REASONING_EFFORT=medium
+
+# Reasoning token budget
+NEXT_PUBLIC_REASONING_TOKEN_BUDGET=8192
+
+# Always show thinking process (true/false)
+NEXT_PUBLIC_SHOW_THINKING_TEXT=false
 ```
 
 ### AI Service Settings
@@ -263,7 +313,7 @@ For details, see [Voice Synthesis Settings](/guide/voice-settings).
 ```bash
 # Voice synthesis engine to use
 # voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
-# gsvitts, elevenlabs, cartesia, openai, azure, nijivoice
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 
 # VOICEVOX
@@ -387,17 +437,6 @@ NEXT_PUBLIC_OPENAI_TTS_VOICE=shimmer
 # Speaking speed
 NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 
-# Nijivoice
-# API key
-NIJIVOICE_API_KEY=""
-# Speaker ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# Speaking speed
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# Emotional level
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# Voice duration
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
 ```
 
 ## Voice Input Settings
@@ -438,6 +477,26 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTube live stream ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# Comment source selection (youtube-api or onecomme)
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTube comment fetch interval (seconds)
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
+
+# Conversation continuation mode settings
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# Conversation continuation mode: prompt customization (leave empty to use defaults)
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+
+# OneComme port number
+NEXT_PUBLIC_ONECOMME_PORT=11180
 ```
 
 ## Slide Settings

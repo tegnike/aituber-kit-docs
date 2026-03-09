@@ -4,8 +4,8 @@
 
 To use AITuberKit, you need the following software:
 
-- Node.js: ^20.0.0
-- npm: ^10.0.0
+- Node.js: ^25.2.1
+- npm: ^11.6.2
 
 ## Installation Steps
 
@@ -58,7 +58,7 @@ You can start using AITuberKit by opening [http://localhost:3000](http://localho
 
 1. Enter the API key for the LLM selected in the settings screen
 2. Optionally edit the character's setting prompt
-3. Upload a VRM file or Live2D file for the character, and a background file
+3. Upload a VRM file, Live2D file, or PNGTuber images for the character, and a background file
 4. Select a voice synthesis engine and adjust voice settings
 5. Start a conversation with the character from the input form
 

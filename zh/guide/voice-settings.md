@@ -6,8 +6,8 @@
 
 ```bash
 # 使用的语音合成引擎
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
-# gsvitts, elevenlabs, openai, azure, nijivoice
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
 
@@ -30,8 +30,6 @@ NEXT_PUBLIC_SELECT_VOICE=voicevox
 - Cartesia：高质量语音合成服务
 - OpenAI TTS：OpenAI提供的支持多种语言的语音合成服务
 - Azure TTS：Microsoft Azure提供的多语言语音合成服务
-- Nijivoice：提供100多种声音的日语语音合成服务
-
 ## 语音测试
 
 语音测试允许您播放所选语音合成引擎的声音。
@@ -349,30 +347,3 @@ Microsoft Azure提供的多语言语音合成服务。
 - **语音类型**：选择要使用的语音类型
 - **说话速度**：可在0.25至4.0范围内调整
 
-## Nijivoice
-
-```bash
-# API密钥
-NIJIVOICE_API_KEY=""
-# 说话者ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# 说话速度
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# 情感水平
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# 语音持续时间
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
-```
-
-[Nijivoice](https://app.nijivoice.com/)是一种日语语音合成服务。
-
-### API密钥
-
-设置Nijivoice API密钥。
-
-### 语音参数调整
-
-- **说话者ID**：选择要使用的说话者
-- **说话速度**：可在0.4至3.0范围内调整。默认情况下，会自动设置每个角色推荐的说话速度
-- **情感水平**：可在0至1.5范围内调整
-- **语音持续时间**：可在0至1.7范围内调整

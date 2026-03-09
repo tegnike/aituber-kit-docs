@@ -6,8 +6,8 @@ Voice synthesis settings allow you to configure settings related to AI character
 
 ```bash
 # Voice synthesis engine to use
-# voicevox, koeiromap, google, stylebertvits2, aivis_speech, 
-# gsvitts, elevenlabs, openai, azure, nijivoice
+# voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 ```
 
@@ -30,7 +30,6 @@ Select the voice synthesis engine that your AI character will use. The following
 - Cartesia: High-quality voice synthesis service
 - OpenAI TTS: OpenAI's voice synthesis service supporting multiple languages
 - Azure TTS: Microsoft Azure's multilingual voice synthesis service
-- Nijivoice: Japanese voice synthesis service with over 100 voices available
 
 ## Voice Test
 
@@ -349,30 +348,3 @@ Set the Azure TTS endpoint URL.
 - **Voice Type**: Select the voice type to use
 - **Speaking Speed**: Adjustable in the range of 0.25 to 4.0
 
-## Nijivoice
-
-```bash
-# API key
-NIJIVOICE_API_KEY=""
-# Speaker ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# Speaking speed
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# Emotional level
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# Voice duration
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
-```
-
-[Nijivoice](https://app.nijivoice.com/) is a voice synthesis service for Japanese.
-
-### API Key
-
-Set the Nijivoice API key.
-
-### Voice Parameter Adjustment
-
-- **Speaker ID**: Select the speaker to use
-- **Speaking Speed**: Adjustable in the range of 0.4 to 3.0. By default, the recommended speaking speed for each character is automatically set
-- **Emotional Level**: Adjustable in the range of 0 to 1.5
-- **Voice Duration**: Adjustable in the range of 0 to 1.7

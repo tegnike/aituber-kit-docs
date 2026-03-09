@@ -14,7 +14,7 @@
 
 ```bash
 # 默认语言设置（指定以下值之一）
-# ja: 日语, en: 英语, ko: 韩语, zh: 中文(繁体), vi: 越南语
+# ja: 日语, en: 英语, ko: 韩语, zh-CN: 中文(简体), zh-TW: 中文(繁体), vi: 越南语
 # fr: 法语, es: 西班牙语, pt: 葡萄牙语, de: 德语
 # ru: 俄语, it: 意大利语, ar: 阿拉伯语, hi: 印地语, pl: 波兰语
 NEXT_PUBLIC_SELECT_LANGUAGE=en
@@ -34,9 +34,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 控制面板显示设置（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
-# 快捷菜单显示设置（true/false）/ 
-# Quick menu display settings (true/false)
-NEXT_PUBLIC_SHOW_QUICK_MENU=true
+# 颜色主题设置（default, cool, mono, ocean, forest, sunset）
+NEXT_PUBLIC_COLOR_THEME=default
 ```
 
 ## 角色设置
@@ -49,8 +48,11 @@ NEXT_PUBLIC_SHOW_QUICK_MENU=true
 # 角色名称
 NEXT_PUBLIC_CHARACTER_NAME=Nike-chan
 
-# 使用的模型类型（vrm或live2d）
+# 使用的模型类型（vrm, live2d, pngtuber）
 NEXT_PUBLIC_MODEL_TYPE=vrm
+
+# 用户显示名
+NEXT_PUBLIC_USER_DISPLAY_NAME=YOU
 
 # 自定义预设名称
 NEXT_PUBLIC_CUSTOM_PRESET_NAME1="预设1"
@@ -75,6 +77,42 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRM角色的照明强度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+```
+
+### PNGTuber设置
+
+```bash
+# PNGTuber模型的路径
+NEXT_PUBLIC_SELECTED_PNGTUBER_PATH=/pngtuber/nike01
+
+# PNGTuber口型同步灵敏度（0-100）
+NEXT_PUBLIC_PNGTUBER_SENSITIVITY=50
+
+# PNGTuber色度键设置
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_ENABLED=false
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_COLOR=#00FF00
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_TOLERANCE=50
+
+# PNGTuber位置和大小设置
+NEXT_PUBLIC_PNGTUBER_SCALE=1.0
+NEXT_PUBLIC_PNGTUBER_OFFSET_X=0
+NEXT_PUBLIC_PNGTUBER_OFFSET_Y=0
+```
+
+### 记忆设置
+
+```bash
+# 记忆功能的启用/禁用
+NEXT_PUBLIC_MEMORY_ENABLED=false
+
+# 相似度阈值（0.1-0.95）
+NEXT_PUBLIC_MEMORY_SIMILARITY_THRESHOLD=0.7
+
+# 搜索结果上限（1-10）
+NEXT_PUBLIC_MEMORY_SEARCH_LIMIT=5
+
+# 上下文最大令牌数
+NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 ```
 
 ### Live2D设置
@@ -109,12 +147,12 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
 
 ```bash
 # AI服务选择
-# openai, anthropic, google, azure, groq, xai, cohere,
+# openai, anthropic, google, azure, xai, groq, cohere,
 # mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 所选AI模型名称
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
 
 # 是否使用自定义模型
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -127,6 +165,18 @@ NEXT_PUBLIC_TEMPERATURE=0.7
 
 # 最大令牌数
 NEXT_PUBLIC_MAX_TOKENS=4096
+
+# 启用推理模式（true/false）
+NEXT_PUBLIC_REASONING_MODE=false
+
+# 推理级别（low/medium/high）
+NEXT_PUBLIC_REASONING_EFFORT=medium
+
+# 推理令牌预算
+NEXT_PUBLIC_REASONING_TOKEN_BUDGET=8192
+
+# 始终显示思考过程（true/false）
+NEXT_PUBLIC_SHOW_THINKING_TEXT=false
 ```
 
 ### AI服务设置
@@ -263,7 +313,7 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 ```bash
 # 使用的语音合成引擎
 # voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
-# gsvitts, elevenlabs, cartesia, openai, azure, nijivoice
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 
 # VOICEVOX
@@ -387,17 +437,6 @@ NEXT_PUBLIC_OPENAI_TTS_VOICE=shimmer
 # 说话速度
 NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 
-# Nijivoice
-# API密钥
-NIJIVOICE_API_KEY=""
-# 说话者ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# 说话速度
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# 情感水平
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# 语音持续时间
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
 ```
 
 ## 语音输入设置
@@ -438,6 +477,26 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTube直播ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# 评论来源选择（youtube-api or onecomme）
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTube评论获取间隔（秒）
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
+
+# 会话继续模式设置
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# 会话继续模式: 提示自定义（留空使用默认值）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+
+# わんコメ端口号
+NEXT_PUBLIC_ONECOMME_PORT=11180
 ```
 
 ## 幻灯片设置

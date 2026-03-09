@@ -4,6 +4,10 @@
 
 Live2D is a model format that allows realistic movement to be added to 2D illustrations, and in AITuberKit, you can use Live2D models to display AI characters.
 
+::: warning Live2D feature is disabled by default
+The Live2D feature is disabled by default due to licensing restrictions. To enable it, set the environment variable `NEXT_PUBLIC_LIVE2D_ENABLED=true`. A Live2D license is required for commercial use.
+:::
+
 **Environment Variables**:
 
 ```bash

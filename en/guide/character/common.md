@@ -2,7 +2,7 @@
 
 ## Overview
 
-In the character settings screen, you can set the AI character's name, the model to use (VRM or Live2D), and the character prompt.
+In the character settings screen, you can set the AI character's name, the model to use (VRM, Live2D, or PNGTuber), and the character prompt.
 
 **Environment Variables**:
 
@@ -10,8 +10,11 @@ In the character settings screen, you can set the AI character's name, the model
 # Character name
 NEXT_PUBLIC_CHARACTER_NAME=Nike-chan
 
-# Model type to use (vrm or live2d)
+# Model type to use (vrm, live2d, or pngtuber)
 NEXT_PUBLIC_MODEL_TYPE=vrm
+
+# User display name
+NEXT_PUBLIC_USER_DISPLAY_NAME=YOU
 
 # Custom preset name
 NEXT_PUBLIC_CUSTOM_PRESET_NAME1="Preset 1"
@@ -36,10 +39,11 @@ However, this name is not used when generating AI responses. It needs to be set 
 
 ## Selecting the Character Model
 
-You can select "VRM" or "Live2D" as the character's model type. The setting items change depending on the model type. For detailed settings of each model type, please see the settings page for each model.
+You can select "VRM", "Live2D", or "PNGTuber" as the character's model type. The setting items change depending on the model type.
 
 - [VRM Settings](./vrm.md)
 - [Live2D Settings](./live2d.md)
+- [PNGTuber Settings](./pngtuber.md)
 
 ## Character Position
 

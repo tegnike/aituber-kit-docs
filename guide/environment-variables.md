@@ -14,7 +14,7 @@
 
 ```bash
 # デフォルト言語の設定（以下のいずれかの値を指定）
-# ja: 日本語, en: 英語, ko: 韓国語, zh: 中国語(繁体字), vi: ベトナム語
+# ja: 日本語, en: 英語, ko: 韓国語, zh-CN: 中国語(簡体字), zh-TW: 中国語(繁体字), vi: ベトナム語
 # fr: フランス語, es: スペイン語, pt: ポルトガル語, de: ドイツ語
 # ru: ロシア語, it: イタリア語, ar: アラビア語, hi: ヒンディー語, pl: ポーランド語
 NEXT_PUBLIC_SELECT_LANGUAGE=en
@@ -34,9 +34,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
-# クイックメニュー表示設定（true/false） / 
-# Quick menu display settings (true/false)
-NEXT_PUBLIC_SHOW_QUICK_MENU=true
+# カラーテーマ設定（default, cool, mono, ocean, forest, sunset）
+NEXT_PUBLIC_COLOR_THEME=default
 ```
 
 ## キャラクター設定
@@ -49,8 +48,11 @@ NEXT_PUBLIC_SHOW_QUICK_MENU=true
 # キャラクター名
 NEXT_PUBLIC_CHARACTER_NAME=ニケちゃん
 
-# 使用するモデルタイプ（vrm または live2d）
+# 使用するモデルタイプ（vrm, live2d, pngtuber）
 NEXT_PUBLIC_MODEL_TYPE=vrm
+
+# ユーザー表示名
+NEXT_PUBLIC_USER_DISPLAY_NAME=YOU
 
 # カスタムプリセット名
 NEXT_PUBLIC_CUSTOM_PRESET_NAME1="プリセット1"
@@ -75,6 +77,42 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+```
+
+### PNGTuber設定
+
+```bash
+# PNGTuberモデルのパス
+NEXT_PUBLIC_SELECTED_PNGTUBER_PATH=/pngtuber/nike01
+
+# PNGTuberリップシンク感度（0-100）
+NEXT_PUBLIC_PNGTUBER_SENSITIVITY=50
+
+# PNGTuberクロマキー設定
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_ENABLED=false
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_COLOR=#00FF00
+NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_TOLERANCE=50
+
+# PNGTuber位置・サイズ設定
+NEXT_PUBLIC_PNGTUBER_SCALE=1.0
+NEXT_PUBLIC_PNGTUBER_OFFSET_X=0
+NEXT_PUBLIC_PNGTUBER_OFFSET_Y=0
+```
+
+### メモリ設定
+
+```bash
+# メモリ機能の有効/無効
+NEXT_PUBLIC_MEMORY_ENABLED=false
+
+# 類似度閾値（0.1-0.95）
+NEXT_PUBLIC_MEMORY_SIMILARITY_THRESHOLD=0.7
+
+# 検索結果上限（1-10）
+NEXT_PUBLIC_MEMORY_SEARCH_LIMIT=5
+
+# コンテキスト最大トークン数
+NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 ```
 
 ### Live2D設定
@@ -114,7 +152,7 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 選択するAIモデル名
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
 
 # カスタムモデルを利用の有無
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -127,6 +165,18 @@ NEXT_PUBLIC_TEMPERATURE=0.7
 
 # 最大トークン数
 NEXT_PUBLIC_MAX_TOKENS=4096
+
+# 推論モードの有効化（true/false）
+NEXT_PUBLIC_REASONING_MODE=false
+
+# 推論レベル（low/medium/high）
+NEXT_PUBLIC_REASONING_EFFORT=medium
+
+# 推論トークンバジェット
+NEXT_PUBLIC_REASONING_TOKEN_BUDGET=8192
+
+# 思考プロセスの常時表示（true/false）
+NEXT_PUBLIC_SHOW_THINKING_TEXT=false
 ```
 
 ### AIサービス設定
@@ -263,7 +313,7 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 ```bash
 # 使用する音声合成エンジン
 # voicevox, koeiromap, google, stylebertvits2, aivis_speech, aivis_cloud_api,
-# gsvitts, elevenlabs, cartesia, openai, azure, nijivoice
+# gsvitts, elevenlabs, cartesia, openai, azure
 NEXT_PUBLIC_SELECT_VOICE=voicevox
 
 # VOICEVOX
@@ -387,17 +437,6 @@ NEXT_PUBLIC_OPENAI_TTS_VOICE=shimmer
 # 話速
 NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 
-# にじボイス
-# APIキー
-NIJIVOICE_API_KEY=""
-# 話者ID
-NEXT_PUBLIC_NIJIVOICE_ACTOR_ID=""
-# 話速
-NEXT_PUBLIC_NIJIVOICE_SPEED=1.0
-# 感情レベル
-NEXT_PUBLIC_NIJIVOICE_EMOTIONAL_LEVEL=0.0
-# 音声の長さ
-NEXT_PUBLIC_NIJIVOICE_SOUND_DURATION=1.0
 ```
 
 ## 音声入力設定
@@ -438,6 +477,26 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 
 # YouTubeのライブ配信ID
 NEXT_PUBLIC_YOUTUBE_LIVE_ID=
+
+# コメントソースの選択（youtube-api or onecomme）
+NEXT_PUBLIC_YOUTUBE_COMMENT_SOURCE=youtube-api
+
+# YouTubeコメント取得間隔（秒）
+NEXT_PUBLIC_YOUTUBE_COMMENT_INTERVAL=10
+
+# 会話継続モード設定
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_NEW_TOPIC_THRESHOLD=3
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_SLEEP_THRESHOLD=6
+
+# 会話継続モード: プロンプトカスタマイズ（空欄でデフォルト使用）
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_EVALUATE=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_CONTINUATION=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SELECT_COMMENT=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_NEW_TOPIC=""
+NEXT_PUBLIC_CONVERSATION_CONTINUITY_PROMPT_SLEEP=""
+
+# わんコメのポート番号
+NEXT_PUBLIC_ONECOMME_PORT=11180
 ```
 
 ## スライド設定
