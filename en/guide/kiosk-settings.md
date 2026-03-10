@@ -8,6 +8,10 @@ Kiosk mode is a feature designed for environments where an unspecified number of
 
 Toggle the kiosk mode on or off.
 
+::: danger Warning
+Once enabled, you will lose access to the settings screen. To recover, **long-press the Esc key** or **tap the upper-right corner of the screen 5 times** to display the passcode input screen. Make sure to set and remember the passcode below before enabling this mode.
+:::
+
 **Environment Variables**:
 
 ```bash
