@@ -4,6 +4,8 @@
 
 The presence detection feature uses a camera to detect human faces, allowing the character to automatically greet and respond when visitors are detected or leave. This is designed for use in digital signage and kiosk terminals.
 
+![Presence Detection Settings](/images/presence_m7k2x.png)
+
 ## Presence Detection Mode
 
 Toggle the presence detection feature on or off.
@@ -109,6 +111,8 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 ## Debug Mode
 
 When debug mode is enabled, camera footage and detailed detection status information are displayed on screen.
+
+![Presence Detection in Action](/images/presence_d5h3j.png)
 
 **Environment Variables**:
 

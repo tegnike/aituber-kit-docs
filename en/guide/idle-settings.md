@@ -4,6 +4,8 @@
 
 The idle mode feature allows the character to automatically speak even when there is no input from the user. This is useful in scenarios such as digital signage and exhibition booths where the character needs to be constantly active.
 
+![Idle Mode Settings](/images/idle_p3n8f.png)
+
 ## Idle Mode
 
 Toggle the idle mode on or off.

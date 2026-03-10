@@ -4,6 +4,8 @@
 
 Kiosk mode is a feature designed for environments where an unspecified number of people will operate the system, such as digital signage and demo terminals. It provides features such as inappropriate input filtering, input restrictions, and passcode protection for settings.
 
+![Kiosk Mode Settings](/images/kiosk_v4r9w.png)
+
 ## Kiosk Mode
 
 Toggle the kiosk mode on or off.
@@ -22,6 +24,8 @@ NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
 ## Passcode
 
 Set a passcode to restrict access to the settings screen. When kiosk mode is enabled, a passcode will be required when opening the settings screen.
+
+![Passcode Input Screen](/images/kiosk_q8t2m.png)
 
 **Environment Variables**:
 
