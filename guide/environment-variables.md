@@ -583,12 +583,12 @@ NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 
-## キオスクモード設定
+## デモ端末モード設定
 
-詳細については[キオスクモード設定](/guide/kiosk-settings)をご覧ください。
+詳細については[デモ端末モード設定](/guide/kiosk-settings)をご覧ください。
 
 ```bash
-# キオスクモードの有効/無効（true/false）
+# デモ端末モードの有効/無効（true/false）
 NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
 
 # パスコード

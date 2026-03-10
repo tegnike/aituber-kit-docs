@@ -583,12 +583,12 @@ NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 
-## 自助终端模式设置
+## 展示终端模式设置
 
-详情请参阅[自助终端模式设置](/zh/guide/kiosk-settings)。
+详情请参阅[展示终端模式设置](/zh/guide/kiosk-settings)。
 
 ```bash
-# 自助终端模式的启用/禁用（true/false）
+# 展示终端模式的启用/禁用（true/false）
 NEXT_PUBLIC_KIOSK_MODE_ENABLED="false"
 
 # 密码

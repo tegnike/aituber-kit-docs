@@ -275,7 +275,7 @@ export default defineConfig({
               link: '/guide/idle-settings',
             },
             {
-              text: 'キオスクモード設定',
+              text: 'デモ端末モード設定',
               link: '/guide/kiosk-settings',
             },
             {
@@ -501,7 +501,7 @@ export default defineConfig({
               link: '/zh/guide/idle-settings',
             },
             {
-              text: '自助终端模式设置',
+              text: '展示终端模式设置',
               link: '/zh/guide/kiosk-settings',
             },
             {

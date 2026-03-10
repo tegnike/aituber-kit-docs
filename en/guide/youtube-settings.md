@@ -104,6 +104,8 @@ A mode where AI continues the conversation on its own when there are no comments
 
 Internally, it uses Mastra Workflow to evaluate the conversation state and automatically determine one of three branches: "continue", "generate new topic", or "sleep".
 
+![Conversation Continuation Mode Workflow](/images/youtube_workflow_en.png)
+
 ### Feature Details
 
 In Conversation Continuation Mode, if there are no comments for a certain period of time, the AI refers to the past conversation context and provides new topics to maintain the natural flow of conversation.

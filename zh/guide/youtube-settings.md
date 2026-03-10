@@ -108,6 +108,8 @@ NEXT_PUBLIC_ONECOMME_PORT=11180
 
 内部使用Mastra Workflow，自动评估会话状态并判断"继续"、"生成新话题"、"休眠"三种分支。
 
+![会话继续模式工作流程](/images/youtube_workflow_en.png)
+
 ### 功能详情
 
 在会话继续模式下，如果一段时间内没有评论，AI会参考过去的对话上下文，提供新话题以维持自然的对话流程。
