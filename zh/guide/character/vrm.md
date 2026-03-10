@@ -61,6 +61,8 @@ VRM角色的照明强度可以通过环境变量 `NEXT_PUBLIC_LIGHTING_INTENSITY
 
 在设置画面的角色设置选项卡中启用"姿势调整模式"后，屏幕上会显示姿势按钮。点击按钮即可将对应的姿势应用到角色上。
 
+![姿势调整模式](/images/vrm_pose_mode_k8f2a.png)
+
 ### 姿势类型
 
 姿势有两种类型：
@@ -88,6 +90,8 @@ VRM角色的照明强度可以通过环境变量 `NEXT_PUBLIC_LIGHTING_INTENSITY
 ### 添加姿势
 
 可以从角色设置选项卡的"姿势设置"部分添加新姿势。
+
+![姿势设置](/images/vrm_pose_settings_m3p7b.png)
 
 #### 添加普通姿势
 

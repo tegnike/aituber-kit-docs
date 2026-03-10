@@ -61,6 +61,8 @@ A feature to apply poses to VRM characters. You can add, delete, and reorder pos
 
 When you enable "Pose Adjustment Mode" in the Character Settings tab on the settings screen, pose buttons will appear on the screen. Clicking a button applies the corresponding pose to the character.
 
+![Pose Adjustment Mode](/images/vrm_pose_mode_k8f2a.png)
+
 ### Pose Types
 
 There are two types of poses:
@@ -88,6 +90,8 @@ The following poses are available by default:
 ### Adding Poses
 
 You can add new poses from the "Pose Settings" section in the Character Settings tab.
+
+![Pose Settings](/images/vrm_pose_settings_m3p7b.png)
 
 #### Adding Normal Poses
 

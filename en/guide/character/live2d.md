@@ -15,6 +15,8 @@ After setup, restart the application to make Live2D models available. If you ope
 A Live2D license is required for commercial use.
 :::
 
+![Live2D Setup Guide](/images/live2d_setup_guide_r5d4c.png)
+
 **Environment Variables**:
 
 ```bash
