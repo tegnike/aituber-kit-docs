@@ -53,13 +53,14 @@ curl -X POST \
   - AITuberKitのシステムプロンプトを使用する場合は `useCurrentSystemPrompt: true` を設定
   - カスタムのシステムプロンプトを使用する場合は `systemPrompt` パラメータに指定し、`useCurrentSystemPrompt: false` を設定
 - 過去の会話履歴を読み込ませる場合は、システムプロンプトまたはユーザーメッセージの任意の位置に `[conversation_history]` という文字列を含めることができます
+- 画像（Base64形式のdata URI）を `image` パラメータに添付すると、カメラキャプチャの代わりに外部画像を使用してAIに送信します
 
 **APIリクエスト例**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["今日の予定を教えてください。"]}' \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["この画像について説明してください。"], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
 ```
 
@@ -69,13 +70,14 @@ curl -X POST \
 - 複数のメッセージを送信した場合は、順番に処理されます
 - AIモデルおよび音声モデルはAITuberKitの設定で選択したものが使用されます
 - システムプロンプトや会話履歴はAITuberKitの値が使用されます
+- 画像（Base64形式のdata URI）を `image` パラメータに添付すると、カメラキャプチャの代わりに外部画像を使用して処理します
 
 **APIリクエスト例**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"]}' \
+  -d '{"messages": ["こんにちは、今日もいい天気ですね。"], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
 ```
 

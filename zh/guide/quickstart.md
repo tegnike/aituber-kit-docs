@@ -42,7 +42,16 @@ npm run dev
 
 在浏览器中打开[http://localhost:3000](http://localhost:3000)即可开始使用AITuberKit。
 
-## 画面説明
+### 使用启动脚本启动
+
+如果您不熟悉命令行，可以使用双击即可启动的启动脚本：
+
+- **Windows**: 双击 `LAUNCH.bat`
+- **macOS**: 双击 `LAUNCH.command`
+
+启动脚本会自动执行依赖安装和开发服务器的启动。
+
+## 画面说明
 
 ![Screen Description](/images/quickstart_cm3w4.png)
 

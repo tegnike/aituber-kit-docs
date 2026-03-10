@@ -5,7 +5,14 @@
 Live2D是一种可以为2D插图添加真实动作的模型格式，在AITuberKit中，您可以使用Live2D模型来显示AI角色。
 
 ::: warning Live2D功能默认禁用
-Live2D功能由于许可限制，默认处于禁用状态。要启用Live2D功能，请设置环境变量 `NEXT_PUBLIC_LIVE2D_ENABLED=true`。商业使用需要Live2D许可证。
+Live2D功能由于许可限制，默认处于禁用状态。要启用Live2D功能，需要以下设置：
+
+1. 将Live2D Cubism Core的脚本文件（`live2dcubismcore.min.js`）放置在 `public/scripts/` 中
+2. 在 `.env` 文件中设置环境变量 `NEXT_PUBLIC_LIVE2D_ENABLED=true`
+
+设置完成后，重新启动应用程序即可使用Live2D模型。在Live2D功能未启用的状态下打开角色设置画面时，会显示上述设置步骤作为引导。
+
+商业使用需要Live2D公司的许可证。
 :::
 
 **环境变量**:

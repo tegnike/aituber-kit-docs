@@ -42,6 +42,15 @@ npm run dev
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開いて、AITuberKitを使い始めることができます。
 
+### ランチャースクリプトで起動
+
+コマンドラインに不慣れな方は、ダブルクリックで起動できるランチャースクリプトを使用できます：
+
+- **Windows**: `LAUNCH.bat` をダブルクリック
+- **macOS**: `LAUNCH.command` をダブルクリック
+
+ランチャースクリプトは依存関係のインストールと開発サーバーの起動を自動的に行います。
+
 ## 画面説明
 
 ![画面説明](/images/quickstart_cm3w4.png)

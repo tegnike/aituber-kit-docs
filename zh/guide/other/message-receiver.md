@@ -53,13 +53,14 @@ curl -X POST \
   - 要使用AITuberKit系统提示，设置`useCurrentSystemPrompt: true`
   - 要使用自定义系统提示，在`systemPrompt`参数中指定，并设置`useCurrentSystemPrompt: false`
 - 要加载过去的对话历史，您可以在系统提示或用户消息的任何位置包含字符串`[conversation_history]`
+- 将图像（Base64格式的data URI）附加到 `image` 参数中，可以代替相机捕获使用外部图像发送给AI
 
 **API请求示例**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["请告诉我你今天的日程安排。"]}' \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["请描述一下这张图片。"], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
 ```
 
@@ -69,13 +70,14 @@ curl -X POST \
 - 如果发送多条消息，它们将按顺序处理
 - 使用AITuberKit设置中选择的AI模型和语音模型
 - 使用AITuberKit的系统提示和对话历史
+- 将图像（Base64格式的data URI）附加到 `image` 参数中，可以代替相机捕获使用外部图像进行处理
 
 **API请求示例**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"]}' \
+  -d '{"messages": ["你好，今天天气真好。"], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
 ```
 

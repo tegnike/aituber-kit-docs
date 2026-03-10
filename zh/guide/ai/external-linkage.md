@@ -2,7 +2,7 @@
 
 ## 概述
 
-外部连接模式是一项允许AITuberKit通过WebSocket与外部应用程序连接的功能。使用此模式，您可以从外部应用程序发送文本消息，让AITuberKit角色说话。
+外部连接模式是一项允许AITuberKit通过WebSocket与外部应用程序连接的功能。使用此模式，您可以从外部应用程序发送文本消息和图像，让AITuberKit角色说话。
 
 ::: warning 关于测试版功能
 **此外部连接模式目前作为测试版提供。**
@@ -24,7 +24,7 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 外部连接模式具有以下特点和用途：
 
-- 接受来自外部应用程序的文本输入
+- 接受来自外部应用程序的文本和图像输入
 - 与自定义应用程序集成
 - 与其他AI服务连接
 - 用作虚拟直播的扩展
@@ -49,6 +49,20 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 ## WebSocket通信格式
 
+### AITuberKit的发送格式
+
+当启用相机捕获时，用户消息将包含捕获的图像一起发送：
+
+```json
+{
+  "text": "用户的输入文本",
+  "role": "user",
+  "image": "data:image/png;base64,iVBOR..."
+}
+```
+
+### 来自外部服务器的接收格式
+
 来自外部应用程序的输入格式：
 
 ```json
@@ -56,7 +70,8 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
   "text": "想让角色说的文本",
   "role": "assistant",
   "emotion": "neutral",
-  "type": "message"
+  "type": "message",
+  "image": "data:image/png;base64,iVBOR..."
 }
 ```
 
@@ -68,6 +83,8 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
   - 可用值："neutral", "happy", "sad", "angry", "relaxed", "surprised"
 - `type`：消息类型（可选）
   - 使用"start"开始新的响应块
+- `image`：Base64编码图像（data URI格式，可选）
+  - 在流式传输时，请仅在第一个块中包含
 
 例如，您可以使用以下Python代码连接：
 

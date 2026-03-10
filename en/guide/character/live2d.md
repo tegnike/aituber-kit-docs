@@ -5,7 +5,14 @@
 Live2D is a model format that allows realistic movement to be added to 2D illustrations, and in AITuberKit, you can use Live2D models to display AI characters.
 
 ::: warning Live2D feature is disabled by default
-The Live2D feature is disabled by default due to licensing restrictions. To enable it, set the environment variable `NEXT_PUBLIC_LIVE2D_ENABLED=true`. A Live2D license is required for commercial use.
+The Live2D feature is disabled by default due to licensing restrictions. To enable the Live2D feature, the following setup is required:
+
+1. Place the Live2D Cubism Core script file (`live2dcubismcore.min.js`) in `public/scripts/`
+2. Set the environment variable `NEXT_PUBLIC_LIVE2D_ENABLED=true` in the `.env` file
+
+After setup, restart the application to make Live2D models available. If you open the Character Settings screen while the Live2D feature is not enabled, the above setup instructions will be displayed as a guide.
+
+A Live2D license is required for commercial use.
 :::
 
 **Environment Variables**:

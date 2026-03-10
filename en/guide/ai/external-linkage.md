@@ -24,7 +24,7 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 External Linkage Mode has the following features and uses:
 
-- Accepts text input from external applications
+- Accepts text and image input from external applications
 - Integration with custom applications
 - Connection with other AI services
 - Use as an extension for virtual broadcasting
@@ -49,6 +49,20 @@ Also, please note the following when External Linkage Mode is enabled:
 
 ## WebSocket Communication Format
 
+### Sending Format from AITuberKit
+
+When camera capture is enabled, the user message is sent including the captured image:
+
+```json
+{
+  "text": "User's input text",
+  "role": "user",
+  "image": "data:image/png;base64,iVBOR..."
+}
+```
+
+### Receiving Format from External Server
+
 Input format from external applications:
 
 ```json
@@ -56,7 +70,8 @@ Input format from external applications:
   "text": "Text you want the character to speak",
   "role": "assistant",
   "emotion": "neutral",
-  "type": "message"
+  "type": "message",
+  "image": "data:image/png;base64,iVBOR..."
 }
 ```
 
@@ -68,6 +83,8 @@ Parameter explanation:
   - Available values: "neutral", "happy", "sad", "angry", "relaxed", "surprised"
 - `type`: Type of message (optional)
   - Use "start" to begin a new response block
+- `image`: Base64 encoded image (data URI format, optional)
+  - When streaming, include it only in the first chunk
 
 For example, you can connect with the following Python code:
 

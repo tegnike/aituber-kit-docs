@@ -53,6 +53,61 @@ By combining these operations, you can adjust the placement of the avatar on the
 
 The lighting intensity of VRM characters can be adjusted using the environment variable `NEXT_PUBLIC_LIGHTING_INTENSITY`. Values can be set in the range of 0.1 to 3.0.
 
+## Pose Settings
+
+A feature to apply poses to VRM characters. You can add, delete, and reorder poses from the Character Settings tab.
+
+### Pose Adjustment Mode
+
+When you enable "Pose Adjustment Mode" in the Character Settings tab on the settings screen, pose buttons will appear on the screen. Clicking a button applies the corresponding pose to the character.
+
+### Pose Types
+
+There are two types of poses:
+
+- **Normal Pose**: Applies a fixed pose using a single pose JSON file
+- **Sequence Pose**: Creates an animation by alternating between multiple pose JSON files (e.g., waving, clapping)
+
+### Default Poses
+
+The following poses are available by default:
+
+| Pose ID | Type | Description |
+|---|---|---|
+| think | Normal | Thinking pose |
+| cheer | Normal | Cheering pose |
+| cross | Normal | Cross (X) pose |
+| mouth_cover | Normal | Mouth covering pose |
+| crossed_arms | Normal | Arms crossed pose |
+| bow | Normal | Bowing pose |
+| shrug | Normal | Shrugging pose |
+| shy | Normal | Shy pose |
+| wave | Sequence | Waving animation |
+| clap | Sequence | Clapping animation |
+
+### Adding Poses
+
+You can add new poses from the "Pose Settings" section in the Character Settings tab.
+
+#### Adding Normal Poses
+
+1. Enter an ID (e.g., `think`)
+2. Select a pose JSON file from the dropdown
+3. Click the "Add" button
+
+#### Adding Sequence Poses
+
+1. Enter an ID (e.g., `wave`)
+2. Select two or more JSON files to alternate between
+3. Set the switching interval in seconds (0.1 to 5.0 seconds)
+4. Click the "Add" button
+
+### Creating Custom Pose JSON
+
+You can use custom poses by creating your own pose JSON files and placing them in the `public/poses/` directory. VRM Web Pose format JSON is supported.
+
+You can also use the `scripts/vrma_to_json.py` script to convert VRMA files to pose JSON.
+
 ## Notes About Models
 
 - Some models may take time to load during initial display

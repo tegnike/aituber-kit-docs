@@ -23,6 +23,7 @@ NEXT_PUBLIC_SELECT_LANGUAGE=en
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
 # Enable/disable restricted mode (true/false)
+# Set to true for Cloudflare deployment
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 # Enable/disable Live2D feature (true/false)

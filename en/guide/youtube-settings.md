@@ -100,7 +100,7 @@ You can set the comment fetch interval in seconds. The default is 10 seconds.
 
 ## Conversation Continuation Mode
 
-A mode where AI continues the conversation on its own when there are no comments. Even if there are no comments for a while, the AI character will proactively develop the conversation.
+A mode where AI continues the conversation on its own when there are no comments. Even if there are no comments for a while, the AI character will proactively develop the conversation. Cannot be used when slide mode, external linkage mode, or Dify is selected.
 
 Internally, it uses Mastra Workflow to evaluate the conversation state and automatically determine one of three branches: "continue", "generate new topic", or "sleep".
 

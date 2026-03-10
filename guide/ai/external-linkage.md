@@ -2,7 +2,7 @@
 
 ## 概要
 
-外部連携モードは、AITuberKitとWebSocketを介して外部アプリケーションと連携するための機能です。このモードを使うことで、外部のアプリケーションからテキストメッセージを送信し、AITuberKitのキャラクターに喋らせることができます。
+外部連携モードは、AITuberKitとWebSocketを介して外部アプリケーションと連携するための機能です。このモードを使うことで、外部のアプリケーションからテキストメッセージや画像を送信し、AITuberKitのキャラクターに喋らせることができます。
 
 ::: warning ベータ版機能について
 **この外部連携モードは現在ベータ版として提供されています。**
@@ -24,7 +24,7 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 外部連携モードには以下のような特徴と用途があります：
 
-- 外部アプリケーションからのテキスト入力を受け付け
+- 外部アプリケーションからのテキスト・画像入力を受け付け
 - カスタムアプリケーションとの連携
 - 他のAI系サービスとの接続
 - バーチャル配信の拡張機能として利用
@@ -49,6 +49,20 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
 
 ## WebSocket通信フォーマット
 
+### AITuberKitからの送信フォーマット
+
+カメラキャプチャが有効な場合、ユーザーメッセージにキャプチャ画像が含まれて送信されます：
+
+```json
+{
+  "text": "ユーザーの入力テキスト",
+  "role": "user",
+  "image": "data:image/png;base64,iVBOR..."
+}
+```
+
+### 外部サーバーからの受信フォーマット
+
 外部アプリケーションからの入力フォーマット:
 
 ```json
@@ -56,7 +70,8 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
   "text": "喋らせたいテキスト",
   "role": "assistant",
   "emotion": "neutral",
-  "type": "message"
+  "type": "message",
+  "image": "data:image/png;base64,iVBOR..."
 }
 ```
 
@@ -68,6 +83,8 @@ NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
   - 使用可能な値: "neutral", "happy", "sad", "angry", "relaxed", "surprised"
 - `type`: メッセージのタイプ（オプション）
   - "start" を使用すると新しい応答ブロックを開始します
+- `image`: Base64エンコード画像（data URI形式、オプション）
+  - ストリーミング時は最初のチャンクにのみ含めてください
 
 例えば、以下のようなPythonコードで接続できます：
 

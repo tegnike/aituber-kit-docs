@@ -42,6 +42,15 @@ npm run dev
 
 You can start using AITuberKit by opening [http://localhost:3000](http://localhost:3000) in your browser.
 
+### Launch with Launcher Script
+
+If you are not familiar with the command line, you can use launcher scripts that can be started with a double-click:
+
+- **Windows**: Double-click `LAUNCH.bat`
+- **macOS**: Double-click `LAUNCH.command`
+
+The launcher scripts automatically install dependencies and start the development server.
+
 ## Screen Description
 
 ![Screen Description](/images/quickstart_cm3w4.png)

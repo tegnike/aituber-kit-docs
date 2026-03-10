@@ -23,6 +23,7 @@ NEXT_PUBLIC_SELECT_LANGUAGE=en
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
 # 限制模式的启用/禁用（true/false）
+# Cloudflare部署时设置为true
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 # Live2D功能的启用/禁用（true/false）

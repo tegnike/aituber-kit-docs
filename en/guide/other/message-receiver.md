@@ -53,13 +53,14 @@ curl -X POST \
   - To use the AITuberKit system prompt, set `useCurrentSystemPrompt: true`
   - To use a custom system prompt, specify it in the `systemPrompt` parameter and set `useCurrentSystemPrompt: false`
 - To load past conversation history, you can include the string `[conversation_history]` anywhere in the system prompt or user message
+- By attaching an image (Base64 format data URI) to the `image` parameter, you can send an external image to the AI instead of using camera capture
 
 **API Request Example**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["Please tell me your schedule for today."]}' \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["Please describe this image."], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
 ```
 
@@ -69,13 +70,14 @@ curl -X POST \
 - If multiple messages are sent, they are processed in order
 - The AI model and voice model selected in the AITuberKit settings are used
 - The system prompt and conversation history from AITuberKit are used
+- By attaching an image (Base64 format data URI) to the `image` parameter, you can use an external image instead of camera capture for processing
 
 **API Request Example**:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."]}' \
+  -d '{"messages": ["Hello, the weather is nice today."], "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
 ```
 
