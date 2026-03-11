@@ -51,6 +51,24 @@ npm run dev
 
 启动脚本会自动执行依赖安装和开发服务器的启动。
 
+### 使用Docker启动
+
+如果您有Docker环境，也可以使用Docker Compose来启动应用程序。
+
+```bash
+# 准备环境变量文件
+cp .env.example .env
+
+# 使用Docker Compose启动
+docker compose up
+```
+
+构建和启动完成后，在浏览器中打开[http://localhost:3000](http://localhost:3000)。
+
+::: tip
+Docker Compose启用了热重载功能。源代码的更改会实时反映。
+:::
+
 ## 画面说明
 
 ![Screen Description](/images/quickstart_cm3w4.png)

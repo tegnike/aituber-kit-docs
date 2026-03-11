@@ -51,6 +51,24 @@ npm run dev
 
 ランチャースクリプトは依存関係のインストールと開発サーバーの起動を自動的に行います。
 
+### Dockerで起動
+
+Docker環境がある場合は、Docker Composeを使って起動することもできます。
+
+```bash
+# 環境変数ファイルを準備
+cp .env.example .env
+
+# Docker Composeで起動
+docker compose up
+```
+
+ビルドと起動が完了したら、ブラウザで [http://localhost:3000](http://localhost:3000) を開いてください。
+
+::: tip
+Docker Composeではホットリロードが有効です。ソースコードの変更がリアルタイムに反映されます。
+:::
+
 ## 画面説明
 
 ![画面説明](/images/quickstart_cm3w4.png)

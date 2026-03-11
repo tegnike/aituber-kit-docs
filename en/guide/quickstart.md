@@ -51,6 +51,24 @@ If you are not familiar with the command line, you can use launcher scripts that
 
 The launcher scripts automatically install dependencies and start the development server.
 
+### Launch with Docker
+
+If you have a Docker environment, you can also use Docker Compose to start the application.
+
+```bash
+# Prepare the environment variables file
+cp .env.example .env
+
+# Start with Docker Compose
+docker compose up
+```
+
+Once the build and startup are complete, open [http://localhost:3000](http://localhost:3000) in your browser.
+
+::: tip
+Hot reload is enabled with Docker Compose. Changes to the source code are reflected in real time.
+:::
+
 ## Screen Description
 
 ![Screen Description](/images/quickstart_cm3w4.png)
