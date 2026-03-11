@@ -51,7 +51,7 @@ NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
 事前に定義した質問をUIに表示し、ワンクリックで送信できる機能を提供します。ユーザーがよく使う質問や定型文を登録しておくと便利です。
 
-![質問の事前設定](/images/other_c3sa5.png)
+![質問の事前設定](/images/other_c3sa5.webp)
 
 ### 基本操作
 

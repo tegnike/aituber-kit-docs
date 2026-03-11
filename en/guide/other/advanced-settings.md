@@ -51,7 +51,7 @@ NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
 This feature allows you to display predefined questions in the UI that can be sent with a single click. It's convenient to register frequently used questions or standard phrases.
 
-![Preset Questions](/images/other_c3sa5.png)
+![Preset Questions](/images/other_c3sa5.webp)
 
 ### Basic Operations
 

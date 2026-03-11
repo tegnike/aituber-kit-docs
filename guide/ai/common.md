@@ -67,7 +67,7 @@ AITuberKitでは、AIとの会話に関する以下の設定が可能です：
 
 一部のAIモデルでは、推論モード（Reasoning Mode）を有効にすることで、AIがより深い思考プロセスを経て回答を生成します。
 
-![推論モードの思考テキスト表示](/images/ai_t8h2k.png)
+![推論モードの思考テキスト表示](/images/ai_t8h2k.webp)
 
 ```bash
 # 推論モードの有効化（true/false）

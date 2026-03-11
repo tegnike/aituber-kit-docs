@@ -33,7 +33,7 @@ When slide mode is enabled, some features are automatically disabled.
 2. Select the slide set you want to use from the "Slide to Use" dropdown menu (how to add new slides will be explained later)
 3. Click the slide button in the upper right corner of the main window to start the slide display
 
-![Slide Mode](/images/slide_ndu53.png)
+![Slide Mode](/images/slide_ndu53.webp)
 
 ### About Slide Display
 
@@ -149,8 +149,8 @@ You can use slides you have created yourself. Prepare custom slides with the fol
 
 Slide scripts can be edited on the screen. Click the "Edit Script" button next to the selected slide in the slide settings to open the script editing screen.
 
-![Slide Script Editing 1](/images/slide_fa3sf.png)
-![Slide Script Editing 2](/images/slide_vhy4s.png)
+![Slide Script Editing 1](/images/slide_fa3sf.webp)
+![Slide Script Editing 2](/images/slide_vhy4s.webp)
 
 ### Page Script
 

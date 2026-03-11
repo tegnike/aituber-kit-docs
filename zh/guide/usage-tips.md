@@ -38,7 +38,7 @@ AITuberKit的颜色主题可以通过编辑`src/styles/themes.css`文件中的`d
 }
 ```
 
-![更改颜色主题](/images/usage-tips_lfsd4.png)
+![更改颜色主题](/images/usage-tips_lfsd4.webp)
 
 :::tip
 更改颜色设置可能看起来有点复杂，但借助AI助手很容易完成。例如，只需向AI请求"请将此颜色主题更改为单色"，就能获得适当的颜色代码建议。AI还可以帮助创建自定义颜色主题或微调现有主题。

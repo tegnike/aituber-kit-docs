@@ -71,7 +71,7 @@ Hot reload is enabled with Docker Compose. Changes to the source code are reflec
 
 ## Screen Description
 
-![Screen Description](/images/quickstart_cm3w4.png)
+![Screen Description](/images/quickstart_cm3w4.webp)
 
 - The settings button with a gear icon at the top left allows you to configure various settings related to AI characters and voice
 - The conversation log button (right of the settings button) allows you to display the conversation history with the character by clicking it (adjustable width by dragging)

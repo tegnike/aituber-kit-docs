@@ -51,7 +51,7 @@ NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
 此功能允许您在UI中显示预定义的问题，可以通过单击发送。注册常用问题或标准短语非常方便。
 
-![预设问题](/images/other_c3sa5.png)
+![预设问题](/images/other_c3sa5.webp)
 
 ### 基本操作
 

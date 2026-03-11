@@ -35,7 +35,7 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 
 支持多模态的模型带有摄像头图标，如下所示。
 
-![多模态兼容模型](/images/ai_vay45.png)
+![多模态兼容模型](/images/ai_vay45.webp)
 
 您也可以设置任意模型。<br>
 如果要使用多模态功能，请启用"使用多模态"设置。
@@ -60,7 +60,7 @@ Dify不支持多模态功能。
 
 ### 多模态功能使用时机设置
 
-![多模态设置](/images/ai_fk4n2.png)
+![多模态设置](/images/ai_fk4n2.webp)
 
 - **AI判断**：仅当AI判断最近5条对话历史和图像相关时使用多模态功能。
 - **始终使用**：所有消息都使用多模态功能。
@@ -75,7 +75,7 @@ Dify不支持多模态功能。
 
 ## 多模态相关功能说明
 
-![多模态AI图像](/images/ai_k3nfi.png)
+![多模态AI图像](/images/ai_k3nfi.webp)
 
 ### 1. 多模态相关按钮
 

@@ -35,7 +35,7 @@ After setting up multimodal-enabled models available in each AI service, please 
 
 Multimodal-compatible models are marked with a camera icon as follows.
 
-![Multimodal Compatible Models](/images/ai_vay45.png)
+![Multimodal Compatible Models](/images/ai_vay45.webp)
 
 You can also set any model you prefer.<br>
 If you want to use multimodal functionality, please enable the "Use multimodal" setting.
@@ -60,7 +60,7 @@ To utilize multimodal features, follow these steps:
 
 ### When to Use Multimodal Functionality Setting
 
-![Multimodal Settings](/images/ai_fk4n2.png)
+![Multimodal Settings](/images/ai_fk4n2.webp)
 
 - **AI decides**: Multimodal functionality is used only when the AI determines that the most recent 5 conversation history items and the image are related.
 - **Always use**: Multimodal functionality is used for all messages.
@@ -75,7 +75,7 @@ We have confirmed that MIME type inclusion is required when using with Mastra.
 
 ## Explanation of Multimodal-Related Features
 
-![Multimodal AI Image](/images/ai_k3nfi.png)
+![Multimodal AI Image](/images/ai_k3nfi.webp)
 
 ### 1. Multimodal-Related Buttons
 

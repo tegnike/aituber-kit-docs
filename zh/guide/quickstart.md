@@ -71,7 +71,7 @@ Docker Compose启用了热重载功能。源代码的更改会实时反映。
 
 ## 画面说明
 
-![Screen Description](/images/quickstart_cm3w4.png)
+![Screen Description](/images/quickstart_cm3w4.webp)
 
 - 左上に齿轮图标的设置按钮，可以进行AI角色和语音相关的各种设置
 - 设置按钮右侧的对话日志按钮，点击后可以显示与角色的对话历史（可拖动调整宽度）

@@ -109,7 +109,7 @@ You can set whether to display the AI's response text on the screen when the con
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
 ```
 
-![Show Answer Box](/images/basic_3efh5.png)
+![Show Answer Box](/images/basic_3efh5.webp)
 
 ## Show Character Name in Answer Box
 

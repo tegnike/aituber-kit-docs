@@ -109,7 +109,7 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
 ```
 
-![显示回答框](/images/basic_3efh5.png)
+![显示回答框](/images/basic_3efh5.webp)
 
 ## 在回答框中显示角色名称
 

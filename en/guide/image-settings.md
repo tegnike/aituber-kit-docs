@@ -15,7 +15,7 @@ Image settings allow you to manage images that are displayed alongside your AI c
 
 ### Image Upload
 
-![Image Upload](/images/image_2dasd.png)
+![Image Upload](/images/image_2dasd.webp)
 
 1. Click the "Upload Image" button to select an image file
 2. Uploaded images are displayed in a list and can be placed or deleted at any time
@@ -29,7 +29,7 @@ Image settings allow you to manage images that are displayed alongside your AI c
 
 ### Image Placement and Adjustment
 
-![Image Placement](/images/image_af3s4.png)
+![Image Placement](/images/image_af3s4.webp)
 
 #### Placement Method
 1. Click the "Place" button for the desired image from the uploaded image list

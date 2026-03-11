@@ -4,7 +4,7 @@
 
 人感検知機能は、カメラを使用して人の顔を検出し、来場者の検出・離脱に応じてキャラクターが自動で挨拶や応答を行う機能です。デジタルサイネージやキオスク端末での利用を想定しています。
 
-![人感検知設定画面](/images/presence_m7k2x.png)
+![人感検知設定画面](/images/presence_m7k2x.webp)
 
 ## 人感検知モード
 
@@ -112,7 +112,7 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 
 デバッグモードを有効にすると、カメラ映像と検出状態の詳細情報が画面上に表示されます。
 
-![人感検知の動作画面](/images/presence_d5h3j.png)
+![人感検知の動作画面](/images/presence_d5h3j.webp)
 
 **環境変数**:
 

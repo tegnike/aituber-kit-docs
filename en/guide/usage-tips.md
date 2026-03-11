@@ -38,7 +38,7 @@ Simply changing these color codes can refresh the entire look of the application
 }
 ```
 
-![Changing the Color Theme](/images/usage-tips_lfsd4.png)
+![Changing the Color Theme](/images/usage-tips_lfsd4.webp)
 
 :::tip
 Changing color settings might seem a bit complex, but it's easy with the help of an AI assistant. For example, simply asking the AI "Please change this color theme to monochrome" will get you appropriate color code suggestions. AI can also help with creating custom color themes or fine-tuning existing themes.

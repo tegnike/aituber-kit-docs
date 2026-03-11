@@ -4,7 +4,7 @@
 
 人感检测功能使用摄像头检测人脸，根据访客的到来和离开，角色会自动进行问候和应答。该功能适用于数字标牌和展示终端等场景。
 
-![人感检测设置画面](/images/presence_m7k2x.png)
+![人感检测设置画面](/images/presence_m7k2x.webp)
 
 ## 人感检测模式
 
@@ -112,7 +112,7 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 
 启用调试模式后，摄像头画面和检测状态的详细信息将显示在屏幕上。
 
-![人感检测运行画面](/images/presence_d5h3j.png)
+![人感检测运行画面](/images/presence_d5h3j.webp)
 
 **环境变量**:
 

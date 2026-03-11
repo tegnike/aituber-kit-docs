@@ -62,7 +62,7 @@ YouTube直播ID是特定直播的ID，而不是频道ID。
 
 启用YouTube模式后，屏幕左上角会显示YouTube模式按钮。
 
-![YouTube模式](/images/youtube_s045n.png)
+![YouTube模式](/images/youtube_s045n.webp)
 
 您可以通过点击此按钮切换评论获取的开/关状态。
 
@@ -108,7 +108,7 @@ NEXT_PUBLIC_ONECOMME_PORT=11180
 
 内部使用Mastra Workflow，自动评估会话状态并判断"继续"、"生成新话题"、"休眠"三种分支。
 
-![会话继续模式工作流程](/images/youtube_workflow_en.png)
+![会话继续模式工作流程](/images/youtube_workflow_en.webp)
 
 ### 功能详情
 

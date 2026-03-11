@@ -109,7 +109,7 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
 ```
 
-![回答欄を表示する](/images/basic_3efh5.png)
+![回答欄を表示する](/images/basic_3efh5.webp)
 
 ## 回答欄にキャラクター名を表示する
 
@@ -149,7 +149,7 @@ NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 - フォレスト
 - サンセット
 
-![カラーテーマの変更](/images/usage-tips_lfsd4.png)
+![カラーテーマの変更](/images/usage-tips_lfsd4.webp)
 
 ```bash
 # default, mono, cool, ocean, forest, sunset

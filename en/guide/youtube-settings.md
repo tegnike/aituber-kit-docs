@@ -62,7 +62,7 @@ The YouTube Live ID is the ID of a specific live stream, not a channel ID.
 
 When YouTube mode is enabled, a YouTube mode button appears in the upper left corner of the screen.
 
-![YouTube Mode](/images/youtube_s045n.png)
+![YouTube Mode](/images/youtube_s045n.webp)
 
 You can toggle comment retrieval on/off by clicking this button.
 
@@ -104,7 +104,7 @@ A mode where AI continues the conversation on its own when there are no comments
 
 Internally, it uses Mastra Workflow to evaluate the conversation state and automatically determine one of three branches: "continue", "generate new topic", or "sleep".
 
-![Conversation Continuation Mode Workflow](/images/youtube_workflow_en.png)
+![Conversation Continuation Mode Workflow](/images/youtube_workflow_en.webp)
 
 ### Feature Details
 

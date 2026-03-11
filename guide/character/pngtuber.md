@@ -60,7 +60,7 @@ public/pngtuber/{モデル名}/
 
 ## モデルの選択
 
-![PNGTuber設定](/images/pngtuber_k4m2s.png)
+![PNGTuber設定](/images/pngtuber_k4m2s.webp)
 
 アプリケーション内で利用可能なPNGTuberモデルは、ドロップダウンメニューから選択できます。選択するとリアルタイムでモデルが切り替わります。
 
