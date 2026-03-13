@@ -392,6 +392,24 @@ CUSTOM_API_BODY=""
 - **Headers/Body**: Server-side environment variable values are merged over the frontend settings
 :::
 
+### Session ID (threadId) Auto-Send
+
+When using the custom API, a unique session ID (UUID v4) is automatically generated per browser and sent as the `threadId` field in the request body.
+
+- The session ID is stored in `localStorage` and persists until cookies/site data are cleared
+- It can be used by the external API for thread management or conversation continuity
+- If not needed, simply ignore it on the external API side
+
+Example request body:
+
+```json
+{
+  "threadId": "550e8400-e29b-41d4-a716-446655440000",
+  "messages": [...],
+  ...
+}
+```
+
 ### Supported Formats
 
 The custom API's SSE streaming responses are automatically normalized to Vercel AI SDK format from the following formats:
