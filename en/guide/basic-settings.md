@@ -55,7 +55,7 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
 ## Restricted Mode
 
-When restricted mode is enabled, certain settings such as changing API keys and models will be restricted. Use this when you want to protect settings, such as on demo terminals.
+When restricted mode is enabled, write operations such as file uploads, deletions, and updates are disabled. Use this for deployment to serverless environments like Cloudflare or for use on demo terminals.
 
 **Environment Variables**:
 
@@ -63,6 +63,8 @@ When restricted mode is enabled, certain settings such as changing API keys and 
 # Enable/disable restricted mode (true/false)
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 ```
+
+For details on restricted features, see [Restricted Mode](/en/guide/restricted-mode).
 
 ## Live2D Features
 

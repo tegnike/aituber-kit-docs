@@ -54,7 +54,7 @@ npm run deploy:cloudflare
 
 ### 限制事项
 
-- 在限制模式（Restricted Mode）下运行，部分功能可能受限
+- 在[限制模式（Restricted Mode）](/zh/guide/restricted-mode)下运行，部分功能受限
 - 请注意Cloudflare Workers的运行时限制（内存、执行时间等）
 
 ## Docker

@@ -54,7 +54,7 @@ npm run deploy:cloudflare
 
 ### Limitations
 
-- Runs in Restricted Mode, which may limit some features
+- Runs in [Restricted Mode](/en/guide/restricted-mode), which limits some features
 - Be aware of Cloudflare Workers runtime constraints (memory, execution time, etc.)
 
 ## Docker

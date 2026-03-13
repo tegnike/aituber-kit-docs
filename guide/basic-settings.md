@@ -55,7 +55,7 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
 ## 制限モード
 
-制限モードを有効にすると、APIキーの変更やモデルの変更など一部の設定が制限されます。デモ端末での利用時など、設定を保護したい場合に使用します。
+制限モードを有効にすると、ファイルのアップロード・削除・更新などの書き込み系操作が無効化されます。Cloudflareなどのサーバーレス環境へのデプロイや、デモ端末での利用時に使用します。
 
 **環境変数**:
 
@@ -63,6 +63,8 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # 制限モードの有効/無効（true/false）
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 ```
+
+制限される機能の詳細は[制限モード](/guide/restricted-mode)を参照してください。
 
 ## Live2D機能
 

@@ -54,7 +54,7 @@ npm run deploy:cloudflare
 
 ### 制限事項
 
-- 制限モード（Restricted Mode）で動作するため、一部の機能が制限される場合があります
+- [制限モード（Restricted Mode）](/guide/restricted-mode)で動作するため、一部の機能が制限されます
 - Cloudflare Workersのランタイム制約（メモリ、実行時間等）に注意してください
 
 ## Docker

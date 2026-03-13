@@ -55,7 +55,7 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
 ## 限制模式
 
-启用限制模式后，API密钥的更改和模型的更改等部分设置将被限制。适用于在演示终端上使用时需要保护设置的场景。
+启用限制模式后，文件上传、删除、更新等写入操作将被禁用。适用于部署到Cloudflare等无服务器环境或在演示终端上使用的场景。
 
 **环境变量**:
 
@@ -63,6 +63,8 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # 限制模式的启用/禁用（true/false）
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 ```
+
+有关受限功能的详细信息，请参阅[限制模式](/zh/guide/restricted-mode)。
 
 ## Live2D功能
 

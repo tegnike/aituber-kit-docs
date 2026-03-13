@@ -217,6 +217,12 @@ export default defineConfig({
             {
               text: '基本設定',
               link: '/guide/basic-settings',
+              items: [
+                {
+                  text: '制限モード',
+                  link: '/guide/restricted-mode',
+                },
+              ],
             },
             {
               text: 'キャラクター設定',
@@ -332,6 +338,12 @@ export default defineConfig({
             {
               text: 'Basic Settings',
               link: '/en/guide/basic-settings',
+              items: [
+                {
+                  text: 'Restricted Mode',
+                  link: '/en/guide/restricted-mode',
+                },
+              ],
             },
             {
               text: 'Character Settings',
@@ -449,6 +461,12 @@ export default defineConfig({
             {
               text: '基本设置',
               link: '/zh/guide/basic-settings',
+              items: [
+                {
+                  text: '限制模式',
+                  link: '/zh/guide/restricted-mode',
+                },
+              ],
             },
             {
               text: '角色设置',
