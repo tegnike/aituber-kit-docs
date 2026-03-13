@@ -374,6 +374,34 @@ NEXT_PUBLIC_CUSTOM_API_BODY=""
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
 ```
 
+### サーバーサイド秘匿環境変数
+
+APIキーやエンドポイントをブラウザに公開したくない場合は、サーバーサイド専用の環境変数を使用できます。これらの環境変数は`NEXT_PUBLIC_`版より優先されます。
+
+```bash
+# カスタムAPI URL（サーバーサイド秘匿用、設定時はNEXT_PUBLIC版より優先）
+CUSTOM_API_URL=""
+# カスタムAPIヘッダー（サーバーサイド秘匿用、フロントエンド設定に上書きマージ）
+CUSTOM_API_HEADERS=""
+# カスタムAPIボディ（サーバーサイド秘匿用、フロントエンド設定に上書きマージ）
+CUSTOM_API_BODY=""
+```
+
+::: tip 優先順位
+- **URL**: `CUSTOM_API_URL` が設定されている場合、`NEXT_PUBLIC_CUSTOM_API_URL` より優先されます
+- **ヘッダー・ボディ**: フロントエンド設定をベースに、サーバーサイド環境変数の値で上書きマージされます
+:::
+
+### 対応フォーマット
+
+カスタムAPIのSSEストリーミングレスポンスは、以下の形式を自動的にVercel AI SDK形式に正規化します：
+
+- **OpenAI互換形式**: `choices[0].delta.content` を含むレスポンス
+- **`payload.text`形式**: 一部のLLM独自形式
+- **Vercel AI SDK形式**: そのまま通過
+
+また、OpenAI互換形式の `choices[0].delta.reasoning_content` を思考プロセス（`reasoning`）として変換する機能にも対応しています。設定画面で「思考プロセスを表示」をONにすると、カスタムAPIからの思考プロセスを表示できます。
+
 ::: warning 注意
 このAPIではストリーミングモードが常に有効になっています。返却形式にご注意ください。<br>
 なお、OpenAI互換のAPIや一部のAPIでは動作確認を行っていますが、全てのAPIでの動作を保証するものではありません。

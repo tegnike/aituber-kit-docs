@@ -374,6 +374,34 @@ NEXT_PUBLIC_CUSTOM_API_BODY=""
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
 ```
 
+### 服务器端保密环境变量
+
+如果您不希望将API密钥或端点暴露给浏览器，可以使用服务器端专用环境变量。这些变量优先于 `NEXT_PUBLIC_` 版本。
+
+```bash
+# 自定义API URL（服务器端保密用，设置时优先于NEXT_PUBLIC版本）
+CUSTOM_API_URL=""
+# 自定义API头（服务器端保密用，覆盖合并到前端设置）
+CUSTOM_API_HEADERS=""
+# 自定义API主体（服务器端保密用，覆盖合并到前端设置）
+CUSTOM_API_BODY=""
+```
+
+::: tip 优先级
+- **URL**：设置 `CUSTOM_API_URL` 后，将优先于 `NEXT_PUBLIC_CUSTOM_API_URL`
+- **头/主体**：服务器端环境变量的值将覆盖合并到前端设置
+:::
+
+### 支持的格式
+
+自定义API的SSE流式响应会自动从以下格式标准化为Vercel AI SDK格式：
+
+- **OpenAI兼容格式**：包含 `choices[0].delta.content` 的响应
+- **`payload.text`格式**：部分LLM特有格式
+- **Vercel AI SDK格式**：直接通过
+
+此外，还支持将OpenAI兼容格式的 `choices[0].delta.reasoning_content` 转换为思考过程数据。在设置中启用"显示思考过程"后，可以显示来自自定义API的思考过程。
+
 ::: warning 注意
 此API始终启用流式模式。请注意返回格式。<br>
 虽然我们测试了OpenAI兼容的API和一些其他API，但我们不能保证所有API都能正常运行。

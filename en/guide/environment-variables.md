@@ -250,6 +250,13 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # Enable system messages in custom API (true/false)
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+
+# Custom API URL (server-side secret, takes priority over NEXT_PUBLIC version)
+CUSTOM_API_URL=""
+# Custom API headers (server-side secret, merged over frontend settings)
+CUSTOM_API_HEADERS=""
+# Custom API body (server-side secret, merged over frontend settings)
+CUSTOM_API_BODY=""
 ```
 
 ### Multimodal Settings
@@ -655,4 +662,8 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # Always prioritize environment variables on page reload
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
+
+# Enable/disable demo mode (true/false)
+# When enabled, demo annotations are displayed
+NEXT_PUBLIC_DEMO_MODE="false"
 ```

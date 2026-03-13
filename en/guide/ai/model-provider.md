@@ -374,6 +374,34 @@ NEXT_PUBLIC_CUSTOM_API_BODY=""
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
 ```
 
+### Server-Side Secret Environment Variables
+
+If you don't want to expose API keys or endpoints to the browser, you can use server-side only environment variables. These take priority over their `NEXT_PUBLIC_` counterparts.
+
+```bash
+# Custom API URL (server-side secret, takes priority over NEXT_PUBLIC version)
+CUSTOM_API_URL=""
+# Custom API headers (server-side secret, merged over frontend settings)
+CUSTOM_API_HEADERS=""
+# Custom API body (server-side secret, merged over frontend settings)
+CUSTOM_API_BODY=""
+```
+
+::: tip Priority
+- **URL**: When `CUSTOM_API_URL` is set, it takes priority over `NEXT_PUBLIC_CUSTOM_API_URL`
+- **Headers/Body**: Server-side environment variable values are merged over the frontend settings
+:::
+
+### Supported Formats
+
+The custom API's SSE streaming responses are automatically normalized to Vercel AI SDK format from the following formats:
+
+- **OpenAI-compatible format**: Responses containing `choices[0].delta.content`
+- **`payload.text` format**: Some LLM-specific formats
+- **Vercel AI SDK format**: Passed through as-is
+
+Additionally, `choices[0].delta.reasoning_content` in OpenAI-compatible format is converted to reasoning process data. You can display the thinking process from custom APIs by enabling "Show thinking process" in the settings.
+
 ::: warning Note
 Streaming mode is always enabled for this API. Please pay attention to the response format.<br>
 While we have tested with OpenAI-compatible APIs and some other APIs, we cannot guarantee operation with all APIs.

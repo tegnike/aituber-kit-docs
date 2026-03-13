@@ -250,6 +250,13 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # カスタムAPIでシステムメッセージを含めるかどうか（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+
+# カスタムAPI URL（サーバーサイド秘匿用、設定時はNEXT_PUBLIC版より優先）
+CUSTOM_API_URL=""
+# カスタムAPIヘッダー（サーバーサイド秘匿用、フロントエンド設定に上書きマージ）
+CUSTOM_API_HEADERS=""
+# カスタムAPIボディ（サーバーサイド秘匿用、フロントエンド設定に上書きマージ）
+CUSTOM_API_BODY=""
 ```
 
 ### マルチモーダル設定
@@ -655,4 +662,8 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # ページリロード時に常に環境変数を優先する設定
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
+
+# デモモードの有効/無効（true/false）
+# 有効にするとデモ用の注釈が表示されます
+NEXT_PUBLIC_DEMO_MODE="false"
 ```

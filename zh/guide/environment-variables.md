@@ -250,6 +250,13 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # 在自定义API中启用系统消息（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+
+# 自定义API URL（服务器端保密用，设置时优先于NEXT_PUBLIC版本）
+CUSTOM_API_URL=""
+# 自定义API头（服务器端保密用，覆盖合并到前端设置）
+CUSTOM_API_HEADERS=""
+# 自定义API主体（服务器端保密用，覆盖合并到前端设置）
+CUSTOM_API_BODY=""
 ```
 
 ### 多模态设置
@@ -655,4 +662,8 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # 页面重新加载时始终优先使用环境变量的设置
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
+
+# 启用/禁用演示模式（true/false）
+# 启用后将显示演示用注释
+NEXT_PUBLIC_DEMO_MODE="false"
 ```
