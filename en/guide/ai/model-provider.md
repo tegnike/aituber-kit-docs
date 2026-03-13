@@ -397,6 +397,7 @@ CUSTOM_API_BODY=""
 When using the custom API, a unique session ID (UUID v4) is automatically generated per browser and sent as the `threadId` field in the request body.
 
 - The session ID is stored in `localStorage` and persists until cookies/site data are cleared
+- **When conversation history is reset, the session ID is also automatically reset** (a new ID is generated)
 - It can be used by the external API for thread management or conversation continuity
 - If not needed, simply ignore it on the external API side
 
