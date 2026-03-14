@@ -12,6 +12,12 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+
+# Enable/disable thinking pose (true/false)
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# Pose ID to display while thinking
+NEXT_PUBLIC_THINKING_POSE_ID=think
 ```
 
 ## Preparing VRM Models
@@ -52,6 +58,34 @@ By combining these operations, you can adjust the placement of the avatar on the
 ### Lighting Intensity
 
 The lighting intensity of VRM characters can be adjusted using the environment variable `NEXT_PUBLIC_LIGHTING_INTENSITY`. Values can be set in the range of 0.1 to 3.0.
+
+## Thinking Pose
+
+A feature that automatically displays a specified pose while waiting for the AI response after sending a message.
+
+**Environment Variables**:
+
+```bash
+# Enable/disable thinking pose (true/false)
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# Pose ID to display while thinking
+NEXT_PUBLIC_THINKING_POSE_ID=think
+```
+
+### Configuration
+
+You can configure this in the "Thinking Pose" section of the Character Settings tab.
+
+1. Turn on the toggle switch to enable the feature
+2. Select the pose to display while thinking from the dropdown
+
+### Behavior
+
+- The specified pose is automatically applied when a message is sent
+- When the AI response arrives, the pose switches according to the motion tag included in the response
+- If the same pose as the thinking pose is specified by a motion tag, the pose continues without being reset
+- The pose is automatically released when an error occurs or the AI response is empty
 
 ## Pose Settings
 

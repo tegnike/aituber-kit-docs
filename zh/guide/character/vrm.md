@@ -12,6 +12,12 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRM角色的照明强度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+
+# 启用/禁用思考中姿势（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中显示的姿势ID
+NEXT_PUBLIC_THINKING_POSE_ID=think
 ```
 
 ## 准备VRM模型
@@ -52,6 +58,34 @@ AITuberKit支持以下VRM版本：
 ### 照明强度
 
 VRM角色的照明强度可以通过环境变量 `NEXT_PUBLIC_LIGHTING_INTENSITY` 进行调整。值可以设置在0.1到3.0的范围内。
+
+## 思考中姿势
+
+在发送消息后等待AI回复期间，自动显示指定姿势的功能。
+
+**环境变量**:
+
+```bash
+# 启用/禁用思考中姿势（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中显示的姿势ID
+NEXT_PUBLIC_THINKING_POSE_ID=think
+```
+
+### 设置方法
+
+可以在角色设置选项卡的"思考中姿势"部分进行设置。
+
+1. 打开切换开关以启用功能
+2. 从下拉菜单中选择思考中要显示的姿势
+
+### 行为规范
+
+- 发送消息时自动应用指定的姿势
+- 当AI回复到达时，姿势会根据回复中包含的动作标签进行切换
+- 如果动作标签指定了与思考中姿势相同的姿势，则不会重置，直接继续保持
+- 发生错误或AI回复为空时，姿势会自动解除
 
 ## 姿势设置
 

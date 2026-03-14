@@ -12,6 +12,12 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+
+# 思考中ポーズの有効/無効（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中に表示するポーズID
+NEXT_PUBLIC_THINKING_POSE_ID=think
 ```
 
 ## VRMモデルの準備
@@ -52,6 +58,34 @@ VRMモデルを使用するには、以下の手順に従ってください：
 ### 照明強度
 
 VRMキャラクターの照明強度は、環境変数 `NEXT_PUBLIC_LIGHTING_INTENSITY` で調整できます。値は0.1から3.0の範囲で設定可能です。
+
+## 思考中ポーズ
+
+メッセージ送信後、AIの応答が届くまでの待機中に指定のポーズを自動で表示する機能です。
+
+**環境変数**:
+
+```bash
+# 思考中ポーズの有効/無効（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中に表示するポーズID
+NEXT_PUBLIC_THINKING_POSE_ID=think
+```
+
+### 設定方法
+
+キャラクター設定タブの「思考中ポーズ」セクションで設定できます。
+
+1. トグルスイッチをONにして機能を有効化します
+2. ドロップダウンから思考中に表示したいポーズを選択します
+
+### 動作仕様
+
+- メッセージ送信時に指定のポーズが自動適用されます
+- AIの応答が届くと、応答に含まれるモーションタグに従ってポーズが切り替わります
+- 思考中ポーズと同じポーズがモーションタグで指定された場合、ポーズを解除せずそのまま継続します
+- エラー発生時やAI応答が空の場合は、ポーズが自動的に解除されます
 
 ## ポーズ設定
 

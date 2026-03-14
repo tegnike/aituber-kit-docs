@@ -84,6 +84,12 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+
+# 思考中ポーズの有効/無効（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中に表示するポーズID
+NEXT_PUBLIC_THINKING_POSE_ID=think
 ```
 
 ### PNGTuber設定

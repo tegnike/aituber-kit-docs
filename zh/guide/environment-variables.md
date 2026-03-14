@@ -84,6 +84,12 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
 
 # VRM角色的照明强度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
+
+# 启用/禁用思考中姿势（true/false）
+NEXT_PUBLIC_THINKING_POSE_ENABLED=false
+
+# 思考中显示的姿势ID
+NEXT_PUBLIC_THINKING_POSE_ID=think
 ```
 
 ### PNGTuber设置
