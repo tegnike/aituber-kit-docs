@@ -53,6 +53,19 @@ NEXT_PUBLIC_CHARACTER_PRESET5="您是一位名叫 Nique 的 AI 助理。"
 - **解除固定** - 解除保存的位置设置，允许自由移动
 - **重置位置** - 将角色位置恢复到初始状态
 
+**环境变量**:
+
+```bash
+# VRM/Live2D角色位置设置
+NEXT_PUBLIC_CHARACTER_POSITION="0,0,0,1"
+NEXT_PUBLIC_CHARACTER_ROTATION="0,0,0"
+NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
+```
+
+- `NEXT_PUBLIC_CHARACTER_POSITION` - 摄像机/模型位置（x,y,z,zoom）
+- `NEXT_PUBLIC_CHARACTER_ROTATION` - 摄像机/模型旋转（x,y,z）
+- `NEXT_PUBLIC_FIXED_CHARACTER_POSITION` - 是否固定位置（true/false）
+
 ## 角色提示
 
 设置定义角色性格和回应风格的系统提示。生成AI回应时会使用此提示，它是决定角色个性的重要元素。

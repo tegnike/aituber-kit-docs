@@ -38,6 +38,17 @@ AITuberKit支持多种语言，您可以从以下语言中选择：
 如果选择日语以外的语言，且已选择日语专用的语音服务（VOICEVOX、KOEIROMAP、AivisSpeech、Aivis Cloud API），系统将自动切换到Google语音合成。
 :::
 
+## 站点URL
+
+设置用于OGP（Open Graph Protocol）和Twitter卡片图片URL的基础URL。这样可以确保在社交媒体上分享网站时预览图片能够正确显示。
+
+**环境变量**:
+
+```bash
+# 站点URL（用于OGP和Twitter卡片图片URL）
+NEXT_PUBLIC_SITE_URL="https://aituberkit.com"
+```
+
 ## 英语单词读取设置
 
 您可以设置是否在日语中读取英语单词。

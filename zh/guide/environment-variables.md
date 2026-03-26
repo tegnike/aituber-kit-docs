@@ -19,6 +19,9 @@
 # ru: 俄语, it: 意大利语, ar: 阿拉伯语, hi: 印地语, pl: 波兰语
 NEXT_PUBLIC_SELECT_LANGUAGE=en
 
+# 站点URL（用于OGP和Twitter卡片图片URL）
+NEXT_PUBLIC_SITE_URL="https://aituberkit.com"
+
 # 用日语发音英语单词的设置（true/false）
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
@@ -74,6 +77,15 @@ NEXT_PUBLIC_CHARACTER_PRESET2="你是一个名叫Nike的AI助手。"
 NEXT_PUBLIC_CHARACTER_PRESET3="你是一个名叫Nike的AI助手。"
 NEXT_PUBLIC_CHARACTER_PRESET4="你是一个名叫Nike的AI助手。"
 NEXT_PUBLIC_CHARACTER_PRESET5="你是一个名叫Nike的AI助手。"
+```
+
+### 角色位置设置
+
+```bash
+# VRM/Live2D角色位置设置
+NEXT_PUBLIC_CHARACTER_POSITION="0,0,0,1"
+NEXT_PUBLIC_CHARACTER_ROTATION="0,0,0"
+NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 ```
 
 ### VRM设置
@@ -595,6 +607,33 @@ NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
 # AI自动生成提示模板
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
+```
+
+## 游戏解说模式设置
+
+详情请参阅[游戏解说模式设置](/zh/guide/game-commentary-settings)。
+
+```bash
+# 游戏解说模式的启用/禁用（true/false）
+NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
+
+# 捕获间隔（秒）
+NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="15"
+
+# 参考上下文数
+NEXT_PUBLIC_GAME_COMMENTARY_CONTEXT_COUNT="5"
+
+# 解说提示模板
+NEXT_PUBLIC_GAME_COMMENTARY_PROMPT_TEMPLATE=""
+
+# 捕获图像质量（0.3-1.0）
+NEXT_PUBLIC_GAME_COMMENTARY_IMAGE_QUALITY="0.7"
+
+# 调整宽度（px，0=不调整）
+NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
+
+# 保存到聊天记录（true/false）
+NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
 ```
 
 ## 展示终端模式设置

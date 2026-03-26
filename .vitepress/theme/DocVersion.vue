@@ -4,7 +4,7 @@ import { useData } from 'vitepress'
 const { lang } = useData()
 
 // ここでバージョン情報を管理
-const version = 'v2.42.0'
+const version = 'v2.43.2'
 const repoUrl = 'https://github.com/tegnike/aituber-kit'
 
 const labels = {

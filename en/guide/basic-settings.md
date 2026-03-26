@@ -38,6 +38,17 @@ AITuberKit supports multiple languages, and you can choose from the following:
 If you select a language other than Japanese and have a Japanese-only voice service (VOICEVOX, KOEIROMAP, AivisSpeech, Aivis Cloud API) selected, it will automatically switch to Google Text-to-Speech.
 :::
 
+## Site URL
+
+Set the base URL used for image URLs in OGP (Open Graph Protocol) and Twitter cards. This ensures that preview images are displayed correctly when the site is shared on social media.
+
+**Environment Variables**:
+
+```bash
+# Site URL (used for OGP and Twitter card image URLs)
+NEXT_PUBLIC_SITE_URL="https://aituberkit.com"
+```
+
 ## English Word Pronunciation Setting
 
 You can set whether to pronounce English words in Japanese.

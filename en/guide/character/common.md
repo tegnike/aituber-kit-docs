@@ -53,6 +53,19 @@ You can fix the character's position and orientation. For VRM, the camera positi
 - **Release Fix** - Releases the saved position settings and allows free movement
 - **Reset Position** - Returns the character's position to its initial state
 
+**Environment Variables**:
+
+```bash
+# VRM/Live2D character position settings
+NEXT_PUBLIC_CHARACTER_POSITION="0,0,0,1"
+NEXT_PUBLIC_CHARACTER_ROTATION="0,0,0"
+NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
+```
+
+- `NEXT_PUBLIC_CHARACTER_POSITION` - Camera/model position (x,y,z,zoom)
+- `NEXT_PUBLIC_CHARACTER_ROTATION` - Camera/model rotation (x,y,z)
+- `NEXT_PUBLIC_FIXED_CHARACTER_POSITION` - Whether to fix the position (true/false)
+
 ## Character Prompt
 
 Set the system prompt that defines the character's personality and response style. This prompt is used when generating AI responses and is an important element that determines the character's individuality.

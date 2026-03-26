@@ -19,6 +19,9 @@ For details, see [Basic Settings](/guide/basic-settings).
 # ru: Russian, it: Italian, ar: Arabic, hi: Hindi, pl: Polish
 NEXT_PUBLIC_SELECT_LANGUAGE=en
 
+# Site URL (used for OGP and Twitter card image URLs)
+NEXT_PUBLIC_SITE_URL="https://aituberkit.com"
+
 # Setting to pronounce English words in Japanese (true/false)
 NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 
@@ -74,6 +77,15 @@ NEXT_PUBLIC_CHARACTER_PRESET2="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET3="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET4="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET5="You are an AI assistant named Nike."
+```
+
+### Character Position Settings
+
+```bash
+# VRM/Live2D character position settings
+NEXT_PUBLIC_CHARACTER_POSITION="0,0,0,1"
+NEXT_PUBLIC_CHARACTER_ROTATION="0,0,0"
+NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 ```
 
 ### VRM Settings
@@ -595,6 +607,33 @@ NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
 # AI auto-generation prompt template
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
+```
+
+## Game Commentary Mode Settings
+
+For details, see [Game Commentary Mode Settings](/en/guide/game-commentary-settings).
+
+```bash
+# Enable/disable game commentary mode (true/false)
+NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
+
+# Capture interval (seconds)
+NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="15"
+
+# Context count
+NEXT_PUBLIC_GAME_COMMENTARY_CONTEXT_COUNT="5"
+
+# Commentary prompt template
+NEXT_PUBLIC_GAME_COMMENTARY_PROMPT_TEMPLATE=""
+
+# Capture image quality (0.3-1.0)
+NEXT_PUBLIC_GAME_COMMENTARY_IMAGE_QUALITY="0.7"
+
+# Resize width (px, 0=no resize)
+NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
+
+# Save to chat log (true/false)
+NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
 ```
 
 ## Kiosk Mode Settings
