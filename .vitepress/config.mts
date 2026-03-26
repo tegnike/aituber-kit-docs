@@ -282,6 +282,10 @@ export default defineConfig({
               link: '/guide/idle-settings',
             },
             {
+              text: 'ゲーム実況モード設定',
+              link: '/guide/game-commentary-settings',
+            },
+            {
               text: 'デモ端末モード設定',
               link: '/guide/kiosk-settings',
             },
@@ -405,6 +409,10 @@ export default defineConfig({
               link: '/en/guide/idle-settings',
             },
             {
+              text: 'Game Commentary Mode Settings',
+              link: '/en/guide/game-commentary-settings',
+            },
+            {
               text: 'Kiosk Mode Settings',
               link: '/en/guide/kiosk-settings',
             },
@@ -520,6 +528,10 @@ export default defineConfig({
             {
               text: '待机模式设置',
               link: '/zh/guide/idle-settings',
+            },
+            {
+              text: '游戏解说模式设置',
+              link: '/zh/guide/game-commentary-settings',
             },
             {
               text: '展示终端模式设置',
