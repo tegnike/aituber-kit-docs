@@ -10,13 +10,6 @@ In AITuberKit, you can utilize multimodal features to create a richer interactio
 # Enable multimodal functionality for Azure, OpenRouter, local LLM, custom API, and other models with custom model selection
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
-# Setting for when to use multimodal functionality
-# ai-decide: AI decides, always: always use, never: don't use
-NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
-
-# Prompt for AI to decide whether to use multimodal functionality when ai-decide is selected
-NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="You are an assistant that determines whether images are relevant to the user's questions or conversation context. Consider the recent conversation history and user messages, and answer only with 'Yes' or 'No'."
-
 # Image display position setting
 # input: input area, side: side panel, icon: icon
 NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
@@ -51,22 +44,13 @@ Multimodal features may incur higher API usage fees compared to text-only conver
 To utilize multimodal features, follow these steps:
 
 1. Select a compatible AI service and model in the settings screen
-2. Select the appropriate mode for when to use multimodal functionality
-   - AI decides
-   - Always use
-   - Don't use
-2. Enable webcam or screen sharing (if needed)
-3. Send a message
+2. Enable the "Use multimodal" setting
+3. Enable webcam or screen sharing (if needed)
+4. Send a message
 
-### When to Use Multimodal Functionality Setting
+### Use Multimodal Setting
 
-![Multimodal Settings](/images/ai_fk4n2.webp)
-
-- **AI decides**: Multimodal functionality is used only when the AI determines that the most recent 5 conversation history items and the image are related.
-- **Always use**: Multimodal functionality is used for all messages.
-- **Don't use**: Multimodal functionality is not used.
-
-If you select "AI decides", please set a prompt for decision-making (the default value is fine).
+When the "Use multimodal" setting is enabled, multimodal functionality is used whenever a message with an image is sent. When disabled, only text is sent to the AI even if an image is attached.
 
 ### MIME Type Setting
 

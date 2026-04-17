@@ -280,15 +280,9 @@ CUSTOM_API_BODY=""
 ### 多模态设置
 
 ```bash
-# 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时启用多模态功能的设置
+# 多模态功能启用设置（true/false）
+# 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时使用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
-
-# 何时使用多模态功能的设置
-# ai-decide: AI判断, always: 始终使用, never: 不使用
-NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
-
-# 选择ai-decide时，供AI判断是否使用多模态功能的提示
-NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="您是一个助手，用于判断图像是否与用户的问题或对话上下文相关。请考虑最近的对话历史和用户消息，只回答'是'或'否'。"
 
 # 图像显示位置设置
 # input: 输入区域, side: 侧边栏, icon: 图标
@@ -617,10 +611,10 @@ NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 # 游戏解说模式的启用/禁用（true/false）
 NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
 
-# 捕获间隔（秒）
-NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="15"
+# 捕获间隔（秒，0-20）
+NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="5"
 
-# 参考上下文数
+# 参考上下文数（0-20，0=禁用）
 NEXT_PUBLIC_GAME_COMMENTARY_CONTEXT_COUNT="5"
 
 # 解说提示模板
@@ -634,6 +628,18 @@ NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
 
 # 保存到聊天记录（true/false）
 NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
+
+# 视频延迟（秒，0-10，0=禁用）
+NEXT_PUBLIC_GAME_COMMENTARY_VIDEO_DELAY="0"
+
+# 发话中辅助图像解析的启用/禁用（true/false）
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_ENABLED="false"
+
+# 辅助图像解析提示模板
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_PROMPT_TEMPLATE=""
+
+# 辅助图像解析的间隔（秒，1-10）
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_INTERVAL="2"
 ```
 
 ## 展示终端模式设置
@@ -672,6 +678,9 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 ```bash
 # 背景视频使用设置（true/false）
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+
+# 视频显示隐藏设置（true/false）
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
 
 # 时间戳包含设置（true/false）
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false

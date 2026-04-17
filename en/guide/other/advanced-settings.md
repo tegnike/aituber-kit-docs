@@ -19,6 +19,19 @@ You can use shared screen or webcam video as a background. When using multimodal
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
 ```
 
+## Video Display Hide Setting
+
+You can hide the video preview (background display or floating display) shown on the screen even while screen sharing or using the webcam. Since the capture itself continues, image transmission to the AI and captures for game commentary mode remain enabled, allowing you to keep the screen layout clean.
+
+Even when the preview is hidden, you can show it again at any time by clicking the "+" icon on the video operation buttons.
+
+**Environment Variables**:
+
+```bash
+# Hide video display setting (true/false)
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
+```
+
 ## Character Preset Menu Display Settings
 
 You can toggle the display of the preset menu button shown on the home screen. You can turn off this option to keep the screen simple as needed.

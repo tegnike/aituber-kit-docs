@@ -283,13 +283,6 @@ CUSTOM_API_BODY=""
 # Enable multimodal feature for Azure, OpenRouter, Local LLM, Custom API and other models when custom model is selected
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
-# Setting for when to use multimodal feature
-# ai-decide: AI decides, always: Always use, never: Never use
-NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
-
-# Prompt for AI to decide whether to use multimodal feature when ai-decide is selected
-NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="You are an assistant that determines whether an image is relevant to the user's question or conversation context. Consider the recent conversation history and user message, and answer only 'yes' or 'no'."
-
 # Image display position setting
 # input: Input area, side: Side panel, icon: Icon
 NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
@@ -617,10 +610,10 @@ For details, see [Game Commentary Mode Settings](/en/guide/game-commentary-setti
 # Enable/disable game commentary mode (true/false)
 NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
 
-# Capture interval (seconds)
-NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="15"
+# Capture interval (seconds, 0-20)
+NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="5"
 
-# Context count
+# Context count (0-20, 0=disabled)
 NEXT_PUBLIC_GAME_COMMENTARY_CONTEXT_COUNT="5"
 
 # Commentary prompt template
@@ -634,6 +627,18 @@ NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
 
 # Save to chat log (true/false)
 NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
+
+# Video delay (seconds, 0-10, 0=disabled)
+NEXT_PUBLIC_GAME_COMMENTARY_VIDEO_DELAY="0"
+
+# Enable/disable background analysis during speech (true/false)
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_ENABLED="false"
+
+# Background analysis prompt template
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_PROMPT_TEMPLATE=""
+
+# Background analysis interval (seconds, 1-10)
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_INTERVAL="2"
 ```
 
 ## Kiosk Mode Settings
@@ -672,6 +677,9 @@ For details, see [Advanced Settings](/guide/other/advanced-settings).
 ```bash
 # Background video usage setting (true/false)
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+
+# Hide video display setting (true/false)
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
 
 # Timestamp inclusion setting (true/false)
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false

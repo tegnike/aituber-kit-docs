@@ -280,15 +280,9 @@ CUSTOM_API_BODY=""
 ### マルチモーダル設定
 
 ```bash
-# Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時のマルチモーダル機能の有効化設定
+# マルチモーダル機能の有効化設定（true/false）
+# Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
-
-# マルチモーダル機能をいつ使用するかの設定
-# ai-decide: AIが判断, always: 常に利用, never: 利用
-NEXT_PUBLIC_MULTIMODAL_MODE="ai-decide"
-
-# ai-decideを選択した場合にAIがマルチモーダル機能を使用するかを判断するためのプロンプト
-NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT="あなたは画像がユーザーの質問や会話の文脈に関連するかどうかを判断するアシスタントです。直近の会話履歴とユーザーメッセージを考慮して、「はい」または「いいえ」のみで答えてください。"
 
 # 画像表示位置設定
 # input: 入力エリア, side: サイドパネル, icon: アイコン
@@ -617,10 +611,10 @@ NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 # ゲーム実況モードの有効/無効（true/false）
 NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
 
-# キャプチャ間隔（秒）
-NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="15"
+# キャプチャ間隔（秒、0-20）
+NEXT_PUBLIC_GAME_COMMENTARY_CAPTURE_INTERVAL="5"
 
-# 参照コンテキスト数
+# 参照コンテキスト数（0-20、0=無効）
 NEXT_PUBLIC_GAME_COMMENTARY_CONTEXT_COUNT="5"
 
 # 実況プロンプトテンプレート
@@ -634,6 +628,18 @@ NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
 
 # チャットログへの保存（true/false）
 NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
+
+# 映像遅延（秒、0-10、0=無効）
+NEXT_PUBLIC_GAME_COMMENTARY_VIDEO_DELAY="0"
+
+# 発話中の補助画像解析の有効/無効（true/false）
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_ENABLED="false"
+
+# 補助画像解析プロンプトテンプレート
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_PROMPT_TEMPLATE=""
+
+# 補助画像解析の間隔（秒、1-10）
+NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_INTERVAL="2"
 ```
 
 ## デモ端末モード設定
@@ -672,6 +678,9 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 ```bash
 # 背景映像の使用設定（true/false）
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+
+# 映像表示の非表示設定（true/false）
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
 
 # タイムスタンプ含有設定（true/false）
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
