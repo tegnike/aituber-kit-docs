@@ -40,6 +40,12 @@ NEXT_PUBLIC_GAME_COMMENTARY_ENABLED="false"
 4. AI captures the screen → generates commentary → speaks → waits → repeats
 5. Click the button again to stop commentary
 
+## Priority with Normal Chat
+
+When a user sends a normal chat message during game commentary, normal chat takes priority. If commentary is being generated or spoken, the commentary is interrupted, and the next commentary timer resumes after the chat response finishes.
+
+When used together with YouTube integration, viewer comments and AI responses saved in the chat log are also referenced as context for the next commentary generation. Whether commentary itself is saved to the chat log can be controlled with "Save to Chat Log".
+
 ## Capture Interval
 
 Set the screen capture interval in seconds (0-20 seconds). This is the wait time from when the previous commentary generation and speech playback completes until the next capture. Setting it to 0 means the next capture starts immediately after speech playback finishes. Since this uses completion-based setTimeout, captures never overlap with ongoing generation or speech.

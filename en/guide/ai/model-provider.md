@@ -340,6 +340,8 @@ NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 To use a local LLM, you need to set up and start a separate server.
 
+Ollama supports reasoning mode when using reasoning-capable models or custom models. The available reasoning levels are `none` / `low` / `medium` / `high`.
+
 **Setup Example**: [How to Set Up Ollama](https://note.com/schroneko/n/n8b1a5bbc740b)
 
 ## Dify

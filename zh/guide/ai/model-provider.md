@@ -340,6 +340,8 @@ NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 要使用本地LLM，您需要设置并启动单独的服务器。
 
+使用 Ollama 的推理模型或自定义模型时，可以启用推理模式。可选择的推理级别为 `none` / `low` / `medium` / `high`。
+
 **设置示例**: [如何设置Ollama](https://note.com/schroneko/n/n8b1a5bbc740b)
 
 ## Dify

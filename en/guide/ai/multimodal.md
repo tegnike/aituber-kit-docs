@@ -52,6 +52,8 @@ To utilize multimodal features, follow these steps:
 
 When the "Use multimodal" setting is enabled, multimodal functionality is used whenever a message with an image is sent. When disabled, only text is sent to the AI even if an image is attached.
 
+The previous "AI decides / always use / do not use" selection has been removed. Image sending is now controlled by this single on/off setting.
+
 ### MIME Type Setting
 
 Only when using Custom API, you can set whether to include the MIME type of images.<br>

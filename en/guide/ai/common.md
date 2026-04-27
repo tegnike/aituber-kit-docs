@@ -71,7 +71,7 @@ Some AI models support Reasoning Mode, which enables the AI to generate response
 # Enable reasoning mode (true/false)
 NEXT_PUBLIC_REASONING_MODE=false
 
-# Reasoning level (low/medium/high)
+# Reasoning level (none/minimal/low/medium/high/xhigh; supported values vary by provider/model)
 NEXT_PUBLIC_REASONING_EFFORT=medium
 
 # Reasoning token budget (for Anthropic, Cohere, Google)
@@ -85,9 +85,14 @@ NEXT_PUBLIC_SHOW_THINKING_TEXT=false
 
 The available reasoning levels vary depending on the model.
 
+- **none**: Explicitly disable reasoning
+- **minimal**: Minimal reasoning (supported models only)
 - **low**: Light reasoning (fast)
 - **medium**: Standard reasoning
 - **high**: Deep reasoning (high accuracy but slower)
+- **xhigh**: Extra-deep reasoning (supported models only)
+
+For Ollama, reasoning-capable models and custom models can use `none` / `low` / `medium` / `high`.
 
 ### Thinking Text Display
 

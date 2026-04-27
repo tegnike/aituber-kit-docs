@@ -73,7 +73,7 @@ AITuberKitでは、AIとの会話に関する以下の設定が可能です：
 # 推論モードの有効化（true/false）
 NEXT_PUBLIC_REASONING_MODE=false
 
-# 推論レベル（low/medium/high）
+# 推論レベル（none/minimal/low/medium/high/xhigh、対応値はプロバイダー・モデルにより異なる）
 NEXT_PUBLIC_REASONING_EFFORT=medium
 
 # 推論トークンバジェット（Anthropic, Cohere, Google用）
@@ -87,9 +87,14 @@ NEXT_PUBLIC_SHOW_THINKING_TEXT=false
 
 モデルによって選択可能な推論レベルが異なります。
 
+- **none**: 推論を明示的に無効化
+- **minimal**: 最小限の推論（対応モデルのみ）
 - **low**: 軽い推論（高速）
 - **medium**: 標準的な推論
 - **high**: 深い推論（高精度だが低速）
+- **xhigh**: さらに深い推論（対応モデルのみ）
+
+Ollamaでは、推論対応モデルやカスタムモデルで `none` / `low` / `medium` / `high` を選択できます。
 
 ### 思考テキストの表示
 

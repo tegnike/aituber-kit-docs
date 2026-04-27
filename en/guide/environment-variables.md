@@ -194,7 +194,7 @@ NEXT_PUBLIC_MAX_TOKENS=4096
 # Enable reasoning mode (true/false)
 NEXT_PUBLIC_REASONING_MODE=false
 
-# Reasoning level (low/medium/high)
+# Reasoning level (none/minimal/low/medium/high/xhigh; supported values vary by provider/model)
 NEXT_PUBLIC_REASONING_EFFORT=medium
 
 # Reasoning token budget

@@ -194,7 +194,7 @@ NEXT_PUBLIC_MAX_TOKENS=4096
 # 推論モードの有効化（true/false）
 NEXT_PUBLIC_REASONING_MODE=false
 
-# 推論レベル（low/medium/high）
+# 推論レベル（none/minimal/low/medium/high/xhigh、対応値はプロバイダー・モデルにより異なる）
 NEXT_PUBLIC_REASONING_EFFORT=medium
 
 # 推論トークンバジェット

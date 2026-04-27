@@ -194,7 +194,7 @@ NEXT_PUBLIC_MAX_TOKENS=4096
 # 启用推理模式（true/false）
 NEXT_PUBLIC_REASONING_MODE=false
 
-# 推理级别（low/medium/high）
+# 推理级别（none/minimal/low/medium/high/xhigh，支持的值因提供商/模型而异）
 NEXT_PUBLIC_REASONING_EFFORT=medium
 
 # 推理令牌预算

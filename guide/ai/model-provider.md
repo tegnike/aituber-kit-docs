@@ -340,6 +340,8 @@ NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 ローカルLLMを利用する場合は、別途サーバーの設定と起動が必要です。
 
+Ollamaでは、推論対応モデルまたはカスタムモデルを使用する場合に推論モードを利用できます。推論レベルは `none` / `low` / `medium` / `high` から選択できます。
+
 **設定例**: [Ollamaの設定方法](https://note.com/schroneko/n/n8b1a5bbc740b)
 
 ## Dify
