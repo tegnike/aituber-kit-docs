@@ -672,14 +672,14 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 
 ### Advanced Settings
 
-For details, see [Advanced Settings](/guide/other/advanced-settings).
+For details, see [Advanced Settings](/en/guide/other/advanced-settings).
 
 ```bash
 # Background video usage setting (true/false)
-NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 
 # Hide video display setting (true/false)
-NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 
 # Timestamp inclusion setting (true/false)
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false

@@ -16,7 +16,7 @@
 
 ```bash
 # 背景视频使用设置（true/false）
-NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 ```
 
 ## 视频显示隐藏设置
@@ -29,7 +29,7 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
 
 ```bash
 # 视频显示隐藏设置（true/false）
-NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 ```
 
 ## 角色预设菜单显示设置

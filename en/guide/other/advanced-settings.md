@@ -16,7 +16,7 @@ You can use shared screen or webcam video as a background. When using multimodal
 
 ```bash
 # Background video usage setting (true/false)
-NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 ```
 
 ## Video Display Hide Setting
@@ -29,7 +29,7 @@ Even when the preview is hidden, you can show it again at any time by clicking t
 
 ```bash
 # Hide video display setting (true/false)
-NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 ```
 
 ## Character Preset Menu Display Settings

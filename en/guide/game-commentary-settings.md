@@ -4,6 +4,8 @@
 
 The game commentary mode allows AI characters to provide real-time game commentary. It periodically captures the screen, sends screenshots to a multimodal AI model, and generates spoken commentary with emotions. Combined with YouTube live streaming, it enables interactive game commentary with viewer participation.
 
+![Game Commentary Mode Settings](/images/game-commentary_g7m4p.webp)
+
 ::: tip
 To use game commentary mode, you need to configure a multimodal AI model (with image recognition capability).
 :::

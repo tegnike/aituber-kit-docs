@@ -673,14 +673,14 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 
 ### 高级设置
 
-详情请参阅[高级设置](/guide/other/advanced-settings)。
+详情请参阅[高级设置](/zh/guide/other/advanced-settings)。
 
 ```bash
 # 背景视频使用设置（true/false）
-NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND=false
+NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 
 # 视频显示隐藏设置（true/false）
-NEXT_PUBLIC_HIDE_VIDEO_DISPLAY=false
+NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 
 # 时间戳包含设置（true/false）
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
