@@ -628,9 +628,6 @@ NEXT_PUBLIC_GAME_COMMENTARY_RESIZE_WIDTH="1024"
 # Save to chat log (true/false)
 NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
 
-# Video delay (seconds, 0-10, 0=disabled)
-NEXT_PUBLIC_GAME_COMMENTARY_VIDEO_DELAY="0"
-
 # Enable/disable background analysis during speech (true/false)
 NEXT_PUBLIC_GAME_COMMENTARY_BACKGROUND_ANALYSIS_ENABLED="false"
 

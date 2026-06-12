@@ -130,24 +130,13 @@ Configure whether to save commentary to the chat log. When enabled, commentaries
 NEXT_PUBLIC_GAME_COMMENTARY_SAVE_TO_CHAT="true"
 ```
 
-## Video Delay
-
-Delays the screen sharing video display by the specified number of seconds (0-10 seconds). This is useful for compensating for the time it takes the AI to generate commentary and aligning the timing of audio and video. Set to `0` to disable.
-
-::: info Delay Scope
-Video delay is applied only to the **preview display**. The capture images sent to the AI are always acquired in real time, so commentary generation is never slowed down.
-:::
-
-**Environment Variables**:
-
-```bash
-# Video delay (seconds, 0=disabled)
-NEXT_PUBLIC_GAME_COMMENTARY_VIDEO_DELAY="0"
-```
-
 ## Background Analysis During Speech
 
 This feature analyzes the screen at a low frequency even while commentary is being spoken, and passes the information to the next commentary generation as supplementary context. When enabled, it allows commentary that keeps up with screen changes even during long speech segments, producing more context-aware commentary.
+
+The settings for this feature are displayed by expanding "Advanced Settings" at the bottom of the settings screen.
+
+![Game Commentary Mode Advanced Settings](/images/game-commentary_k2x9d.webp)
 
 ::: warning API Usage Fees
 Background analysis runs as separate API calls from the normal commentary generation, so additional multimodal API usage fees will be incurred. We recommend enabling this only when using a fast and inexpensive image analysis model.
