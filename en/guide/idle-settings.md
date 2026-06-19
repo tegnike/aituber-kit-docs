@@ -63,7 +63,7 @@ NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
 
 ### 3. AI Auto-Generation
 
-AI automatically generates speech content based on the situation. You can control the direction of generated speech by customizing the prompt template.
+AI automatically generates speech content based on the situation. The character settings system prompt is used as the base, and the prompt template is combined with it to control idle-time topics and the direction of generated speech.
 
 **Environment Variables**:
 
@@ -71,7 +71,7 @@ AI automatically generates speech content based on the situation. You can contro
 # Enable/disable AI auto-generated speech
 NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
-# AI auto-generation prompt template
+# AI auto-generation prompt template (combined with the character prompt)
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 

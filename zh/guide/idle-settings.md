@@ -63,7 +63,7 @@ NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
 
 ### 3. AI自动生成
 
-AI根据情况自动生成发言内容。通过自定义提示模板，可以控制生成发言的方向。
+AI根据情况自动生成发言内容。角色设置中的系统提示词会作为基础，并与提示模板组合使用，用于控制待机时的话题和生成发言的方向。
 
 **环境变量**:
 
@@ -71,7 +71,7 @@ AI根据情况自动生成发言内容。通过自定义提示模板，可以控
 # AI自动生成发言的启用/禁用
 NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
-# AI自动生成提示模板
+# AI自动生成提示模板（与角色提示词组合使用）
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 

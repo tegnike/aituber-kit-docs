@@ -599,7 +599,7 @@ NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
 # AI自動生成発話の有効/無効
 NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
-# AI自動生成プロンプトテンプレート
+# AI自動生成プロンプトテンプレート（キャラクタープロンプトと併用）
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 

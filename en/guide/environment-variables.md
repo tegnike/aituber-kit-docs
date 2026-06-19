@@ -598,7 +598,7 @@ NEXT_PUBLIC_IDLE_TIME_PERIOD_EVENING=""
 # Enable/disable AI auto-generated speech
 NEXT_PUBLIC_IDLE_AI_GENERATION_ENABLED="false"
 
-# AI auto-generation prompt template
+# AI auto-generation prompt template (combined with the character prompt)
 NEXT_PUBLIC_IDLE_AI_PROMPT_TEMPLATE=""
 ```
 
