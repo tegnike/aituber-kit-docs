@@ -703,6 +703,9 @@ NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
 
 # 客户端ID
 NEXT_PUBLIC_CLIENT_ID=""
+
+# 用于 /api/v1 Bearer 认证的 API 密钥
+AITUBERKIT_API_KEY=""
 ```
 
 ### 其他

@@ -702,6 +702,9 @@ NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
 
 # Client ID
 NEXT_PUBLIC_CLIENT_ID=""
+
+# API key for /api/v1 Bearer authentication
+AITUBERKIT_API_KEY=""
 ```
 
 ### Others

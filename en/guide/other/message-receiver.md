@@ -4,6 +4,8 @@
 
 Settings for accepting instructions to the AI character from external sources. When this feature is enabled, you can make the AI character speak through a dedicated API.
 
+The new external API is provided as purpose-specific endpoints under `/api/v1`. The existing `/api/messages` endpoint remains available for backward compatibility.
+
 **Environment Variables**:
 
 ```bash
@@ -12,7 +14,74 @@ NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
 
 # Client ID
 NEXT_PUBLIC_CLIENT_ID=""
+
+# API key for /api/v1 Bearer authentication
+AITUBERKIT_API_KEY=""
 ```
+
+## v1 API
+
+APIs under `/api/v1` are authenticated with the `Authorization: Bearer YOUR_API_KEY` header. Set the API key in `AITUBERKIT_API_KEY` in `.env.local`.
+
+### 1. Speak Directly (POST /api/v1/speak)
+
+Makes the character speak the provided text as is.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "Hello. This is a speech test from the external API.", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
+  'http://localhost:3000/api/v1/speak/?clientId=YOUR_CLIENT_ID'
+```
+
+### 2. Process as Chat Input (POST /api/v1/chat)
+
+Processes the message through the same flow as input entered in AITuberKit. If you specify `ai_generate` for `mode`, it is handled like the legacy `ai_generate` mode for AI response generation.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "Please give a short greeting for today’s stream.", "mode": "user_input", "interrupt": false}' \
+  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+```
+
+### 3. Stop Playback (POST /api/v1/stop)
+
+Stops the current speech and queue.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"mode": "all", "reason": "external_control"}' \
+  'http://localhost:3000/api/v1/stop/?clientId=YOUR_CLIENT_ID'
+```
+
+### 4. Get Status (GET /api/v1/status)
+
+Returns the connected client status, including speaking state, processing state, and queue counts.
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/status/?clientId=YOUR_CLIENT_ID'
+```
+
+### 5. Get Events (GET /api/v1/events)
+
+API events can be subscribed to as Server-Sent Events. In the API Console, you can add `snapshot=true` to check recent events.
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
+```
+
+## API Console
+
+The message sending page has been expanded into the API Console. You can run both the new `/api/v1` APIs and the existing `/api/messages` API from this screen.
 
 ## Enabling the Feature
 
@@ -23,11 +92,11 @@ You can also edit the client ID to any value you prefer.
 The client ID is required when sending messages from external sources.
 :::
 
-## Message Sending Page
+## Legacy Message Sending
 
-When enabled, a "Open Message Sending Page" link is displayed. From this page, you can instruct the AI character to speak from external sources.
+For backward compatibility, the legacy `/api/messages` endpoint remains available.
 
-The message sending page offers three methods to send messages:
+The legacy API offers three methods to send messages:
 
 ### 1. Make the AI Character Speak Directly (direct_send)
 

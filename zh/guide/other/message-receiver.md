@@ -4,6 +4,8 @@
 
 接受来自外部源的AI角色指令的设置。启用此功能后，您可以通过专用API让AI角色说话。
 
+新的外部API以 `/api/v1` 下按用途划分的端点提供。现有的 `/api/messages` 端点会继续保留，以保持向后兼容。
+
 **环境变量**:
 
 ```bash
@@ -12,7 +14,74 @@ NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
 
 # 客户端ID
 NEXT_PUBLIC_CLIENT_ID=""
+
+# 用于 /api/v1 Bearer 认证的 API 密钥
+AITUBERKIT_API_KEY=""
 ```
+
+## v1 API
+
+`/api/v1` 下的API使用 `Authorization: Bearer YOUR_API_KEY` 请求头进行认证。请在 `.env.local` 的 `AITUBERKIT_API_KEY` 中设置API密钥。
+
+### 1. 直接发言（POST /api/v1/speak）
+
+让角色直接说出指定文本。
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "你好。这是来自外部API的发言测试。", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
+  'http://localhost:3000/api/v1/speak/?clientId=YOUR_CLIENT_ID'
+```
+
+### 2. 作为聊天输入处理（POST /api/v1/chat）
+
+按照与 AITuberKit 输入框相同的流程处理消息。如果将 `mode` 指定为 `ai_generate`，则会像旧API的 `ai_generate` 一样作为AI回答生成输入处理。
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "请为今天的直播简短打个招呼。", "mode": "user_input", "interrupt": false}' \
+  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+```
+
+### 3. 停止（POST /api/v1/stop）
+
+停止当前发言和队列。
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"mode": "all", "reason": "external_control"}' \
+  'http://localhost:3000/api/v1/stop/?clientId=YOUR_CLIENT_ID'
+```
+
+### 4. 获取状态（GET /api/v1/status）
+
+获取已连接客户端的发言状态、处理状态和队列数量。
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/status/?clientId=YOUR_CLIENT_ID'
+```
+
+### 5. 获取事件（GET /api/v1/events）
+
+API事件可以通过 Server-Sent Events 订阅。在 API Console 中，可以添加 `snapshot=true` 查看最近事件。
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
+```
+
+## API Console
+
+消息发送页面已扩展为 API Console。您可以在此页面执行新的 `/api/v1` API 和现有的 `/api/messages` API。
 
 ## 启用功能
 
@@ -23,11 +92,11 @@ NEXT_PUBLIC_CLIENT_ID=""
 从外部源发送消息时需要客户端ID。
 :::
 
-## 消息发送页面
+## 旧版消息发送
 
-启用后，将显示"打开消息发送页面"链接。从此页面，您可以指示AI角色从外部源说话。
+为了保持向后兼容，旧版 `/api/messages` 端点仍然可以使用。
 
-消息发送页面提供三种发送消息的方法：
+旧版API提供三种发送消息的方法：
 
 ### 1. 让AI角色直接说话（direct_send）
 
