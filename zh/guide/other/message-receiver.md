@@ -4,7 +4,7 @@
 
 接受来自外部源的AI角色指令的设置。启用此功能后，您可以通过专用API让AI角色说话。
 
-新的外部API以 `/api/v1` 下按用途划分的端点提供。现有的 `/api/messages` 端点会继续保留，以保持向后兼容。
+外部API以 `/api/v1` 下按用途划分的端点提供。现有的 `/api/messages` 端点会继续保留，以保持向后兼容。
 
 **环境变量**:
 
@@ -81,7 +81,7 @@ curl -X GET \
 
 ## API Console
 
-消息发送页面已扩展为 API Console。您可以在此页面执行新的 `/api/v1` API 和现有的 `/api/messages` API。
+消息发送页面已扩展为 API Console。您可以在此页面执行 `/api/v1` API 和现有的 `/api/messages` API。
 
 ## 启用功能
 

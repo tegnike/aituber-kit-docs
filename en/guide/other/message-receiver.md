@@ -4,7 +4,7 @@
 
 Settings for accepting instructions to the AI character from external sources. When this feature is enabled, you can make the AI character speak through a dedicated API.
 
-The new external API is provided as purpose-specific endpoints under `/api/v1`. The existing `/api/messages` endpoint remains available for backward compatibility.
+The external API is provided as purpose-specific endpoints under `/api/v1`. The existing `/api/messages` endpoint remains available for backward compatibility.
 
 **Environment Variables**:
 
@@ -81,7 +81,7 @@ curl -X GET \
 
 ## API Console
 
-The message sending page has been expanded into the API Console. You can run both the new `/api/v1` APIs and the existing `/api/messages` API from this screen.
+The message sending page has been expanded into the API Console. You can run both the `/api/v1` APIs and the existing `/api/messages` API from this screen.
 
 ## Enabling the Feature
 
