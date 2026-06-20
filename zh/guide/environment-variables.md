@@ -330,6 +330,9 @@ NEXT_PUBLIC_AUDIO_MODE_VOICE=alloy
 ```bash
 # 启用外部链接模式
 NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
+
+# 外部连接 WebSocket URL
+NEXT_PUBLIC_EXTERNAL_LINKAGE_URL="ws://localhost:8000/ws"
 ```
 
 ## 语音合成设置

@@ -329,6 +329,9 @@ NEXT_PUBLIC_AUDIO_MODE_VOICE=alloy
 ```bash
 # Enable external linkage mode
 NEXT_PUBLIC_EXTERNAL_LINKAGE_MODE=true
+
+# External Linkage WebSocket URL
+NEXT_PUBLIC_EXTERNAL_LINKAGE_URL="ws://localhost:8000/ws"
 ```
 
 ## Voice Synthesis Settings
