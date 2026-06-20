@@ -703,6 +703,9 @@ NEXT_PUBLIC_MESSAGE_RECEIVER_ENABLED=false
 
 # クライアントID / Client ID
 NEXT_PUBLIC_CLIENT_ID=""
+
+# /api/v1 のBearer認証に使うAPIキー
+AITUBERKIT_API_KEY=""
 ```
 
 ### その他
