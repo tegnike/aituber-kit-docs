@@ -10,9 +10,9 @@ This page explains the basic settings of AITuberKit. For configuration using env
 
 ```bash
 # Default language setting (specify one of the following values)
-# ja: Japanese, en: English, ko: Korean, zh: Traditional Chinese, vi: Vietnamese
+# ja: Japanese, en: English, ko: Korean, zh-CN: Chinese (Simplified), zh-TW: Chinese (Traditional), vi: Vietnamese
 # fr: French, es: Spanish, pt: Portuguese, de: German
-# ru: Russian, it: Italian, ar: Arabic, hi: Hindi, pl: Polish
+# ru: Russian, it: Italian, ar: Arabic, hi: Hindi, pl: Polish, th: Thai
 NEXT_PUBLIC_SELECT_LANGUAGE=en
 ```
 
@@ -29,6 +29,7 @@ AITuberKit supports multiple languages, and you can choose from the following:
 - Polish
 - Portuguese
 - Russian
+- Simplified Chinese
 - Spanish
 - Thai
 - Traditional Chinese

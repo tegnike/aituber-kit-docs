@@ -32,15 +32,15 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 ```
 
-## 角色预设菜单显示设置
+## 快捷菜单显示设置
 
-您可以切换主页上显示的预设菜单按钮的显示状态。您可以根据需要关闭此选项以保持屏幕简洁。
+您可以切换主页上显示的快捷菜单按钮的显示状态。您可以根据需要关闭此选项以保持屏幕简洁。
 
 **环境变量**:
 
 ```bash
-# 角色预设菜单显示设置（true/false）
-NEXT_PUBLIC_SHOW_CHARACTER_PRESET_MENU=true
+# 快捷菜单显示设置（true/false）
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
 ```
 
 ## 时间戳设置

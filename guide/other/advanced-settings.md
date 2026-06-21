@@ -32,15 +32,15 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 ```
 
-## キャラクタープリセットメニュー表示設定
+## クイックメニュー表示設定
 
-ホーム画面で表示されるプリセットメニューボタンの表示/非表示を切り替えることができます。必要に応じてこのオプションをオフにすることで画面をシンプルに保つことができます。
+ホーム画面で表示されるクイックメニューボタンの表示/非表示を切り替えることができます。必要に応じてこのオプションをオフにすることで画面をシンプルに保つことができます。
 
 **環境変数**:
 
 ```bash
-# キャラクタープリセットメニューの表示設定（true/false）
-NEXT_PUBLIC_SHOW_CHARACTER_PRESET_MENU=true
+# クイックメニュー表示設定（true/false）
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
 ```
 
 ## タイムスタンプ設定

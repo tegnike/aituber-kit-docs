@@ -92,7 +92,7 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 
 ```bash
 # 選択するVRMモデルのパス
-NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
@@ -144,7 +144,7 @@ NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 
 ```bash
 # 選択するLive2Dモデルのモデルファイルのパス
-NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/modername/model3.json
+NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/nike01/nike01.model3.json
 
 # 感情設定（カンマ区切りで複数指定可能）
 NEXT_PUBLIC_NEUTRAL_EMOTIONS=Neutral
@@ -152,7 +152,7 @@ NEXT_PUBLIC_HAPPY_EMOTIONS=Happy,Happy2
 NEXT_PUBLIC_SAD_EMOTIONS=Sad,Sad2,Troubled
 NEXT_PUBLIC_ANGRY_EMOTIONS=Angry,Focus
 NEXT_PUBLIC_RELAXED_EMOTIONS=Relaxed
-NEXT_PUBLIC_SURPRISED_EMOTIONS=Surprised
+NEXT_PUBLIC_SURPRISED_EMOTIONS=Neutral
 
 # モーショングループ設定
 NEXT_PUBLIC_IDLE_MOTION_GROUP=Idle
@@ -161,7 +161,7 @@ NEXT_PUBLIC_HAPPY_MOTION_GROUP=Happy
 NEXT_PUBLIC_SAD_MOTION_GROUP=Sad
 NEXT_PUBLIC_ANGRY_MOTION_GROUP=Angry
 NEXT_PUBLIC_RELAXED_MOTION_GROUP=Relaxed
-NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
+NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```
 
 ## AI設定
@@ -173,11 +173,11 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
 ```bash
 # AIサービスの選択
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
+# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 選択するAIモデル名
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 # カスタムモデルを利用の有無
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -218,6 +218,9 @@ GOOGLE_API_KEY=...
 
 # サーチグラウンディング機能の有効化
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+
+# サーチグラウンディング機能の動的しきい値
+NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=""
 
 # Azure OpenAI API キー
 AZURE_API_KEY=...
@@ -268,6 +271,8 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # カスタムAPIでシステムメッセージを含めるかどうか（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+# 画像にMIMEタイプを含めるかどうか（true/false）
+NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=""
 
 # カスタムAPI URL（サーバーサイド秘匿用、設定時はNEXT_PUBLIC版より優先）
 CUSTOM_API_URL=""
@@ -486,7 +491,7 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 常時マイク入力モード（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI APIキー（OpenAI TTSモード用）
+# OpenAI APIキー（Whisper音声認識用）
 NEXT_PUBLIC_OPENAI_KEY=
 
 # 文字起こしモデル（whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe）
@@ -682,6 +687,9 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 # 映像表示の非表示設定（true/false）
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 
+# クイックメニュー表示設定（true/false）
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
+
 # タイムスタンプ含有設定（true/false）
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
@@ -719,8 +727,4 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # ページリロード時に常に環境変数を優先する設定
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
-
-# デモモードの有効/無効（true/false）
-# 有効にするとデモ用の注釈が表示されます
-NEXT_PUBLIC_DEMO_MODE="false"
 ```

@@ -21,7 +21,7 @@ A Live2D license is required for commercial use.
 
 ```bash
 # Path to the selected Live2D model file
-NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/modername/model3.json
+NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/nike01/nike01.model3.json
 
 # Emotion settings (multiple can be specified with commas)
 NEXT_PUBLIC_NEUTRAL_EMOTIONS=Neutral
@@ -29,7 +29,7 @@ NEXT_PUBLIC_HAPPY_EMOTIONS=Happy,Happy2
 NEXT_PUBLIC_SAD_EMOTIONS=Sad,Sad2,Troubled
 NEXT_PUBLIC_ANGRY_EMOTIONS=Angry,Focus
 NEXT_PUBLIC_RELAXED_EMOTIONS=Relaxed
-NEXT_PUBLIC_SURPRISED_EMOTIONS=Surprised
+NEXT_PUBLIC_SURPRISED_EMOTIONS=Neutral
 
 # Motion group settings
 NEXT_PUBLIC_IDLE_MOTION_GROUP=Idle
@@ -38,7 +38,7 @@ NEXT_PUBLIC_HAPPY_MOTION_GROUP=Happy
 NEXT_PUBLIC_SAD_MOTION_GROUP=Sad
 NEXT_PUBLIC_ANGRY_MOTION_GROUP=Angry
 NEXT_PUBLIC_RELAXED_MOTION_GROUP=Relaxed
-NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
+NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```
 
 ## Technical Implementation

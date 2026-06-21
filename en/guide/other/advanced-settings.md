@@ -32,15 +32,15 @@ Even when the preview is hidden, you can show it again at any time by clicking t
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 ```
 
-## Character Preset Menu Display Settings
+## Quick Menu Display Settings
 
-You can toggle the display of the preset menu button shown on the home screen. You can turn off this option to keep the screen simple as needed.
+You can toggle the display of the quick menu button shown on the home screen. You can turn off this option to keep the screen simple as needed.
 
 **Environment Variables**:
 
 ```bash
-# Character preset menu display setting (true/false)
-NEXT_PUBLIC_SHOW_CHARACTER_PRESET_MENU=true
+# Quick menu display setting (true/false)
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
 ```
 
 ## Timestamp Settings

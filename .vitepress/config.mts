@@ -211,6 +211,7 @@ export default defineConfig({
               items: [
                 { text: 'はじめに', link: '/guide/introduction' },
                 { text: 'クイックスタート', link: '/guide/quickstart' },
+                { text: 'かんたん設定', link: '/guide/easy-setup' },
                 { text: 'デプロイ', link: '/guide/deployment' },
               ],
             },
@@ -336,6 +337,7 @@ export default defineConfig({
               items: [
                 { text: 'Introduction', link: '/en/guide/introduction' },
                 { text: 'Quick Start', link: '/en/guide/quickstart' },
+                { text: 'Easy Setup', link: '/en/guide/easy-setup' },
                 { text: 'Deployment', link: '/en/guide/deployment' },
               ],
             },
@@ -463,6 +465,7 @@ export default defineConfig({
               items: [
                 { text: '介绍', link: '/zh/guide/introduction' },
                 { text: '快速开始', link: '/zh/guide/quickstart' },
+                { text: '简易设置', link: '/zh/guide/easy-setup' },
                 { text: '部署', link: '/zh/guide/deployment' },
               ],
             },

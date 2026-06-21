@@ -99,6 +99,7 @@ Hot reload is enabled with Docker Compose. Changes to the source code are reflec
 
 ## Next Steps
 
+- Use [Easy Setup](/en/guide/easy-setup) to configure the core settings in one place
 - Configure detailed settings in [Basic Settings](/en/guide/basic-settings)
 - Customize AI characters in [Character Settings](/en/guide/character/common)
 - Adjust AI behavior in [AI Settings](/en/guide/ai/common)

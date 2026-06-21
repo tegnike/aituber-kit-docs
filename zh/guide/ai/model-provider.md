@@ -8,9 +8,11 @@
 
 AITuberKit支持以下AI服务：
 
-- OpenAI - 提供GPT-5.2、GPT-5.1、GPT-4.1等高性能模型
-- Anthropic - 提供Claude Opus 4.5、Claude Sonnet 4.5等
-- Google Gemini - 提供Gemini 3 Pro、Gemini 2.5系列等
+![AI服务设置](/images/ai_settings_m4d8q.webp)
+
+- OpenAI - 提供GPT-5.4、GPT-5.3、GPT-5.2、GPT-5.1、GPT-4.1等高性能模型
+- Anthropic - 提供Claude Opus 4.6、Claude Sonnet 4.6等
+- Google Gemini - 提供Gemini 3.1、Gemini 3、Gemini 2.5系列等
 - Azure OpenAI - Azure平台上的OpenAI模型
 - xAI - 提供Grok模型
 - Groq - 提供专注于快速推理的各种模型
@@ -36,6 +38,9 @@ OPENAI_API_KEY=sk-...
 
 **支持的模型**:
 
+- gpt-5.4-pro
+- gpt-5.4
+- gpt-5.3-chat-latest
 - gpt-5.2-pro
 - gpt-5.2-chat-latest
 - gpt-5.2
@@ -67,14 +72,14 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 **支持的模型**:
 
+- claude-opus-4-6
+- claude-sonnet-4-6（默认）
 - claude-opus-4-5
 - claude-opus-4-1
 - claude-opus-4-0
-- claude-sonnet-4-5（默认）
+- claude-sonnet-4-5
 - claude-sonnet-4-0
 - claude-haiku-4-5
-- claude-3-7-sonnet-latest
-- claude-3-5-haiku-latest
 
 **获取API密钥**:
 可以从[Anthropic控制台](https://console.anthropic.com)获取API密钥。
@@ -88,18 +93,17 @@ GOOGLE_API_KEY=...
 
 **支持的模型**:
 
+- gemini-3.1-pro-preview
+- gemini-3.1-flash-image-preview
+- gemini-3.1-flash-lite-preview
 - gemini-3-pro-preview
+- gemini-3-pro-image-preview
+- gemini-3-flash-preview
 - gemini-2.5-pro
 - gemini-2.5-flash（默认）
 - gemini-2.5-flash-lite
 - gemini-2.5-flash-lite-preview-06-17
 - gemini-2.0-flash
-- gemini-1.5-pro
-- gemini-1.5-pro-latest
-- gemini-1.5-flash
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b
-- gemini-1.5-flash-8b-latest
 
 **获取API密钥**:
 可以从[Google AI Studio](https://aistudio.google.com/app/apikey?hl=zh)获取API密钥。
@@ -113,11 +117,11 @@ GOOGLE_API_KEY=...
 # 启用搜索接地功能
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
 # 搜索接地功能的动态阈值
-NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
+NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=0.3
 ```
 
 ::: tip
-搜索接地功能适用于Google Gemini 2.5系列、Gemini 2.0 Flash和Gemini 1.5系列模型。
+搜索接地功能适用于Google Gemini 3.1/3系列、Gemini 2.5系列和Gemini 2.0 Flash模型。
 :::
 
 ## Azure OpenAI
@@ -141,26 +145,19 @@ XAI_API_KEY=...
 
 **支持的模型**:
 
+- grok-4-1
+- grok-4-1-fast-reasoning
+- grok-4-1-fast-non-reasoning
 - grok-4-fast-non-reasoning
 - grok-4-fast-reasoning
 - grok-code-fast-1
 - grok-4（默认）
+- grok-4-0709
+- grok-4-latest
 - grok-3
 - grok-3-latest
-- grok-3-fast
-- grok-3-fast-latest
 - grok-3-mini
 - grok-3-mini-latest
-- grok-3-mini-fast
-- grok-3-mini-fast-latest
-- grok-2
-- grok-2-latest
-- grok-2-1212
-- grok-2-vision
-- grok-2-vision-latest
-- grok-2-vision-1212
-- grok-beta
-- grok-vision-beta
 
 **获取API密钥**:
 可以从[xAI仪表板](https://x.ai/api)获取API密钥。
@@ -232,16 +229,19 @@ MISTRALAI_API_KEY=...
 
 **支持的模型**:
 
+- pixtral-large-latest
 - mistral-large-latest（默认）
 - mistral-medium-latest
+- mistral-medium-2508
 - mistral-medium-2505
 - mistral-small-latest
-- pixtral-large-latest
-- pixtral-12b-2409
+- magistral-small-2507
+- magistral-medium-2507
 - magistral-small-2506
 - magistral-medium-2506
 - ministral-3b-latest
 - ministral-8b-latest
+- pixtral-12b-2409
 - open-mistral-7b
 - open-mixtral-8x7b
 - open-mixtral-8x22b
@@ -294,6 +294,9 @@ FIREWORKS_API_KEY=...
 - accounts/fireworks/models/qwq-32b
 - accounts/fireworks/models/yi-large
 - accounts/fireworks/models/kimi-k2-instruct
+- accounts/fireworks/models/kimi-k2-thinking
+- accounts/fireworks/models/kimi-k2p5
+- accounts/fireworks/models/minimax-m2
 
 **获取API密钥**:
 可以从[Fireworks仪表板](https://fireworks.ai/account/api-keys)获取API密钥。
@@ -374,6 +377,8 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # 在自定义API中启用系统消息（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+# 在图像对象中包含MIME类型（true/false）
+NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 ```
 
 ### 服务器端保密环境变量
@@ -422,6 +427,10 @@ CUSTOM_API_BODY=""
 - **Vercel AI SDK格式**：直接通过
 
 此外，还支持将OpenAI兼容格式的 `choices[0].delta.reasoning_content` 转换为思考过程数据。在设置中启用"显示思考过程"后，可以显示来自自定义API的思考过程。
+
+### 发送图像MIME类型
+
+启用多模态输入时，`NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE` 会控制图像对象中是否包含 `mimeType` 属性。当外部API要求带MIME类型的图像输入时，请启用此项。
 
 ::: warning 注意
 此API始终启用流式模式。请注意返回格式。<br>

@@ -8,7 +8,7 @@ VRM (Virtual Reality Model) is a 3D character model format, and in AITuberKit, y
 
 ```bash
 # Path to the selected VRM model
-NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0

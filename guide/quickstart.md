@@ -99,6 +99,7 @@ Docker Composeではホットリロードが有効です。ソースコードの
 
 ## 次のステップ
 
+- [かんたん設定](/guide/easy-setup)で最初に必要な設定をまとめて行う
 - [基本設定](/guide/basic-settings)で詳細な設定を行う
 - [キャラクター設定](/guide/character/common)でAIキャラクターをカスタマイズ
 - [AI設定](/guide/ai/common)でAIの動作を調整

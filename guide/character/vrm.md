@@ -8,7 +8,7 @@ VRM（Virtual Reality Model）は3Dキャラクターモデル形式で、AITube
 
 ```bash
 # 選択するVRMモデルのパス
-NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0

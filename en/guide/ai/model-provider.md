@@ -8,9 +8,11 @@ In AITuberKit, you can select and use various AI services (OpenAI, Anthropic, Go
 
 AITuberKit supports the following AI services:
 
-- OpenAI - Provides high-performance models such as GPT-5.2, GPT-5.1, GPT-4.1
-- Anthropic - Provides Claude Opus 4.5, Claude Sonnet 4.5, etc.
-- Google Gemini - Provides Gemini 3 Pro, Gemini 2.5 series, etc.
+![AI Settings](/images/ai_settings_m4d8q.webp)
+
+- OpenAI - Provides high-performance models such as GPT-5.4, GPT-5.3, GPT-5.2, GPT-5.1, GPT-4.1
+- Anthropic - Provides Claude Opus 4.6, Claude Sonnet 4.6, etc.
+- Google Gemini - Provides Gemini 3.1, Gemini 3, Gemini 2.5 series, etc.
 - Azure OpenAI - OpenAI models on the Azure platform
 - xAI - Provides Grok models
 - Groq - Provides various models specialized for fast inference
@@ -36,6 +38,9 @@ OPENAI_API_KEY=sk-...
 
 **Supported Models**:
 
+- gpt-5.4-pro
+- gpt-5.4
+- gpt-5.3-chat-latest
 - gpt-5.2-pro
 - gpt-5.2-chat-latest
 - gpt-5.2
@@ -67,14 +72,14 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 **Supported Models**:
 
+- claude-opus-4-6
+- claude-sonnet-4-6 (default)
 - claude-opus-4-5
 - claude-opus-4-1
 - claude-opus-4-0
-- claude-sonnet-4-5 (default)
+- claude-sonnet-4-5
 - claude-sonnet-4-0
 - claude-haiku-4-5
-- claude-3-7-sonnet-latest
-- claude-3-5-haiku-latest
 
 **Getting an API Key**:
 API keys can be obtained from the [Anthropic Console](https://console.anthropic.com).
@@ -88,18 +93,17 @@ GOOGLE_API_KEY=...
 
 **Supported Models**:
 
+- gemini-3.1-pro-preview
+- gemini-3.1-flash-image-preview
+- gemini-3.1-flash-lite-preview
 - gemini-3-pro-preview
+- gemini-3-pro-image-preview
+- gemini-3-flash-preview
 - gemini-2.5-pro
 - gemini-2.5-flash (default)
 - gemini-2.5-flash-lite
 - gemini-2.5-flash-lite-preview-06-17
 - gemini-2.0-flash
-- gemini-1.5-pro
-- gemini-1.5-pro-latest
-- gemini-1.5-flash
-- gemini-1.5-flash-latest
-- gemini-1.5-flash-8b
-- gemini-1.5-flash-8b-latest
 
 **Getting an API Key**:
 API keys can be obtained from [Google AI Studio](https://aistudio.google.com/app/apikey?hl=en).
@@ -113,11 +117,11 @@ Additionally, for some models, you can set a dynamic threshold to determine whet
 # Enable Search Grounding feature
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
 # Dynamic threshold for Search Grounding feature
-NEXT_PUBLIC_SEARCH_GROUNDING_THRESHOLD=0.3
+NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=0.3
 ```
 
 ::: tip
-The Search Grounding feature is available with Google Gemini 2.5 series, Gemini 2.0 Flash, and Gemini 1.5 series models.
+The Search Grounding feature is available with Google Gemini 3.1/3 series, Gemini 2.5 series, and Gemini 2.0 Flash models.
 :::
 
 ## Azure OpenAI
@@ -141,26 +145,19 @@ XAI_API_KEY=...
 
 **Supported Models**:
 
+- grok-4-1
+- grok-4-1-fast-reasoning
+- grok-4-1-fast-non-reasoning
 - grok-4-fast-non-reasoning
 - grok-4-fast-reasoning
 - grok-code-fast-1
 - grok-4 (default)
+- grok-4-0709
+- grok-4-latest
 - grok-3
 - grok-3-latest
-- grok-3-fast
-- grok-3-fast-latest
 - grok-3-mini
 - grok-3-mini-latest
-- grok-3-mini-fast
-- grok-3-mini-fast-latest
-- grok-2
-- grok-2-latest
-- grok-2-1212
-- grok-2-vision
-- grok-2-vision-latest
-- grok-2-vision-1212
-- grok-beta
-- grok-vision-beta
 
 **Getting an API Key**:
 API keys can be obtained from the [xAI Dashboard](https://x.ai/api).
@@ -232,16 +229,19 @@ MISTRALAI_API_KEY=...
 
 **Supported Models**:
 
+- pixtral-large-latest
 - mistral-large-latest (default)
 - mistral-medium-latest
+- mistral-medium-2508
 - mistral-medium-2505
 - mistral-small-latest
-- pixtral-large-latest
-- pixtral-12b-2409
+- magistral-small-2507
+- magistral-medium-2507
 - magistral-small-2506
 - magistral-medium-2506
 - ministral-3b-latest
 - ministral-8b-latest
+- pixtral-12b-2409
 - open-mistral-7b
 - open-mixtral-8x7b
 - open-mixtral-8x22b
@@ -294,6 +294,9 @@ FIREWORKS_API_KEY=...
 - accounts/fireworks/models/qwq-32b
 - accounts/fireworks/models/yi-large
 - accounts/fireworks/models/kimi-k2-instruct
+- accounts/fireworks/models/kimi-k2-thinking
+- accounts/fireworks/models/kimi-k2p5
+- accounts/fireworks/models/minimax-m2
 
 **Getting an API Key**:
 API keys can be obtained from the [Fireworks Dashboard](https://fireworks.ai/account/api-keys).
@@ -374,6 +377,8 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # Enable system messages in custom API (true/false)
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+# Include MIME type in image objects (true/false)
+NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 ```
 
 ### Server-Side Secret Environment Variables
@@ -422,6 +427,10 @@ The custom API's SSE streaming responses are automatically normalized to Vercel 
 - **Vercel AI SDK format**: Passed through as-is
 
 Additionally, `choices[0].delta.reasoning_content` in OpenAI-compatible format is converted to reasoning process data. You can display the thinking process from custom APIs by enabling "Show thinking process" in the settings.
+
+### Sending Image MIME Types
+
+When multimodal input is enabled, `NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE` controls whether the `mimeType` property is included in image objects. Enable this when the external API expects image input with a MIME type.
 
 ::: warning Note
 Streaming mode is always enabled for this API. Please pay attention to the response format.<br>

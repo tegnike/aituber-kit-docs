@@ -99,6 +99,7 @@ Docker Compose启用了热重载功能。源代码的更改会实时反映。
 
 ## 下一步
 
+- 使用[简易设置](/zh/guide/easy-setup)集中配置最初需要的设置
 - 在[基本设置](/zh/guide/basic-settings)中进行详细设置
 - 在[角色设置](/zh/guide/character/common)中自定义AI角色
 - 在[AI设置](/zh/guide/ai/common)中调整AI行为

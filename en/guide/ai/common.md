@@ -9,11 +9,11 @@ AITuberKit works with multiple AI services to enable character conversation capa
 ```bash
 # AI service selection
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
+# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # Selected AI model name
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 # Whether to use custom model
 NEXT_PUBLIC_CUSTOM_MODEL="false"

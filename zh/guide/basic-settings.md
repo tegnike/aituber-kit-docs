@@ -10,9 +10,9 @@
 
 ```bash
 # 默认语言设置（指定以下值之一）
-# ja: 日语, en: 英语, ko: 韩语, zh: 中文(繁体), vi: 越南语
+# ja: 日语, en: 英语, ko: 韩语, zh-CN: 中文(简体), zh-TW: 中文(繁体), vi: 越南语
 # fr: 法语, es: 西班牙语, pt: 葡萄牙语, de: 德语
-# ru: 俄语, it: 意大利语, ar: 阿拉伯语, hi: 印地语, pl: 波兰语
+# ru: 俄语, it: 意大利语, ar: 阿拉伯语, hi: 印地语, pl: 波兰语, th: 泰语
 NEXT_PUBLIC_SELECT_LANGUAGE=en
 ```
 
@@ -31,6 +31,7 @@ AITuberKit支持多种语言，您可以从以下语言中选择：
 - 俄语 (Russian)
 - 西班牙语 (Spanish)
 - 泰语 (Thai)
+- 中文（简体）(Simplified Chinese)
 - 中文（繁体）(Traditional Chinese)
 - 越南语 (Vietnamese)
 

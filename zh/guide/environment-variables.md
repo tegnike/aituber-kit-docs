@@ -92,7 +92,7 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 
 ```bash
 # 所选VRM模型的路径
-NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 
 # VRM角色的照明强度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
@@ -144,7 +144,7 @@ NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 
 ```bash
 # 所选Live2D模型的模型文件路径
-NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/modername/model3.json
+NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/nike01/nike01.model3.json
 
 # 情绪设置（可以用逗号指定多个）
 NEXT_PUBLIC_NEUTRAL_EMOTIONS=Neutral
@@ -152,7 +152,7 @@ NEXT_PUBLIC_HAPPY_EMOTIONS=Happy,Happy2
 NEXT_PUBLIC_SAD_EMOTIONS=Sad,Sad2,Troubled
 NEXT_PUBLIC_ANGRY_EMOTIONS=Angry,Focus
 NEXT_PUBLIC_RELAXED_EMOTIONS=Relaxed
-NEXT_PUBLIC_SURPRISED_EMOTIONS=Surprised
+NEXT_PUBLIC_SURPRISED_EMOTIONS=Neutral
 
 # 动作组设置
 NEXT_PUBLIC_IDLE_MOTION_GROUP=Idle
@@ -161,7 +161,7 @@ NEXT_PUBLIC_HAPPY_MOTION_GROUP=Happy
 NEXT_PUBLIC_SAD_MOTION_GROUP=Sad
 NEXT_PUBLIC_ANGRY_MOTION_GROUP=Angry
 NEXT_PUBLIC_RELAXED_MOTION_GROUP=Relaxed
-NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
+NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```
 
 ## AI设置
@@ -173,11 +173,11 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
 ```bash
 # AI服务选择
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
+# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 所选AI模型名称
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 # 是否使用自定义模型
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -218,6 +218,9 @@ GOOGLE_API_KEY=...
 
 # 启用搜索接地功能
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+
+# 搜索接地功能的动态阈值
+NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=""
 
 # Azure OpenAI API密钥
 AZURE_API_KEY=...
@@ -268,6 +271,8 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # 在自定义API中启用系统消息（true/false）
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+# 在图像对象中包含MIME类型（true/false）
+NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=""
 
 # 自定义API URL（服务器端保密用，设置时优先于NEXT_PUBLIC版本）
 CUSTOM_API_URL=""
@@ -486,7 +491,7 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 连续麦克风输入模式（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API密钥（用于OpenAI TTS模式）
+# OpenAI API密钥（用于Whisper语音识别）
 NEXT_PUBLIC_OPENAI_KEY=
 
 # 转录模型（whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe）
@@ -682,6 +687,9 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 # 视频显示隐藏设置（true/false）
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 
+# 快捷菜单显示设置（true/false）
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
+
 # 时间戳包含设置（true/false）
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
@@ -719,8 +727,4 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # 页面重新加载时始终优先使用环境变量的设置
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
-
-# 启用/禁用演示模式（true/false）
-# 启用后将显示演示用注释
-NEXT_PUBLIC_DEMO_MODE="false"
 ```

@@ -2,7 +2,7 @@
 
 ## 概述
 
-语音输入设置允许您配置麦克风语音识别的工作方式。您可以在两种方法之间选择：使用浏览器的语音识别API（WebSpeech API）或使用OpenAI的Text-to-Speech API。
+语音输入设置允许您配置麦克风语音识别的工作方式。您可以在两种方法之间选择：使用浏览器的语音识别API（WebSpeech API）或使用OpenAI的Whisper/Transcribe API。
 
 **环境变量**:
 
@@ -11,7 +11,7 @@
 NEXT_PUBLIC_SPEECH_RECOGNITION_MODE=browser
 
 # 语音识别超时（秒）
-NEXT_PUBLIC_INITIAL_SPEECH_TIMEOUT=30
+NEXT_PUBLIC_INITIAL_SPEECH_TIMEOUT=5.0
 
 # 静音检测超时（秒）
 NEXT_PUBLIC_NO_SPEECH_TIMEOUT=2
@@ -22,7 +22,7 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 连续麦克风输入模式（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API密钥（用于OpenAI TTS模式）
+# OpenAI API密钥（用于Whisper语音识别）
 NEXT_PUBLIC_OPENAI_KEY=
 
 # 转录模型（whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe）
@@ -48,12 +48,12 @@ NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=whisper-1
 选择用于语音输入的识别引擎。
 
 1. **浏览器语音识别**：使用浏览器内置的WebSpeech API。不需要互联网连接，识别结果实时显示。语言自动跟随浏览器设置。
-2. **OpenAI TTS**：使用OpenAI的TTS API。可能进行更准确的识别，但需要API密钥。语音数据在录音完成后发送到服务器，因此在识别发生前需要一点时间。
+2. **Whisper语音识别**：使用OpenAI的语音转录API。可能进行更准确的识别，但需要API密钥。语音数据在录音完成后发送到服务器，因此在识别发生前需要一点时间。
 
 您可以通过点击按钮在这些选项之间切换。
 
 ::: warning 注意
-通常，推荐使用浏览器语音识别模式，因为它具有更高的准确性和更快的识别速度。但是，如果您使用的浏览器不支持WebSpeech API，如Firefox，请选择OpenAI TTS模式。
+通常，推荐使用浏览器语音识别模式，因为它具有更高的准确性和更快的识别速度。但是，如果您使用的浏览器不支持WebSpeech API，如Firefox，请选择Whisper语音识别模式。
 :::
 
 ::: warning 注意
@@ -92,11 +92,11 @@ NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=whisper-1
 
 ## 2. OpenAI API设置
 
-当选择OpenAI TTS模式时，需要以下设置。
+当选择Whisper语音识别模式时，需要以下设置。
 
 ### OpenAI API密钥
 
-输入用于OpenAI TTS模式的OpenAI API密钥。您可以从OpenAI控制面板获取API密钥。
+输入用于Whisper语音识别模式的OpenAI API密钥。您可以从OpenAI控制面板获取API密钥。
 
 ### 模型选择
 

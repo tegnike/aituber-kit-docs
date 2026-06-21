@@ -2,7 +2,7 @@
 
 ## Overview
 
-Voice input settings allow you to configure how voice recognition works with a microphone. You can choose between two methods: using the browser's voice recognition API (WebSpeech API) or using OpenAI's Text-to-Speech API.
+Voice input settings allow you to configure how voice recognition works with a microphone. You can choose between two methods: using the browser's voice recognition API (WebSpeech API) or using OpenAI's Whisper/Transcribe API.
 
 **Environment Variables**:
 
@@ -11,7 +11,7 @@ Voice input settings allow you to configure how voice recognition works with a m
 NEXT_PUBLIC_SPEECH_RECOGNITION_MODE=browser
 
 # Speech recognition timeout (seconds)
-NEXT_PUBLIC_INITIAL_SPEECH_TIMEOUT=30
+NEXT_PUBLIC_INITIAL_SPEECH_TIMEOUT=5.0
 
 # Silence detection timeout (seconds)
 NEXT_PUBLIC_NO_SPEECH_TIMEOUT=2
@@ -22,7 +22,7 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # Continuous microphone input mode (true/false)
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API key (for OpenAI TTS mode)
+# OpenAI API key (for Whisper speech recognition)
 NEXT_PUBLIC_OPENAI_KEY=
 
 # Transcription model (whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe)
@@ -48,12 +48,12 @@ There are the following methods for microphone input:
 Select the recognition engine to use for voice input.
 
 1. **Browser speech recognition**: Uses the browser's built-in WebSpeech API. No internet connection is required, and recognition results are displayed in real-time. The language automatically follows the browser's settings.
-2. **OpenAI TTS**: Uses OpenAI's TTS API. More accurate recognition is possible, but an API key is required. Voice data is sent to the server after recording is complete, so it takes a little time before recognition occurs.
+2. **Whisper speech recognition**: Uses OpenAI's speech transcription API. More accurate recognition is possible, but an API key is required. Voice data is sent to the server after recording is complete, so it takes a little time before recognition occurs.
 
 You can switch between these by clicking the button.
 
 ::: warning Note
-Generally, browser speech recognition mode is recommended as it has higher accuracy and faster recognition speed. However, if you are using a browser that does not support the WebSpeech API, such as Firefox, please select OpenAI TTS mode.
+Generally, browser speech recognition mode is recommended as it has higher accuracy and faster recognition speed. However, if you are using a browser that does not support the WebSpeech API, such as Firefox, please select Whisper speech recognition mode.
 :::
 
 ::: warning Note
@@ -92,11 +92,11 @@ In Realtime API mode, speech recognition timeout, silence detection timeout, sil
 
 ## 2. OpenAI API Settings
 
-When OpenAI TTS mode is selected, the following settings are required.
+When Whisper speech recognition mode is selected, the following settings are required.
 
 ### OpenAI API Key
 
-Enter the OpenAI API key for using OpenAI TTS mode. You can obtain an API key from the OpenAI dashboard.
+Enter the OpenAI API key for using Whisper speech recognition mode. You can obtain an API key from the OpenAI dashboard.
 
 ### Model Selection
 

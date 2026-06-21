@@ -92,7 +92,7 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 
 ```bash
 # Path to the selected VRM model
-NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/default.vrm
+NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
@@ -144,7 +144,7 @@ NEXT_PUBLIC_MEMORY_MAX_CONTEXT_TOKENS=1000
 
 ```bash
 # Path to the model file of the selected Live2D model
-NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/modername/model3.json
+NEXT_PUBLIC_SELECTED_LIVE2D_PATH=/live2d/nike01/nike01.model3.json
 
 # Emotion settings (multiple can be specified with commas)
 NEXT_PUBLIC_NEUTRAL_EMOTIONS=Neutral
@@ -152,7 +152,7 @@ NEXT_PUBLIC_HAPPY_EMOTIONS=Happy,Happy2
 NEXT_PUBLIC_SAD_EMOTIONS=Sad,Sad2,Troubled
 NEXT_PUBLIC_ANGRY_EMOTIONS=Angry,Focus
 NEXT_PUBLIC_RELAXED_EMOTIONS=Relaxed
-NEXT_PUBLIC_SURPRISED_EMOTIONS=Surprised
+NEXT_PUBLIC_SURPRISED_EMOTIONS=Neutral
 
 # Motion group settings
 NEXT_PUBLIC_IDLE_MOTION_GROUP=Idle
@@ -161,7 +161,7 @@ NEXT_PUBLIC_HAPPY_MOTION_GROUP=Happy
 NEXT_PUBLIC_SAD_MOTION_GROUP=Sad
 NEXT_PUBLIC_ANGRY_MOTION_GROUP=Angry
 NEXT_PUBLIC_RELAXED_MOTION_GROUP=Relaxed
-NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Surprised
+NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```
 
 ## AI Settings
@@ -173,11 +173,11 @@ For details, see [AI Settings](/guide/ai/common).
 ```bash
 # AI service selection
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, localLlm, dify
+# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # Selected AI model name
-NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4.1-mini
+NEXT_PUBLIC_SELECT_AI_MODEL=gpt-4o-2024-11-20
 
 # Whether to use custom model
 NEXT_PUBLIC_CUSTOM_MODEL="false"
@@ -218,6 +218,9 @@ GOOGLE_API_KEY=...
 
 # Enable search grounding feature
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
+
+# Dynamic retrieval threshold for search grounding
+NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=""
 
 # Azure OpenAI API key
 AZURE_API_KEY=...
@@ -268,6 +271,8 @@ NEXT_PUBLIC_CUSTOM_API_HEADERS=""
 NEXT_PUBLIC_CUSTOM_API_BODY=""
 # Enable system messages in custom API (true/false)
 NEXT_PUBLIC_INCLUDE_SYSTEM_MESSAGES_IN_CUSTOM_API=true
+# Include MIME type in image objects (true/false)
+NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=""
 
 # Custom API URL (server-side secret, takes priority over NEXT_PUBLIC version)
 CUSTOM_API_URL=""
@@ -485,7 +490,7 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # Continuous microphone input mode (true/false)
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API key (for OpenAI TTS mode)
+# OpenAI API key (for Whisper speech recognition)
 NEXT_PUBLIC_OPENAI_KEY=
 
 # Transcription model (whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe)
@@ -681,6 +686,9 @@ NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 # Hide video display setting (true/false)
 NEXT_PUBLIC_HIDE_VIDEO_DISPLAY="false"
 
+# Quick menu display settings (true/false)
+NEXT_PUBLIC_SHOW_QUICK_MENU=true
+
 # Timestamp inclusion setting (true/false)
 NEXT_PUBLIC_INCLUDE_TIMESTAMP_IN_USER_MESSAGE=false
 
@@ -718,8 +726,4 @@ NEXT_PUBLIC_CHAT_LOG_WIDTH=400
 
 # Always prioritize environment variables on page reload
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
-
-# Enable/disable demo mode (true/false)
-# When enabled, demo annotations are displayed
-NEXT_PUBLIC_DEMO_MODE="false"
 ```
