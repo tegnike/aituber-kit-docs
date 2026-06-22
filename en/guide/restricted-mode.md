@@ -15,6 +15,10 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 When deploying to Cloudflare, this is automatically set to `true` by the build script.
 :::
 
+::: info
+When a button or toggle is disabled because of restricted mode or another condition, the settings screen shows a short reason near the affected item. If you cannot operate a control, check that note first.
+:::
+
 ## Available Features
 
 The following features work normally even in restricted mode.

@@ -29,6 +29,16 @@ AITuberKit supports the following AI services:
 
 Most AI services allow you to select models from predefined choices, but if you want to use a custom model, please enable "Use Custom Model".
 
+### Model Selection Icons
+
+In model selectors, emoji may appear next to model names to indicate supported capabilities.
+
+| Icon | Meaning |
+| --- | --- |
+| 📷 | Supports image input |
+| 🔍 | Supports search. Currently shown for Google Gemini models that support Search Grounding |
+| 💡 | Supports reasoning. Reasoning effort levels or reasoning token budgets may apply |
+
 ## OpenAI
 
 ```bash

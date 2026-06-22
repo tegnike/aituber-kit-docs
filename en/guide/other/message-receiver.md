@@ -146,6 +146,10 @@ The message sending page has been expanded into the API Console. You can run bot
 You can toggle ON/OFF the feature that accepts API operations from external sources. When turned ON, a client ID is automatically generated.<br>
 You can also edit the client ID to any value you prefer.
 
+::: warning
+In restricted mode environments, this toggle is disabled, and the API and polling also stop. The settings screen shows the disabled reason near the toggle.
+:::
+
 :::tip Hint
 The client ID is required when sending messages from external sources.
 :::
