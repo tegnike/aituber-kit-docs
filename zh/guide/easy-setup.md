@@ -29,23 +29,27 @@
 
 ## 2. AI 与对话
 
-设置 AI 服务、模型和会话量相关的基本项目。
+设置开始对话所需的 AI 服务、API 密钥、模型等项目。
 
-- **AI 服务**: 从 OpenAI、Anthropic、Google Gemini 等服务中选择
-- **模型**: 选择所选 AI 服务使用的模型
+- **AI 服务**: 从 OpenAI、Anthropic、Google Gemini、Azure OpenAI 等服务中选择。选择器中会显示各服务的图标
+- **API 密钥**: 所选 AI 服务需要 API 密钥时在此输入
+- **模型**: 选择所选 AI 服务使用的模型。大多数服务都可以从列表中选择
+- **服务专用项目**: 根据需要输入 Azure OpenAI 端点、Dify URL、LM Studio/Ollama 的 URL 和模型名、OpenRouter 的模型名、Custom API 端点等
 - **自定义模型**: 输入列表中没有的模型名时启用
-- **最大 token 数**: 设置 AI 回复的最大 token 数
-- **过去消息数**: 设置发送给 AI 的过去会话条数
 
-API 密钥、推理、多模态和外部连接可在[AI 服务设置](/zh/guide/ai/model-provider)中调整。长期记忆请参阅[记忆设置](/zh/guide/memory-settings)。
+![AI 与语音的简易设置](/images/easy_setup_ai_voice_m9q2x.webp)
+
+推理、多模态、外部连接、最大 token 数、过去消息数等详细设置可在[AI 服务设置](/zh/guide/ai/model-provider)中调整。长期记忆请参阅[记忆设置](/zh/guide/memory-settings)。
 
 ## 3. 语音
 
-选择角色发声时使用的语音合成引擎。
+选择角色发声时使用的语音合成引擎，并设置发声所需的最低限度项目。
 
 支持的引擎包括 VOICEVOX、Koeiromap、Google Text-to-Speech、Style-Bert-VITS2、AivisSpeech、Aivis Cloud API、GSVI TTS、ElevenLabs、Cartesia、OpenAI TTS 和 Azure TTS。
 
-说话人和语音参数可在[语音设置](/zh/guide/voice-settings)中调整。麦克风输入请参阅[语音输入设置](/zh/guide/speech-input-settings)。
+根据所选引擎，简易设置会显示服务器 URL、API 密钥、说话人、模型 ID、模型 UUID、Style ID 或 Style 名称、Voice ID、TTS 模型等项目。例如，VOICEVOX 会显示服务器 URL 和说话人，Aivis Cloud API 会显示 API 密钥、模型 UUID 和 Style 设置。
+
+语速、音高、语调等详细语音参数可在[语音设置](/zh/guide/voice-settings)中调整。麦克风输入请参阅[语音输入设置](/zh/guide/speech-input-settings)。
 
 ## 4. 需要时使用的设置
 
@@ -55,4 +59,3 @@ API 密钥、推理、多模态和外部连接可在[AI 服务设置](/zh/guide/
 - [YouTube 设置](/zh/guide/youtube-settings)
 - [空闲模式设置](/zh/guide/idle-settings)
 - [高级设置](/zh/guide/other/advanced-settings)
-

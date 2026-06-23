@@ -29,23 +29,27 @@
 
 ## 2. AIと会話
 
-AIサービス、モデル、会話量に関する基本項目を設定します。
+AIサービス、APIキー、モデルなど、会話を始めるために必要な項目を設定します。
 
-- **AIサービス**: OpenAI、Anthropic、Google Geminiなどから選択します
-- **モデル**: 選択したAIサービスで使用するモデルを選択します
+- **AIサービス**: OpenAI、Anthropic、Google Gemini、Azure OpenAIなどから選択します。選択肢には各サービスのアイコンが表示されます
+- **APIキー**: 選択したAIサービスでAPIキーが必要な場合に入力します
+- **モデル**: 選択したAIサービスで使用するモデルを選択します。多くのサービスでは一覧から選べます
+- **サービス別の追加項目**: Azure OpenAIのエンドポイント、DifyのURL、LM Studio/OllamaのURLとモデル名、OpenRouterのモデル名、Custom APIのエンドポイントなどを必要に応じて入力します
 - **カスタムモデル**: 一覧にないモデル名を手入力する場合に有効化します
-- **最大トークン数**: AI応答の最大トークン数を設定します
-- **過去メッセージ数**: AIに渡す過去会話の件数を設定します
 
-詳細なAPIキー、推論、マルチモーダル、外部連携は[AIサービス設定](/guide/ai/model-provider)で設定できます。長期記憶を使う場合は[記憶設定](/guide/memory-settings)を確認してください。
+![AIと声のかんたん設定](/images/easy_setup_ai_voice_m9q2x.webp)
+
+推論、マルチモーダル、外部連携、最大トークン数、過去メッセージ数などの詳細は[AIサービス設定](/guide/ai/model-provider)で設定できます。長期記憶を使う場合は[記憶設定](/guide/memory-settings)を確認してください。
 
 ## 3. 声
 
-キャラクターが発話に使う音声合成エンジンを選択します。
+キャラクターが発話に使う音声合成エンジンと、発話に必要な最低限の項目を設定します。
 
 対応エンジンは、VOICEVOX、Koeiromap、Google Text-to-Speech、Style-Bert-VITS2、AivisSpeech、Aivis Cloud API、GSVI TTS、ElevenLabs、Cartesia、OpenAI TTS、Azure TTSです。
 
-声質や話者IDなどの詳細は[合成音声設定](/guide/voice-settings)で設定します。マイク入力は[音声入力設定](/guide/speech-input-settings)を確認してください。
+選択したエンジンに応じて、サーバーURL、APIキー、話者、モデルID、モデルUUID、スタイルIDまたはスタイル名、Voice ID、TTSモデルなどが表示されます。たとえばVOICEVOXではサーバーURLと話者、Aivis Cloud APIではAPIキー、モデルUUID、スタイルを設定できます。
+
+話速、ピッチ、イントネーションなどの詳細な音声パラメータは[合成音声設定](/guide/voice-settings)で調整します。マイク入力は[音声入力設定](/guide/speech-input-settings)を確認してください。
 
 ## 4. 必要になったら使う設定
 
@@ -55,4 +59,3 @@ AIサービス、モデル、会話量に関する基本項目を設定します
 - [YouTube設定](/guide/youtube-settings)
 - [アイドルモード設定](/guide/idle-settings)
 - [高度な設定](/guide/other/advanced-settings)
-
