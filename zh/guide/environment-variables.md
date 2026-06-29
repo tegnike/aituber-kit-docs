@@ -716,6 +716,19 @@ NEXT_PUBLIC_CLIENT_ID=""
 AITUBERKIT_API_KEY=""
 ```
 
+### 嵌入小组件
+
+详情请参阅[嵌入小组件](/zh/guide/other/embed-widget)。
+
+```bash
+# 默认嵌入ID
+NEXT_PUBLIC_AITUBERKIT_DEFAULT_EMBED_ID="default"
+
+# 按嵌入ID划分的公开设置（JSON）
+# 如果省略 allowedOrigins，则任意网站都可以显示该嵌入。
+NEXT_PUBLIC_AITUBERKIT_EMBEDS='{"default":{"characterName":"Nike-chan","modelType":"vrm","selectedVrmPath":"/vrm/nikechan_v2.vrm","showAssistantText":true,"showCharacterName":true}}'
+```
+
 ### 其他
 
 ```bash

@@ -716,6 +716,20 @@ NEXT_PUBLIC_CLIENT_ID=""
 AITUBERKIT_API_KEY=""
 ```
 
+### 埋め込みウィジェット
+
+詳細については[埋め込みウィジェット](/guide/other/embed-widget)をご覧ください。
+
+```bash
+# デフォルト埋め込みID / Default embed ID
+NEXT_PUBLIC_AITUBERKIT_DEFAULT_EMBED_ID="default"
+
+# 埋め込みIDごとの公開設定（JSON） / Public settings by embed ID (JSON)
+# allowedOriginsを指定しない場合は任意のサイトで表示可能 /
+# When allowedOrigins is omitted, the embed can be shown on any site.
+NEXT_PUBLIC_AITUBERKIT_EMBEDS='{"default":{"characterName":"ニケちゃん","modelType":"vrm","selectedVrmPath":"/vrm/nikechan_v2.vrm","showAssistantText":true,"showCharacterName":true}}'
+```
+
 ### その他
 
 ```bash

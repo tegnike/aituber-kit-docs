@@ -715,6 +715,19 @@ NEXT_PUBLIC_CLIENT_ID=""
 AITUBERKIT_API_KEY=""
 ```
 
+### Embed Widget
+
+For details, see [Embed Widget](/en/guide/other/embed-widget).
+
+```bash
+# Default embed ID
+NEXT_PUBLIC_AITUBERKIT_DEFAULT_EMBED_ID="default"
+
+# Public settings by embed ID (JSON)
+# When allowedOrigins is omitted, the embed can be shown on any site.
+NEXT_PUBLIC_AITUBERKIT_EMBEDS='{"default":{"characterName":"Nike-chan","modelType":"vrm","selectedVrmPath":"/vrm/nikechan_v2.vrm","showAssistantText":true,"showCharacterName":true}}'
+```
+
 ### Others
 
 ```bash

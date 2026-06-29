@@ -302,6 +302,10 @@ export default defineConfig({
                   text: 'API設定',
                   link: '/guide/other/message-receiver',
                 },
+                {
+                  text: '埋め込みウィジェット',
+                  link: '/guide/other/embed-widget',
+                },
               ],
             },
             {
@@ -430,6 +434,10 @@ export default defineConfig({
                   text: 'API Settings',
                   link: '/en/guide/other/message-receiver',
                 },
+                {
+                  text: 'Embed Widget',
+                  link: '/en/guide/other/embed-widget',
+                },
               ],
             },
             {
@@ -551,6 +559,10 @@ export default defineConfig({
                 {
                   text: 'API设置',
                   link: '/zh/guide/other/message-receiver',
+                },
+                {
+                  text: '嵌入小组件',
+                  link: '/zh/guide/other/embed-widget',
                 },
               ],
             },
