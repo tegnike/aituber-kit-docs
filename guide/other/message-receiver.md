@@ -154,11 +154,15 @@ curl -X GET \
 クライアントIDは、外部からのメッセージ送信時に必要となります。
 :::
 
-## 旧APIのメッセージ送信
+## メッセージ送信API（POST /api/v1/messages）
 
-互換性維持のため、旧 `/api/messages` エンドポイントも引き続き利用できます。
+メッセージ送信ページでは、用途に応じて複数の `/api/v1` エンドポイントを実行できます。APIを直接呼び出す場合は、`clientId` と `Authorization: Bearer YOUR_API_KEY` ヘッダーを指定してください。
 
-旧APIでは以下の3つの方法でメッセージを送信できます：
+:::tip ヒント
+`YOUR_API_KEY` にはサーバー側の `AITUBERKIT_API_KEY` に設定した値を使用します。ブラウザに公開される環境変数ではなく、サーバー側の値として管理してください。
+:::
+
+`/api/v1/messages/` は、発話・AI生成・通常入力を `type` で切り替えて送信できる汎用エンドポイントです。`messages` には複数メッセージ、`text` には単一メッセージを指定できます。
 
 ### 1. AIキャラクターにそのまま発言させる（direct_send）
 
@@ -171,8 +175,9 @@ curl -X GET \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"]}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=direct_send'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"], "type": "direct_send"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 2. AIで回答を生成してから発言させる（ai_generate）
@@ -191,8 +196,9 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["この画像について説明してください。"], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["今日の予定を教えてください。"], "type": "ai_generate"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 3. ユーザー入力を送信する（user_input）
@@ -208,9 +214,22 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["こんにちは、今日もいい天気ですね。"], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"], "type": "user_input"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
+
+## 用途別エンドポイント
+
+用途が決まっている場合は、以下のエンドポイントも利用できます。
+
+| エンドポイント | 用途 |
+| --- | --- |
+| `POST /api/v1/speak/` | テキストをそのまま発話させる |
+| `POST /api/v1/chat/` | 通常入力またはAI生成として処理する |
+| `POST /api/v1/stop/` | 現在の発話や待機キューを停止する |
+| `GET /api/v1/status/` | 接続中クライアントの状態を取得する |
+| `GET /api/v1/events/` | 直近のAPIイベントを確認する |
 
 ## APIレスポンス
 

@@ -81,3 +81,23 @@ Adding a mask to lightweight meshes like eyebrows or highlights will also resolv
 
 If your model renders correctly in AITuberKit after following these steps, you're all set.
 For Live2D settings, please refer to [this page](character/live2d.md).
+
+## Game Commentary Mode Does Not Show the Screen Share Mini Window
+
+::: warning Symptoms
+Screen sharing permission is granted, but the mini window that should appear in the top-right corner is not shown. The game commentary countdown continues, but capture fails and no commentary is generated.
+:::
+
+### Cause
+
+- The screen share preview is hidden or stopped.
+- Screen sharing has ended in the browser.
+- The selected model does not support multimodal input, or another mutually exclusive mode is enabled.
+
+### Solution
+
+1. Start screen sharing from the "Capture" button in the menu and select a sharing target.
+2. Confirm that the mini window appears in the top-right corner. If it was hidden, restore it with the show button.
+3. In Game Commentary settings, confirm that a multimodal model is selected.
+4. Confirm that mutually exclusive modes such as Realtime API, audio mode, external integration, idle, presence detection, or slide mode are not enabled.
+5. Check the browser screen sharing indicator. If sharing has ended, start Capture again.

@@ -154,11 +154,15 @@ In restricted mode environments, this toggle is disabled, and the API and pollin
 The client ID is required when sending messages from external sources.
 :::
 
-## Legacy Message Sending
+## Message API (POST /api/v1/messages)
 
-For backward compatibility, the legacy `/api/messages` endpoint remains available.
+The message sending page can run multiple `/api/v1` endpoints depending on the use case. When calling the API directly, include `clientId` and the `Authorization: Bearer YOUR_API_KEY` header.
 
-The legacy API offers three methods to send messages:
+:::tip Hint
+Use the value configured in the server-side `AITUBERKIT_API_KEY` as `YOUR_API_KEY`. Manage it as a server-side value, not as a browser-exposed environment variable.
+:::
+
+`/api/v1/messages/` is a general endpoint that switches between direct speech, AI generation, and normal user input with the `type` field. Use `messages` for multiple messages or `text` for a single message.
 
 ### 1. Make the AI Character Speak Directly (direct_send)
 
@@ -171,8 +175,9 @@ The legacy API offers three methods to send messages:
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."]}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=direct_send'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."], "type": "direct_send"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 2. Generate an Answer with AI and Then Speak (ai_generate)
@@ -191,8 +196,9 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["Please describe this image."], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["Please tell me your schedule for today."], "type": "ai_generate"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 3. Send User Input (user_input)
@@ -208,9 +214,22 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["Hello, the weather is nice today."], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."], "type": "user_input"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
+
+## Purpose-specific Endpoints
+
+When the purpose is fixed, you can also use these endpoints.
+
+| Endpoint | Purpose |
+| --- | --- |
+| `POST /api/v1/speak/` | Make the character speak text directly |
+| `POST /api/v1/chat/` | Process text as normal input or AI generation |
+| `POST /api/v1/stop/` | Stop current speech or queued work |
+| `GET /api/v1/status/` | Get connected client status |
+| `GET /api/v1/events/` | Check recent API events |
 
 ## API Response
 

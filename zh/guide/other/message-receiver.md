@@ -154,11 +154,15 @@ curl -X GET \
 从外部源发送消息时需要客户端ID。
 :::
 
-## 旧版消息发送
+## 消息发送 API（POST /api/v1/messages）
 
-为了保持向后兼容，旧版 `/api/messages` 端点仍然可以使用。
+消息发送页面可以根据用途执行多个 `/api/v1` 端点。直接调用 API 时，请指定 `clientId` 和 `Authorization: Bearer YOUR_API_KEY` 请求头。
 
-旧版API提供三种发送消息的方法：
+:::tip 提示
+`YOUR_API_KEY` 使用服务器端 `AITUBERKIT_API_KEY` 中设置的值。请将其作为服务器端值管理，不要作为暴露给浏览器的环境变量管理。
+:::
+
+`/api/v1/messages/` 是一个通用端点，可通过 `type` 字段切换直接发话、AI生成和普通用户输入。`messages` 用于多条消息，`text` 用于单条消息。
 
 ### 1. 让AI角色直接说话（direct_send）
 
@@ -171,8 +175,9 @@ curl -X GET \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"]}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=direct_send'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"], "type": "direct_send"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 2. 用AI生成回答然后说话（ai_generate）
@@ -191,8 +196,9 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["请描述一下这张图片。"], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=ai_generate'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["请告诉我你今天的日程安排。"], "type": "ai_generate"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
 
 ### 3. 发送用户输入（user_input）
@@ -208,9 +214,22 @@ curl -X POST \
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"messages": ["你好，今天天气真好。"], "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/messages/?clientId=YOUR_CLIENT_ID&type=user_input'
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"], "type": "user_input"}' \
+  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
 ```
+
+## 按用途划分的端点
+
+用途固定时，也可以使用以下端点。
+
+| 端点 | 用途 |
+| --- | --- |
+| `POST /api/v1/speak/` | 让角色直接说出文本 |
+| `POST /api/v1/chat/` | 作为普通输入或AI生成处理 |
+| `POST /api/v1/stop/` | 停止当前发话或队列 |
+| `GET /api/v1/status/` | 获取已连接客户端状态 |
+| `GET /api/v1/events/` | 查看最近的API事件 |
 
 ## API响应
 
