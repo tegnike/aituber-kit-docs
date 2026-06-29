@@ -396,6 +396,25 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 如果您不希望将API密钥或端点暴露给浏览器，可以使用服务器端专用环境变量。这些变量优先于 `NEXT_PUBLIC_` 版本。
 
 ```bash
+# 控制匿名API路由是否可以使用服务器端API密钥、CUSTOM_API_*、写入API或服务器资源
+# disabled: 默认值。仅允许请求侧提供的API密钥，拒绝服务器端密钥和受保护的服务器资源
+# protected: 需要 Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
+# demo: 仅允许来自 allowed origins / same-origin 的浏览器请求（建议配合速率限制）
+# unprotected: 旧版兼容。公开URL不推荐使用
+AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
+
+# protected模式使用的Bearer令牌
+AITUBERKIT_SERVER_SECRET_TOKEN=""
+
+# demo模式允许的Origin（逗号分隔）。未指定时仅允许与Host相同的Origin
+AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demo模式的简单速率限制（每个IP和功能每分钟次数，生产环境建议配合WAF等）
+AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# 将Custom API的reasoning或provider metadata转发给客户端（通常建议false）
+AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
+
 # 自定义API URL（服务器端保密用，设置时优先于NEXT_PUBLIC版本）
 CUSTOM_API_URL=""
 # 自定义API头（服务器端保密用，覆盖合并到前端设置）
@@ -407,6 +426,10 @@ CUSTOM_API_BODY=""
 ::: tip 优先级
 - **URL**：设置 `CUSTOM_API_URL` 后，将优先于 `NEXT_PUBLIC_CUSTOM_API_URL`
 - **头/主体**：服务器端环境变量的值将覆盖合并到前端设置
+:::
+
+::: warning 公开URL
+使用 `CUSTOM_API_*` 或 `OPENAI_API_KEY` 等服务器端密钥的API，默认会通过 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` 被拒绝。公开演示环境请设置 `demo` 和 `AITUBERKIT_ALLOWED_ORIGINS`，外部应用或管理用途请设置 `protected` 和 `AITUBERKIT_SERVER_SECRET_TOKEN`。`unprotected` 仅用于旧版兼容，不推荐在公开URL中使用。
 :::
 
 ### 会话ID（threadId）自动发送

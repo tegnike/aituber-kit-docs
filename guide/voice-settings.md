@@ -64,6 +64,8 @@ NEXT_PUBLIC_VOICEVOX_INTONATION=1.0
 
 VOICEVOX Engine APIにアクセスするためのURLを設定します。ローカルでVOICEVOXを実行している場合の標準的なURLは `http://localhost:50021` です。
 
+公開環境で `VOICEVOX_SERVER_URL` をサーバー側環境変数として設定する場合、このURLを使うTTS APIは `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` の制御対象になります。公開デモでは `demo`、外部アプリや管理用途では `protected` を設定してください。
+
 ### 話者選択
 
 VOICEVOXで利用可能な話者から選択します。「ボイスを試聴する」ボタンで選択した話者の音声をテスト再生できます。
@@ -173,6 +175,8 @@ NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ### サーバーURL
 
 AivisSpeechサーバーのURLを設定します。ローカルでAivisSpeechを実行している場合の標準的なURLは `http://localhost:10101` です。
+
+公開環境で `AIVIS_SPEECH_SERVER_URL` をサーバー側環境変数として設定する場合、このURLを使うTTS APIは `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` の制御対象になります。公開デモでは `demo`、外部アプリや管理用途では `protected` を設定してください。
 
 ### 話者選択
 
@@ -349,4 +353,3 @@ Azure TTSのエンドポイントURLを設定します。
 
 - **ボイスタイプ**：使用する音声タイプを選択します
 - **話速**：0.25〜4.0の範囲で調整可能
-

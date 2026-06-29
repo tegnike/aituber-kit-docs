@@ -282,6 +282,31 @@ CUSTOM_API_HEADERS=""
 CUSTOM_API_BODY=""
 ```
 
+### サーバー側秘匿キー・リソースのAPI利用制御
+
+```bash
+# サーバー側のAPIキー、CUSTOM_API_*、書き込み/サーバーリソースAPIを匿名APIから使うかどうか
+# disabled: デフォルト。リクエスト側APIキーのみ許可し、サーバー側秘匿値や保護対象リソースは拒否
+# protected: Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN が必要
+# demo: allowed origins / same-origin のブラウザリクエストのみ許可（レート制限併用推奨）
+# unprotected: 従来互換。公開URLでは非推奨
+AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
+
+# protectedモードで使用するBearerトークン
+AITUBERKIT_SERVER_SECRET_TOKEN=""
+
+# demoモードで許可するOrigin（カンマ区切り）。未指定時はHostと同一Originのみ許可
+AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demoモードの簡易レート制限（IP・機能ごとの1分あたり回数、本番ではWAF等も併用）
+AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# Custom APIのreasoningやprovider metadataをクライアントへ転送する（通常はfalse推奨）
+AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
+```
+
+`CUSTOM_API_*`、サーバー側APIキー、ログ保存、VOICEVOX/AivisSpeechのサーバーURL、話者一覧更新など、サーバー側の秘匿値やリソースを使うAPIはこの設定で制御されます。公開URLにデプロイする場合は、少なくとも `disabled`、`protected`、または `demo` のいずれかを明示してください。
+
 ### マルチモーダル設定
 
 ```bash

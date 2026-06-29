@@ -396,6 +396,25 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 If you don't want to expose API keys or endpoints to the browser, you can use server-side only environment variables. These take priority over their `NEXT_PUBLIC_` counterparts.
 
 ```bash
+# Controls whether anonymous API routes may use server-side API keys, CUSTOM_API_*, write APIs, or server resources
+# disabled: default. Allow request-provided API keys only; reject server secrets and protected server resources
+# protected: require Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
+# demo: allow browser requests from allowed origins / same-origin only; pair with rate limits
+# unprotected: legacy compatibility. Not recommended for public URLs
+AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
+
+# Bearer token used in protected mode
+AITUBERKIT_SERVER_SECRET_TOKEN=""
+
+# Comma-separated origins allowed in demo mode. When omitted, only same-host origin is allowed
+AITUBERKIT_ALLOWED_ORIGINS=""
+
+# Simple demo-mode rate limit per IP and feature per minute. Pair with WAF/rate limits in production
+AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# Forward Custom API reasoning/provider metadata to clients (false is recommended)
+AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
+
 # Custom API URL (server-side secret, takes priority over NEXT_PUBLIC version)
 CUSTOM_API_URL=""
 # Custom API headers (server-side secret, merged over frontend settings)
@@ -407,6 +426,10 @@ CUSTOM_API_BODY=""
 ::: tip Priority
 - **URL**: When `CUSTOM_API_URL` is set, it takes priority over `NEXT_PUBLIC_CUSTOM_API_URL`
 - **Headers/Body**: Server-side environment variable values are merged over the frontend settings
+:::
+
+::: warning Public URLs
+APIs that use server-side secrets such as `CUSTOM_API_*` or `OPENAI_API_KEY` are rejected by default with `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"`. For public demos, configure `demo` with `AITUBERKIT_ALLOWED_ORIGINS`. For external apps or administrative use, configure `protected` with `AITUBERKIT_SERVER_SECRET_TOKEN`. `unprotected` exists for legacy compatibility and is not recommended for public URLs.
 :::
 
 ### Session ID (threadId) Auto-Send

@@ -282,6 +282,31 @@ CUSTOM_API_HEADERS=""
 CUSTOM_API_BODY=""
 ```
 
+### 服务器端密钥和资源 API 访问控制
+
+```bash
+# 控制匿名API路由是否可以使用服务器端API密钥、CUSTOM_API_*、写入API或服务器资源
+# disabled: 默认值。仅允许请求侧提供的API密钥，拒绝服务器端密钥和受保护的服务器资源
+# protected: 需要 Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
+# demo: 仅允许来自 allowed origins / same-origin 的浏览器请求（建议配合速率限制）
+# unprotected: 旧版兼容。公开URL不推荐使用
+AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
+
+# protected模式使用的Bearer令牌
+AITUBERKIT_SERVER_SECRET_TOKEN=""
+
+# demo模式允许的Origin（逗号分隔）。未指定时仅允许与Host相同的Origin
+AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demo模式的简单速率限制（每个IP和功能每分钟次数，生产环境建议配合WAF等）
+AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# 将Custom API的reasoning或provider metadata转发给客户端（通常建议false）
+AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
+```
+
+使用服务器端密钥或资源的API会受到这些设置控制，例如 `CUSTOM_API_*`、服务器端API密钥、聊天日志保存、VOICEVOX/AivisSpeech 服务器URL以及说话人列表更新等。部署到公开URL时，请至少明确选择 `disabled`、`protected` 或 `demo` 之一。
+
 ### 多模态设置
 
 ```bash

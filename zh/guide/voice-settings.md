@@ -62,6 +62,8 @@ NEXT_PUBLIC_VOICEVOX_INTONATION=1.0
 
 设置访问VOICEVOX Engine API的URL。本地运行VOICEVOX的标准URL是`http://localhost:50021`。
 
+在公开部署中将 `VOICEVOX_SERVER_URL` 设置为服务器端环境变量时，使用该URL的TTS API会受到 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` 控制。公开演示环境请使用 `demo`，外部应用或管理用途请使用 `protected`。
+
 ### 说话者选择
 
 从VOICEVOX中可用的说话者中选择。您可以使用"测试语音"按钮测试所选说话者的声音。
@@ -171,6 +173,8 @@ NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ### 服务器URL
 
 设置AivisSpeech服务器的URL。本地运行AivisSpeech的标准URL是`http://localhost:10101`。
+
+在公开部署中将 `AIVIS_SPEECH_SERVER_URL` 设置为服务器端环境变量时，使用该URL的TTS API会受到 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` 控制。公开演示环境请使用 `demo`，外部应用或管理用途请使用 `protected`。
 
 ### 说话者选择
 
@@ -346,4 +350,3 @@ Microsoft Azure提供的多语言语音合成服务。
 
 - **语音类型**：选择要使用的语音类型
 - **说话速度**：可在0.25至4.0范围内调整
-

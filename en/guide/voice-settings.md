@@ -63,6 +63,8 @@ NEXT_PUBLIC_VOICEVOX_INTONATION=1.0
 
 Set the URL to access the VOICEVOX Engine API. The standard URL for running VOICEVOX locally is `http://localhost:50021`.
 
+When `VOICEVOX_SERVER_URL` is configured as a server-side environment variable in a public deployment, the TTS API that uses this URL is controlled by `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`. Use `demo` for public demos, or `protected` for external apps and administrative use.
+
 ### Speaker Selection
 
 Select from available speakers in VOICEVOX. You can test play the selected speaker's voice with the "Test Voice" button.
@@ -172,6 +174,8 @@ NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ### Server URL
 
 Set the URL for the AivisSpeech server. The standard URL for running AivisSpeech locally is `http://localhost:10101`.
+
+When `AIVIS_SPEECH_SERVER_URL` is configured as a server-side environment variable in a public deployment, the TTS API that uses this URL is controlled by `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`. Use `demo` for public demos, or `protected` for external apps and administrative use.
 
 ### Speaker Selection
 
@@ -347,4 +351,3 @@ Set the Azure TTS endpoint URL.
 
 - **Voice Type**: Select the voice type to use
 - **Speaking Speed**: Adjustable in the range of 0.25 to 4.0
-

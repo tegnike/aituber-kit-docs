@@ -396,6 +396,25 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 APIキーやエンドポイントをブラウザに公開したくない場合は、サーバーサイド専用の環境変数を使用できます。これらの環境変数は`NEXT_PUBLIC_`版より優先されます。
 
 ```bash
+# サーバー側のAPIキー、CUSTOM_API_*、書き込み/サーバーリソースAPIを匿名APIから使うかどうか
+# disabled: デフォルト。リクエスト側APIキーのみ許可し、サーバー側秘匿値や保護対象リソースは拒否
+# protected: Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN が必要
+# demo: allowed origins / same-origin のブラウザリクエストのみ許可（レート制限併用推奨）
+# unprotected: 従来互換。公開URLでは非推奨
+AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
+
+# protectedモードで使用するBearerトークン
+AITUBERKIT_SERVER_SECRET_TOKEN=""
+
+# demoモードで許可するOrigin（カンマ区切り）。未指定時はHostと同一Originのみ許可
+AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demoモードの簡易レート制限（IP・機能ごとの1分あたり回数、本番ではWAF等も併用）
+AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# Custom APIのreasoningやprovider metadataをクライアントへ転送する（通常はfalse推奨）
+AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
+
 # カスタムAPI URL（サーバーサイド秘匿用、設定時はNEXT_PUBLIC版より優先）
 CUSTOM_API_URL=""
 # カスタムAPIヘッダー（サーバーサイド秘匿用、フロントエンド設定に上書きマージ）
@@ -407,6 +426,10 @@ CUSTOM_API_BODY=""
 ::: tip 優先順位
 - **URL**: `CUSTOM_API_URL` が設定されている場合、`NEXT_PUBLIC_CUSTOM_API_URL` より優先されます
 - **ヘッダー・ボディ**: フロントエンド設定をベースに、サーバーサイド環境変数の値で上書きマージされます
+:::
+
+::: warning 公開URLでの利用
+`CUSTOM_API_*` や `OPENAI_API_KEY` などのサーバー側秘匿値を使うAPIは、デフォルトでは `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` により拒否されます。公開デモでは `demo` と `AITUBERKIT_ALLOWED_ORIGINS` を設定し、外部アプリや管理用途から呼ぶ場合は `protected` と `AITUBERKIT_SERVER_SECRET_TOKEN` を使用してください。`unprotected` は従来互換用で、公開URLでは推奨されません。
 :::
 
 ### セッションID（threadId）の自動送信
