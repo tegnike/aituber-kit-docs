@@ -305,7 +305,7 @@ AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
 
-APIs that use server-side secrets or resources, such as `CUSTOM_API_*`, server-side API keys, chat log saving, VOICEVOX/AivisSpeech server URLs, and speaker-list updates, are controlled by these settings. When deploying to a public URL, explicitly choose at least one of `disabled`, `protected`, or `demo`.
+APIs that use server-side secrets or resources, such as `CUSTOM_API_*`, server-side API keys, chat log saving, VOICEVOX/AivisSpeech server URLs, and speaker-list updates, are controlled by these settings. When deploying to a public URL, explicitly choose at least one of `disabled`, `protected`, or `demo`. If users provide their own API keys in the browser settings, this setting usually requires no additional action.
 
 ### Multimodal Settings
 

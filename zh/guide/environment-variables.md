@@ -305,7 +305,7 @@ AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
 
-使用服务器端密钥或资源的API会受到这些设置控制，例如 `CUSTOM_API_*`、服务器端API密钥、聊天日志保存、VOICEVOX/AivisSpeech 服务器URL以及说话人列表更新等。部署到公开URL时，请至少明确选择 `disabled`、`protected` 或 `demo` 之一。
+使用服务器端密钥或资源的API会受到这些设置控制，例如 `CUSTOM_API_*`、服务器端API密钥、聊天日志保存、VOICEVOX/AivisSpeech 服务器URL以及说话人列表更新等。部署到公开URL时，请至少明确选择 `disabled`、`protected` 或 `demo` 之一。如果用户在浏览器设置中使用自己的API密钥，通常不需要为此设置进行额外操作。
 
 ### 多模态设置
 

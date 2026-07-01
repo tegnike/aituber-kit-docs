@@ -305,7 +305,7 @@ AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
 
-`CUSTOM_API_*`、サーバー側APIキー、ログ保存、VOICEVOX/AivisSpeechのサーバーURL、話者一覧更新など、サーバー側の秘匿値やリソースを使うAPIはこの設定で制御されます。公開URLにデプロイする場合は、少なくとも `disabled`、`protected`、または `demo` のいずれかを明示してください。
+`CUSTOM_API_*`、サーバー側APIキー、ログ保存、VOICEVOX/AivisSpeechのサーバーURL、話者一覧更新など、サーバー側の秘匿値やリソースを使うAPIはこの設定で制御されます。公開URLにデプロイする場合は、少なくとも `disabled`、`protected`、または `demo` のいずれかを明示してください。利用者が各自のAPIキーをブラウザ設定から使う通常構成では、この設定による追加対応は基本的に不要です。
 
 ### マルチモーダル設定
 

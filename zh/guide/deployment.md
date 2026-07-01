@@ -23,6 +23,8 @@
 部署到Vercel时，请将API密钥设置为Vercel环境变量，防止客户端暴露。带有`NEXT_PUBLIC_`前缀的环境变量会暴露给客户端，因此不要用于API密钥。
 
 当公开API路由使用服务器端API密钥或 `CUSTOM_API_*` 时，请设置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`。公开演示环境建议使用 `demo` 和 `AITUBERKIT_ALLOWED_ORIGINS`，外部应用或管理用途建议使用 `protected` 和 `AITUBERKIT_SERVER_SECRET_TOKEN`。公开URL不推荐使用 `unprotected`。
+
+如果用户在浏览器设置中使用自己的API密钥，通常不需要为此设置进行额外操作。
 :::
 
 ## Cloudflare

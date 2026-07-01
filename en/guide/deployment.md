@@ -23,6 +23,8 @@ As a Next.js application, deploying to Vercel is the easiest option.
 When deploying to Vercel, set API keys as Vercel environment variables to prevent client-side exposure. Environment variables prefixed with `NEXT_PUBLIC_` are exposed to the client, so never use them for API keys.
 
 When public API routes use server-side API keys or `CUSTOM_API_*`, configure `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`. For public demos, use `demo` with `AITUBERKIT_ALLOWED_ORIGINS`. For external apps or administrative use, use `protected` with `AITUBERKIT_SERVER_SECRET_TOKEN`. `unprotected` is not recommended for public URLs.
+
+If users provide their own API keys in the browser settings, this setting usually requires no additional action.
 :::
 
 ## Cloudflare
