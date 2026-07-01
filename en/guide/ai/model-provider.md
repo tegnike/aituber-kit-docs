@@ -399,7 +399,7 @@ If you don't want to expose API keys or endpoints to the browser, you can use se
 # Controls whether anonymous API routes may use server-side API keys, CUSTOM_API_*, write APIs, or server resources
 # disabled: default. Allow request-provided API keys only; reject server secrets and protected server resources
 # protected: require Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
-# demo: allow browser requests from allowed origins / same-origin only; pair with rate limits
+# demo: allow browser requests from allowed origins / same-origin only. Also require a demo token when AITUBERKIT_DEMO_ACCESS_TOKEN is set; pair with rate limits
 # unprotected: legacy compatibility. Not recommended for public URLs
 AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
 
@@ -408,6 +408,9 @@ AITUBERKIT_SERVER_SECRET_TOKEN=""
 
 # Comma-separated origins allowed in demo mode. When omitted, only same-host origin is allowed
 AITUBERKIT_ALLOWED_ORIGINS=""
+
+# Optional demo-only token required as X-AITuberKit-Demo-Token in demo mode when set
+AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # Simple demo-mode rate limit per IP and feature per minute. Pair with WAF/rate limits in production
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"

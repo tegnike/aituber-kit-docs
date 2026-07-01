@@ -288,7 +288,7 @@ CUSTOM_API_BODY=""
 # 控制匿名API路由是否可以使用服务器端API密钥、CUSTOM_API_*、写入API或服务器资源
 # disabled: 默认值。仅允许请求侧提供的API密钥，拒绝服务器端密钥和受保护的服务器资源
 # protected: 需要 Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
-# demo: 仅允许来自 allowed origins / same-origin 的浏览器请求（建议配合速率限制）
+# demo: 仅允许来自 allowed origins / same-origin 的浏览器请求。设置 AITUBERKIT_DEMO_ACCESS_TOKEN 时还需要demo令牌（建议配合速率限制）
 # unprotected: 旧版兼容。公开URL不推荐使用
 AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
 
@@ -297,6 +297,9 @@ AITUBERKIT_SERVER_SECRET_TOKEN=""
 
 # demo模式允许的Origin（逗号分隔）。未指定时仅允许与Host相同的Origin
 AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demo模式中作为 X-AITuberKit-Demo-Token 要求的可选专用令牌
+AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # demo模式的简单速率限制（每个IP和功能每分钟次数，生产环境建议配合WAF等）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"

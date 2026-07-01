@@ -288,7 +288,7 @@ CUSTOM_API_BODY=""
 # サーバー側のAPIキー、CUSTOM_API_*、書き込み/サーバーリソースAPIを匿名APIから使うかどうか
 # disabled: デフォルト。リクエスト側APIキーのみ許可し、サーバー側秘匿値や保護対象リソースは拒否
 # protected: Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN が必要
-# demo: allowed origins / same-origin のブラウザリクエストのみ許可（レート制限併用推奨）
+# demo: allowed origins / same-origin のブラウザリクエストのみ許可。AITUBERKIT_DEMO_ACCESS_TOKEN設定時はdemoトークンも要求（レート制限併用推奨）
 # unprotected: 従来互換。公開URLでは非推奨
 AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"
 
@@ -297,6 +297,9 @@ AITUBERKIT_SERVER_SECRET_TOKEN=""
 
 # demoモードで許可するOrigin（カンマ区切り）。未指定時はHostと同一Originのみ許可
 AITUBERKIT_ALLOWED_ORIGINS=""
+
+# demoモードで X-AITuberKit-Demo-Token として要求する任意の専用トークン
+AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # demoモードの簡易レート制限（IP・機能ごとの1分あたり回数、本番ではWAF等も併用）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
