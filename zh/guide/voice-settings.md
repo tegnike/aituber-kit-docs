@@ -66,7 +66,9 @@ NEXT_PUBLIC_VOICEVOX_INTONATION=1.0
 
 ### 说话者选择
 
-从VOICEVOX中可用的说话者中选择。您可以使用"测试语音"按钮测试所选说话者的声音。
+从VOICEVOX中可用的说话者中选择。您可以使用"更新说话者列表"按钮获取最新的说话者列表。您可以使用"测试语音"按钮测试所选说话者的声音。
+
+在本地环境中更新说话者列表时，需要允许访问服务器端资源。请在 `.env.local` 中设置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"`，然后重新启动 AITuberKit。不要在公开URL中使用 `unprotected`；请改用 `protected` 或 `demo`。
 
 ### 语音参数调整
 
@@ -179,6 +181,8 @@ NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 ### 说话者选择
 
 从AivisSpeech中可用的说话者中选择。您可以使用"更新说话者列表"按钮更新说话者列表。
+
+在本地环境中更新说话者列表时，需要允许访问服务器端资源。请在 `.env.local` 中设置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"`，然后重新启动 AITuberKit。不要在公开URL中使用 `unprotected`；请改用 `protected` 或 `demo`。
 
 ### 语音参数调整
 

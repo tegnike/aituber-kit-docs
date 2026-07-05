@@ -67,7 +67,9 @@ When `VOICEVOX_SERVER_URL` is configured as a server-side environment variable i
 
 ### Speaker Selection
 
-Select from available speakers in VOICEVOX. You can test play the selected speaker's voice with the "Test Voice" button.
+Select from available speakers in VOICEVOX. You can fetch the latest speaker list with the "Update Speaker List" button. You can test play the selected speaker's voice with the "Test Voice" button.
+
+To update the speaker list in a local environment, allow access to server-side resources. Set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` in `.env.local`, then restart AITuberKit. Do not use `unprotected` on public URLs; use `protected` or `demo` instead.
 
 ### Voice Parameter Adjustment
 
@@ -180,6 +182,8 @@ When `AIVIS_SPEECH_SERVER_URL` is configured as a server-side environment variab
 ### Speaker Selection
 
 Select from available speakers in AivisSpeech. You can update the speaker list with the "Update Speaker List" button.
+
+To update the speaker list in a local environment, allow access to server-side resources. Set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` in `.env.local`, then restart AITuberKit. Do not use `unprotected` on public URLs; use `protected` or `demo` instead.
 
 ### Voice Parameter Adjustment
 

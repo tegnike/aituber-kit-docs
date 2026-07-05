@@ -68,7 +68,9 @@ VOICEVOX Engine APIにアクセスするためのURLを設定します。ロー�
 
 ### 話者選択
 
-VOICEVOXで利用可能な話者から選択します。「ボイスを試聴する」ボタンで選択した話者の音声をテスト再生できます。
+VOICEVOXで利用可能な話者から選択します。「話者リストを更新」ボタンで最新の話者リストを取得できます。「ボイスを試聴する」ボタンで選択した話者の音声をテスト再生できます。
+
+ローカル環境で話者リストを更新するには、サーバー側リソースへのアクセスを許可する必要があります。`.env.local` に `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` を設定してから、AITuberKitを再起動してください。公開URLでは `unprotected` は使用せず、`protected` または `demo` を利用してください。
 
 ### 音声パラメータ調整
 
@@ -181,6 +183,8 @@ AivisSpeechサーバーのURLを設定します。ローカルでAivisSpeechを�
 ### 話者選択
 
 AivisSpeechで利用可能な話者から選択します。「話者リストを更新」ボタンで最新の話者リストを取得できます。
+
+ローカル環境で話者リストを更新するには、サーバー側リソースへのアクセスを許可する必要があります。`.env.local` に `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` を設定してから、AITuberKitを再起動してください。公開URLでは `unprotected` は使用せず、`protected` または `demo` を利用してください。
 
 ### 音声パラメータ調整
 
