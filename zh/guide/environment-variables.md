@@ -29,6 +29,12 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Cloudflare部署时设置为true
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
+# 演示模式注意事项显示（true/false）
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# 部署到GitHub Pages等子路径时使用的基础路径
+NEXT_PUBLIC_BASE_PATH=""
+
 # Live2D功能的启用/禁用（true/false）
 NEXT_PUBLIC_LIVE2D_ENABLED="false"
 
@@ -37,6 +43,9 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
 # 助手文本显示设置（true/false）
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# 回答框样式（bubble: 玻璃气泡, borderless: 无边框字幕风格）
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 
 # 角色名称显示设置（true/false）
 NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
@@ -72,6 +81,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="预设4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="预设5"
 
 # 角色预设
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="你是一个名叫Nike的AI助手。"
 NEXT_PUBLIC_CHARACTER_PRESET2="你是一个名叫Nike的AI助手。"
 NEXT_PUBLIC_CHARACTER_PRESET3="你是一个名叫Nike的AI助手。"
@@ -255,8 +265,6 @@ OPENROUTER_API_KEY=...
 # 例如 Ollama: http://localhost:11434/v1/chat/completions
 # 例如 LM Studio: http://localhost:1234/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# 本地LLM模型
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 # Dify API密钥
 DIFY_API_KEY=""
@@ -287,6 +295,7 @@ CUSTOM_API_BODY=""
 ```bash
 # 控制匿名API路由是否可以使用服务器端API密钥、CUSTOM_API_*、写入API或服务器资源
 # disabled: 默认值。仅允许请求侧提供的API密钥，拒绝服务器端密钥和受保护的服务器资源
+#           但允许连接同一台机器上的本地TTS/LLM环回地址
 # protected: 需要 Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
 # demo: 仅允许来自 allowed origins / same-origin 的浏览器请求。设置 AITUBERKIT_DEMO_ACCESS_TOKEN 时还需要demo令牌（建议配合速率限制）
 # unprotected: 旧版兼容。公开URL不推荐使用
@@ -304,6 +313,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 # demo模式的简单速率限制（每个IP和功能每分钟次数，生产环境建议配合WAF等）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 
+# 仅在受信任代理之后设置为true。只有为true时才使用转发来源IP请求头进行速率限制
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# 客户端指定的外部本地TTS服务器Origin（逗号分隔）
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# 客户端指定的外部LM Studio/Ollama服务器Origin（逗号分隔）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
+
 # 将Custom API的reasoning或provider metadata转发给客户端（通常建议false）
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
@@ -316,6 +334,9 @@ AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 # 多模态功能启用设置（true/false）
 # 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时使用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# 用于让AI判断是否需要使用多模态功能的提示词
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
 
 # 图像显示位置设置
 # input: 输入区域, side: 侧边栏, icon: 图标
@@ -331,6 +352,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # 使用Realtime API时在前端环境变量中设置
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# NEXT_PUBLIC_AZURE_API_KEY的旧名称（用于向后兼容）
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # 实时API模式内容类型（input_text或input_audio）
@@ -459,7 +482,9 @@ NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 # GSVI TTS
 # 服务器URL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# 旧客户端公开设置（用于兼容）
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # 模型ID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # 批处理大小
@@ -601,6 +626,9 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 
 # 调试模式（true/false）
 NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+
+# 使用的摄像头设备ID（留空则使用默认摄像头）
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
 ```
 
 ## 待机模式设置
@@ -709,6 +737,9 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 详情请参阅[高级设置](/zh/guide/other/advanced-settings)。
 
 ```bash
+# 客户端生产构建的调试日志（true/false）
+NEXT_PUBLIC_DEBUG_LOG="false"
+
 # 背景视频使用设置（true/false）
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 
@@ -742,6 +773,9 @@ NEXT_PUBLIC_CLIENT_ID=""
 
 # 用于 /api/v1 Bearer 认证的 API 密钥
 AITUBERKIT_API_KEY=""
+
+# 浏览器端MessageReceiver调用 /api/v1 时使用的API密钥
+NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 ```
 
 ### 嵌入小组件
@@ -765,6 +799,15 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # 聊天日志宽度
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# 聊天日志显示位置（left/right）
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# 聊天日志样式（glass/classic）
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# 聊天日志与屏幕边缘的距离（px，留空则使用样式默认值）
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 
 # 页面重新加载时始终优先使用环境变量的设置
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"

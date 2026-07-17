@@ -13,6 +13,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # Set in frontend environment variables when using Realtime API
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# Legacy name retained for backward compatibility. Use NEXT_PUBLIC_AZURE_API_KEY for new configurations
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # Realtime API mode content type (input_text or input_audio)
@@ -24,13 +26,14 @@ NEXT_PUBLIC_REALTIME_API_MODE_CONTENT_TYPE=input_text
 NEXT_PUBLIC_REALTIME_API_MODE_VOICE=alloy
 ```
 
+For OpenAI, AITuberKit issues a short-lived client secret through `/api/ai/realtime-client-secret`, and the browser uses that secret to connect to the Realtime API. When the browser-side API key is empty, the route uses the server-side `OPENAI_KEY` or `OPENAI_API_KEY`. To use a server-side key in a public deployment, set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` to `protected` or `demo`.
+
 ## Supported Models
 
 Realtime API supports the following models:
 
-- gpt-4o-realtime-preview-2024-12-17
-- gpt-4o-mini-realtime-preview-2024-12-17
-- gpt-4o-realtime-preview-2024-10-01
+- gpt-realtime (default)
+- gpt-realtime-mini
 
 ## Features and Characteristics
 

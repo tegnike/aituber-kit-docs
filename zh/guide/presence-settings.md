@@ -25,6 +25,13 @@ NEXT_PUBLIC_PRESENCE_DETECTION_ENABLED="false"
 
 可以选择要使用的摄像头设备。当连接了多个摄像头时，可以从下拉菜单中选择。
 
+**环境变量**:
+
+```bash
+# 使用的摄像头设备ID（留空则使用默认摄像头）
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
+```
+
 ## 问候消息
 
 可以设置检测到访客时角色发出的问候消息。可以注册多个短语，并为每个短语设置情感（neutral、happy、sad、angry、relaxed、surprised）。

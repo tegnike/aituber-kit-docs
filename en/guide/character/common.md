@@ -24,6 +24,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="Preset 4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="Preset 5"
 
 # Character preset
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET2="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET3="You are an AI assistant named Nike."
@@ -69,6 +70,8 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 ## Character Prompt
 
 Set the system prompt that defines the character's personality and response style. This prompt is used when generating AI responses and is an important element that determines the character's individuality.
+
+Use `NEXT_PUBLIC_SYSTEM_PROMPT` as the environment variable. When it is not set, `NEXT_PUBLIC_CHARACTER_PRESET1` is used as the initial value.
 
 Be sure to include the character name here.
 

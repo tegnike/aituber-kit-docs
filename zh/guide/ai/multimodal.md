@@ -11,6 +11,9 @@
 # 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时使用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
+# 用于让AI判断是否需要使用多模态功能的提示词
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
+
 # 图像显示位置设置
 # input: 输入区域, side: 侧面板, icon: 图标
 NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
@@ -18,6 +21,8 @@ NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 # 是否为图像包含MIME类型
 NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 ```
+
+`NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT` 用于通过环境变量初始化兼容版AI判断流程所使用的提示词。当前设置界面的主要操作是开启或关闭图像发送。
 
 ## 支持的模型
 

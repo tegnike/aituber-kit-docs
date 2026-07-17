@@ -78,6 +78,22 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 制限される機能の詳細は[制限モード](/guide/restricted-mode)を参照してください。
 
+## デモ表示とサブパス公開
+
+`NEXT_PUBLIC_DEMO_MODE` を有効にすると、紹介画面と設定画面にデモ利用時の注意事項を表示します。これはAPIアクセス制御の `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` とは別の表示設定です。
+
+GitHub Pagesなどのサブパスで公開する場合は、`NEXT_PUBLIC_BASE_PATH` に先頭の `/` を含むベースパスを設定します。
+
+**環境変数**:
+
+```bash
+# デモモードの注意表示（true/false）
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# サブパス公開時のベースパス（例: /aituber-kit）
+NEXT_PUBLIC_BASE_PATH=""
+```
+
 ## Live2D機能
 
 Live2D機能の有効/無効を切り替えます。Live2D機能を使用するには、Live2D社とのライセンス契約が必要です。デフォルトでは無効になっています。
@@ -121,9 +137,29 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 ```bash
 # 回答欄の表示設定（true/false）
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# 回答欄のスタイル（bubble: ガラスバブル, borderless: 縁無し字幕風）
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 ```
 
 ![回答欄を表示する](/images/basic_3efh5.webp)
+
+回答欄を表示する場合は、ガラスバブルまたは縁無し字幕風のスタイルを選択できます。
+
+## 会話ログの表示
+
+会話ログのデザインと左右の表示位置を設定できます。画面端からの距離は外縁をドラッグして調整でき、環境変数で初期値を指定することもできます。
+
+```bash
+# チャットログの表示位置（left/right）
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# チャットログのデザイン（glass/classic）
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# 画面端からの距離（px、空欄でデザイン標準値）
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
+```
 
 ## 回答欄にキャラクター名を表示する
 

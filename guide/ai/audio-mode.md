@@ -10,8 +10,11 @@ AITuberKitでは、OpenAIが提供するAudio API機能を活用して、テキ�
 # オーディオモードの有効化
 NEXT_PUBLIC_AUDIO_MODE=false
 
-# Audio APIを利用する場合はフロントエンドの環境変数に設定
+# ブラウザ設定の初期値として使う場合
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
+
+# サーバー側で秘匿して使う場合
+OPENAI_API_KEY=sk-...
 
 # オーディオモードの入力タイプ（input_text or input_audio）
 NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
@@ -20,13 +23,20 @@ NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
 NEXT_PUBLIC_AUDIO_MODE_VOICE=alloy
 ```
 
+OpenAIへのリクエストはAITuberKitの `/api/ai/audio` が中継します。ブラウザ側のAPIキーが空の場合はサーバー側の `OPENAI_KEY` または `OPENAI_API_KEY` を使用します。公開環境でサーバー側キーを利用する場合は、`AITUBERKIT_SERVER_SECRET_ACCESS_MODE` を `protected` または `demo` に設定してください。
+
 ## 対応モデル
 
 オーディオモードでは、以下のモデルに対応しています：
 
-- gpt-4o-audio-preview-2024-12-17
-- gpt-4o-mini-audio-preview-2024-12-17
-- gpt-4o-audio-preview-2024-10-01
+- gpt-audio-1.5
+- gpt-audio
+- gpt-audio-2025-08-28
+- gpt-audio-mini（デフォルト）
+- gpt-audio-mini-2025-12-15
+- gpt-audio-mini-2025-10-06
+
+旧 `gpt-4o-*-audio-preview` 系を保存している場合は、起動時に対応する `gpt-audio` / `gpt-audio-mini` へ自動移行されます。
 
 ## 設定方法
 

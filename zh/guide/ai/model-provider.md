@@ -10,7 +10,7 @@ AITuberKit支持以下AI服务：
 
 ![AI服务设置](/images/ai_settings_m4d8q.webp)
 
-- OpenAI - 提供GPT-5.4、GPT-5.3、GPT-5.2、GPT-5.1、GPT-4.1等高性能模型
+- OpenAI - 提供GPT-5.6、GPT-5.5、GPT-5.4、GPT-5.3、GPT-5.2、GPT-5.1、GPT-4.1等高性能模型
 - Anthropic - 提供Claude Opus 4.6、Claude Sonnet 4.6等
 - Google Gemini - 提供Gemini 3.1、Gemini 3、Gemini 2.5系列等
 - Azure OpenAI - Azure平台上的OpenAI模型
@@ -48,27 +48,66 @@ OPENAI_API_KEY=sk-...
 
 **支持的模型**:
 
+- gpt-5.6-sol
+- gpt-5.6-terra
+- gpt-5.6-luna
+- gpt-5.5
+- gpt-5.5-2026-04-23
 - gpt-5.4-pro
+- gpt-5.4-pro-2026-03-05
 - gpt-5.4
+- gpt-5.4-2026-03-05
+- gpt-5.4-mini（默认）
+- gpt-5.4-mini-2026-03-17
+- gpt-5.4-nano
+- gpt-5.4-nano-2026-03-17
 - gpt-5.3-chat-latest
+- gpt-5.3-codex
 - gpt-5.2-pro
+- gpt-5.2-pro-2025-12-11
 - gpt-5.2-chat-latest
 - gpt-5.2
+- gpt-5.2-2025-12-11
+- gpt-5.2-codex
 - gpt-5.1-codex-mini
 - gpt-5.1-codex
+- gpt-5.1-codex-max
 - gpt-5.1-chat-latest
 - gpt-5.1
+- gpt-5.1-2025-11-13
 - gpt-5-pro
+- gpt-5-pro-2025-10-06
 - gpt-5
+- gpt-5-2025-08-07
 - gpt-5-mini
+- gpt-5-mini-2025-08-07
 - gpt-5-nano
+- gpt-5-nano-2025-08-07
 - gpt-5-codex
 - gpt-5-chat-latest
 - gpt-4.1
-- gpt-4.1-mini（默认）
+- gpt-4.1-2025-04-14
+- gpt-4.1-mini
+- gpt-4.1-mini-2025-04-14
 - gpt-4.1-nano
+- gpt-4.1-nano-2025-04-14
 - gpt-4o
+- gpt-4o-2024-05-13
+- gpt-4o-2024-08-06
+- gpt-4o-2024-11-20
 - gpt-4o-mini
+- gpt-4o-mini-2024-07-18
+- gpt-3.5-turbo
+- gpt-3.5-turbo-0125
+- gpt-3.5-turbo-1106
+- o4-mini
+- o4-mini-2025-04-16
+- o3
+- o3-2025-04-16
+- o3-mini
+- o3-mini-2025-01-31
+- o1
+- o1-2024-12-17
 
 **获取API密钥**:
 可以从[OpenAI的API keys页面](https://platform.openai.com/account/api-keys)获取API密钥。
@@ -155,11 +194,14 @@ XAI_API_KEY=...
 
 **支持的模型**:
 
-- grok-4-1
+- grok-4.5
 - grok-4-1-fast-reasoning
 - grok-4-1-fast-non-reasoning
 - grok-4-fast-non-reasoning
 - grok-4-fast-reasoning
+- grok-4.20-0309-non-reasoning
+- grok-4.20-0309-reasoning
+- grok-4.20-multi-agent-0309
 - grok-code-fast-1
 - grok-4（默认）
 - grok-4-0709
@@ -347,11 +389,12 @@ OPENROUTER_API_KEY=...
 # 例如 Ollama: http://localhost:11434/v1/chat/completions
 # 例如 LM Studio: http://localhost:1234/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# 本地LLM模型
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
+
+# 允许访问外部主机本地LLM的Origin（逗号分隔）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 ```
 
-要使用本地LLM，您需要设置并启动单独的服务器。
+要使用本地LLM，您需要设置并启动单独的服务器。在默认的 `disabled` 模式下，同一台机器的环回URL也可以使用。连接另一台主机上的LM Studio/Ollama时，请将其Origin添加到 `AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS`。
 
 使用 Ollama 的推理模型或自定义模型时，可以启用推理模式。可选择的推理级别为 `none` / `low` / `medium` / `high`。
 
@@ -398,6 +441,7 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE=true
 ```bash
 # 控制匿名API路由是否可以使用服务器端API密钥、CUSTOM_API_*、写入API或服务器资源
 # disabled: 默认值。仅允许请求侧提供的API密钥，拒绝服务器端密钥和受保护的服务器资源
+#           但允许连接同一台机器上的本地TTS/LLM环回地址
 # protected: 需要 Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
 # demo: 仅允许来自 allowed origins / same-origin 的浏览器请求。设置 AITUBERKIT_DEMO_ACCESS_TOKEN 时还需要demo令牌（建议配合速率限制）
 # unprotected: 旧版兼容。公开URL不推荐使用
@@ -414,6 +458,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # demo模式的简单速率限制（每个IP和功能每分钟次数，生产环境建议配合WAF等）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# 仅在受信任代理之后设置为true。只有为true时才使用转发来源IP请求头进行速率限制
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# 客户端指定的外部本地TTS服务器Origin（逗号分隔）
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# 客户端指定的外部LM Studio/Ollama服务器Origin（逗号分隔）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 
 # 将Custom API的reasoning或provider metadata转发给客户端（通常建议false）
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
@@ -432,7 +485,7 @@ CUSTOM_API_BODY=""
 :::
 
 ::: warning 公开URL
-使用 `CUSTOM_API_*` 或 `OPENAI_API_KEY` 等服务器端密钥的API，默认会通过 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` 被拒绝。公开演示环境请设置 `demo` 和 `AITUBERKIT_ALLOWED_ORIGINS`，外部应用或管理用途请设置 `protected` 和 `AITUBERKIT_SERVER_SECRET_TOKEN`。`unprotected` 仅用于旧版兼容，不推荐在公开URL中使用。
+使用 `CUSTOM_API_*` 或 `OPENAI_API_KEY` 等服务器端密钥的API，默认会通过 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` 被拒绝。连接同一台机器上的本地TTS/LLM环回地址属于例外，可以继续使用。公开演示环境请设置 `demo` 和 `AITUBERKIT_ALLOWED_ORIGINS`，外部应用或管理用途请设置 `protected` 和 `AITUBERKIT_SERVER_SECRET_TOKEN`。`unprotected` 仅用于旧版兼容，不推荐在公开URL中使用。
 :::
 
 ### 会话ID（threadId）自动发送

@@ -17,7 +17,12 @@ NEXT_PUBLIC_CLIENT_ID=""
 
 # /api/v1 のBearer認証に使うAPIキー
 AITUBERKIT_API_KEY=""
+
+# ブラウザ側のMessageReceiverが /api/v1 を呼び出す際のAPIキー
+NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 ```
+
+`NEXT_PUBLIC_AITUBERKIT_API_KEY` はブラウザへ公開されます。信頼できる閉域・ローカル環境でMessageReceiverから認証付き `/api/v1` を呼び出す用途に限定し、公開サイトでは秘匿情報として扱わないでください。
 
 ## v1 API
 

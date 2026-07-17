@@ -10,8 +10,11 @@
 # 启用音频模式
 NEXT_PUBLIC_AUDIO_MODE=false
 
-# 使用Audio API时在前端环境变量中设置
+# 用作浏览器设置的初始值
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
+
+# 改为在服务器端保管密钥
+OPENAI_API_KEY=sk-...
 
 # 音频模式输入类型（input_text或input_audio）
 NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
@@ -20,13 +23,20 @@ NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
 NEXT_PUBLIC_AUDIO_MODE_VOICE=alloy
 ```
 
+AITuberKit 通过 `/api/ai/audio` 中转 OpenAI 请求。当浏览器端 API 密钥为空时，该路由会使用服务器端的 `OPENAI_KEY` 或 `OPENAI_API_KEY`。在公开部署中使用服务器端密钥时，请将 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` 设置为 `protected` 或 `demo`。
+
 ## 支持的模型
 
 音频模式支持以下模型：
 
-- gpt-4o-audio-preview-2024-12-17
-- gpt-4o-mini-audio-preview-2024-12-17
-- gpt-4o-audio-preview-2024-10-01
+- gpt-audio-1.5
+- gpt-audio
+- gpt-audio-2025-08-28
+- gpt-audio-mini（默认）
+- gpt-audio-mini-2025-12-15
+- gpt-audio-mini-2025-10-06
+
+如果保存的是旧版 `gpt-4o-*-audio-preview` 系列模型，应用会在启动时自动迁移到对应的 `gpt-audio` / `gpt-audio-mini`。
 
 ## 设置方法
 

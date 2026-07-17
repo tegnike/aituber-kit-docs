@@ -25,6 +25,13 @@ NEXT_PUBLIC_PRESENCE_DETECTION_ENABLED="false"
 
 使用するカメラデバイスを選択できます。複数のカメラが接続されている場合、ドロップダウンから選択できます。
 
+**環境変数**:
+
+```bash
+# 使用するカメラのデバイスID（空欄で既定のカメラ）
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
+```
+
 ## 挨拶メッセージ
 
 来場者を検出した際に、キャラクターが発話する挨拶メッセージを設定できます。複数のフレーズを登録でき、それぞれに感情（neutral, happy, sad, angry, relaxed, surprised）を設定できます。

@@ -29,6 +29,12 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Cloudflareデプロイ時はtrueに設定
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
+# デモモードの注意表示（true/false）
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# GitHub Pages等のサブパス公開時に使うベースパス
+NEXT_PUBLIC_BASE_PATH=""
+
 # Live2D機能の有効/無効（true/false）
 NEXT_PUBLIC_LIVE2D_ENABLED="false"
 
@@ -37,6 +43,9 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
 # 回答欄の表示設定（true/false）
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# 回答欄のスタイル（bubble: ガラスバブル, borderless: 縁無し字幕風）
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 
 # キャラクター名表示設定（true/false）
 NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
@@ -72,6 +81,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="プリセット4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="プリセット5"
 
 # キャラクタープリセット
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="あなたはニケという名前のAIアシスタントです。"
 NEXT_PUBLIC_CHARACTER_PRESET2="あなたはニケという名前のAIアシスタントです。"
 NEXT_PUBLIC_CHARACTER_PRESET3="あなたはニケという名前のAIアシスタントです。"
@@ -255,8 +265,6 @@ OPENROUTER_API_KEY=...
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# ローカルLLMモデル
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 # Dify API キー
 DIFY_API_KEY=""
@@ -287,6 +295,7 @@ CUSTOM_API_BODY=""
 ```bash
 # サーバー側のAPIキー、CUSTOM_API_*、書き込み/サーバーリソースAPIを匿名APIから使うかどうか
 # disabled: デフォルト。リクエスト側APIキーのみ許可し、サーバー側秘匿値や保護対象リソースは拒否
+#           ただし同一マシンのローカルTTS/LLMループバック接続は許可
 # protected: Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN が必要
 # demo: allowed origins / same-origin のブラウザリクエストのみ許可。AITUBERKIT_DEMO_ACCESS_TOKEN設定時はdemoトークンも要求（レート制限併用推奨）
 # unprotected: 従来互換。公開URLでは非推奨
@@ -304,6 +313,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 # demoモードの簡易レート制限（IP・機能ごとの1分あたり回数、本番ではWAF等も併用）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 
+# 信頼済みプロキシ配下でのみtrue。trueの場合だけ転送元IPヘッダーをレート制限に使用
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# クライアント指定の外部ローカルTTSサーバーOrigin（カンマ区切り）
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# クライアント指定の外部LM Studio/OllamaサーバーOrigin（カンマ区切り）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
+
 # Custom APIのreasoningやprovider metadataをクライアントへ転送する（通常はfalse推奨）
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
@@ -316,6 +334,9 @@ AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 # マルチモーダル機能の有効化設定（true/false）
 # Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# マルチモーダル利用要否をAIに判定させる際のプロンプト
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
 
 # 画像表示位置設定
 # input: 入力エリア, side: サイドパネル, icon: アイコン
@@ -331,6 +352,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # Realtime APIを利用する場合はフロントエンドの環境変数に設定
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# NEXT_PUBLIC_AZURE_API_KEYの旧名（後方互換用）
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # リアルタイムAPIモードのコンテンツタイプ（input_text or input_audio）
@@ -459,7 +482,9 @@ NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 # GSVI TTS
 # サーバーURL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# 旧クライアント公開設定（互換用）
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # モデルID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # バッチサイズ
@@ -601,6 +626,9 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 
 # デバッグモード（true/false）
 NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+
+# 使用するカメラのデバイスID（空欄で既定のカメラ）
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
 ```
 
 ## アイドルモード設定
@@ -709,6 +737,9 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 詳細については[高度な設定](/guide/other/advanced-settings)をご覧ください。
 
 ```bash
+# クライアント本番ビルドのデバッグログ（true/false）
+NEXT_PUBLIC_DEBUG_LOG="false"
+
 # 背景映像の使用設定（true/false）
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 
@@ -742,6 +773,9 @@ NEXT_PUBLIC_CLIENT_ID=""
 
 # /api/v1 のBearer認証に使うAPIキー
 AITUBERKIT_API_KEY=""
+
+# ブラウザ側のMessageReceiverが /api/v1 を呼び出す際のAPIキー
+NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 ```
 
 ### 埋め込みウィジェット
@@ -766,6 +800,15 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # チャットログの幅
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# チャットログの表示位置（left/right）
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# チャットログのデザイン（glass/classic）
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# チャットログの画面端からの距離（px、空欄でデザイン標準値）
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 
 # ページリロード時に常に環境変数を優先する設定
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"

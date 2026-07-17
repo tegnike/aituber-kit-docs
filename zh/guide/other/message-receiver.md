@@ -17,7 +17,12 @@ NEXT_PUBLIC_CLIENT_ID=""
 
 # 用于 /api/v1 Bearer 认证的 API 密钥
 AITUBERKIT_API_KEY=""
+
+# 浏览器端MessageReceiver调用 /api/v1 时使用的API密钥
+NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 ```
+
+`NEXT_PUBLIC_AITUBERKIT_API_KEY` 会公开给浏览器。请仅在可信的封闭网络或本地环境中用于MessageReceiver调用需要认证的 `/api/v1`，不要在公开网站中将其视为机密信息。
 
 ## v1 API
 

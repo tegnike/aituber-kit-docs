@@ -87,6 +87,14 @@ CMD ["npx", "next", "start"]
 
 ## Security Considerations
 
+### Deploying Under a Subpath
+
+When deploying under a subpath instead of the domain root, such as on GitHub Pages, set `NEXT_PUBLIC_BASE_PATH` before building.
+
+```bash
+NEXT_PUBLIC_BASE_PATH="/aituber-kit"
+```
+
 Regardless of the deployment platform, keep the following in mind:
 
 - **API Key Management**: Manage API keys through environment variables and prevent client-side exposure

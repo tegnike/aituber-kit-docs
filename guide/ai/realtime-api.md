@@ -13,6 +13,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # Realtime APIを利用する場合はフロントエンドの環境変数に設定
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# 旧名（後方互換用。新規設定ではNEXT_PUBLIC_AZURE_API_KEYを使用）
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # リアルタイムAPIモードのコンテンツタイプ（input_text or input_audio）
@@ -24,13 +26,14 @@ NEXT_PUBLIC_REALTIME_API_MODE_CONTENT_TYPE=input_text
 NEXT_PUBLIC_REALTIME_API_MODE_VOICE=alloy
 ```
 
+OpenAIではAITuberKitの `/api/ai/realtime-client-secret` が短期クライアントシークレットを発行し、ブラウザはそのシークレットでRealtime APIへ接続します。ブラウザ側のAPIキーが空の場合はサーバー側の `OPENAI_KEY` または `OPENAI_API_KEY` を使用します。公開環境でサーバー側キーを利用する場合は、`AITUBERKIT_SERVER_SECRET_ACCESS_MODE` を `protected` または `demo` に設定してください。
+
 ## 対応モデル
 
 リアルタイムAPIは、以下のモデルに対応しています：
 
-- gpt-4o-realtime-preview-2024-12-17
-- gpt-4o-mini-realtime-preview-2024-12-17
-- gpt-4o-realtime-preview-2024-10-01
+- gpt-realtime（デフォルト）
+- gpt-realtime-mini
 
 ## 機能と特徴
 

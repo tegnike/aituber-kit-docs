@@ -8,6 +8,15 @@ You can reset AITuberKit settings and return to the initial state.
 When you perform a reset operation, all settings except conversation history will be restored to their default values, and the page will be reloaded. If environment variables are set, those values will take precedence.
 :::
 
+## Debug Logging
+
+Enable this setting to output debug `logger.log` messages in production client builds. This value is embedded in the client bundle at build time, so set it before building. Server-side logs are output regardless of this setting.
+
+```bash
+# Debug logging in production client builds (true/false)
+NEXT_PUBLIC_DEBUG_LOG="false"
+```
+
 ## Background Video Settings
 
 You can use shared screen or webcam video as a background. When using multimodal functionality, it's also possible to send screenshots of the background video to the AI.

@@ -24,6 +24,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="Preset 4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="Preset 5"
 
 # 字元預設
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="您是一位名叫 Nique 的 AI 助理。"
 NEXT_PUBLIC_CHARACTER_PRESET2="您是一位名叫 Nique 的 AI 助理。"
 NEXT_PUBLIC_CHARACTER_PRESET3="您是一位名叫 Nique 的 AI 助理。"
@@ -69,6 +70,8 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 ## 角色提示
 
 设置定义角色性格和回应风格的系统提示。生成AI回应时会使用此提示，它是决定角色个性的重要元素。
+
+环境变量使用 `NEXT_PUBLIC_SYSTEM_PROMPT`。未指定时，将使用 `NEXT_PUBLIC_CHARACTER_PRESET1` 作为初始值。
 
 请确保在此处包含角色名称。
 

@@ -10,7 +10,7 @@ AITuberKitでは、様々なAIサービス（OpenAI、Anthropic、Google Gemini�
 
 AITuberKitは以下のAIサービスをサポートしています：
 
-- OpenAI - GPT-5.4、GPT-5.3、GPT-5.2、GPT-5.1、GPT-4.1などの高性能モデルを提供
+- OpenAI - GPT-5.6、GPT-5.5、GPT-5.4、GPT-5.3、GPT-5.2、GPT-5.1、GPT-4.1などの高性能モデルを提供
 - Anthropic - Claude Opus 4.6、Claude Sonnet 4.6などを提供
 - Google Gemini - Gemini 3.1、Gemini 3、Gemini 2.5シリーズなどを提供
 - Azure OpenAI - Azureプラットフォーム上のOpenAIモデル
@@ -48,27 +48,66 @@ OPENAI_API_KEY=sk-...
 
 **対応モデル**:
 
+- gpt-5.6-sol
+- gpt-5.6-terra
+- gpt-5.6-luna
+- gpt-5.5
+- gpt-5.5-2026-04-23
 - gpt-5.4-pro
+- gpt-5.4-pro-2026-03-05
 - gpt-5.4
+- gpt-5.4-2026-03-05
+- gpt-5.4-mini（デフォルト）
+- gpt-5.4-mini-2026-03-17
+- gpt-5.4-nano
+- gpt-5.4-nano-2026-03-17
 - gpt-5.3-chat-latest
+- gpt-5.3-codex
 - gpt-5.2-pro
+- gpt-5.2-pro-2025-12-11
 - gpt-5.2-chat-latest
 - gpt-5.2
+- gpt-5.2-2025-12-11
+- gpt-5.2-codex
 - gpt-5.1-codex-mini
 - gpt-5.1-codex
+- gpt-5.1-codex-max
 - gpt-5.1-chat-latest
 - gpt-5.1
+- gpt-5.1-2025-11-13
 - gpt-5-pro
+- gpt-5-pro-2025-10-06
 - gpt-5
+- gpt-5-2025-08-07
 - gpt-5-mini
+- gpt-5-mini-2025-08-07
 - gpt-5-nano
+- gpt-5-nano-2025-08-07
 - gpt-5-codex
 - gpt-5-chat-latest
 - gpt-4.1
-- gpt-4.1-mini（デフォルト）
+- gpt-4.1-2025-04-14
+- gpt-4.1-mini
+- gpt-4.1-mini-2025-04-14
 - gpt-4.1-nano
+- gpt-4.1-nano-2025-04-14
 - gpt-4o
+- gpt-4o-2024-05-13
+- gpt-4o-2024-08-06
+- gpt-4o-2024-11-20
 - gpt-4o-mini
+- gpt-4o-mini-2024-07-18
+- gpt-3.5-turbo
+- gpt-3.5-turbo-0125
+- gpt-3.5-turbo-1106
+- o4-mini
+- o4-mini-2025-04-16
+- o3
+- o3-2025-04-16
+- o3-mini
+- o3-mini-2025-01-31
+- o1
+- o1-2024-12-17
 
 **APIキーの取得**:
 APIキーは[OpenAIのAPI keysページ](https://platform.openai.com/account/api-keys)から取得できます。
@@ -155,11 +194,14 @@ XAI_API_KEY=...
 
 **対応モデル**:
 
-- grok-4-1
+- grok-4.5
 - grok-4-1-fast-reasoning
 - grok-4-1-fast-non-reasoning
 - grok-4-fast-non-reasoning
 - grok-4-fast-reasoning
+- grok-4.20-0309-non-reasoning
+- grok-4.20-0309-reasoning
+- grok-4.20-multi-agent-0309
 - grok-code-fast-1
 - grok-4（デフォルト）
 - grok-4-0709
@@ -347,11 +389,12 @@ APIキーは[OpenRouterダッシュボード](https://openrouter.ai/keys)から�
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# ローカルLLMモデル
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
+
+# 外部ホストのローカルLLMを許可するOrigin（カンマ区切り）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 ```
 
-ローカルLLMを利用する場合は、別途サーバーの設定と起動が必要です。
+ローカルLLMを利用する場合は、別途サーバーの設定と起動が必要です。同一マシンのループバックURLは既定の `disabled` モードでも利用できます。別ホストのLM Studio/Ollamaへ接続する場合は、そのOriginを `AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS` に追加してください。
 
 Ollamaでは、推論対応モデルまたはカスタムモデルを使用する場合に推論モードを利用できます。推論レベルは `none` / `low` / `medium` / `high` から選択できます。
 
@@ -398,6 +441,7 @@ APIキーやエンドポイントをブラウザに公開したくない場合�
 ```bash
 # サーバー側のAPIキー、CUSTOM_API_*、書き込み/サーバーリソースAPIを匿名APIから使うかどうか
 # disabled: デフォルト。リクエスト側APIキーのみ許可し、サーバー側秘匿値や保護対象リソースは拒否
+#           ただし同一マシンのローカルTTS/LLMループバック接続は許可
 # protected: Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN が必要
 # demo: allowed origins / same-origin のブラウザリクエストのみ許可。AITUBERKIT_DEMO_ACCESS_TOKEN設定時はdemoトークンも要求（レート制限併用推奨）
 # unprotected: 従来互換。公開URLでは非推奨
@@ -414,6 +458,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # demoモードの簡易レート制限（IP・機能ごとの1分あたり回数、本番ではWAF等も併用）
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# 信頼済みプロキシ配下でのみtrue。trueの場合だけ転送元IPヘッダーをレート制限に使用
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# クライアント指定の外部ローカルTTSサーバーOrigin（カンマ区切り）
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# クライアント指定の外部LM Studio/OllamaサーバーOrigin（カンマ区切り）
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 
 # Custom APIのreasoningやprovider metadataをクライアントへ転送する（通常はfalse推奨）
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
@@ -432,7 +485,7 @@ CUSTOM_API_BODY=""
 :::
 
 ::: warning 公開URLでの利用
-`CUSTOM_API_*` や `OPENAI_API_KEY` などのサーバー側秘匿値を使うAPIは、デフォルトでは `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` により拒否されます。公開デモでは `demo` と `AITUBERKIT_ALLOWED_ORIGINS` を設定し、外部アプリや管理用途から呼ぶ場合は `protected` と `AITUBERKIT_SERVER_SECRET_TOKEN` を使用してください。`unprotected` は従来互換用で、公開URLでは推奨されません。
+`CUSTOM_API_*` や `OPENAI_API_KEY` などのサーバー側秘匿値を使うAPIは、デフォルトでは `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"` により拒否されます。同一マシンのローカルTTS/LLMループバック接続は例外として利用できます。公開デモでは `demo` と `AITUBERKIT_ALLOWED_ORIGINS` を設定し、外部アプリや管理用途から呼ぶ場合は `protected` と `AITUBERKIT_SERVER_SECRET_TOKEN` を使用してください。`unprotected` は従来互換用で、公開URLでは推奨されません。
 :::
 
 ### セッションID（threadId）の自動送信

@@ -24,6 +24,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="プリセット4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="プリセット5"
 
 # キャラクタープリセット
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="あなたはニケという名前のAIアシスタントです。"
 NEXT_PUBLIC_CHARACTER_PRESET2="あなたはニケという名前のAIアシスタントです。"
 NEXT_PUBLIC_CHARACTER_PRESET3="あなたはニケという名前のAIアシスタントです。"
@@ -69,6 +70,8 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 ## キャラクタープロンプト
 
 キャラクターの性格や応答スタイルを定義するシステムプロンプトを設定します。このプロンプトはAIの応答生成時に使用され、キャラクターの個性を決定する重要な要素です。
+
+環境変数では `NEXT_PUBLIC_SYSTEM_PROMPT` を使用します。未指定の場合は `NEXT_PUBLIC_CHARACTER_PRESET1` が初期値として使われます。
 
 キャラクター名は必ずここに含めるようにしてください。
 

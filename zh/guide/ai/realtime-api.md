@@ -13,6 +13,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # 使用实时API时在前端环境变量中设置
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# 旧名称（用于向后兼容。新设置请使用NEXT_PUBLIC_AZURE_API_KEY）
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # 实时API模式内容类型（input_text或input_audio）
@@ -24,13 +26,14 @@ NEXT_PUBLIC_REALTIME_API_MODE_CONTENT_TYPE=input_text
 NEXT_PUBLIC_REALTIME_API_MODE_VOICE=alloy
 ```
 
+使用 OpenAI 时，AITuberKit 会通过 `/api/ai/realtime-client-secret` 签发短期客户端密钥，浏览器再使用该密钥连接 Realtime API。当浏览器端 API 密钥为空时，该路由会使用服务器端的 `OPENAI_KEY` 或 `OPENAI_API_KEY`。在公开部署中使用服务器端密钥时，请将 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` 设置为 `protected` 或 `demo`。
+
 ## 支持的模型
 
 实时API支持以下模型：
 
-- gpt-4o-realtime-preview-2024-12-17
-- gpt-4o-mini-realtime-preview-2024-12-17
-- gpt-4o-realtime-preview-2024-10-01
+- gpt-realtime（默认）
+- gpt-realtime-mini
 
 ## 功能和特点
 

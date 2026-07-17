@@ -85,6 +85,14 @@ RUN npm run build
 CMD ["npx", "next", "start"]
 ```
 
+### 部署到子路径
+
+部署到GitHub Pages等非域名根目录的子路径时，请在构建前设置 `NEXT_PUBLIC_BASE_PATH`。
+
+```bash
+NEXT_PUBLIC_BASE_PATH="/aituber-kit"
+```
+
 ## 安全注意事项
 
 无论部署到哪个平台，请注意以下几点：

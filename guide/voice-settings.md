@@ -70,7 +70,7 @@ VOICEVOX Engine APIにアクセスするためのURLを設定します。ロー�
 
 VOICEVOXで利用可能な話者から選択します。「話者リストを更新」ボタンで最新の話者リストを取得できます。「ボイスを試聴する」ボタンで選択した話者の音声をテスト再生できます。
 
-ローカル環境で話者リストを更新するには、サーバー側リソースへのアクセスを許可する必要があります。`.env.local` に `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` を設定してから、AITuberKitを再起動してください。公開URLでは `unprotected` は使用せず、`protected` または `demo` を利用してください。
+同一マシンでAITuberKitとVOICEVOXを動かしている場合、既定の `disabled` モードのまま話者リストを更新できます。別ホストのVOICEVOXを利用する場合は、そのOriginを `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS` に追加してください。公開URLでは必要に応じて `protected` または `demo` を利用してください。
 
 ### 音声パラメータ調整
 
@@ -184,7 +184,7 @@ AivisSpeechサーバーのURLを設定します。ローカルでAivisSpeechを�
 
 AivisSpeechで利用可能な話者から選択します。「話者リストを更新」ボタンで最新の話者リストを取得できます。
 
-ローカル環境で話者リストを更新するには、サーバー側リソースへのアクセスを許可する必要があります。`.env.local` に `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` を設定してから、AITuberKitを再起動してください。公開URLでは `unprotected` は使用せず、`protected` または `demo` を利用してください。
+同一マシンでAITuberKitとAivisSpeechを動かしている場合、既定の `disabled` モードのまま話者リストを更新できます。別ホストのAivisSpeechを利用する場合は、そのOriginを `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS` に追加してください。公開URLでは必要に応じて `protected` または `demo` を利用してください。
 
 ### 音声パラメータ調整
 
@@ -247,7 +247,9 @@ Aivis Cloud APIを使用するためのAPIキーを設定します。 APIキー�
 
 ```bash
 # サーバーURL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# 旧クライアント公開設定（互換用）
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # モデルID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # バッチサイズ
@@ -260,7 +262,7 @@ GSVI TTSはカスタマイズ可能な音声合成エンジンです。
 
 ### サーバーURL
 
-GSVI TTSサーバーのURLを設定します。ローカルでGSVI TTSを実行している場合の標準的なURLは `http://127.0.0.1:5000/tts` です。
+GSVI TTSサーバーのURLを設定します。新規設定ではサーバー側の `GSVI_TTS_URL` を使用し、AITuberKitの `/api/tts-gsvi` 経由で音声を取得します。同一マシンのループバックURLは既定の `disabled` モードでも利用できます。`NEXT_PUBLIC_GSVI_TTS_URL` は旧設定との互換用です。
 
 ### 音声パラメータ調整
 

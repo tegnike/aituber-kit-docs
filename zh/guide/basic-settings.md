@@ -78,6 +78,22 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 有关受限功能的详细信息，请参阅[限制模式](/zh/guide/restricted-mode)。
 
+## 演示提示与子路径部署
+
+启用 `NEXT_PUBLIC_DEMO_MODE` 后，介绍页面和设置页面会显示演示使用注意事项。此项是独立于API访问控制 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` 的显示设置。
+
+部署到GitHub Pages等子路径时，请在 `NEXT_PUBLIC_BASE_PATH` 中设置包含开头 `/` 的基础路径。
+
+**环境变量**:
+
+```bash
+# 演示模式注意事项显示（true/false）
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# 子路径部署的基础路径（例如: /aituber-kit）
+NEXT_PUBLIC_BASE_PATH=""
+```
+
 ## Live2D功能
 
 切换Live2D功能的启用/禁用。使用Live2D功能需要与Live2D Inc.签订许可协议。默认为禁用状态。
@@ -121,9 +137,29 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 ```bash
 # 回答框显示设置（true/false）
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# 回答框样式（bubble: 玻璃气泡, borderless: 无边框字幕风格）
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 ```
 
 ![显示回答框](/images/basic_3efh5.webp)
+
+显示回答框时，可以选择玻璃气泡或无边框字幕风格。
+
+## 对话日志显示
+
+您可以设置对话日志的设计和左右显示位置。可以拖动外边缘调整与屏幕边缘的距离，也可以通过环境变量指定初始值。
+
+```bash
+# 聊天日志显示位置（left/right）
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# 聊天日志样式（glass/classic）
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# 与屏幕边缘的距离（px，留空则使用样式默认值）
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
+```
 
 ## 在回答框中显示角色名称
 

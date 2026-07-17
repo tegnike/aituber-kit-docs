@@ -69,7 +69,7 @@ When `VOICEVOX_SERVER_URL` is configured as a server-side environment variable i
 
 Select from available speakers in VOICEVOX. You can fetch the latest speaker list with the "Update Speaker List" button. You can test play the selected speaker's voice with the "Test Voice" button.
 
-To update the speaker list in a local environment, allow access to server-side resources. Set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` in `.env.local`, then restart AITuberKit. Do not use `unprotected` on public URLs; use `protected` or `demo` instead.
+When AITuberKit and VOICEVOX are running on the same machine, you can update the speaker list while keeping the default `disabled` mode. When using VOICEVOX on another host, add its origin to `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS`. For public URLs, use `protected` or `demo` as needed.
 
 ### Voice Parameter Adjustment
 
@@ -183,7 +183,7 @@ When `AIVIS_SPEECH_SERVER_URL` is configured as a server-side environment variab
 
 Select from available speakers in AivisSpeech. You can update the speaker list with the "Update Speaker List" button.
 
-To update the speaker list in a local environment, allow access to server-side resources. Set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"` in `.env.local`, then restart AITuberKit. Do not use `unprotected` on public URLs; use `protected` or `demo` instead.
+When AITuberKit and AivisSpeech are running on the same machine, you can update the speaker list while keeping the default `disabled` mode. When using AivisSpeech on another host, add its origin to `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS`. For public URLs, use `protected` or `demo` as needed.
 
 ### Voice Parameter Adjustment
 
@@ -245,7 +245,9 @@ Set the ID or name of the style to use. You can check this from the model detail
 
 ```bash
 # Server URL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# Legacy client-exposed setting (retained for compatibility)
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # Model ID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # Batch size
@@ -258,7 +260,7 @@ GSVI TTS is a customizable voice synthesis engine.
 
 ### Server URL
 
-Set the URL for the GSVI TTS server. The standard URL for running GSVI TTS locally is `http://127.0.0.1:5000/tts`.
+Set the URL for the GSVI TTS server. For new configurations, use the server-side `GSVI_TTS_URL`; audio is fetched through AITuberKit's `/api/tts-gsvi` endpoint. Loopback URLs on the same machine are available even in the default `disabled` mode. `NEXT_PUBLIC_GSVI_TTS_URL` is retained for compatibility with legacy configurations.
 
 ### Voice Parameter Adjustment
 

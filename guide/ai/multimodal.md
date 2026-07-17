@@ -11,6 +11,9 @@ AITuberKitでは、マルチモーダル機能を活用してテキストだけ�
 # Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
+# マルチモーダル利用要否をAIに判定させる際のプロンプト
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
+
 # 画像表示位置設定
 # input: 入力エリア, side: サイドパネル, icon: アイコン
 NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
@@ -18,6 +21,8 @@ NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 # 画像にMIMEタイプを含めるかどうか
 NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 ```
+
+`NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT` は、互換用のAI判定フローで利用するプロンプトを環境変数から初期設定する場合に使用します。現在の設定画面では画像送信のON/OFFが基本の操作です。
 
 ## 対応モデル
 

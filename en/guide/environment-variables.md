@@ -29,6 +29,12 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Set to true for Cloudflare deployment
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
+# Display demo mode notices (true/false)
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# Base path for subpath deployment, such as GitHub Pages
+NEXT_PUBLIC_BASE_PATH=""
+
 # Enable/disable Live2D feature (true/false)
 NEXT_PUBLIC_LIVE2D_ENABLED="false"
 
@@ -37,6 +43,9 @@ NEXT_PUBLIC_BACKGROUND_IMAGE_PATH=/backgrounds/bg-c.png
 
 # Assistant text display setting (true/false)
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# Assistant text style (bubble: glass bubble, borderless: borderless subtitle style)
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 
 # Character name display setting (true/false)
 NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
@@ -72,6 +81,7 @@ NEXT_PUBLIC_CUSTOM_PRESET_NAME4="Preset 4"
 NEXT_PUBLIC_CUSTOM_PRESET_NAME5="Preset 5"
 
 # Character presets
+NEXT_PUBLIC_SYSTEM_PROMPT=""
 NEXT_PUBLIC_CHARACTER_PRESET1="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET2="You are an AI assistant named Nike."
 NEXT_PUBLIC_CHARACTER_PRESET3="You are an AI assistant named Nike."
@@ -255,8 +265,6 @@ OPENROUTER_API_KEY=...
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# Local LLM model
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
 
 # Dify API key
 DIFY_API_KEY=""
@@ -287,6 +295,7 @@ CUSTOM_API_BODY=""
 ```bash
 # Controls whether anonymous API routes may use server-side API keys, CUSTOM_API_*, write APIs, or server resources
 # disabled: default. Allow request-provided API keys only; reject server secrets and protected server resources
+#           Local TTS/LLM loopback connections on the same machine remain available
 # protected: require Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
 # demo: allow browser requests from allowed origins / same-origin only. Also require a demo token when AITUBERKIT_DEMO_ACCESS_TOKEN is set; pair with rate limits
 # unprotected: legacy compatibility. Not recommended for public URLs
@@ -304,6 +313,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 # Simple demo-mode rate limit per IP and feature per minute. Pair with WAF/rate limits in production
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
 
+# Set to true only when running behind a trusted proxy. Forwarded client IP headers are used for rate limiting only when true
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# Origins for client-specified local TTS servers hosted on other machines (comma-separated)
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# Origins for client-specified LM Studio/Ollama servers hosted on other machines (comma-separated)
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
+
 # Forward Custom API reasoning/provider metadata to clients (false is recommended)
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 ```
@@ -315,6 +333,9 @@ APIs that use server-side secrets or resources, such as `CUSTOM_API_*`, server-s
 ```bash
 # Enable multimodal feature for Azure, OpenRouter, Local LLM, Custom API and other models when custom model is selected
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
+
+# Prompt used when asking the AI to determine whether multimodal input is needed
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
 
 # Image display position setting
 # input: Input area, side: Side panel, icon: Icon
@@ -330,6 +351,8 @@ NEXT_PUBLIC_REALTIME_API_MODE=false
 # Set in frontend environment variables when using Realtime API
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
 NEXT_PUBLIC_AZURE_API_KEY=...
+# Legacy name for NEXT_PUBLIC_AZURE_API_KEY (retained for backward compatibility)
+NEXT_PUBLIC_AZURE_KEY=...
 NEXT_PUBLIC_AZURE_ENDPOINT=...
 
 # Realtime API mode content type (input_text or input_audio)
@@ -458,7 +481,9 @@ NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 # GSVI TTS
 # Server URL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# Legacy client-exposed setting (retained for compatibility)
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # Model ID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # Batch size
@@ -600,6 +625,9 @@ NEXT_PUBLIC_PRESENCE_DETECTION_THRESHOLD="0"
 
 # Debug mode (true/false)
 NEXT_PUBLIC_PRESENCE_DEBUG_MODE="false"
+
+# Camera device ID to use (leave blank to use the default camera)
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
 ```
 
 ## Idle Mode Settings
@@ -708,6 +736,9 @@ NEXT_PUBLIC_KIOSK_GUIDANCE_TIMEOUT="60"
 For details, see [Advanced Settings](/en/guide/other/advanced-settings).
 
 ```bash
+# Debug logging in production client builds (true/false)
+NEXT_PUBLIC_DEBUG_LOG="false"
+
 # Background video usage setting (true/false)
 NEXT_PUBLIC_USE_VIDEO_AS_BACKGROUND="false"
 
@@ -741,6 +772,9 @@ NEXT_PUBLIC_CLIENT_ID=""
 
 # API key for /api/v1 Bearer authentication
 AITUBERKIT_API_KEY=""
+
+# API key used by the browser-side MessageReceiver when calling /api/v1
+NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 ```
 
 ### Embed Widget
@@ -764,6 +798,15 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # Chat log width
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# Chat log display position (left/right)
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# Chat log design (glass/classic)
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# Distance of the chat log from the edge of the screen (px; leave blank to use the design default)
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 
 # Always prioritize environment variables on page reload
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"

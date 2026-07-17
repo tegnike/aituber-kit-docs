@@ -68,7 +68,7 @@ NEXT_PUBLIC_VOICEVOX_INTONATION=1.0
 
 从VOICEVOX中可用的说话者中选择。您可以使用"更新说话者列表"按钮获取最新的说话者列表。您可以使用"测试语音"按钮测试所选说话者的声音。
 
-在本地环境中更新说话者列表时，需要允许访问服务器端资源。请在 `.env.local` 中设置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"`，然后重新启动 AITuberKit。不要在公开URL中使用 `unprotected`；请改用 `protected` 或 `demo`。
+当AITuberKit与VOICEVOX运行在同一台机器上时，可以在默认的 `disabled` 模式下更新说话者列表。使用另一台主机上的VOICEVOX时，请将其Origin添加到 `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS`。公开URL请根据需要使用 `protected` 或 `demo`。
 
 ### 语音参数调整
 
@@ -182,7 +182,7 @@ NEXT_PUBLIC_AIVIS_SPEECH_POST_PHONEME_LENGTH="0.1"
 
 从AivisSpeech中可用的说话者中选择。您可以使用"更新说话者列表"按钮更新说话者列表。
 
-在本地环境中更新说话者列表时，需要允许访问服务器端资源。请在 `.env.local` 中设置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="unprotected"`，然后重新启动 AITuberKit。不要在公开URL中使用 `unprotected`；请改用 `protected` 或 `demo`。
+当AITuberKit与AivisSpeech运行在同一台机器上时，可以在默认的 `disabled` 模式下更新说话者列表。使用另一台主机上的AivisSpeech时，请将其Origin添加到 `AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS`。公开URL请根据需要使用 `protected` 或 `demo`。
 
 ### 语音参数调整
 
@@ -244,7 +244,9 @@ NEXT_PUBLIC_AIVIS_CLOUD_POST_PHONEME_LENGTH="0.1"
 
 ```bash
 # 服务器URL
-NEXT_PUBLIC_GSVI_TTS_URL=http://127.0.0.1:5000/tts
+GSVI_TTS_URL=http://127.0.0.1:5000/tts
+# 旧客户端公开设置（用于兼容）
+NEXT_PUBLIC_GSVI_TTS_URL=""
 # 模型ID
 NEXT_PUBLIC_GSVI_TTS_MODEL_ID=0
 # 批处理大小
@@ -257,7 +259,7 @@ GSVI TTS是一种可定制的语音合成引擎。
 
 ### 服务器URL
 
-设置GSVI TTS服务器的URL。本地运行GSVI TTS的标准URL是`http://127.0.0.1:5000/tts`。
+设置GSVI TTS服务器的URL。新设置使用服务器端的 `GSVI_TTS_URL`，并通过AITuberKit的 `/api/tts-gsvi` 获取语音。同一台机器上的环回URL可在默认的 `disabled` 模式下使用。`NEXT_PUBLIC_GSVI_TTS_URL` 用于兼容旧设置。
 
 ### 语音参数调整
 

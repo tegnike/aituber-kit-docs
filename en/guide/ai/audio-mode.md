@@ -10,8 +10,11 @@ In AITuberKit, you can use Audio Mode, which utilizes OpenAI's Audio API feature
 # Enable Audio Mode
 NEXT_PUBLIC_AUDIO_MODE=false
 
-# Set in frontend environment variables when using Audio API
+# Use as the initial value for browser settings
 NEXT_PUBLIC_OPENAI_API_KEY=sk-...
+
+# Keep the key server-side instead
+OPENAI_API_KEY=sk-...
 
 # Audio mode input type (input_text or input_audio)
 NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
@@ -20,13 +23,20 @@ NEXT_PUBLIC_AUDIO_MODE_INPUT_TYPE=input_text
 NEXT_PUBLIC_AUDIO_MODE_VOICE=alloy
 ```
 
+AITuberKit proxies OpenAI requests through `/api/ai/audio`. When the browser-side API key is empty, the route uses the server-side `OPENAI_KEY` or `OPENAI_API_KEY`. To use a server-side key in a public deployment, set `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` to `protected` or `demo`.
+
 ## Supported Models
 
 Audio Mode supports the following models:
 
-- gpt-4o-audio-preview-2024-12-17
-- gpt-4o-mini-audio-preview-2024-12-17
-- gpt-4o-audio-preview-2024-10-01
+- gpt-audio-1.5
+- gpt-audio
+- gpt-audio-2025-08-28
+- gpt-audio-mini (default)
+- gpt-audio-mini-2025-12-15
+- gpt-audio-mini-2025-10-06
+
+If you have a legacy `gpt-4o-*-audio-preview` model saved, it is automatically migrated to the corresponding `gpt-audio` or `gpt-audio-mini` model at startup.
 
 ## Setup Method
 

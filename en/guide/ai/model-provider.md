@@ -10,7 +10,7 @@ AITuberKit supports the following AI services:
 
 ![AI Settings](/images/ai_settings_m4d8q.webp)
 
-- OpenAI - Provides high-performance models such as GPT-5.4, GPT-5.3, GPT-5.2, GPT-5.1, GPT-4.1
+- OpenAI - Provides high-performance models such as GPT-5.6, GPT-5.5, GPT-5.4, GPT-5.3, GPT-5.2, GPT-5.1, GPT-4.1
 - Anthropic - Provides Claude Opus 4.6, Claude Sonnet 4.6, etc.
 - Google Gemini - Provides Gemini 3.1, Gemini 3, Gemini 2.5 series, etc.
 - Azure OpenAI - OpenAI models on the Azure platform
@@ -48,27 +48,66 @@ OPENAI_API_KEY=sk-...
 
 **Supported Models**:
 
+- gpt-5.6-sol
+- gpt-5.6-terra
+- gpt-5.6-luna
+- gpt-5.5
+- gpt-5.5-2026-04-23
 - gpt-5.4-pro
+- gpt-5.4-pro-2026-03-05
 - gpt-5.4
+- gpt-5.4-2026-03-05
+- gpt-5.4-mini (default)
+- gpt-5.4-mini-2026-03-17
+- gpt-5.4-nano
+- gpt-5.4-nano-2026-03-17
 - gpt-5.3-chat-latest
+- gpt-5.3-codex
 - gpt-5.2-pro
+- gpt-5.2-pro-2025-12-11
 - gpt-5.2-chat-latest
 - gpt-5.2
+- gpt-5.2-2025-12-11
+- gpt-5.2-codex
 - gpt-5.1-codex-mini
 - gpt-5.1-codex
+- gpt-5.1-codex-max
 - gpt-5.1-chat-latest
 - gpt-5.1
+- gpt-5.1-2025-11-13
 - gpt-5-pro
+- gpt-5-pro-2025-10-06
 - gpt-5
+- gpt-5-2025-08-07
 - gpt-5-mini
+- gpt-5-mini-2025-08-07
 - gpt-5-nano
+- gpt-5-nano-2025-08-07
 - gpt-5-codex
 - gpt-5-chat-latest
 - gpt-4.1
-- gpt-4.1-mini (default)
+- gpt-4.1-2025-04-14
+- gpt-4.1-mini
+- gpt-4.1-mini-2025-04-14
 - gpt-4.1-nano
+- gpt-4.1-nano-2025-04-14
 - gpt-4o
+- gpt-4o-2024-05-13
+- gpt-4o-2024-08-06
+- gpt-4o-2024-11-20
 - gpt-4o-mini
+- gpt-4o-mini-2024-07-18
+- gpt-3.5-turbo
+- gpt-3.5-turbo-0125
+- gpt-3.5-turbo-1106
+- o4-mini
+- o4-mini-2025-04-16
+- o3
+- o3-2025-04-16
+- o3-mini
+- o3-mini-2025-01-31
+- o1
+- o1-2024-12-17
 
 **Getting an API Key**:
 API keys can be obtained from [OpenAI's API keys page](https://platform.openai.com/account/api-keys).
@@ -155,11 +194,14 @@ XAI_API_KEY=...
 
 **Supported Models**:
 
-- grok-4-1
+- grok-4.5
 - grok-4-1-fast-reasoning
 - grok-4-1-fast-non-reasoning
 - grok-4-fast-non-reasoning
 - grok-4-fast-reasoning
+- grok-4.20-0309-non-reasoning
+- grok-4.20-0309-reasoning
+- grok-4.20-multi-agent-0309
 - grok-code-fast-1
 - grok-4 (default)
 - grok-4-0709
@@ -347,11 +389,12 @@ API keys can be obtained from the [OpenRouter Dashboard](https://openrouter.ai/k
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 NEXT_PUBLIC_LOCAL_LLM_URL=""
-# Local LLM Model
-NEXT_PUBLIC_LOCAL_LLM_MODEL=""
+
+# Origins for local LLMs hosted on other machines (comma-separated)
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 ```
 
-To use a local LLM, you need to set up and start a separate server.
+To use a local LLM, you need to set up and start a separate server. Loopback URLs on the same machine are available even in the default `disabled` mode. To connect to LM Studio or Ollama on another host, add its origin to `AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS`.
 
 Ollama supports reasoning mode when using reasoning-capable models or custom models. The available reasoning levels are `none` / `low` / `medium` / `high`.
 
@@ -398,6 +441,7 @@ If you don't want to expose API keys or endpoints to the browser, you can use se
 ```bash
 # Controls whether anonymous API routes may use server-side API keys, CUSTOM_API_*, write APIs, or server resources
 # disabled: default. Allow request-provided API keys only; reject server secrets and protected server resources
+#           Local TTS/LLM loopback connections on the same machine remain available
 # protected: require Authorization: Bearer AITUBERKIT_SERVER_SECRET_TOKEN
 # demo: allow browser requests from allowed origins / same-origin only. Also require a demo token when AITUBERKIT_DEMO_ACCESS_TOKEN is set; pair with rate limits
 # unprotected: legacy compatibility. Not recommended for public URLs
@@ -414,6 +458,15 @@ AITUBERKIT_DEMO_ACCESS_TOKEN=""
 
 # Simple demo-mode rate limit per IP and feature per minute. Pair with WAF/rate limits in production
 AITUBERKIT_DEMO_RATE_LIMIT_PER_MINUTE="20"
+
+# Set to true only when running behind a trusted proxy. Forwarded client IP headers are used for rate limiting only when true
+AITUBERKIT_TRUST_PROXY_HEADERS="false"
+
+# Origins for client-specified local TTS servers hosted on other machines (comma-separated)
+AITUBERKIT_ALLOWED_TTS_SERVER_ORIGINS=""
+
+# Origins for client-specified LM Studio/Ollama servers hosted on other machines (comma-separated)
+AITUBERKIT_ALLOWED_LLM_SERVER_ORIGINS=""
 
 # Forward Custom API reasoning/provider metadata to clients (false is recommended)
 AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
@@ -432,7 +485,7 @@ CUSTOM_API_BODY=""
 :::
 
 ::: warning Public URLs
-APIs that use server-side secrets such as `CUSTOM_API_*` or `OPENAI_API_KEY` are rejected by default with `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"`. For public demos, configure `demo` with `AITUBERKIT_ALLOWED_ORIGINS`. For external apps or administrative use, configure `protected` with `AITUBERKIT_SERVER_SECRET_TOKEN`. `unprotected` exists for legacy compatibility and is not recommended for public URLs.
+APIs that use server-side secrets such as `CUSTOM_API_*` or `OPENAI_API_KEY` are rejected by default with `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="disabled"`. Local TTS/LLM loopback connections on the same machine remain available as an exception. For public demos, configure `demo` with `AITUBERKIT_ALLOWED_ORIGINS`. For external apps or administrative use, configure `protected` with `AITUBERKIT_SERVER_SECRET_TOKEN`. `unprotected` exists for legacy compatibility and is not recommended for public URLs.
 :::
 
 ### Session ID (threadId) Auto-Send

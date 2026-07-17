@@ -25,6 +25,13 @@ This feature requires camera access. Please allow camera permissions in your bro
 
 You can select which camera device to use. If multiple cameras are connected, you can choose from the dropdown.
 
+**Environment Variables**:
+
+```bash
+# Camera device ID to use (leave blank to use the default camera)
+NEXT_PUBLIC_PRESENCE_SELECTED_CAMERA_ID=""
+```
+
 ## Greeting Message
 
 You can set the greeting message that the character will speak when a visitor is detected. Multiple phrases can be registered, and each can have an emotion assigned (neutral, happy, sad, angry, relaxed, surprised).

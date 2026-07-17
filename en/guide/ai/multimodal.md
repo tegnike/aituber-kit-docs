@@ -10,6 +10,9 @@ In AITuberKit, you can utilize multimodal features to create a richer interactio
 # Enable multimodal functionality for Azure, OpenRouter, local LLM, custom API, and other models with custom model selection
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
+# Prompt used when asking the AI to determine whether multimodal input is needed
+NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT=""
+
 # Image display position setting
 # input: input area, side: side panel, icon: icon
 NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
@@ -17,6 +20,8 @@ NEXT_PUBLIC_IMAGE_DISPLAY_POSITION="input"
 # Whether to include MIME type for images
 NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 ```
+
+Use `NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT` to set the initial prompt for the legacy AI decision flow through an environment variable. In the current settings screen, the primary control is turning image transmission on or off.
 
 ## Supported Models
 

@@ -78,6 +78,22 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 For details on restricted features, see [Restricted Mode](/en/guide/restricted-mode).
 
+## Demo Display and Subpath Deployment
+
+Enable `NEXT_PUBLIC_DEMO_MODE` to display notices for demo users on the introduction and settings screens. This is a display setting and is separate from the API access control setting `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"`.
+
+When deploying under a subpath, such as on GitHub Pages, set `NEXT_PUBLIC_BASE_PATH` to the base path including the leading `/`.
+
+**Environment Variables**:
+
+```bash
+# Display demo mode notices (true/false)
+NEXT_PUBLIC_DEMO_MODE="false"
+
+# Base path for subpath deployment (e.g. /aituber-kit)
+NEXT_PUBLIC_BASE_PATH=""
+```
+
 ## Live2D Features
 
 Toggle the Live2D feature on or off. A license agreement with Live2D Inc. is required to use the Live2D feature. It is disabled by default.
@@ -121,9 +137,29 @@ You can set whether to display the AI's response text on the screen when the con
 ```bash
 # Answer box display setting (true/false)
 NEXT_PUBLIC_SHOW_ASSISTANT_TEXT=true
+
+# Answer box style (bubble: glass bubble, borderless: borderless subtitle style)
+NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 ```
 
 ![Show Answer Box](/images/basic_3efh5.webp)
+
+When the answer box is displayed, you can choose between a glass bubble and a borderless subtitle style.
+
+## Conversation Log Display
+
+You can configure the conversation log design and whether it appears on the left or right. Drag its outer edge to adjust the distance from the edge of the screen, or specify an initial value through environment variables.
+
+```bash
+# Chat log display position (left/right)
+NEXT_PUBLIC_CHAT_LOG_POSITION="right"
+
+# Chat log design (glass/classic)
+NEXT_PUBLIC_CHAT_LOG_STYLE="classic"
+
+# Distance from the edge of the screen (px; leave blank to use the design default)
+NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
+```
 
 ## Show Character Name in Answer Box
 
