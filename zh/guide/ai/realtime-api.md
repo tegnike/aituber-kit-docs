@@ -32,8 +32,12 @@ NEXT_PUBLIC_REALTIME_API_MODE_VOICE=alloy
 
 实时API支持以下模型：
 
-- gpt-realtime（默认）
-- gpt-realtime-mini
+- gpt-realtime-2.1（默认）
+- gpt-realtime-2.1-mini
+
+::: info 与语音输入设置中的实时转录有何区别
+实时 API 模式会在一个语音对话会话中处理语音输入、AI 回答生成和回答语音输出。语音输入设置中的“OpenAI 发言中转录”仅使用 `gpt-live-transcribe` 将语音转换为文本，AI 回答生成和语音合成仍使用常规设置。
+:::
 
 ## 功能和特点
 

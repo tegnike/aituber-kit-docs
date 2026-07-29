@@ -32,8 +32,12 @@ For OpenAI, AITuberKit issues a short-lived client secret through `/api/ai/realt
 
 Realtime API supports the following models:
 
-- gpt-realtime (default)
-- gpt-realtime-mini
+- gpt-realtime-2.1 (default)
+- gpt-realtime-2.1-mini
+
+::: info Difference from live transcription in Voice Input Settings
+Realtime API mode handles voice input, AI response generation, and spoken output in a single voice conversation session. "OpenAI transcription while speaking" in Voice Input Settings uses `gpt-live-transcribe` only to convert audio to text; AI response generation and text-to-speech continue to use the standard settings.
+:::
 
 ## Features and Characteristics
 

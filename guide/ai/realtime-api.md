@@ -32,8 +32,12 @@ OpenAIではAITuberKitの `/api/ai/realtime-client-secret` が短期クライア
 
 リアルタイムAPIは、以下のモデルに対応しています：
 
-- gpt-realtime（デフォルト）
-- gpt-realtime-mini
+- gpt-realtime-2.1（デフォルト）
+- gpt-realtime-2.1-mini
+
+::: info 音声入力設定のライブ文字起こしとの違い
+リアルタイムAPIモードは、音声入力、AIの応答生成、回答音声の出力を1つの音声対話セッションで処理します。音声入力設定の「OpenAI 発話中文字起こし」は、`gpt-live-transcribe`で音声をテキストへ変換するだけの機能で、AIの回答生成と音声合成には通常の設定が使われます。
+:::
 
 ## 機能と特徴
 

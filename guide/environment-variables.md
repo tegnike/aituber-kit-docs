@@ -529,7 +529,7 @@ NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 ## 音声入力設定
 
 ```bash
-# 音声認識モード（browser, whisper）
+# 音声認識モード（browser, whisper, live-transcription）
 NEXT_PUBLIC_SPEECH_RECOGNITION_MODE=browser
 
 # 音声認識タイムアウト（秒）
@@ -544,11 +544,11 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 常時マイク入力モード（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI APIキー（Whisper音声認識用）
+# OpenAI APIキー（OpenAI文字起こし用）
 NEXT_PUBLIC_OPENAI_KEY=
 
-# 文字起こしモデル（whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe）
-NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=whisper-1
+# 録音後文字起こしで使用するモデル
+NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=gpt-transcribe
 ```
 
 ## YouTube設定

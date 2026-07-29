@@ -528,7 +528,7 @@ NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 ## Voice Input Settings
 
 ```bash
-# Speech recognition mode (browser, whisper)
+# Speech recognition mode (browser, whisper, live-transcription)
 NEXT_PUBLIC_SPEECH_RECOGNITION_MODE=browser
 
 # Speech recognition timeout (seconds)
@@ -543,11 +543,11 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # Continuous microphone input mode (true/false)
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API key (for Whisper speech recognition)
+# OpenAI API key (for OpenAI transcription)
 NEXT_PUBLIC_OPENAI_KEY=
 
-# Transcription model (whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe)
-NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=whisper-1
+# Model used for transcription after recording
+NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=gpt-transcribe
 ```
 
 ## YouTube Settings

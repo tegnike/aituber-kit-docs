@@ -529,7 +529,7 @@ NEXT_PUBLIC_OPENAI_TTS_SPEED=1.0
 ## 语音输入设置
 
 ```bash
-# 语音识别模式（browser, whisper）
+# 语音识别模式（browser, whisper, live-transcription）
 NEXT_PUBLIC_SPEECH_RECOGNITION_MODE=browser
 
 # 语音识别超时（秒）
@@ -544,11 +544,11 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 连续麦克风输入模式（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
-# OpenAI API密钥（用于Whisper语音识别）
+# OpenAI API密钥（用于OpenAI转录）
 NEXT_PUBLIC_OPENAI_KEY=
 
-# 转录模型（whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe）
-NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=whisper-1
+# 录音后转录使用的模型
+NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=gpt-transcribe
 ```
 
 ## YouTube设置
