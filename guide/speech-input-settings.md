@@ -30,6 +30,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 常時マイク入力モード（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
+# 音声入力ショートカット（例: Alt, Control+Space）
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
+
 # OpenAI APIキー（OpenAI文字起こし用）
 NEXT_PUBLIC_OPENAI_KEY=
 
@@ -43,13 +46,24 @@ NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=gpt-transcribe
 
 1. **キーボードショートカットを使用する方法**
 
-   - Alt（Macの場合はOption）キーを押している間、音声入力を受け付けます。
+   - 「音声入力ショートカット」で任意のキーまたはキーの組み合わせを登録できます。初期値は Windows・LinuxではAlt、MacではOptionです。
+   - 登録したキーを押している間、音声入力を受け付けます。
    - 話し終わったらキーを離すとリクエストが送信されます。
+   - 文字入力中の誤作動を避けるため、入力欄では修飾キーなしの文字キーは反応しません。
+   - スマホ・タブレットでは、外付けキーボードを接続している場合のみ利用できます。
 
 2. **マイクボタンを使用する方法**
    - 画面下部のマイクボタンをクリックして音声入力を開始します。
    - 話し終わったら再度ボタンをクリックしてリクエストを送信します。
    - 無音検出タイムアウトを0秒より大きくすると、設定時間の無音後に自動送信できます。
+
+外付けキーボードを使用しないスマホ・タブレットでは、マイクボタンを使用してください。
+
+### 音声入力ショートカットの変更
+
+![音声入力ショートカット](/images/speech_shortcut_p4n8s.webp)
+
+音声入力設定の「音声入力ショートカット」欄を選択し、割り当てたいキーまたはキーの組み合わせを押します。設定画面の表示・非表示ショートカットと同じ組み合わせは登録できません。「初期設定に戻す」を選ぶと、Windows・LinuxではAlt、MacではOptionに戻ります。
 
 ## 音声認識モード
 

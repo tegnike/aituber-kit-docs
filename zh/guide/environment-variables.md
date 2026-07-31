@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 控制面板显示设置（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# 显示/隐藏设置界面的快捷键（Mod表示Ctrl或Cmd）
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
+
 # 颜色主题设置（default, cool, mono, ocean, forest, sunset）
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -543,6 +546,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 
 # 连续麦克风输入模式（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
+
+# 语音输入快捷键（例如：Alt、Control+Space）
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
 
 # OpenAI API密钥（用于OpenAI转录）
 NEXT_PUBLIC_OPENAI_KEY=

@@ -177,8 +177,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 画面右上に操作パネルを表示するかどうかを設定できます。
 
 :::tip ヒント
-設定画面は Mac では `Cmd + .`、Windows では `Ctrl + .` のショートカットでも表示できます。
-スマートフォンをご利用の場合は、画面左上を長押し（約1秒）でも表示可能です。
+設定画面の表示・非表示ショートカットは、下の設定で変更できます。初期値は Mac では `Cmd + .`、Windows・Linuxでは `Ctrl + .` です。
+スマホ・タブレットでは画面左上を長押し（約1秒）して表示できます。外付けキーボードを接続している場合は、設定したショートカットも使用できます。
 :::
 
 **環境変数**:
@@ -186,7 +186,16 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 ```bash
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
+
+# 設定画面の表示・非表示ショートカット（ModはCtrlまたはCmd）
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
 ```
+
+### 設定画面の表示・非表示ショートカット
+
+![設定画面の表示・非表示ショートカット](/images/basic_shortcut_k7m2q.webp)
+
+入力欄を選択してから、割り当てたいキーまたはキーの組み合わせを押します。別の操作と同じショートカットは登録できません。「初期設定に戻す」を選ぶと、Macでは `Cmd + .`、Windows・Linuxでは `Ctrl + .` に戻ります。
 
 ## カラーテーマ
 

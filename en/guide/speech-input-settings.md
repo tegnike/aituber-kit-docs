@@ -30,6 +30,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # Continuous microphone input mode (true/false)
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
+# Voice input shortcut (e.g., Alt, Control+Space)
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
+
 # OpenAI API key (for OpenAI transcription)
 NEXT_PUBLIC_OPENAI_KEY=
 
@@ -43,13 +46,24 @@ The following microphone input methods are available:
 
 1. **Using a keyboard shortcut**
 
-   - Hold down the Alt key (Option on Mac) to accept voice input.
+   - You can register any key or key combination under "Voice Input Shortcut." The default is Alt on Windows and Linux and Option on Mac.
+   - Voice input is accepted while you hold down the registered key.
    - Release the key when you finish speaking to send the request.
+   - To prevent accidental activation while typing, unmodified character keys do not respond when an input field is focused.
+   - On smartphones and tablets, this method is available only when an external keyboard is connected.
 
 2. **Using the microphone button**
    - Click the microphone button at the bottom of the screen to start voice input.
    - Click the button again when you finish speaking to send the request.
    - Set the silence detection timeout to a value greater than 0 seconds to send automatically after the configured period of silence.
+
+On smartphones and tablets without an external keyboard, use the microphone button.
+
+### Changing the Voice Input Shortcut
+
+![Voice input shortcut](/images/speech_shortcut_p4n8s.webp)
+
+Select the "Voice Input Shortcut" field in the voice input settings, then press the key or key combination you want to assign. You cannot register the same combination as the settings screen show/hide shortcut. Select "Reset to Default" to restore it to Alt on Windows and Linux or Option on Mac.
 
 ## Speech Recognition Modes
 

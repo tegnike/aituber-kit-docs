@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# Shortcut for showing/hiding the settings screen (Mod means Ctrl or Cmd)
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
+
 # Color theme setting (default, cool, mono, ocean, forest, sunset)
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -542,6 +545,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 
 # Continuous microphone input mode (true/false)
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
+
+# Voice input shortcut (e.g., Alt, Control+Space)
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
 
 # OpenAI API key (for OpenAI transcription)
 NEXT_PUBLIC_OPENAI_KEY=

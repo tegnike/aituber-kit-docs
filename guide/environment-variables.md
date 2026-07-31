@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# 設定画面の表示・非表示ショートカット（ModはCtrlまたはCmd）
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
+
 # カラーテーマ設定（default, cool, mono, ocean, forest, sunset）
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -543,6 +546,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 
 # 常時マイク入力モード（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
+
+# 音声入力ショートカット（例: Alt, Control+Space）
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
 
 # OpenAI APIキー（OpenAI文字起こし用）
 NEXT_PUBLIC_OPENAI_KEY=

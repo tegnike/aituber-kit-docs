@@ -77,7 +77,7 @@ NEXT_PUBLIC_FIXED_CHARACTER_POSITION="false"
 
 ### 字元預設
 
-您可以保存多达5个字元预设。您也可以通过点击直接调用或使用快捷键`Cmd + Shift + 1~5`（Mac）/ `Ctrl + Shift + 1~5`（Windows）来使用快捷键。
+您可以保存多达5个角色提示预设。除了直接选择进行切换，还可以通过键盘使用`Cmd + Shift + 1〜5`（Mac）/ `Ctrl + Shift + 1〜5`（Windows）进行切换。在智能手机和平板电脑上，仅当连接外接键盘时才能使用快捷键。
 
 ### 使用情感标签
 

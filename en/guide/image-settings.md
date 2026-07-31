@@ -22,10 +22,10 @@ Image settings allow you to manage images that are displayed alongside your AI c
 3. You can place up to 5 images simultaneously on the screen
 
 #### Layer Management
+
 - You can adjust the stacking order of placed images
 - You can also set whether to place them in front of or behind the character
-
-
+- Drag the layer order handle to reorder the layers. On a touch device, press and hold the handle before moving it
 
 ### Image Placement and Adjustment
 

@@ -74,6 +74,8 @@ PNGTuber的显示位置和大小可以通过以下环境变量调整：
 - **X轴偏移** (`NEXT_PUBLIC_PNGTUBER_OFFSET_X`): 水平方向的位置调整
 - **Y轴偏移** (`NEXT_PUBLIC_PNGTUBER_OFFSET_Y`): 垂直方向的位置调整
 
+在设置界面的预览中，可以拖动模型来移动位置。在PC上，可以在预览区域滚动鼠标滚轮来放大或缩小模型。
+
 ## 色度键功能
 
 使用视频素材时，可以通过色度键功能使特定颜色透明。默认透明色设置为绿色（#00FF00）。
@@ -81,6 +83,8 @@ PNGTuber的显示位置和大小可以通过以下环境变量调整：
 - **启用** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_ENABLED`): 色度键功能的开/关
 - **透明色** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_COLOR`): 要透明的颜色（HEX颜色代码）
 - **容差** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_TOLERANCE`): 颜色容差范围（0-100）
+
+在设置界面的视频预览中选择颜色，即可将该颜色设置为透明色。
 
 ## 关于模型的注意事项
 

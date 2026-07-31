@@ -177,8 +177,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 You can set whether to display the control panel in the upper right corner of the screen.
 
 :::tip Hint
-The settings screen can also be displayed using the shortcut `Cmd + .` on Mac or `Ctrl + .` on Windows.
-If you are using a smartphone, you can also display it by long-pressing the top left corner of the screen (about 1 second).
+You can change the shortcut for showing and hiding the settings screen using the setting below. The default is `Cmd + .` on Mac and `Ctrl + .` on Windows and Linux.
+On smartphones and tablets, you can display the settings screen by long-pressing the top left corner of the screen (about 1 second). If an external keyboard is connected, you can also use the configured shortcut.
 :::
 
 **Environment Variables**:
@@ -186,7 +186,16 @@ If you are using a smartphone, you can also display it by long-pressing the top 
 ```bash
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
+
+# Shortcut for showing/hiding the settings screen (Mod means Ctrl or Cmd)
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
 ```
+
+### Settings Screen Show/Hide Shortcut
+
+![Settings screen show/hide shortcut](/images/basic_shortcut_k7m2q.webp)
+
+Select the input field, then press the key or key combination you want to assign. You cannot register a shortcut that is already assigned to another action. Select "Reset to Default" to restore it to `Cmd + .` on Mac or `Ctrl + .` on Windows and Linux.
 
 ## Color Theme
 

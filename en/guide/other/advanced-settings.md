@@ -80,7 +80,7 @@ This feature allows you to display predefined questions in the UI that can be se
 - Add a question: Enter a question in the text input field and click the "+" button
 - Edit a question: Directly edit the text of a registered question
 - Delete a question: Click the "-" button
-- Reorder questions: Drag the handle (⋮⋮) on the left side of the question to change the order
+- Reorder questions: Drag the handle (⋮⋮) on the left side of the question to change the order. On a touch device, press and hold the handle before moving it
 
 ### Toggle Display
 

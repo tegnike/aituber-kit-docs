@@ -177,8 +177,8 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 您可以设置是否在屏幕右上角显示控制面板。
 
 :::tip 提示
-设置界面也可以通过Mac上的`Cmd + .`或Windows上的`Ctrl + .`快捷键显示。
-如果您使用智能手机，也可以通过长按屏幕左上角（约1秒）来显示。
+显示/隐藏设置界面的快捷键可以在下方设置中更改。默认值为Mac上的`Cmd + .`，Windows和Linux上的`Ctrl + .`。
+在智能手机和平板电脑上，可以长按屏幕左上角（约1秒）打开设置界面。连接外接键盘时，也可以使用已设置的快捷键。
 :::
 
 **环境变量**:
@@ -186,7 +186,16 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 ```bash
 # 控制面板显示设置（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
+
+# 显示/隐藏设置界面的快捷键（Mod表示Ctrl或Cmd）
+NEXT_PUBLIC_SETTINGS_TOGGLE_SHORTCUT=Mod+Period
 ```
+
+### 显示/隐藏设置界面的快捷键
+
+![显示/隐藏设置界面的快捷键](/images/basic_shortcut_k7m2q.webp)
+
+选择输入框后，按下要分配的按键或组合键。无法注册与其他操作相同的快捷键。选择“恢复默认设置”后，Mac将恢复为`Cmd + .`，Windows和Linux将恢复为`Ctrl + .`。
 
 ## 颜色主题
 

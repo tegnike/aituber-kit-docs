@@ -30,6 +30,9 @@ NEXT_PUBLIC_SHOW_SILENCE_PROGRESS_BAR=true
 # 连续麦克风输入模式（true/false）
 NEXT_PUBLIC_CONTINUOUS_MIC_LISTENING_MODE=false
 
+# 语音输入快捷键（例如：Alt、Control+Space）
+NEXT_PUBLIC_VOICE_INPUT_SHORTCUT=Alt
+
 # OpenAI API 密钥（用于 OpenAI 转录）
 NEXT_PUBLIC_OPENAI_KEY=
 
@@ -43,13 +46,24 @@ NEXT_PUBLIC_WHISPER_TRANSCRIPTION_MODEL=gpt-transcribe
 
 1. **使用键盘快捷键**
 
-   - 按住 Alt 键（Mac 上为 Option 键）期间接收语音输入。
+   - 可以在“语音输入快捷键”中注册任意按键或组合键。默认值为Windows和Linux上的Alt、Mac上的Option。
+   - 按住已注册的按键期间接收语音输入。
    - 说完后松开按键即可发送请求。
+   - 为避免在输入文字时误触发，在输入框中不会响应不含修饰键的字符键。
+   - 在智能手机和平板电脑上，仅当连接外接键盘时才能使用此功能。
 
 2. **使用麦克风按钮**
    - 点击屏幕底部的麦克风按钮开始语音输入。
    - 说完后再次点击按钮即可发送请求。
    - 将静音检测超时设置为大于 0 秒，即可在达到设定的静音时间后自动发送。
+
+在不使用外接键盘的智能手机和平板电脑上，请使用麦克风按钮。
+
+### 更改语音输入快捷键
+
+![语音输入快捷键](/images/speech_shortcut_p4n8s.webp)
+
+选择语音输入设置中的“语音输入快捷键”输入框，然后按下要分配的按键或组合键。无法注册与显示/隐藏设置界面的快捷键相同的组合键。选择“恢复默认设置”后，Windows和Linux将恢复为Alt，Mac将恢复为Option。
 
 ## 语音识别模式
 

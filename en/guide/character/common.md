@@ -77,7 +77,7 @@ Be sure to include the character name here.
 
 ### Character Preset
 
-You can save up to 5 character prompts. You can also use shortcuts by clicking directly or by pressing `Cmd + Shift + 1~5` (Mac) / `Ctrl + Shift + 1~5` (Windows).
+You can save up to 5 character prompts. In addition to selecting them directly, you can switch between them using `Cmd + Shift + 1–5` (Mac) / `Ctrl + Shift + 1–5` (Windows) on a keyboard. On smartphones and tablets, these shortcuts are available only when an external keyboard is connected.
 
 ### Using Emotion Tags
 

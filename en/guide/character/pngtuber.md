@@ -74,6 +74,8 @@ PNGTuber display position and size can be adjusted with the following environmen
 - **X Offset** (`NEXT_PUBLIC_PNGTUBER_OFFSET_X`): Horizontal position adjustment
 - **Y Offset** (`NEXT_PUBLIC_PNGTUBER_OFFSET_Y`): Vertical position adjustment
 
+In the settings screen preview, you can drag the model to reposition it. On a PC, use the mouse wheel over the preview to zoom the model in or out.
+
 ## Chroma Key Feature
 
 When using video assets, the chroma key feature can make specific colors transparent. Green (#00FF00) is set as the default transparent color.
@@ -81,6 +83,8 @@ When using video assets, the chroma key feature can make specific colors transpa
 - **Enable** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_ENABLED`): Toggle chroma key feature on/off
 - **Transparent Color** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_COLOR`): Color to make transparent (HEX color code)
 - **Tolerance** (`NEXT_PUBLIC_PNGTUBER_CHROMA_KEY_TOLERANCE`): Color tolerance range (0-100)
+
+Select a color in the video preview on the settings screen to set it as the transparent color.
 
 ## Notes About Models
 
