@@ -76,6 +76,7 @@ Processes the message through the same flow as input entered in AITuberKit. If y
 | `image` | `string` | `-` | Image as a Base64 data URI. Example: `data:image/png;base64,iVBOR...` |
 | `priority` | `"normal"` / `"high"` | `-` | When set to `high`, the message is inserted before normal queued messages. Defaults to `normal`. |
 | `interrupt` | `boolean` | `-` | When `true`, the current speech and waiting queue are stopped before this input is queued. |
+| `responseCallback` | `object` | `-` | Specify this to return the AI response to a local HTTP callback. See below for details. |
 
 ```bash
 curl -X POST \
@@ -94,6 +95,38 @@ curl -X POST \
   -d '{"text": "Please describe this image.", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
 ```
+
+#### AI Response Callback
+
+When `responseCallback` is specified, the AITuberKit server can send the result to a local HTTP endpoint after the AI response has been generated.
+
+```json
+{
+  "text": "Please explain the key points of this presentation.",
+  "mode": "user_input",
+  "responseCallback": {
+    "url": "http://127.0.0.1:8787/aituber-kit/callback",
+    "interactionId": "request-001",
+    "token": "replace-with-a-random-token"
+  }
+}
+```
+
+The callback endpoint receives a POST request in the following format.
+
+```json
+{
+  "interactionId": "request-001",
+  "token": "replace-with-a-random-token",
+  "status": "completed",
+  "content": "Generated AI response"
+}
+```
+
+- `url` is limited to `http://127.0.0.1`, `http://localhost`, or `http://[::1]`
+- `interactionId` must start with an alphanumeric character and may contain alphanumeric characters, hyphens, and underscores, up to 128 characters
+- `token` must be 8 to 256 characters. Verify it at the callback receiver
+- `status` is one of `completed`, `empty`, or `failed`. When it is `failed`, the payload includes `error`
 
 ### 3. Stop Playback (POST /api/v1/stop)
 
@@ -142,9 +175,20 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
 ```
 
+The following events can be used to synchronize speech state.
+
+| Event | Description |
+| --- | --- |
+| `speech_started` | The client entered the speaking state |
+| `speech_ended` | The client left the speaking state |
+| `speech_chunk_started` | Playback of a split speech chunk started. The payload includes `speechChunkId` and `text` |
+| `speech_chunk_ended` | Playback of a speech chunk ended. The payload includes `speechChunkId` |
+
+For external presentation events, see [External Presentation API](/en/guide/other/external-presentation-api#subscribe-to-events).
+
 ## API Console
 
-The message sending page has been expanded into the API Console. You can run both the `/api/v1` APIs and the existing `/api/messages` API from this screen.
+The message sending page has been expanded into the API Console. You can run the standard `/api/v1` APIs, the External Presentation API, and the existing `/api/messages` API from this screen.
 
 ## Enabling the Feature
 
@@ -235,6 +279,8 @@ When the purpose is fixed, you can also use these endpoints.
 | `POST /api/v1/stop/` | Stop current speech or queued work |
 | `GET /api/v1/status/` | Get connected client status |
 | `GET /api/v1/events/` | Check recent API events |
+
+For presentation registration, assignment, and playback controls, see the [External Presentation API](/en/guide/other/external-presentation-api).
 
 ## API Response
 

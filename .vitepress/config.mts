@@ -303,6 +303,10 @@ export default defineConfig({
                   link: '/guide/other/message-receiver',
                 },
                 {
+                  text: '外部プレゼンテーションAPI',
+                  link: '/guide/other/external-presentation-api',
+                },
+                {
                   text: '埋め込みウィジェット',
                   link: '/guide/other/embed-widget',
                 },
@@ -435,6 +439,10 @@ export default defineConfig({
                   link: '/en/guide/other/message-receiver',
                 },
                 {
+                  text: 'External Presentation API',
+                  link: '/en/guide/other/external-presentation-api',
+                },
+                {
                   text: 'Embed Widget',
                   link: '/en/guide/other/embed-widget',
                 },
@@ -559,6 +567,10 @@ export default defineConfig({
                 {
                   text: 'API设置',
                   link: '/zh/guide/other/message-receiver',
+                },
+                {
+                  text: '外部演示文稿API',
+                  link: '/zh/guide/other/external-presentation-api',
                 },
                 {
                   text: '嵌入小组件',

@@ -146,7 +146,22 @@ NEXT_PUBLIC_ASSISTANT_TEXT_STYLE="borderless"
 
 When the answer box is displayed, you can choose between a glass bubble and a borderless subtitle style.
 
-## Conversation Log Display
+## Conversation Display Mode
+
+You can choose from the following three display modes for conversations on the screen. Changes made with the conversation log button in the control panel are also saved.
+
+- **Answer Box**: Displays the latest AI response on the screen
+- **Conversation Log**: Displays the conversation history between the user and AI
+- **Hidden**: Hides both the answer box and conversation log
+
+Even when **Answer Box** is selected, response text is not shown if **Show Answer Box** above is disabled.
+
+```bash
+# Conversation display mode (assistant: answer box, chat-log: conversation log, hidden: hidden)
+NEXT_PUBLIC_CHAT_LOG_MODE="assistant"
+```
+
+## Conversation Log Design
 
 You can configure the conversation log design and whether it appears on the left or right. Drag its outer edge to adjust the distance from the edge of the screen, or specify an initial value through environment variables.
 
@@ -170,6 +185,17 @@ You can set whether to display the character name in the answer box.
 ```bash
 # Character name display setting (true/false)
 NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
+```
+
+## Input Form Display
+
+You can set whether to display the message input form at the bottom of the screen. If the application is operated only through an external API or voice input, you can hide the input form for a cleaner screen.
+
+**Environment Variables**:
+
+```bash
+# Input form display setting (true/false)
+NEXT_PUBLIC_SHOW_INPUT_FORM=true
 ```
 
 ## Control Panel Display

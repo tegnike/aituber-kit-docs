@@ -35,6 +35,12 @@ When slide mode is enabled, some features are automatically disabled.
 
 ![Slide Mode](/images/slide_ndu53.webp)
 
+### External Presentations
+
+When a presentation has been assigned through the external API, its title, revision, and loading status are displayed on the settings screen. The external presentation takes priority while assigned. Unassigning it returns the application to the selected local slide set.
+
+For details on registering, assigning, and controlling playback, see the [External Presentation API](/en/guide/other/external-presentation-api).
+
 ### About Slide Display
 
 - Slides are created in Marp format and designed to display optimally with a **16:9** aspect ratio

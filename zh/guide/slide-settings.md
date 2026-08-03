@@ -35,6 +35,12 @@ NEXT_PUBLIC_SLIDE_MODE=false
 
 ![幻灯片模式](/images/slide_ndu53.webp)
 
+### 外部演示文稿
+
+如果通过外部API分配了演示文稿，设置界面将显示其标题、修订版本和加载状态。分配期间外部演示文稿优先；解除分配后，将返回当前选择的本地幻灯片。
+
+有关注册、分配和播放操作的方法，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api)。
+
 ### 关于幻灯片显示
 
 - 幻灯片以Marp格式创建，设计为以**16:9**的宽高比最佳显示

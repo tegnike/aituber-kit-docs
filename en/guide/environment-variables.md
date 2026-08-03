@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # Control panel display setting (true/false)
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# Input form display setting (true/false)
+NEXT_PUBLIC_SHOW_INPUT_FORM=true
+
 # Color theme setting (default, cool, mono, ocean, forest, sunset)
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -775,6 +778,10 @@ AITUBERKIT_API_KEY=""
 
 # API key used by the browser-side MessageReceiver when calling /api/v1
 NEXT_PUBLIC_AITUBERKIT_API_KEY=""
+
+# Persistent storage location for external Presentation Manifests and Assignments
+# Default when omitted: .aituber-kit/presentations
+AITUBERKIT_PRESENTATION_STORAGE_DIR=""
 ```
 
 ### Embed Widget
@@ -798,6 +805,9 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # Chat log width
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# Conversation display mode (assistant: answer box, chat-log: conversation log, hidden: hidden)
+NEXT_PUBLIC_CHAT_LOG_MODE="assistant"
 
 # Chat log display position (left/right)
 NEXT_PUBLIC_CHAT_LOG_POSITION="right"

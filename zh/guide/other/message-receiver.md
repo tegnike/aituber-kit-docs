@@ -76,6 +76,7 @@ curl -X POST \
 | `image` | `string` | `-` | 以Base64 data URI指定图片。示例：`data:image/png;base64,iVBOR...` |
 | `priority` | `"normal"` / `"high"` | `-` | 为 `high` 时，会插入到普通队列消息之前。未指定时为 `normal`。 |
 | `interrupt` | `boolean` | `-` | 为 `true` 时，会先停止当前发言和等待队列，再加入此输入。 |
+| `responseCallback` | `object` | `-` | 将AI回答返回到本地HTTP回调时指定。详情见下文。 |
 
 ```bash
 curl -X POST \
@@ -94,6 +95,38 @@ curl -X POST \
   -d '{"text": "请描述这张图片。", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
 ```
+
+#### AI回答回调
+
+指定 `responseCallback` 后，可在AI回答生成完成后，由AITuberKit服务器将结果返回到本地HTTP端点。
+
+```json
+{
+  "text": "请说明这份资料的要点。",
+  "mode": "user_input",
+  "responseCallback": {
+    "url": "http://127.0.0.1:8787/aituber-kit/callback",
+    "interactionId": "request-001",
+    "token": "replace-with-a-random-token"
+  }
+}
+```
+
+将以以下格式向回调端点发送POST请求。
+
+```json
+{
+  "interactionId": "request-001",
+  "token": "replace-with-a-random-token",
+  "status": "completed",
+  "content": "生成的AI回答"
+}
+```
+
+- `url` 仅限 `http://127.0.0.1`、`http://localhost`、`http://[::1]`
+- `interactionId` 必须以字母或数字开头，可使用字母、数字、连字符和下划线（最多128个字符）
+- `token` 长度为8至256个字符。请在回调接收端进行核对
+- `status` 为 `completed`、`empty`、`failed` 之一。`failed` 时会包含 `error`
 
 ### 3. 停止（POST /api/v1/stop）
 
@@ -142,9 +175,20 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
 ```
 
+以下事件可用于同步发言状态。
+
+| 事件 | 内容 |
+| --- | --- |
+| `speech_started` | 客户端进入发言状态 |
+| `speech_ended` | 客户端结束发言状态 |
+| `speech_chunk_started` | 分段发言的音频块开始播放。Payload包含`speechChunkId`和`text` |
+| `speech_chunk_ended` | 发言音频块播放结束。Payload包含`speechChunkId` |
+
+有关外部演示文稿事件，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api#订阅事件)。
+
 ## API Console
 
-消息发送页面已扩展为 API Console。您可以在此页面执行 `/api/v1` API 和现有的 `/api/messages` API。
+消息发送页面已扩展为 API Console。您可以在此页面执行常规的 `/api/v1` API、外部演示文稿API和现有的 `/api/messages` API。
 
 ## 启用功能
 
@@ -235,6 +279,8 @@ curl -X POST \
 | `POST /api/v1/stop/` | 停止当前发话或队列 |
 | `GET /api/v1/status/` | 获取已连接客户端状态 |
 | `GET /api/v1/events/` | 查看最近的API事件 |
+
+有关演示文稿的注册、分配和播放操作，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api)。
 
 ## API响应
 

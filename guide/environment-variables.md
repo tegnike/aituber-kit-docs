@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 操作パネル表示設定（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# 入力フォーム表示設定（true/false）
+NEXT_PUBLIC_SHOW_INPUT_FORM=true
+
 # カラーテーマ設定（default, cool, mono, ocean, forest, sunset）
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -776,6 +779,10 @@ AITUBERKIT_API_KEY=""
 
 # ブラウザ側のMessageReceiverが /api/v1 を呼び出す際のAPIキー
 NEXT_PUBLIC_AITUBERKIT_API_KEY=""
+
+# 外部Presentation ManifestとAssignmentの永続保存先
+# 未指定時: .aituber-kit/presentations
+AITUBERKIT_PRESENTATION_STORAGE_DIR=""
 ```
 
 ### 埋め込みウィジェット
@@ -800,6 +807,9 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # チャットログの幅
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# 会話ログの表示状態（assistant: 回答欄, chat-log: 会話ログ, hidden: 非表示）
+NEXT_PUBLIC_CHAT_LOG_MODE="assistant"
 
 # チャットログの表示位置（left/right）
 NEXT_PUBLIC_CHAT_LOG_POSITION="right"

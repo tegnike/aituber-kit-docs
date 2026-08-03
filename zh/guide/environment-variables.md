@@ -53,6 +53,9 @@ NEXT_PUBLIC_SHOW_CHARACTER_NAME=true
 # 控制面板显示设置（true/false）
 NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 
+# 输入表单显示设置（true/false）
+NEXT_PUBLIC_SHOW_INPUT_FORM=true
+
 # 颜色主题设置（default, cool, mono, ocean, forest, sunset）
 NEXT_PUBLIC_COLOR_THEME=default
 ```
@@ -776,6 +779,10 @@ AITUBERKIT_API_KEY=""
 
 # 浏览器端MessageReceiver调用 /api/v1 时使用的API密钥
 NEXT_PUBLIC_AITUBERKIT_API_KEY=""
+
+# 外部Presentation Manifest和Assignment的持久化存储位置
+# 未指定时: .aituber-kit/presentations
+AITUBERKIT_PRESENTATION_STORAGE_DIR=""
 ```
 
 ### 嵌入小组件
@@ -799,6 +806,9 @@ NEXT_PUBLIC_SHOW_INTRODUCTION="true"
 
 # 聊天日志宽度
 NEXT_PUBLIC_CHAT_LOG_WIDTH=400
+
+# 对话日志显示状态（assistant: 回答框, chat-log: 对话日志, hidden: 隐藏）
+NEXT_PUBLIC_CHAT_LOG_MODE="assistant"
 
 # 聊天日志显示位置（left/right）
 NEXT_PUBLIC_CHAT_LOG_POSITION="right"

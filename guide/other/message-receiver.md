@@ -76,6 +76,7 @@ AITuberKitの入力欄に送った場合と同じ会話処理に流します。`
 | `image` | `string` | `-` | 画像をBase64 data URIで指定します。例: `data:image/png;base64,iVBOR...` |
 | `priority` | `"normal"` / `"high"` | `-` | `high` の場合は通常より前にキューへ入れます。未指定時は `normal` です。 |
 | `interrupt` | `boolean` | `-` | `true` の場合、現在の発話と待機キューを停止してからこの入力を入れます。 |
+| `responseCallback` | `object` | `-` | AI回答をローカルHTTPコールバックへ返す場合に指定します。詳細は後述します。 |
 
 ```bash
 curl -X POST \
@@ -94,6 +95,38 @@ curl -X POST \
   -d '{"text": "この画像について説明してください。", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
   'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
 ```
+
+#### AI回答のコールバック
+
+`responseCallback` を指定すると、AI回答の生成完了後にAITuberKitサーバーからローカルのHTTPエンドポイントへ結果を返せます。
+
+```json
+{
+  "text": "この資料の要点を説明してください。",
+  "mode": "user_input",
+  "responseCallback": {
+    "url": "http://127.0.0.1:8787/aituber-kit/callback",
+    "interactionId": "request-001",
+    "token": "replace-with-a-random-token"
+  }
+}
+```
+
+コールバック先には次の形式でPOSTされます。
+
+```json
+{
+  "interactionId": "request-001",
+  "token": "replace-with-a-random-token",
+  "status": "completed",
+  "content": "生成されたAI回答"
+}
+```
+
+- `url` は `http://127.0.0.1`、`http://localhost`、`http://[::1]` のいずれかに限定されます
+- `interactionId` は英数字で始まり、英数字・ハイフン・アンダースコアを使用できます（最大128文字）
+- `token` は8〜256文字です。コールバック受信側で照合してください
+- `status` は `completed`、`empty`、`failed` のいずれかです。`failed` の場合は `error` が含まれます
 
 ### 3. 停止する（POST /api/v1/stop）
 
@@ -142,9 +175,20 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
 ```
 
+発話状態の同期には、次のイベントを利用できます。
+
+| イベント | 内容 |
+| --- | --- |
+| `speech_started` | クライアントが発話状態になった |
+| `speech_ended` | クライアントの発話状態が終了した |
+| `speech_chunk_started` | 分割された発話チャンクの再生が始まった。Payloadに`speechChunkId`と`text`を含む |
+| `speech_chunk_ended` | 発話チャンクの再生が終了した。Payloadに`speechChunkId`を含む |
+
+外部プレゼンテーションのイベントは[外部プレゼンテーションAPI](/guide/other/external-presentation-api#イベントを購読する)を参照してください。
+
 ## API Console
 
-「メッセージ送信ページ」は API Console として拡張されています。`/api/v1` APIと既存の `/api/messages` の両方を画面から実行できます。
+「メッセージ送信ページ」は API Console として拡張されています。通常の `/api/v1` API、外部プレゼンテーションAPI、既存の `/api/messages` を画面から実行できます。
 
 ## 機能の有効化
 
@@ -235,6 +279,8 @@ curl -X POST \
 | `POST /api/v1/stop/` | 現在の発話や待機キューを停止する |
 | `GET /api/v1/status/` | 接続中クライアントの状態を取得する |
 | `GET /api/v1/events/` | 直近のAPIイベントを確認する |
+
+プレゼンテーションの登録・割当・再生操作については[外部プレゼンテーションAPI](/guide/other/external-presentation-api)を参照してください。
 
 ## APIレスポンス
 
