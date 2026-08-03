@@ -1,5 +1,39 @@
 # Advanced Settings
 
+## Back Up and Restore Settings
+
+You can download the AITuberKit settings saved in your current browser as a JSON file and import them into another browser or device. These actions are available under **Advanced Settings** on the settings screen.
+
+### Download Settings
+
+Click **Download Settings** to save the current settings in a file named `aituber-kit-settings-YYYYMMDD-HHMMSS.json`.
+
+By default, sensitive information such as API keys is excluded from the download. If you need a complete migration, enable **Include sensitive information such as API keys** before downloading the file.
+
+:::warning When including sensitive information
+API keys, authorization headers, custom API request bodies, kiosk passcodes, and similar values are stored as plain text in the JSON file. Do not publish or share the file, and keep it in a secure location.
+:::
+
+### Import a Settings File
+
+Select an AITuberKit settings JSON file under **Import Settings File** and approve the confirmation dialog. The settings will be applied and the page will reload. The maximum supported file size is 5 MB.
+
+- Files that do not contain sensitive information preserve API keys and other sensitive values currently saved in the browser
+- Files that contain sensitive information overwrite API keys and other sensitive values with the values from the file
+- Older settings versions are converted to the current format when supported
+- Unsupported formats, invalid values, and files with a settings version newer than the current app cannot be imported
+
+### What Is Not Included in the Backup
+
+This feature backs up browser settings only. It does not include the following files or data:
+
+- Character model, background, placed image, or slide files
+- Conversation history
+- Long-term memory files or data
+- Environment variable files such as `.env` and `.env.local`
+
+Environment variables are managed separately from settings files. When `NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES=true`, environment variables always override browser settings, so importing a settings file is disabled.
+
 ## Reset Settings
 
 You can reset AITuberKit settings and return to the initial state.
