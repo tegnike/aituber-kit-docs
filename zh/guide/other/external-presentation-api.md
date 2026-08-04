@@ -126,17 +126,19 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 `revision`为可选参数。如果指定值与已保存的修订版本不同，将返回`409 REVISION_MISMATCH`。
 
-## 分配给客户端
+## 分配给Receiver
+
+如果启动了多个浏览器标签页或OBS Browser Source，请先通过 [`GET /api/v1/receivers`](/zh/guide/other/message-receiver) 获取已连接的Receiver，然后选择要操作的 `receiverId`。
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","revision":1,"autoStart":false}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","revision":1,"autoStart":false}' \
   'http://localhost:3000/api/v1/presentations/product-demo/activate'
 ```
 
-`clientId`也可以通过查询字符串指定。`autoStart`的默认值为`false`，即使资料已加载，也不会自动开始发言。
+`receiverId`也可以通过查询字符串指定。现有集成仍可继续使用用于兼容的`clientId`。`autoStart`的默认值为`false`，即使资料已加载，也不会自动开始发言。
 
 ## 控制演示文稿
 
@@ -144,7 +146,7 @@ curl -X POST \
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","action":"start"}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","action":"start"}' \
   'http://localhost:3000/api/v1/presentation/control'
 ```
 
@@ -164,7 +166,7 @@ curl -X POST \
 
 ```json
 {
-  "clientId": "main-stage",
+  "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
   "action": "goto",
   "target": {
     "sectionId": "introduction",
@@ -180,7 +182,7 @@ curl -X POST \
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/presentation/status?clientId=main-stage'
+  'http://localhost:3000/api/v1/presentation/status?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 响应中包含服务器保存的分配状态`desired`、浏览器报告的实际状态`actual`，以及表示两者是否一致的`inSync`。
@@ -204,7 +206,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 ```bash
 curl -N -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events?clientId=main-stage'
+  'http://localhost:3000/api/v1/events?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 ## 存储位置与运维注意事项

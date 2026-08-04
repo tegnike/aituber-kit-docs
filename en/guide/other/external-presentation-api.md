@@ -126,17 +126,19 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 `revision` is optional. If the specified value differs from the stored revision, the API returns `409 REVISION_MISMATCH`.
 
-## Assign a Presentation to a Client
+## Assign a Presentation to a Receiver
+
+If multiple browser tabs or OBS Browser Sources are open, first use [`GET /api/v1/receivers`](/en/guide/other/message-receiver) to retrieve the connected Receivers, then select the `receiverId` to control.
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","revision":1,"autoStart":false}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","revision":1,"autoStart":false}' \
   'http://localhost:3000/api/v1/presentations/product-demo/activate'
 ```
 
-You can also specify `clientId` in the query string. `autoStart` defaults to `false`, so loading the presentation does not automatically start speech.
+You can also specify `receiverId` in the query string. The compatibility `clientId` remains available for existing integrations. `autoStart` defaults to `false`, so loading the presentation does not automatically start speech.
 
 ## Control a Presentation
 
@@ -144,7 +146,7 @@ You can also specify `clientId` in the query string. `autoStart` defaults to `fa
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","action":"start"}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","action":"start"}' \
   'http://localhost:3000/api/v1/presentation/control'
 ```
 
@@ -164,7 +166,7 @@ For `goto`, specify the destination as follows. Set `speak: true` to narrate the
 
 ```json
 {
-  "clientId": "main-stage",
+  "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
   "action": "goto",
   "target": {
     "sectionId": "introduction",
@@ -180,7 +182,7 @@ The control API returns `202` when it accepts a command. Confirm that it has act
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/presentation/status?clientId=main-stage'
+  'http://localhost:3000/api/v1/presentation/status?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 The response includes the assignment stored on the server as `desired`, the actual state reported by the browser as `actual`, and `inSync`, which indicates whether they match.
@@ -204,7 +206,7 @@ The existing `GET /api/v1/events` endpoint can receive the following Presentatio
 
 ```bash
 curl -N -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events?clientId=main-stage'
+  'http://localhost:3000/api/v1/events?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 ## Storage and Operational Notes

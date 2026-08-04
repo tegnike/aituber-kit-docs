@@ -36,9 +36,53 @@ NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 | --- | --- | --- | --- |
 | `Authorization` | HTTPヘッダー | `●` | `Bearer YOUR_API_KEY` の形式で指定します。 |
 
-`clientId` は対象クライアントを指定するパラメータです。`speak` / `chat` / `stop` / `status` では必須、`events` ではイベントを絞り込むための任意パラメータです。POST系APIではクエリ文字列またはJSON本文、GET系APIではクエリ文字列で指定します。
+`receiverId` はブラウザタブやOBS Browser Sourceなど、特定のAITuberKit画面を指定するルーティングIDです。`speak` / `chat` / `stop` / `status` では `receiverId` または従来の `clientId` のどちらかが必須で、`events` ではイベントを絞り込む任意パラメータです。POST系APIではクエリ文字列またはJSON本文、GET系APIではクエリ文字列で指定します。
+
+両方を指定した場合は、JSON本文の `receiverId`、JSON本文の `clientId`、クエリ文字列の `receiverId`、クエリ文字列の `clientId` の順で優先されます。新しい連携では `receiverId` を推奨します。`clientId` は既存連携との互換性のため引き続き利用できます。
 
 POSTリクエストの本文はJSONで送信します。画像を送る場合は、`image` に `data:image/png;base64,...` のようなBase64 data URIを指定してください。画像文字列は最大約1,000万文字まで受け付けます。
+
+### 接続中のReceiverを取得する（GET /api/v1/receivers）
+
+同じサーバーへ接続中のAITuberKit画面を一覧で取得します。複数のブラウザタブやOBS Browser Sourceから、操作対象を選ぶ場合に使用します。
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/receivers/'
+```
+
+```json
+{
+  "ok": true,
+  "receivers": [
+    {
+      "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
+      "configuredClientId": "main-stage",
+      "displayName": "Chrome a6fb2387",
+      "kind": "browser",
+      "capabilities": ["presentation", "chat", "speech"],
+      "connected": true,
+      "isSpeaking": false,
+      "lastSeenAt": "2026-08-04T10:00:00.000Z"
+    }
+  ]
+}
+```
+
+| フィールド | 説明 |
+| --- | --- |
+| `receiverId` | 発話・チャット・停止・プレゼンテーション操作の配送先に使う一時IDです。 |
+| `configuredClientId` | 設定画面に保存された従来の論理クライアントIDです。複数Receiverで共有される場合があります。 |
+| `displayName` | 選択UI向けの補助表示名です。永続識別には使用しないでください。 |
+| `kind` | `browser`、`obs`、互換経路の `legacy` のいずれかです。 |
+| `capabilities` | 対応する `presentation`、`chat`、`speech` の一覧です。 |
+| `isSpeaking` | 一覧取得時点で発話中かどうかを示します。 |
+| `lastSeenAt` | 最後に状態が報告された時刻です。 |
+
+`receiverId` は同じタブの再読み込みでは維持されますが、タブやOBSインスタンスを作り直すと変わる一時IDです。最終状態報告から10秒を超えたReceiverは一覧から除外されるため、保存済みIDが見つからない場合は一覧を再取得してください。
+
+Receiver RegistryはAITuberKitを実行している1つのNode.jsプロセス内で管理されます。複数プロセス構成やサーバーレス構成ではReceiver一覧は共有されません。また、`receiverId` は認証情報ではありません。すべての `/api/v1` 操作にはAPIキーが必要です。
 
 ### 1. 直接発話させる（POST /api/v1/speak）
 
@@ -46,7 +90,7 @@ POSTリクエストの本文はJSONで送信します。画像を送る場合は
 
 | パラメータ | 型 | 要件 | 説明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | メッセージを受け取るAITuberKit側のクライアントIDです。クエリ文字列またはJSON本文で指定します。 |
+| `receiverId` / `clientId` | `string` | `●` | メッセージを受け取るAITuberKit画面のReceiver ID、または互換用クライアントIDです。クエリ文字列またはJSON本文で指定します。 |
 | `text` | `string` | `△` | 発話させる本文です。`messages` を指定しない場合に必須です。 |
 | `messages` | `string[]` | `△` | 複数文をまとめてキューに入れる場合に指定します。`text` を指定しない場合に必須です。 |
 | `emotion` | `string` | `-` | 発話時の表情・感情指定です。未指定の場合は通常状態で処理します。 |
@@ -58,7 +102,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "こんにちは。API経由の発話テストです。", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
-  'http://localhost:3000/api/v1/speak/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. 会話入力として処理する（POST /api/v1/chat）
@@ -67,7 +111,7 @@ AITuberKitの入力欄に送った場合と同じ会話処理に流します。`
 
 | パラメータ | 型 | 要件 | 説明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | メッセージを受け取るAITuberKit側のクライアントIDです。クエリ文字列またはJSON本文で指定します。 |
+| `receiverId` / `clientId` | `string` | `●` | メッセージを受け取るAITuberKit画面のReceiver ID、または互換用クライアントIDです。クエリ文字列またはJSON本文で指定します。 |
 | `text` | `string` | `△` | キャラクターへ渡す入力文です。`messages` を指定しない場合に必須です。 |
 | `messages` | `string[]` | `△` | 複数の入力文をまとめて送る場合に指定します。`text` を指定しない場合に必須です。 |
 | `mode` | `"user_input"` / `"ai_generate"` | `-` | `user_input` は入力欄から送った場合と同じ処理、`ai_generate` はAI回答生成用の入力として処理します。未指定時は `user_input` です。 |
@@ -83,7 +127,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "今日の配信で一言あいさつしてください。", "mode": "user_input", "interrupt": false}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 画像付きで送る場合:
@@ -93,7 +137,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "この画像について説明してください。", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 #### AI回答のコールバック
@@ -134,7 +178,7 @@ curl -X POST \
 
 | パラメータ | 型 | 要件 | 説明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | 停止対象のAITuberKit側のクライアントIDです。クエリ文字列またはJSON本文で指定します。 |
+| `receiverId` / `clientId` | `string` | `●` | 停止対象のAITuberKit画面のReceiver ID、または互換用クライアントIDです。クエリ文字列またはJSON本文で指定します。 |
 | `mode` | `"speech"` / `"queue"` / `"all"` | `-` | 停止範囲です。`speech` は現在の発話、`queue` は待機キュー、`all` は両方を停止します。未指定時は `all` です。 |
 | `reason` | `string` | `-` | 停止理由のメモです。イベントログ確認用に残せます。 |
 
@@ -143,7 +187,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"mode": "all", "reason": "external_control"}' \
-  'http://localhost:3000/api/v1/stop/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/stop/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 4. 状態を取得する（GET /api/v1/status）
@@ -152,12 +196,12 @@ curl -X POST \
 
 | パラメータ | 型 | 要件 | 説明 |
 | --- | --- | --- | --- |
-| `clientId` | クエリ文字列 | `●` | 状態を取得するAITuberKit側のクライアントIDです。 |
+| `receiverId` / `clientId` | クエリ文字列 | `●` | 状態を取得するAITuberKit画面のReceiver ID、または互換用クライアントIDです。 |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/status/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/status/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 5. イベントを取得する（GET /api/v1/events）
@@ -166,13 +210,13 @@ APIイベントは Server-Sent Events として購読できます。API Console�
 
 | パラメータ | 型 | 要件 | 説明 |
 | --- | --- | --- | --- |
-| `clientId` | クエリ文字列 | `-` | 指定したクライアントIDのイベントだけに絞り込みます。未指定の場合は全クライアントのイベントを対象にします。 |
+| `receiverId` / `clientId` | クエリ文字列 | `-` | 指定したReceiver ID、または互換用クライアントIDのイベントだけに絞り込みます。未指定の場合は全Receiverを対象にします。 |
 | `snapshot` | `boolean` | `-` | `true` の場合は直近イベントをJSONで返します。未指定の場合はSSE接続になります。 |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
 発話状態の同期には、次のイベントを利用できます。
@@ -205,7 +249,7 @@ curl -X GET \
 
 ## メッセージ送信API（POST /api/v1/messages）
 
-メッセージ送信ページでは、用途に応じて複数の `/api/v1` エンドポイントを実行できます。APIを直接呼び出す場合は、`clientId` と `Authorization: Bearer YOUR_API_KEY` ヘッダーを指定してください。
+メッセージ送信ページでは、用途に応じて複数の `/api/v1` エンドポイントを実行できます。APIを直接呼び出す場合は、`receiverId`（または互換用の `clientId`）と `Authorization: Bearer YOUR_API_KEY` ヘッダーを指定してください。
 
 :::tip ヒント
 `YOUR_API_KEY` にはサーバー側の `AITUBERKIT_API_KEY` に設定した値を使用します。ブラウザに公開される環境変数ではなく、サーバー側の値として管理してください。
@@ -226,7 +270,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"], "type": "direct_send"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. AIで回答を生成してから発言させる（ai_generate）
@@ -247,7 +291,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["今日の予定を教えてください。"], "type": "ai_generate"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 3. ユーザー入力を送信する（user_input）
@@ -265,7 +309,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["こんにちは、今日もいい天気ですね。", "今日の予定を教えてください。"], "type": "user_input"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ## 用途別エンドポイント
@@ -279,6 +323,7 @@ curl -X POST \
 | `POST /api/v1/stop/` | 現在の発話や待機キューを停止する |
 | `GET /api/v1/status/` | 接続中クライアントの状態を取得する |
 | `GET /api/v1/events/` | 直近のAPIイベントを確認する |
+| `GET /api/v1/receivers/` | 接続中のReceiverを一覧で取得する |
 
 プレゼンテーションの登録・割当・再生操作については[外部プレゼンテーションAPI](/guide/other/external-presentation-api)を参照してください。
 
@@ -292,6 +337,6 @@ curl -X POST \
 
 ## 注意点
 
-- クライアントIDは外部からのアクセスを制限するために使用されます。第三者に漏洩しないよう注意してください。
+- `receiverId` と `clientId` は配送先を選ぶための識別子であり、認証情報ではありません。APIキーを第三者に漏洩しないよう注意してください。
 - 大量のメッセージを短時間に送信すると、処理が遅延する可能性があります。
 - 外部からのAPI操作を受け付ける機能は、セキュリティ上のリスクを伴います。信頼できる環境でのみ有効化してください。

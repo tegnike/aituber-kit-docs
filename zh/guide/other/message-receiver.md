@@ -36,9 +36,53 @@ NEXT_PUBLIC_AITUBERKIT_API_KEY=""
 | --- | --- | --- | --- |
 | `Authorization` | HTTP请求头 | `●` | 以 `Bearer YOUR_API_KEY` 的格式指定。 |
 
-`clientId` 用于指定目标客户端。`speak` / `chat` / `stop` / `status` 中为必填，`events` 中为用于筛选事件的可选参数。POST系API可在查询字符串或JSON正文中指定，GET系API在查询字符串中指定。
+`receiverId` 是用于指定特定AITuberKit界面的路由ID，例如浏览器标签页或OBS Browser Source。`speak` / `chat` / `stop` / `status` 中必须指定 `receiverId` 或原有的 `clientId`，`events` 中则是用于筛选事件的可选参数。POST系API可在查询字符串或JSON正文中指定，GET系API在查询字符串中指定。
+
+同时指定两者时，优先顺序为JSON正文中的 `receiverId`、JSON正文中的 `clientId`、查询字符串中的 `receiverId`、查询字符串中的 `clientId`。新集成推荐使用 `receiverId`。为兼容现有集成，`clientId` 仍可继续使用。
 
 POST请求正文以JSON发送。发送图片时，请在 `image` 中指定 `data:image/png;base64,...` 这样的Base64 data URI。图片字符串最大约可接受1,000万字符。
+
+### 获取已连接的Receiver（GET /api/v1/receivers）
+
+获取连接到同一服务器的AITuberKit界面列表。用于从多个浏览器标签页或OBS Browser Source中选择操作目标。
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/receivers/'
+```
+
+```json
+{
+  "ok": true,
+  "receivers": [
+    {
+      "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
+      "configuredClientId": "main-stage",
+      "displayName": "Chrome a6fb2387",
+      "kind": "browser",
+      "capabilities": ["presentation", "chat", "speech"],
+      "connected": true,
+      "isSpeaking": false,
+      "lastSeenAt": "2026-08-04T10:00:00.000Z"
+    }
+  ]
+}
+```
+
+| 字段 | 说明 |
+| --- | --- |
+| `receiverId` | 用作发言、聊天、停止和演示文稿操作目标的临时ID。 |
+| `configuredClientId` | 保存在设置界面中的原有逻辑客户端ID。可能由多个Receiver共享。 |
+| `displayName` | 用于选择界面的辅助显示名称。请勿用于持久化标识。 |
+| `kind` | `browser`、`obs` 或兼容路径的 `legacy`。 |
+| `capabilities` | 支持的 `presentation`、`chat`、`speech` 列表。 |
+| `isSpeaking` | 表示获取列表时是否正在发言。 |
+| `lastSeenAt` | 最后一次报告状态的时间。 |
+
+在同一标签页中重新加载时，`receiverId` 会保持不变，但重新创建标签页或OBS实例后会发生变化。最后一次状态报告超过10秒的Receiver会从列表中移除，因此如果找不到已保存的ID，请重新获取列表。
+
+Receiver Registry在运行AITuberKit的单个Node.js进程中进行管理。在多进程或无服务器架构中，Receiver列表不会共享。此外，`receiverId` 不是认证信息。所有 `/api/v1` 操作都需要API密钥。
 
 ### 1. 直接发言（POST /api/v1/speak）
 
@@ -46,7 +90,7 @@ POST请求正文以JSON发送。发送图片时，请在 `image` 中指定 `data
 
 | 参数 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | 接收消息的 AITuberKit 端客户端ID。可在查询字符串或JSON正文中指定。 |
+| `receiverId` / `clientId` | `string` | `●` | 接收消息的AITuberKit界面的Receiver ID，或用于兼容的客户端ID。可在查询字符串或JSON正文中指定。 |
 | `text` | `string` | `△` | 要发言的正文。未指定 `messages` 时必填。 |
 | `messages` | `string[]` | `△` | 将多个文本一起加入队列时指定。未指定 `text` 时必填。 |
 | `emotion` | `string` | `-` | 发言时的表情或情绪指定。未指定时按通常状态处理。 |
@@ -58,7 +102,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "你好。这是通过API进行的发言测试。", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
-  'http://localhost:3000/api/v1/speak/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. 作为聊天输入处理（POST /api/v1/chat）
@@ -67,7 +111,7 @@ curl -X POST \
 
 | 参数 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | 接收消息的 AITuberKit 端客户端ID。可在查询字符串或JSON正文中指定。 |
+| `receiverId` / `clientId` | `string` | `●` | 接收消息的AITuberKit界面的Receiver ID，或用于兼容的客户端ID。可在查询字符串或JSON正文中指定。 |
 | `text` | `string` | `△` | 传给角色的输入文本。未指定 `messages` 时必填。 |
 | `messages` | `string[]` | `△` | 一次发送多条输入消息时指定。未指定 `text` 时必填。 |
 | `mode` | `"user_input"` / `"ai_generate"` | `-` | `user_input` 与从画面输入框发送时相同，`ai_generate` 会作为AI回答生成请求处理。未指定时为 `user_input`。 |
@@ -83,7 +127,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "请为今天的直播简短打个招呼。", "mode": "user_input", "interrupt": false}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 发送图片时：
@@ -93,7 +137,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "请描述这张图片。", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 #### AI回答回调
@@ -134,7 +178,7 @@ curl -X POST \
 
 | 参数 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | 要停止的 AITuberKit 端客户端ID。可在查询字符串或JSON正文中指定。 |
+| `receiverId` / `clientId` | `string` | `●` | 要停止的AITuberKit界面的Receiver ID，或用于兼容的客户端ID。可在查询字符串或JSON正文中指定。 |
 | `mode` | `"speech"` / `"queue"` / `"all"` | `-` | 停止范围。`speech` 停止当前发言，`queue` 停止等待队列，`all` 停止两者。未指定时为 `all`。 |
 | `reason` | `string` | `-` | 停止原因的备注，可用于查看事件日志。 |
 
@@ -143,7 +187,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"mode": "all", "reason": "external_control"}' \
-  'http://localhost:3000/api/v1/stop/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/stop/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 4. 获取状态（GET /api/v1/status）
@@ -152,12 +196,12 @@ curl -X POST \
 
 | 参数 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
-| `clientId` | 查询字符串 | `●` | 要获取状态的 AITuberKit 端客户端ID。 |
+| `receiverId` / `clientId` | 查询字符串 | `●` | 要获取状态的AITuberKit界面的Receiver ID，或用于兼容的客户端ID。 |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/status/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/status/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 5. 获取事件（GET /api/v1/events）
@@ -166,13 +210,13 @@ API事件可以通过 Server-Sent Events 订阅。在 API Console 中，可以�
 
 | 参数 | 类型 | 要求 | 说明 |
 | --- | --- | --- | --- |
-| `clientId` | 查询字符串 | `-` | 仅筛选指定客户端ID的事件。未指定时包含所有客户端的事件。 |
+| `receiverId` / `clientId` | 查询字符串 | `-` | 仅筛选指定Receiver ID或用于兼容的客户端ID的事件。未指定时包含所有Receiver的事件。 |
 | `snapshot` | `boolean` | `-` | 为 `true` 时，以JSON返回最近事件。未指定时会建立SSE连接。 |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
 以下事件可用于同步发言状态。
@@ -205,7 +249,7 @@ curl -X GET \
 
 ## 消息发送 API（POST /api/v1/messages）
 
-消息发送页面可以根据用途执行多个 `/api/v1` 端点。直接调用 API 时，请指定 `clientId` 和 `Authorization: Bearer YOUR_API_KEY` 请求头。
+消息发送页面可以根据用途执行多个 `/api/v1` 端点。直接调用 API 时，请指定 `receiverId`（或用于兼容的 `clientId`）和 `Authorization: Bearer YOUR_API_KEY` 请求头。
 
 :::tip 提示
 `YOUR_API_KEY` 使用服务器端 `AITUBERKIT_API_KEY` 中设置的值。请将其作为服务器端值管理，不要作为暴露给浏览器的环境变量管理。
@@ -226,7 +270,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"], "type": "direct_send"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. 用AI生成回答然后说话（ai_generate）
@@ -247,7 +291,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["请告诉我你今天的日程安排。"], "type": "ai_generate"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 3. 发送用户输入（user_input）
@@ -265,7 +309,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["你好，今天天气真好。", "请告诉我你今天的日程安排。"], "type": "user_input"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ## 按用途划分的端点
@@ -279,6 +323,7 @@ curl -X POST \
 | `POST /api/v1/stop/` | 停止当前发话或队列 |
 | `GET /api/v1/status/` | 获取已连接客户端状态 |
 | `GET /api/v1/events/` | 查看最近的API事件 |
+| `GET /api/v1/receivers/` | 获取已连接的Receiver列表 |
 
 有关演示文稿的注册、分配和播放操作，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api)。
 
@@ -292,6 +337,6 @@ curl -X POST \
 
 ## 注意事项
 
-- 客户端ID用于限制来自外部源的访问。注意不要泄露给第三方。
+- `receiverId` 和 `clientId` 是用于选择消息目标的标识符，并非认证信息。请勿向第三方泄露API密钥。
 - 在短时间内发送大量消息可能会导致处理延迟。
 - 通过API从外部进行操作功能存在安全风险。仅在受信任的环境中启用。

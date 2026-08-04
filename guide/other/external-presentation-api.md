@@ -126,17 +126,19 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 `revision`は任意です。指定した値が保存済みリビジョンと異なる場合は`409 REVISION_MISMATCH`になります。
 
-## クライアントへ割り当てる
+## Receiverへ割り当てる
+
+複数のブラウザタブやOBS Browser Sourceを起動している場合は、先に [`GET /api/v1/receivers`](/guide/other/message-receiver) で接続中のReceiverを取得し、操作対象の `receiverId` を選びます。
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","revision":1,"autoStart":false}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","revision":1,"autoStart":false}' \
   'http://localhost:3000/api/v1/presentations/product-demo/activate'
 ```
 
-`clientId`はクエリ文字列でも指定できます。`autoStart`のデフォルトは`false`で、資料を読み込んでも自動では発話を開始しません。
+`receiverId`はクエリ文字列でも指定できます。既存連携では互換用の`clientId`も引き続き利用できます。`autoStart`のデフォルトは`false`で、資料を読み込んでも自動では発話を開始しません。
 
 ## プレゼンテーションを操作する
 
@@ -144,7 +146,7 @@ curl -X POST \
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"clientId":"main-stage","action":"start"}' \
+  -d '{"receiverId":"aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387","action":"start"}' \
   'http://localhost:3000/api/v1/presentation/control'
 ```
 
@@ -164,7 +166,7 @@ curl -X POST \
 
 ```json
 {
-  "clientId": "main-stage",
+  "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
   "action": "goto",
   "target": {
     "sectionId": "introduction",
@@ -180,7 +182,7 @@ curl -X POST \
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/presentation/status?clientId=main-stage'
+  'http://localhost:3000/api/v1/presentation/status?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 レスポンスにはサーバーへ保存された割当`desired`、ブラウザが報告した実状態`actual`、両者が一致しているかを示す`inSync`が含まれます。
@@ -204,7 +206,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 ```bash
 curl -N -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events?clientId=main-stage'
+  'http://localhost:3000/api/v1/events?receiverId=aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387'
 ```
 
 ## 保存先と運用上の注意

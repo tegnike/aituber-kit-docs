@@ -36,9 +36,53 @@ Legend: `●` Required, `△` Conditional, `-` Optional
 | --- | --- | --- | --- |
 | `Authorization` | HTTP header | `●` | Specify it in the `Bearer YOUR_API_KEY` format. |
 
-`clientId` identifies the target client. It is required for `speak`, `chat`, `stop`, and `status`, and optional for `events` where it filters the event stream. For POST APIs, specify it in the query string or JSON body. For GET APIs, specify it in the query string.
+`receiverId` is a routing ID that identifies a specific AITuberKit screen, such as a browser tab or OBS Browser Source. Either `receiverId` or the legacy `clientId` is required for `speak`, `chat`, `stop`, and `status`, and optional for `events` where it filters the event stream. For POST APIs, specify it in the query string or JSON body. For GET APIs, specify it in the query string.
+
+If both are specified, they take precedence in the following order: `receiverId` in the JSON body, `clientId` in the JSON body, `receiverId` in the query string, and `clientId` in the query string. `receiverId` is recommended for new integrations. `clientId` remains available for compatibility with existing integrations.
 
 Send POST request bodies as JSON. To send an image, specify a Base64 data URI such as `data:image/png;base64,...` in `image`. Image strings up to about 10 million characters are accepted.
+
+### Get Connected Receivers (GET /api/v1/receivers)
+
+Returns a list of AITuberKit screens connected to the same server. Use this endpoint to select a target from multiple browser tabs or OBS Browser Sources.
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/receivers/'
+```
+
+```json
+{
+  "ok": true,
+  "receivers": [
+    {
+      "receiverId": "aituber-receiver-7be9e2c4-57de-4ddb-a808-e85da6fb2387",
+      "configuredClientId": "main-stage",
+      "displayName": "Chrome a6fb2387",
+      "kind": "browser",
+      "capabilities": ["presentation", "chat", "speech"],
+      "connected": true,
+      "isSpeaking": false,
+      "lastSeenAt": "2026-08-04T10:00:00.000Z"
+    }
+  ]
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `receiverId` | A temporary ID used as the destination for speech, chat, stop, and presentation operations. |
+| `configuredClientId` | The legacy logical client ID saved in the settings screen. It may be shared by multiple Receivers. |
+| `displayName` | A supplementary display name for selection UIs. Do not use it as a persistent identifier. |
+| `kind` | One of `browser`, `obs`, or `legacy` for compatibility routes. |
+| `capabilities` | A list of supported capabilities: `presentation`, `chat`, and `speech`. |
+| `isSpeaking` | Indicates whether the Receiver was speaking when the list was retrieved. |
+| `lastSeenAt` | The time when the Receiver last reported its state. |
+
+`receiverId` persists when the same tab is reloaded, but it is a temporary ID that changes when the tab or OBS instance is recreated. Receivers whose latest state report is more than 10 seconds old are removed from the list. If a saved ID is not found, retrieve the list again.
+
+The Receiver Registry is managed within a single Node.js process running AITuberKit. Receiver lists are not shared across multiple processes or serverless instances. Also, `receiverId` is not a credential. An API key is required for every `/api/v1` operation.
 
 ### 1. Speak Directly (POST /api/v1/speak)
 
@@ -46,7 +90,7 @@ Makes the character speak the provided text as is.
 
 | Parameter | Type | Req. | Description |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | The client ID of the AITuberKit instance that receives the message. Specify it in the query string or JSON body. |
+| `receiverId` / `clientId` | `string` | `●` | The Receiver ID of the AITuberKit screen that receives the message, or a client ID for compatibility. Specify it in the query string or JSON body. |
 | `text` | `string` | `△` | Text to speak. Required when `messages` is not specified. |
 | `messages` | `string[]` | `△` | Multiple text messages to enqueue together. Required when `text` is not specified. |
 | `emotion` | `string` | `-` | Expression or emotion used while speaking. If omitted, the normal state is used. |
@@ -58,7 +102,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "Hello. This is a speech test through the API.", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
-  'http://localhost:3000/api/v1/speak/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. Process as Chat Input (POST /api/v1/chat)
@@ -67,7 +111,7 @@ Processes the message through the same flow as input entered in AITuberKit. If y
 
 | Parameter | Type | Req. | Description |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | The client ID of the AITuberKit instance that receives the message. Specify it in the query string or JSON body. |
+| `receiverId` / `clientId` | `string` | `●` | The Receiver ID of the AITuberKit screen that receives the message, or a client ID for compatibility. Specify it in the query string or JSON body. |
 | `text` | `string` | `△` | Input text passed to the character. Required when `messages` is not specified. |
 | `messages` | `string[]` | `△` | Multiple input messages to send together. Required when `text` is not specified. |
 | `mode` | `"user_input"` / `"ai_generate"` | `-` | `user_input` uses the same flow as the on-screen input field. `ai_generate` treats the input as an AI response generation request. Defaults to `user_input`. |
@@ -83,7 +127,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "Please give a short greeting for today’s stream.", "mode": "user_input", "interrupt": false}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 To send an image:
@@ -93,7 +137,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "Please describe this image.", "mode": "ai_generate", "image": "data:image/png;base64,iVBOR..."}' \
-  'http://localhost:3000/api/v1/chat/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/chat/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 #### AI Response Callback
@@ -134,7 +178,7 @@ Stops the current speech and queue.
 
 | Parameter | Type | Req. | Description |
 | --- | --- | --- | --- |
-| `clientId` | `string` | `●` | The client ID of the AITuberKit instance to stop. Specify it in the query string or JSON body. |
+| `receiverId` / `clientId` | `string` | `●` | The Receiver ID of the AITuberKit screen to stop, or a client ID for compatibility. Specify it in the query string or JSON body. |
 | `mode` | `"speech"` / `"queue"` / `"all"` | `-` | Stop target. `speech` stops the current speech, `queue` stops the waiting queue, and `all` stops both. Defaults to `all`. |
 | `reason` | `string` | `-` | A note for the stop reason. It can be kept for event log checks. |
 
@@ -143,7 +187,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"mode": "all", "reason": "external_control"}' \
-  'http://localhost:3000/api/v1/stop/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/stop/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 4. Get Status (GET /api/v1/status)
@@ -152,12 +196,12 @@ Returns the connected client status, including speaking state, processing state,
 
 | Parameter | Type | Req. | Description |
 | --- | --- | --- | --- |
-| `clientId` | Query string | `●` | The client ID of the AITuberKit instance whose status is requested. |
+| `receiverId` / `clientId` | Query string | `●` | The Receiver ID of the AITuberKit screen whose status is requested, or a client ID for compatibility. |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/status/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/status/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 5. Get Events (GET /api/v1/events)
@@ -166,13 +210,13 @@ API events can be subscribed to as Server-Sent Events. In the API Console, you c
 
 | Parameter | Type | Req. | Description |
 | --- | --- | --- | --- |
-| `clientId` | Query string | `-` | Filters events to the specified client ID. If omitted, events for all clients are included. |
+| `receiverId` / `clientId` | Query string | `-` | Filters events to the specified Receiver ID or client ID for compatibility. If omitted, events for all Receivers are included. |
 | `snapshot` | `boolean` | `-` | When `true`, returns recent events as JSON. If omitted, it opens an SSE connection. |
 
 ```bash
 curl -X GET \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  'http://localhost:3000/api/v1/events/?clientId=YOUR_CLIENT_ID&snapshot=true'
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
 The following events can be used to synchronize speech state.
@@ -205,7 +249,7 @@ The client ID is required when sending messages from external sources.
 
 ## Message API (POST /api/v1/messages)
 
-The message sending page can run multiple `/api/v1` endpoints depending on the use case. When calling the API directly, include `clientId` and the `Authorization: Bearer YOUR_API_KEY` header.
+The message sending page can run multiple `/api/v1` endpoints depending on the use case. When calling the API directly, include `receiverId` (or `clientId` for compatibility) and the `Authorization: Bearer YOUR_API_KEY` header.
 
 :::tip Hint
 Use the value configured in the server-side `AITUBERKIT_API_KEY` as `YOUR_API_KEY`. Manage it as a server-side value, not as a browser-exposed environment variable.
@@ -226,7 +270,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."], "type": "direct_send"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 2. Generate an Answer with AI and Then Speak (ai_generate)
@@ -247,7 +291,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"systemPrompt": "You are a helpful assistant.", "useCurrentSystemPrompt": false, "messages": ["Please tell me your schedule for today."], "type": "ai_generate"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ### 3. Send User Input (user_input)
@@ -265,7 +309,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"messages": ["Hello, the weather is nice today.", "Please tell me your schedule for today."], "type": "user_input"}' \
-  'http://localhost:3000/api/v1/messages/?clientId=YOUR_CLIENT_ID'
+  'http://localhost:3000/api/v1/messages/?receiverId=YOUR_RECEIVER_ID'
 ```
 
 ## Purpose-specific Endpoints
@@ -279,6 +323,7 @@ When the purpose is fixed, you can also use these endpoints.
 | `POST /api/v1/stop/` | Stop current speech or queued work |
 | `GET /api/v1/status/` | Get connected client status |
 | `GET /api/v1/events/` | Check recent API events |
+| `GET /api/v1/receivers/` | Get a list of connected Receivers |
 
 For presentation registration, assignment, and playback controls, see the [External Presentation API](/en/guide/other/external-presentation-api).
 
@@ -292,6 +337,6 @@ On the message sending page, there is a response display area at the bottom of e
 
 ## Notes
 
-- The client ID is used to restrict access from external sources. Be careful not to leak it to third parties.
+- `receiverId` and `clientId` identify routing destinations; they are not credentials. Do not disclose the API key to third parties.
 - Sending a large number of messages in a short time may cause processing delays.
 - The feature that accepts API operations from external sources involves security risks. Enable it only in trusted environments.
