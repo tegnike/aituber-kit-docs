@@ -122,6 +122,8 @@ You can customize the background image of the application. Click the "Upload Bac
 
 Once uploaded, the image can be selected from the settings screen at any time.
 
+The background selected on the settings screen, including a green screen, is saved in your browser and remains selected after you reload the page. The selected background is included in [settings backups](/en/guide/other/advanced-settings#back-up-and-restore-settings), but the uploaded image file itself is not. When moving your settings to another environment, transfer the image file separately as well.
+
 You can also specify the default background image using an environment variable.
 
 ::: tip
