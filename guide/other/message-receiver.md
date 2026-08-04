@@ -96,12 +96,29 @@ Receiver RegistryはAITuberKitを実行している1つのNode.jsプロセス内
 | `emotion` | `string` | `-` | 発話時の表情・感情指定です。未指定の場合は通常状態で処理します。 |
 | `priority` | `"normal"` / `"high"` | `-` | `high` の場合は通常より前にキューへ入れます。未指定時は `normal` です。 |
 | `interrupt` | `boolean` | `-` | `true` の場合、現在の発話と待機キューを停止してからこの発話を入れます。 |
+| `speechSessionId` | `string` | `-` | 分割送信した同じ回答を1つの発話セッションとして扱うIDです。前後の空白を除いて1〜200文字で指定します。 |
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "こんにちは。API経由の発話テストです。", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+```
+
+ストリーミング生成した回答を文単位などで分割して送る場合は、同じ回答の全リクエストに共通の `speechSessionId` を指定してください。同じIDの発話は、`priority` が `high` の場合も送信順（FIFO）で同じ発話キューへ追加されます。省略した場合は、リクエストごとに独立した発話として扱われます。
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "最初の文です。", "speechSessionId": "answer-stream-001"}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "続きの文です。", "speechSessionId": "answer-stream-001"}' \
   'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
@@ -219,14 +236,19 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
-発話状態の同期には、次のイベントを利用できます。
+Receiverへの新しい処理通知と発話状態の同期には、次のイベントを利用できます。
 
 | イベント | 内容 |
 | --- | --- |
+| `message_queued` | 発話またはチャット入力がキューへ追加された |
+| `command_queued` | プレゼンテーション操作などのコマンドがキューへ追加された |
+| `stop_requested` | 発話または待機キューの停止が要求された |
 | `speech_started` | クライアントが発話状態になった |
 | `speech_ended` | クライアントの発話状態が終了した |
 | `speech_chunk_started` | 分割された発話チャンクの再生が始まった。Payloadに`speechChunkId`と`text`を含む |
 | `speech_chunk_ended` | 発話チャンクの再生が終了した。Payloadに`speechChunkId`を含む |
+
+AITuberKit画面のMessageReceiverは認証付きSSEを購読し、`message_queued`、`command_queued`、`stop_requested` を受信すると対象データを即時取得します。接続中は取りこぼし確認を15秒ごとに行い、切断中だけ1秒間隔のポーリングへフォールバックします。SSEは250ミリ秒から最大5秒の指数バックオフで再接続します。
 
 外部プレゼンテーションのイベントは[外部プレゼンテーションAPI](/guide/other/external-presentation-api#イベントを購読する)を参照してください。
 
@@ -240,7 +262,7 @@ curl -X GET \
 クライアントIDは、任意の値に編集することも可能です。
 
 ::: warning
-制限モードが有効な環境では、このトグルは無効化され、APIとポーリングも停止します。設定画面ではトグルの近くに無効化理由が表示されます。
+制限モードが有効な環境では、このトグルは無効化され、APIとSSE・ポーリングによる受信処理も停止します。設定画面ではトグルの近くに無効化理由が表示されます。
 :::
 
 :::tip ヒント
@@ -322,7 +344,7 @@ curl -X POST \
 | `POST /api/v1/chat/` | 通常入力またはAI生成として処理する |
 | `POST /api/v1/stop/` | 現在の発話や待機キューを停止する |
 | `GET /api/v1/status/` | 接続中クライアントの状態を取得する |
-| `GET /api/v1/events/` | 直近のAPIイベントを確認する |
+| `GET /api/v1/events/` | APIイベントをSSE購読、または直近イベントを確認する |
 | `GET /api/v1/receivers/` | 接続中のReceiverを一覧で取得する |
 
 プレゼンテーションの登録・割当・再生操作については[外部プレゼンテーションAPI](/guide/other/external-presentation-api)を参照してください。

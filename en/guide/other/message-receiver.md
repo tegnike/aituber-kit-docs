@@ -96,12 +96,29 @@ Makes the character speak the provided text as is.
 | `emotion` | `string` | `-` | Expression or emotion used while speaking. If omitted, the normal state is used. |
 | `priority` | `"normal"` / `"high"` | `-` | When set to `high`, the message is inserted before normal queued messages. Defaults to `normal`. |
 | `interrupt` | `boolean` | `-` | When `true`, the current speech and waiting queue are stopped before this message is queued. |
+| `speechSessionId` | `string` | `-` | ID that groups split requests for the same response into one speech session. It must be 1 to 200 characters after trimming whitespace. |
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "Hello. This is a speech test through the API.", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+```
+
+When sending a streaming response in sentence-sized or similar chunks, use the same `speechSessionId` for every request in that response. Messages with the same ID are appended to the same speech queue in request order (FIFO), including when `priority` is `high`. If omitted, each request is handled as an independent speech session.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "This is the first sentence.", "speechSessionId": "answer-stream-001"}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "This is the next sentence.", "speechSessionId": "answer-stream-001"}' \
   'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
@@ -219,14 +236,19 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
-The following events can be used to synchronize speech state.
+The following events can be used for new-work notifications and speech-state synchronization.
 
 | Event | Description |
 | --- | --- |
+| `message_queued` | A speech or chat message was added to the queue |
+| `command_queued` | A command such as a presentation operation was added to the queue |
+| `stop_requested` | A stop was requested for speech or the waiting queue |
 | `speech_started` | The client entered the speaking state |
 | `speech_ended` | The client left the speaking state |
 | `speech_chunk_started` | Playback of a split speech chunk started. The payload includes `speechChunkId` and `text` |
 | `speech_chunk_ended` | Playback of a speech chunk ended. The payload includes `speechChunkId` |
+
+The AITuberKit screen's MessageReceiver subscribes to authenticated SSE and immediately fetches the relevant data when it receives `message_queued`, `command_queued`, or `stop_requested`. While connected, it performs a safety check every 15 seconds. Only while disconnected does it fall back to one-second polling. SSE reconnects use exponential backoff starting at 250 milliseconds and capped at 5 seconds.
 
 For external presentation events, see [External Presentation API](/en/guide/other/external-presentation-api#subscribe-to-events).
 
@@ -240,7 +262,7 @@ You can toggle ON/OFF the feature that accepts API operations from external sour
 You can also edit the client ID to any value you prefer.
 
 ::: warning
-In restricted mode environments, this toggle is disabled, and the API and polling also stop. The settings screen shows the disabled reason near the toggle.
+In restricted mode environments, this toggle is disabled, and the API plus SSE and polling receiver processing also stop. The settings screen shows the disabled reason near the toggle.
 :::
 
 :::tip Hint
@@ -322,7 +344,7 @@ When the purpose is fixed, you can also use these endpoints.
 | `POST /api/v1/chat/` | Process text as normal input or AI generation |
 | `POST /api/v1/stop/` | Stop current speech or queued work |
 | `GET /api/v1/status/` | Get connected client status |
-| `GET /api/v1/events/` | Check recent API events |
+| `GET /api/v1/events/` | Subscribe to API events over SSE or check recent events |
 | `GET /api/v1/receivers/` | Get a list of connected Receivers |
 
 For presentation registration, assignment, and playback controls, see the [External Presentation API](/en/guide/other/external-presentation-api).
