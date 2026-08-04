@@ -251,9 +251,10 @@ curl -N \
 id: evt_01K1ABCDEF
 event: message_queued
 data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+
 ```
 
-请根据 `event`（或 `data.type`）判断要获取的数据，并将 `data.clientId` 用作目标ID。对于 `message_queued`，调用 `GET /api/v1/client/messages/?receiverId=<data.clientId>`；对于 `command_queued` 和 `stop_requested`，调用 `GET /api/v1/client/commands/?receiverId=<data.clientId>`。这两个获取API都需要使用相同的Bearer认证。
+请先解析 `event.data`，例如使用 `const payload = JSON.parse(event.data)`。根据 `payload.type` 判断要获取的数据，并将 `payload.clientId` 用作目标ID。对于 `message_queued`，调用 `GET /api/v1/client/messages/?receiverId=<payload.clientId>`；对于 `command_queued` 和 `stop_requested`，调用 `GET /api/v1/client/commands/?receiverId=<payload.clientId>`。这两个获取API都需要使用相同的Bearer认证。
 
 以下事件可用于新任务通知和发言状态同步。
 

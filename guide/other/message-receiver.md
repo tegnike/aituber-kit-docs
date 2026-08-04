@@ -251,9 +251,10 @@ curl -N \
 id: evt_01K1ABCDEF
 event: message_queued
 data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+
 ```
 
-`event`（または `data.type`）で取得対象を判断し、`data.clientId` を配送先IDとして使用します。`message_queued` では `GET /api/v1/client/messages/?receiverId=<data.clientId>`、`command_queued` と `stop_requested` では `GET /api/v1/client/commands/?receiverId=<data.clientId>` を呼び出します。どちらの取得APIにも同じBearer認証が必要です。
+まず `const payload = JSON.parse(event.data)` のように `event.data` を解析します。`payload.type` で取得対象を判断し、`payload.clientId` を配送先IDとして使用してください。`message_queued` では `GET /api/v1/client/messages/?receiverId=<payload.clientId>`、`command_queued` と `stop_requested` では `GET /api/v1/client/commands/?receiverId=<payload.clientId>` を呼び出します。どちらの取得APIにも同じBearer認証が必要です。
 
 Receiverへの新しい処理通知と発話状態の同期には、次のイベントを利用できます。
 

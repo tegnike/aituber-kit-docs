@@ -251,9 +251,10 @@ Events arrive as SSE frames in the following format.
 id: evt_01K1ABCDEF
 event: message_queued
 data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+
 ```
 
-Use `event` (or `data.type`) to choose what to fetch and use `data.clientId` as the destination ID. For `message_queued`, call `GET /api/v1/client/messages/?receiverId=<data.clientId>`. For `command_queued` and `stop_requested`, call `GET /api/v1/client/commands/?receiverId=<data.clientId>`. Both fetch APIs require the same Bearer authentication.
+First parse `event.data`, for example with `const payload = JSON.parse(event.data)`. Use `payload.type` to choose what to fetch and use `payload.clientId` as the destination ID. For `message_queued`, call `GET /api/v1/client/messages/?receiverId=<payload.clientId>`. For `command_queued` and `stop_requested`, call `GET /api/v1/client/commands/?receiverId=<payload.clientId>`. Both fetch APIs require the same Bearer authentication.
 
 The following events can be used for new-work notifications and speech-state synchronization.
 
