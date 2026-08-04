@@ -96,12 +96,29 @@ Receiver Registry在运行AITuberKit的单个Node.js进程中进行管理。在�
 | `emotion` | `string` | `-` | 发言时的表情或情绪指定。未指定时按通常状态处理。 |
 | `priority` | `"normal"` / `"high"` | `-` | 为 `high` 时，会插入到普通队列消息之前。未指定时为 `normal`。 |
 | `interrupt` | `boolean` | `-` | 为 `true` 时，会先停止当前发言和等待队列，再加入此发言。 |
+| `speechSessionId` | `string` | `-` | 将同一回答的分段请求归入一个发言会话的ID。去除首尾空格后长度必须为1至200个字符。 |
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"text": "你好。这是通过API进行的发言测试。", "emotion": "neutral", "priority": "normal", "interrupt": false}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+```
+
+将流式生成的回答按句子等单位分段发送时，请为同一回答的所有请求指定相同的 `speechSessionId`。相同ID的发言会按请求顺序（FIFO）加入同一个发言队列，即使 `priority` 为 `high` 也会保持顺序。省略时，每个请求会作为独立的发言会话处理。
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "这是第一句话。", "speechSessionId": "answer-stream-001"}' \
+  'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"text": "这是接下来的句子。", "speechSessionId": "answer-stream-001"}' \
   'http://localhost:3000/api/v1/speak/?receiverId=YOUR_RECEIVER_ID'
 ```
 
@@ -219,14 +236,39 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
-以下事件可用于同步发言状态。
+订阅实时事件时，请省略 `snapshot` 并发送 `Accept: text/event-stream`。使用 `curl` 时，请通过 `-N` 禁用输出缓冲。
+
+```bash
+curl -N \
+  -H "Accept: text/event-stream" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID'
+```
+
+事件会以如下SSE帧格式到达。
+
+```text
+id: evt_01K1ABCDEF
+event: message_queued
+data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+
+```
+
+请先解析 `event.data`，例如使用 `const payload = JSON.parse(event.data)`。根据 `payload.type` 判断要获取的数据，并将 `payload.clientId` 用作目标ID。对于 `message_queued`，调用 `GET /api/v1/client/messages/?receiverId=<payload.clientId>`；对于 `command_queued` 和 `stop_requested`，调用 `GET /api/v1/client/commands/?receiverId=<payload.clientId>`。这两个获取API都需要使用相同的Bearer认证。
+
+以下事件可用于新任务通知和发言状态同步。
 
 | 事件 | 内容 |
 | --- | --- |
+| `message_queued` | 发言或聊天输入已加入队列 |
+| `command_queued` | 演示文稿操作等命令已加入队列 |
+| `stop_requested` | 已请求停止发言或等待队列 |
 | `speech_started` | 客户端进入发言状态 |
 | `speech_ended` | 客户端结束发言状态 |
 | `speech_chunk_started` | 分段发言的音频块开始播放。Payload包含`speechChunkId`和`text` |
 | `speech_chunk_ended` | 发言音频块播放结束。Payload包含`speechChunkId` |
+
+AITuberKit界面的MessageReceiver会订阅经过认证的SSE，并在收到 `message_queued`、`command_queued` 或 `stop_requested` 时立即获取相应数据。连接期间每15秒进行一次防遗漏检查；只有断开连接时才回退到每秒一次的轮询。SSE重连采用指数退避，从250毫秒开始，最长为5秒。
 
 有关外部演示文稿事件，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api#订阅事件)。
 
@@ -240,7 +282,7 @@ curl -X GET \
 您也可以将客户端ID编辑为任意值。
 
 ::: warning
-在限制模式环境中，此开关会被禁用，API和轮询也会停止。设置界面会在开关附近显示禁用原因。
+在限制模式环境中，此开关会被禁用，API以及通过SSE和轮询进行的接收处理也会停止。设置界面会在开关附近显示禁用原因。
 :::
 
 :::tip 提示
@@ -322,7 +364,7 @@ curl -X POST \
 | `POST /api/v1/chat/` | 作为普通输入或AI生成处理 |
 | `POST /api/v1/stop/` | 停止当前发话或队列 |
 | `GET /api/v1/status/` | 获取已连接客户端状态 |
-| `GET /api/v1/events/` | 查看最近的API事件 |
+| `GET /api/v1/events/` | 通过SSE订阅API事件，或查看最近事件 |
 | `GET /api/v1/receivers/` | 获取已连接的Receiver列表 |
 
 有关演示文稿的注册、分配和播放操作，请参阅[外部演示文稿API](/zh/guide/other/external-presentation-api)。
