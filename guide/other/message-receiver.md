@@ -236,6 +236,25 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
+ライブイベントを購読する場合は `snapshot` を省略し、`Accept: text/event-stream` を指定します。`curl` ではバッファリングを無効化する `-N` を使用してください。
+
+```bash
+curl -N \
+  -H "Accept: text/event-stream" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID'
+```
+
+イベントは次のSSEフレーム形式で届きます。
+
+```text
+id: evt_01K1ABCDEF
+event: message_queued
+data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+```
+
+`event`（または `data.type`）で取得対象を判断し、`data.clientId` を配送先IDとして使用します。`message_queued` では `GET /api/v1/client/messages/?receiverId=<data.clientId>`、`command_queued` と `stop_requested` では `GET /api/v1/client/commands/?receiverId=<data.clientId>` を呼び出します。どちらの取得APIにも同じBearer認証が必要です。
+
 Receiverへの新しい処理通知と発話状態の同期には、次のイベントを利用できます。
 
 | イベント | 内容 |

@@ -236,6 +236,25 @@ curl -X GET \
   'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID&snapshot=true'
 ```
 
+To subscribe to live events, omit `snapshot` and send `Accept: text/event-stream`. With `curl`, use `-N` to disable output buffering.
+
+```bash
+curl -N \
+  -H "Accept: text/event-stream" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  'http://localhost:3000/api/v1/events/?receiverId=YOUR_RECEIVER_ID'
+```
+
+Events arrive as SSE frames in the following format.
+
+```text
+id: evt_01K1ABCDEF
+event: message_queued
+data: {"id":"evt_01K1ABCDEF","timestamp":1785877200000,"clientId":"aituber-receiver-123","type":"message_queued","payload":{"count":1,"messageType":"direct_send","source":"v1","interrupt":false}}
+```
+
+Use `event` (or `data.type`) to choose what to fetch and use `data.clientId` as the destination ID. For `message_queued`, call `GET /api/v1/client/messages/?receiverId=<data.clientId>`. For `command_queued` and `stop_requested`, call `GET /api/v1/client/commands/?receiverId=<data.clientId>`. Both fetch APIs require the same Bearer authentication.
+
 The following events can be used for new-work notifications and speech-state synchronization.
 
 | Event | Description |
