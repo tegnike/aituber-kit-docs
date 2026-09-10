@@ -155,3 +155,9 @@ NEXT_PUBLIC_THINKING_POSE_ID=think
 ## 关于VRM模型许可证
 
 请务必检查您使用的VRM模型的许可证。可能有商业使用或再分发的限制。使用VRM模型时，请遵循创作者的使用条款。
+
+## 内置的AI Nike酱模型（v2.76.0及以后）
+
+`nikechan_v2.vrm`（不带外套）和 `nikechan_v2_outerwear.vrm`（带外套）是为分发和加载而压缩至25MB以下的模型。标准版可在[官方资源仓库](https://github.com/tegnike/nikechan-assets/tree/main/vrms)中查看。
+
+这些模型适用的使用条款与AITuberKit本体不同。使用前请查阅[VRM使用说明](https://github.com/tegnike/nikechan-assets/blob/main/vrms/README.md)、[二次创作指南](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/derivative_creation_guideline.md)和[AI生成指南](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/ai_generation_guideline.md)。`AvatarSample_*.vrm` 是另外的示例模型。

@@ -823,3 +823,25 @@ NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 # ページリロード時に常に環境変数を優先する設定
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```
+
+### 公式サイト専用ページ（v2.72.0以降）
+
+```bash
+# 公式サイト固有のSEOページを有効化（公式デプロイ以外ではfalse） /
+# Enable official-site-only SEO pages (keep false outside the official deployment)
+NEXT_PUBLIC_OFFICIAL_SITE=false
+```
+
+自分でホスティングする場合は既定値の `false` を使用してください。公式サイト固有のSEOページは公式デプロイだけで有効にします。
+
+### GPT-Live-1（v2.77.0以降）
+
+```bash
+# GPT-Live full-duplex voice (OpenAI API key required; backend billed separately)
+NEXT_PUBLIC_LIVE_MODE=false
+NEXT_PUBLIC_LIVE_VOICE=marin
+NEXT_PUBLIC_LIVE_BACKEND_MODEL=gpt-5.6-terra
+NEXT_PUBLIC_LIVE_WEB_SEARCH=false
+```
+
+履歴の初期件数は `NEXT_PUBLIC_MAX_PAST_MESSAGES=10` を使用します。GPT-Live時は最大128件・合計8,192トークンです。サーバー側のAPIキーを使う場合は `AITUBERKIT_SERVER_SECRET_ACCESS_MODE` の設定も必要です。[設定と使い方](/guide/ai/gpt-live)を参照してください。

@@ -822,3 +822,24 @@ NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 # 页面重新加载时始终优先使用环境变量的设置
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```
+
+### 官方网站专用页面（v2.72.0及以后）
+
+```bash
+# 启用官方网站专用的SEO页面（非官方部署请保持false）
+NEXT_PUBLIC_OFFICIAL_SITE=false
+```
+
+自行托管时请使用默认值 `false`。官方网站专用的SEO页面仅在官方部署中启用。
+
+### GPT-Live-1（v2.77.0及以后）
+
+```bash
+# GPT-Live全双工语音（需要OpenAI API密钥；后端另行计费）
+NEXT_PUBLIC_LIVE_MODE=false
+NEXT_PUBLIC_LIVE_VOICE=marin
+NEXT_PUBLIC_LIVE_BACKEND_MODEL=gpt-5.6-terra
+NEXT_PUBLIC_LIVE_WEB_SEARCH=false
+```
+
+历史记录的初始保留条数使用 `NEXT_PUBLIC_MAX_PAST_MESSAGES=10`。GPT-Live模式下最多为128条、合计8,192个令牌。使用服务器端API密钥时，还需要配置 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`。请参阅[设置与使用方法](/zh/guide/ai/gpt-live)。

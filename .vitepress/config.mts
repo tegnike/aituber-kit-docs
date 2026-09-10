@@ -243,6 +243,7 @@ export default defineConfig({
                 { text: 'AIサービス設定', link: '/guide/ai/model-provider' },
                 { text: 'マルチモーダル', link: '/guide/ai/multimodal' },
                 { text: 'リアルタイムAPI', link: '/guide/ai/realtime-api' },
+                { text: 'GPT-Live-1', link: '/guide/ai/gpt-live' },
                 { text: 'オーディオモード', link: '/guide/ai/audio-mode' },
                 {
                   text: '外部連携モード',
@@ -383,6 +384,7 @@ export default defineConfig({
                 },
                 { text: 'Multimodal', link: '/en/guide/ai/multimodal' },
                 { text: 'Realtime API', link: '/en/guide/ai/realtime-api' },
+                { text: 'GPT-Live-1', link: '/en/guide/ai/gpt-live' },
                 { text: 'Audio Mode', link: '/en/guide/ai/audio-mode' },
                 {
                   text: 'External Linkage Mode',
@@ -513,6 +515,7 @@ export default defineConfig({
                 { text: 'AI服务设置', link: '/zh/guide/ai/model-provider' },
                 { text: '多模态', link: '/zh/guide/ai/multimodal' },
                 { text: '实时API', link: '/zh/guide/ai/realtime-api' },
+                { text: 'GPT-Live-1', link: '/zh/guide/ai/gpt-live' },
                 { text: '音频模式', link: '/zh/guide/ai/audio-mode' },
                 {
                   text: '外部连接模式',

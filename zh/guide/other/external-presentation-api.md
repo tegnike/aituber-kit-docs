@@ -107,7 +107,8 @@ curl -X PUT \
 | `sections` | 必填 | 至少1个，最多50个 |
 | `sections[].slides` | 必填 | 每个Section至少需要1个，整体最多200个 |
 | `slides[].markdown` | 必填 | 每个最多50,000个字符 |
-| `slides[].narration` | 可选 | 朗读文本，最多10,000个字符 |
+| `slides[].narration` | 可选 | 用于屏幕显示、对话上下文和外部字幕的文本，最多10,000个字符 |
+| `slides[].speechText` | 可选 | 传给TTS的发话文本，最多10,000个字符 |
 | `slides[].pauseAfter` | 可选 | 为`true`时，在该幻灯片之后暂停Section |
 | `slides[].assets` | 可选 | 最多可指定20个`http`或`https`图片 |
 | `qaBrief` | 可选 | 用于Section问答的资料信息 |
@@ -216,3 +217,22 @@ curl -N -H "Authorization: Bearer YOUR_API_KEY" \
 此功能面向可写入的本地Node.js环境、桌面版和自托管环境。在只读环境或仅提供临时文件系统的环境中，注册或分配操作可能返回`503 PRESENTATION_STORAGE_UNAVAILABLE`。
 
 AITuberKit不会判断外部图片的使用许可。请由图片注册方确认相关权利和公开范围。
+
+## 分别指定显示文本和发话文本（v2.73.0及以后）
+
+可在 `narration` 中指定要在屏幕或字幕中显示的正式写法，在 `speechText` 中指定朗读用的读音等文本。发话使用 `speechText ?? narration`，显示和对话上下文使用 `narration ?? speechText`。`narration: ""` 会作为有意设置的空白显示保留。也可以同时省略两者，制作仅包含视觉内容的幻灯片。
+
+```json
+{
+  "id": "intro",
+  "markdown": "# AITuberKit",
+  "narration": "下面介绍AITuberKit。",
+  "speechText": "下面介绍AI Tuber Kit。"
+}
+```
+
+`speech_chunk_started.text` 和 `activeSpeech.text` 也使用显示文本。
+
+## 发话与字幕同步（v2.74.0及以后）
+
+幻灯片的显示文本和发话字幕会随着音频实际开始播放而切换。显示文本会按对应的发话片段拆分。播放遵循原始发话顺序，而非TTS并行合成完成的顺序。系统也会处理分配切换和延迟通知，避免回退到旧字幕。

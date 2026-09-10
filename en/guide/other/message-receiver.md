@@ -382,3 +382,11 @@ On the message sending page, there is a response display area at the bottom of e
 - `receiverId` and `clientId` identify routing destinations; they are not credentials. Do not disclose the API key to third parties.
 - Sending a large number of messages in a short time may cause processing delays.
 - The feature that accepts API operations from external sources involves security risks. Enable it only in trusted environments.
+
+## Receiving Clients in Background Tabs (v2.75.0 and Later)
+
+To account for browsers throttling timers in background tabs, clients whose latest status was received within 90 seconds are treated as candidates for message delivery. Receiving clients should continue sending status updates as usual.
+
+### Immediately Report Active Speech (v2.74.0 and Later)
+
+After initializing its regular status, a receiving client can send `clientId` and `activeSpeech: { id, text }` to `POST /api/v1/client/speech-status`. Send `activeSpeech: null` when speech ends. The optional `version` is a non-negative safe integer used to determine update order. API key authentication is required. These notifications are separate from regular status updates and reduce subtitle delays when speech starts.

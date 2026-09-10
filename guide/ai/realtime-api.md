@@ -200,3 +200,7 @@ Please respond to the user before calling the tool.
 ::: warning 注意
 セッション毎に会話が自動保存されるため、同じ画面で会話を続けると費用が増加します。利用後はブラウザをリロードすることをお勧めします。
 :::
+
+## GPT-Live-1との違い
+
+[GPT-Live-1](/guide/ai/gpt-live)は、発話中も入力を継続する別の音声会話モードです。音声と推論を分け、専用のWebRTCセッションを使用します。Realtime APIモードと同時には使いません。

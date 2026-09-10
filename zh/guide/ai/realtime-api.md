@@ -200,3 +200,7 @@ Please respond to the user before calling the tool.
 ::: warning 注意
 由于每个会话自动保存对话，在同一屏幕上继续对话将增加成本。建议使用后重新加载浏览器。
 :::
+
+## 与GPT-Live-1的区别
+
+[GPT-Live-1](/zh/guide/ai/gpt-live)是另一种语音对话模式，在角色发话时也持续接收输入。它将语音与推理分开，并使用专用的WebRTC会话。不能与实时API模式同时使用。

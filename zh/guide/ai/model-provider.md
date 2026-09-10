@@ -525,3 +525,7 @@ CUSTOM_API_BODY=""
 此API始终启用流式模式。请注意返回格式。<br>
 虽然我们测试了OpenAI兼容的API和一些其他API，但我们不能保证所有API都能正常运行。
 :::
+
+## GPT-Live-1（v2.77.0及以后）
+
+在OpenAI设置中启用GPT-Live-1后，即可使用将语音和推理模型分开的双向语音对话。有关声音、推理模型、Web搜索、系统提示词和历史记录的处理，请参阅[GPT-Live-1语音对话](/zh/guide/ai/gpt-live)。

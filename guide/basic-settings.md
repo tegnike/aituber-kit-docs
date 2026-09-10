@@ -233,3 +233,17 @@ NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 # default, mono, cool, ocean, forest, sunset
 NEXT_PUBLIC_COLOR_THEME="default"
 ```
+
+## 公式サイトの検索エンジン向けページ
+
+v2.71.0から公式デモサイトには検索エンジン向けの紹介ページ、サイトマップ、robots.txt、llms.txtを用意しています。通常のキャラクター会話画面とは別のページです。
+
+### 公式サイト専用ページ（v2.72.0以降）
+
+```bash
+# 公式サイト固有のSEOページを有効化（公式デプロイ以外ではfalse） /
+# Enable official-site-only SEO pages (keep false outside the official deployment)
+NEXT_PUBLIC_OFFICIAL_SITE=false
+```
+
+自分でホスティングする場合は既定値の `false` を使用してください。公式サイト固有のSEOページは公式デプロイだけで有効にします。

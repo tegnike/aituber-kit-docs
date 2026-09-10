@@ -155,3 +155,9 @@ You can also use the `scripts/vrma_to_json.py` script to convert VRMA files to p
 ## About VRM Model Licenses
 
 Be sure to check the license of the VRM model you use. There may be restrictions on commercial use or redistribution. When using VRM models, follow the creator's terms of use.
+
+## Bundled AI Nike-chan Models (v2.76.0 and Later)
+
+`nikechan_v2.vrm` (without outerwear) and `nikechan_v2_outerwear.vrm` (with outerwear) are models optimized to under 25 MB for delivery and loading. The regular versions are available in the [official asset repository](https://github.com/tegnike/nikechan-assets/tree/main/vrms).
+
+These models have usage terms separate from AITuberKit itself. Before using them, review the [VRM usage information](https://github.com/tegnike/nikechan-assets/blob/main/vrms/README.md), [derivative creation guidelines](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/derivative_creation_guideline.md), and [AI generation guidelines](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/ai_generation_guideline.md). `AvatarSample_*.vrm` files are separate sample models.

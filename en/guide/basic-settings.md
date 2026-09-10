@@ -219,3 +219,16 @@ NEXT_PUBLIC_SHOW_CONTROL_PANEL=true
 ## Color Theme
 
 You can select the color theme for the application. The selected theme will be applied immediately.
+
+## Search Engine Pages on the Official Site
+
+Since v2.71.0, the official demo site provides an introduction page for search engines, a sitemap, robots.txt, and llms.txt. These are separate from the regular character conversation screen.
+
+### Official-Site-Only Pages (v2.72.0 and Later)
+
+```bash
+# Enable official-site-only SEO pages (keep false outside the official deployment)
+NEXT_PUBLIC_OFFICIAL_SITE=false
+```
+
+When self-hosting, use the default value of `false`. Enable the official-site-specific SEO pages only in the official deployment.

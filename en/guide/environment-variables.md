@@ -821,3 +821,24 @@ NEXT_PUBLIC_CHAT_LOG_EDGE_OFFSET=
 # Always prioritize environment variables on page reload
 NEXT_PUBLIC_ALWAYS_OVERRIDE_WITH_ENV_VARIABLES="false"
 ```
+
+### Official-Site-Only Pages (v2.72.0 and Later)
+
+```bash
+# Enable official-site-only SEO pages (keep false outside the official deployment)
+NEXT_PUBLIC_OFFICIAL_SITE=false
+```
+
+When self-hosting, use the default value of `false`. Enable the official-site-specific SEO pages only in the official deployment.
+
+### GPT-Live-1 (v2.77.0 and Later)
+
+```bash
+# GPT-Live full-duplex voice (OpenAI API key required; backend billed separately)
+NEXT_PUBLIC_LIVE_MODE=false
+NEXT_PUBLIC_LIVE_VOICE=marin
+NEXT_PUBLIC_LIVE_BACKEND_MODEL=gpt-5.6-terra
+NEXT_PUBLIC_LIVE_WEB_SEARCH=false
+```
+
+The initial history retention count uses `NEXT_PUBLIC_MAX_PAST_MESSAGES=10`. GPT-Live supports up to 128 messages and 8,192 tokens in total. Using a server-side API key also requires configuring `AITUBERKIT_SERVER_SECRET_ACCESS_MODE`. See [setup and usage](/en/guide/ai/gpt-live).

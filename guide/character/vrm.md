@@ -155,3 +155,9 @@ VRMキャラクターにポーズを適用する機能です。キャラクタ�
 ## VRMモデルのライセンスについて
 
 使用するVRMモデルのライセンスを必ず確認してください。商用利用や再配布が制限されている場合があります。VRMモデルを使用する際は、作者の利用規約に従ってください。
+
+## 同梱のAIニケちゃんモデル（v2.76.0以降）
+
+`nikechan_v2.vrm`（上着なし）と `nikechan_v2_outerwear.vrm`（上着あり）は、配信・読み込み向けに25MB未満へ軽量化したモデルです。通常版は[公式アセットリポジトリ](https://github.com/tegnike/nikechan-assets/tree/main/vrms)から確認できます。
+
+AITuberKit本体とは別の利用条件が適用されます。利用前に[VRMの利用案内](https://github.com/tegnike/nikechan-assets/blob/main/vrms/README.md)、[二次創作ガイドライン](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/derivative_creation_guideline.md)、[AI生成ガイドライン](https://github.com/tegnike/nikechan-assets/blob/main/guidelines/ai_generation_guideline.md)を確認してください。`AvatarSample_*.vrm` は別のサンプルモデルです。

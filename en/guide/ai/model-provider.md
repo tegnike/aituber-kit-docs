@@ -525,3 +525,7 @@ When multimodal input is enabled, `NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE` con
 Streaming mode is always enabled for this API. Please pay attention to the response format.<br>
 While we have tested with OpenAI-compatible APIs and some other APIs, we cannot guarantee operation with all APIs.
 :::
+
+## GPT-Live-1 (v2.77.0 and Later)
+
+Enable GPT-Live-1 in the OpenAI settings to use bidirectional voice conversations with separate voice and reasoning models. For voices, reasoning models, web search, system prompts, and history behavior, see [GPT-Live-1 Voice Conversations](/en/guide/ai/gpt-live).

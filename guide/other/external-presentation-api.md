@@ -107,7 +107,8 @@ curl -X PUT \
 | `sections` | 必須 | 1件以上、最大50件です |
 | `sections[].slides` | 必須 | Sectionごとに1件以上必要です。全体で最大200件です |
 | `slides[].markdown` | 必須 | 1件あたり最大50,000文字です |
-| `slides[].narration` | 任意 | 読み上げ文です。最大10,000文字です |
+| `slides[].narration` | 任意 | 画面表示・会話文脈・外部字幕用の文章です。最大10,000文字です |
+| `slides[].speechText` | 任意 | TTSへ渡す発話文です。最大10,000文字です |
 | `slides[].pauseAfter` | 任意 | `true`の場合、そのスライドの後でSectionを一時停止します |
 | `slides[].assets` | 任意 | `http`または`https`の画像を最大20件指定できます |
 | `qaBrief` | 任意 | Sectionの質問応答に使う資料情報です |
@@ -216,3 +217,22 @@ curl -N -H "Authorization: Bearer YOUR_API_KEY" \
 本機能は、書き込み可能なローカルNode.js環境、デスクトップ版、セルフホスト環境を対象としています。読み取り専用または一時ファイルシステムのみの環境では、登録や割当が`503 PRESENTATION_STORAGE_UNAVAILABLE`になる場合があります。
 
 外部画像の利用許諾はAITuberKitでは判定しません。画像を登録する側で権利と公開範囲を確認してください。
+
+## 表示文と発話文を分ける（v2.73.0以降）
+
+`narration` に画面や字幕で見せたい正式表記、`speechText` に読み上げ用の読み仮名などを指定できます。発話は `speechText ?? narration`、表示と会話文脈は `narration ?? speechText` を使用します。`narration: ""` は意図的な空表示として維持されます。両方を省略した視覚専用スライドも利用できます。
+
+```json
+{
+  "id": "intro",
+  "markdown": "# AITuberKit",
+  "narration": "AITuberKitを紹介します。",
+  "speechText": "エーアイチューバーキットを紹介します。"
+}
+```
+
+`speech_chunk_started.text` と `activeSpeech.text` にも表示用テキストが使われます。
+
+## 発話と字幕の同期（v2.74.0以降）
+
+スライドの表示文と発話中字幕は、音声の実際の再生開始に合わせて切り替わります。表示用テキストは発話チャンクに対応して分割されます。TTSの並列合成が完了した順序ではなく、元の発話順で再生します。割当の切り替えや遅延した通知によって古い字幕へ戻らないように処理します。

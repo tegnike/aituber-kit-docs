@@ -200,3 +200,7 @@ In Realtime API, conversation history is saved for each session and deleted when
 ::: warning Note
 Since conversations are automatically saved for each session, continuing the conversation on the same screen will increase costs. It is recommended to reload the browser after use.
 :::
+
+## Difference from GPT-Live-1
+
+[GPT-Live-1](/en/guide/ai/gpt-live) is a separate voice conversation mode that continues accepting input during speech. It separates voice and reasoning and uses a dedicated WebRTC session. It is not used simultaneously with Realtime API mode.

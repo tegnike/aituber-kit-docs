@@ -107,7 +107,8 @@ curl -X PUT \
 | `sections` | Required | At least 1 and at most 50 |
 | `sections[].slides` | Required | At least 1 per Section and at most 200 in total |
 | `slides[].markdown` | Required | At most 50,000 characters per Slide |
-| `slides[].narration` | Optional | Narration text, up to 10,000 characters |
+| `slides[].narration` | Optional | Text for display, conversation context, and external subtitles, up to 10,000 characters |
+| `slides[].speechText` | Optional | Speech text passed to TTS, up to 10,000 characters |
 | `slides[].pauseAfter` | Optional | When `true`, pauses the Section after that Slide |
 | `slides[].assets` | Optional | Up to 20 `http` or `https` images |
 | `qaBrief` | Optional | Presentation information used for question answering within the Section |
@@ -216,3 +217,22 @@ By default, Manifests and assignments are stored in `<project-root>/.aituber-kit
 This feature is intended for writable local Node.js environments, the desktop version, and self-hosted environments. Registration or assignment may return `503 PRESENTATION_STORAGE_UNAVAILABLE` in read-only environments or environments that provide only an ephemeral file system.
 
 AITuberKit does not determine whether you have permission to use external images. The system registering an image must confirm its rights and intended publication scope.
+
+## Separate Display Text from Speech Text (v2.73.0 and Later)
+
+Set `narration` to the formal text you want to show on screen or in subtitles, and `speechText` to a pronunciation-friendly version for speech synthesis. Speech uses `speechText ?? narration`, while display and conversation context use `narration ?? speechText`. An explicit `narration: ""` is preserved as intentionally empty display text. Visual-only slides that omit both fields are also supported.
+
+```json
+{
+  "id": "intro",
+  "markdown": "# AITuberKit",
+  "narration": "Let me introduce AITuberKit.",
+  "speechText": "Let me introduce A I Tuber Kit."
+}
+```
+
+`speech_chunk_started.text` and `activeSpeech.text` also use the display text.
+
+## Synchronize Speech and Subtitles (v2.74.0 and Later)
+
+Slide display text and active speech subtitles switch when audio playback actually starts. Display text is split to match speech chunks. Audio plays in the original speech order, regardless of the order in which parallel TTS synthesis finishes. Assignment changes and delayed notifications are handled to prevent old subtitles from reappearing.
