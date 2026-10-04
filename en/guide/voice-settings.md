@@ -256,7 +256,7 @@ NEXT_PUBLIC_GSVI_TTS_BATCH_SIZE=2
 NEXT_PUBLIC_GSVI_TTS_SPEECH_RATE=1.0
 ```
 
-GSVI TTS is a customizable voice synthesis engine.
+GSVI TTS is a customizable voice synthesis engine. It is available when the UI language is Japanese, Chinese (Simplified or Traditional), English, or Korean. If another language is selected, the voice engine automatically switches to Google Text-to-Speech.
 
 ### Server URL
 

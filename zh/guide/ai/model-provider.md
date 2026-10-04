@@ -22,6 +22,8 @@ AITuberKit支持以下AI服务：
 - Fireworks - 提供Llama、Mixtral等的优化实现
 - DeepSeek - 提供DeepSeek Chat、DeepSeek Reasoner
 - OpenRouter - 提供广泛的模型
+- OrcaRouter - 提供广泛的模型（v2.79.0及以后）
+- API Route - 通过OpenAI兼容API提供广泛的模型（v2.79.0及以后）
 - LM Studio - 提供本地LLM执行环境
 - Ollama - 提供本地LLM执行环境
 - Dify - 自定义聊天机器人构建平台
@@ -142,6 +144,8 @@ GOOGLE_API_KEY=...
 
 **支持的模型**:
 
+- gemini-3.5-flash
+- gemini-3.5-flash-lite
 - gemini-3.1-pro-preview
 - gemini-3.1-flash-image-preview
 - gemini-3.1-flash-lite-preview
@@ -160,17 +164,18 @@ GOOGLE_API_KEY=...
 #### Google搜索接地功能
 
 使用Google Gemini，您可以使用"搜索接地"功能，该功能在生成AI响应时利用实时网络搜索。
-此外，对于某些模型，您可以设置动态阈值来判断是否使用搜索接地功能。值为0时将始终执行搜索，值为1时将不执行搜索。
+搜索会作为Google搜索工具传递给模型，是否实际执行搜索由模型判断。
+动态阈值（`NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD`）是面向Gemini 1.5的设置。它对当前支持的模型无效，从v2.79.0起不再发送到服务器。
 
 ```bash
 # 启用搜索接地功能
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
-# 搜索接地功能的动态阈值
+# 搜索接地功能的动态阈值（面向Gemini 1.5，当前支持的模型不使用）
 NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=0.3
 ```
 
 ::: tip
-搜索接地功能适用于Google Gemini 3.1/3系列、Gemini 2.5系列和Gemini 2.0 Flash模型。
+搜索接地功能适用于Google Gemini 3.5/3.1/3系列、Gemini 2.5系列和Gemini 2.0 Flash模型。
 :::
 
 ## Azure OpenAI
@@ -381,6 +386,46 @@ OPENROUTER_API_KEY=...
 
 **获取API密钥**:
 可以从[OpenRouter仪表板](https://openrouter.ai/keys)获取API密钥。
+
+## OrcaRouter（v2.79.0及以后）
+
+```bash
+# OrcaRouter API密钥
+ORCAROUTER_API_KEY=...
+```
+
+OrcaRouter作为OpenAI兼容的提供商注册，通过Chat Completions API（`/v1/chat/completions`）通信。
+
+**支持的模型**:
+
+请直接输入模型标识符（例如：`openai/gpt-4o-mini`、`anthropic/claude-sonnet-4`）。可用模型请参阅[OrcaRouter](https://www.orcarouter.ai)的模型页面。
+
+发送图像时，请指定支持图像的模型，并启用“使用多模态”设置。
+
+**获取API密钥**:
+可以从[OrcaRouter](https://www.orcarouter.ai)获取API密钥。
+
+## API Route（v2.79.0及以后）
+
+```bash
+# API Route API密钥（仅服务器端）
+APIROUTE_API_KEY=...
+```
+
+API Route作为OpenAI兼容的提供商注册，与 `https://global.api-route.com/v1` 通信。
+
+**支持的模型**:
+
+请直接输入API密钥可用的模型标识符（例如：`gpt-6.1-sol`）。标识符可以通过带API密钥的 `GET https://global.api-route.com/v1/models` 请求确认。请直接使用返回的标识符，不要添加提供商前缀。
+
+发送图像时，请指定支持图像的模型，并启用“使用多模态”设置。
+
+**获取API密钥**:
+可以从[API Route控制台](https://www.api-route.com/api-keys)获取API密钥。
+
+::: tip
+`APIROUTE_API_KEY` 是仅服务器端使用的环境变量。在设置界面未输入API密钥时使用，此时适用[服务器端保密环境变量](#服务器端保密环境变量)的访问控制。
+:::
 
 ## LM Studio, Ollama
 

@@ -175,7 +175,7 @@ Add additional information for the entire slide. This information is used in que
 This is a function to convert PDF files to data that can be used in slide mode. It analyzes the content of PDFs using multimodal AI and saves it as slide data.
 
 ::: warning Note
-Currently, the PDF slide conversion function is only available when OpenAI API is selected.
+Currently, the PDF slide conversion function is available when OpenAI, Anthropic, Google Gemini, or API Route (v2.79.0 and later) is selected. With API Route, the model entered in the AI settings is used.
 Support for other AI services is planned for the future.
 :::
 

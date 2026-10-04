@@ -9,7 +9,8 @@ AITuberKitでは、複数のAIサービスと連携して、キャラクター�
 ```bash
 # AIサービスの選択
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
+# mistralai, perplexity, fireworks, deepseek, openrouter, orcarouter, apiroute,
+# lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 選択するAIモデル名
@@ -44,6 +45,8 @@ AITuberKitは以下のAIサービスをサポートしています：
 - Fireworks
 - DeepSeek
 - OpenRouter
+- OrcaRouter
+- API Route
 - LM Studio
 - Ollama
 - Dify

@@ -47,6 +47,8 @@ AITuberKitは、誰でも簡単にAIキャラクターとチャットできるWe
 - Fireworks
 - DeepSeek
 - OpenRouter
+- OrcaRouter
+- API Route
 - ローカルLLM
 - Dify
 

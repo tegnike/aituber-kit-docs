@@ -8,7 +8,7 @@ AITuberKitでは、マルチモーダル機能を活用してテキストだけ�
 
 ```bash
 # マルチモーダル機能の有効化設定（true/false）
-# Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
+# Azure, OpenRouter, OrcaRouter, API Route, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # マルチモーダル利用要否をAIに判定させる際のプロンプト
@@ -26,7 +26,7 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 
 ## 対応モデル
 
-### Azure OpenAI, OpenRouter, LM Studio, Ollama, Custom API
+### Azure OpenAI, OpenRouter, OrcaRouter, API Route, LM Studio, Ollama, Custom API
 
 各AIサービスで利用できるマルチモーダルが有効なモデルを設定したうえで、「画像送信」設定を有効にしてください。
 

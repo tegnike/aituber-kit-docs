@@ -178,7 +178,7 @@ AITuberKit默认包含演示幻灯片。为了检查幻灯片模式的功能，�
 这是一个将PDF文件转换为可在幻灯片模式中使用的数据的功能。它使用多模态AI分析PDF的内容并将其保存为幻灯片数据。
 
 ::: warning 注意
-目前，PDF幻灯片转换功能仅在选择OpenAI API时可用。
+目前，PDF幻灯片转换功能在选择OpenAI、Anthropic、Google Gemini或API Route（v2.79.0及以后）时可用。使用API Route时，会使用在AI设置中输入的模型。
 计划在未来支持其他AI服务。
 :::
 

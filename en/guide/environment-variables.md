@@ -29,7 +29,8 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Set to true for Cloudflare deployment
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
-# Display demo mode notices (true/false)
+# Enable/disable demo mode (true/false)
+# When enabled, GPT-Live, the Realtime API, audio mode, and OpenAI TTS are disabled
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # Base path for subpath deployment, such as GitHub Pages
@@ -110,6 +111,9 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 
+# Screen-blend lighting strength (0.0-2.0)
+NEXT_PUBLIC_SCREEN_LIGHTING_STRENGTH="1.0"
+
 # Enable/disable thinking pose (true/false)
 NEXT_PUBLIC_THINKING_POSE_ENABLED=false
 
@@ -186,7 +190,8 @@ For details, see [AI Settings](/guide/ai/common).
 ```bash
 # AI service selection
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
+# mistralai, perplexity, fireworks, deepseek, openrouter, orcarouter, apiroute,
+# lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # Selected AI model name
@@ -264,6 +269,12 @@ DEEPSEEK_API_KEY=...
 # OpenRouter API key
 OPENROUTER_API_KEY=...
 
+# OrcaRouter API key
+ORCAROUTER_API_KEY=...
+
+# API Route API key (server only)
+APIROUTE_API_KEY=...
+
 # Local LLM URL
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
@@ -334,7 +345,7 @@ APIs that use server-side secrets or resources, such as `CUSTOM_API_*`, server-s
 ### Multimodal Settings
 
 ```bash
-# Enable multimodal feature for Azure, OpenRouter, Local LLM, Custom API and other models when custom model is selected
+# Enable multimodal feature for Azure, OpenRouter, OrcaRouter, API Route, Local LLM, Custom API and other models when custom model is selected
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # Prompt used when asking the AI to determine whether multimodal input is needed

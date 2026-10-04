@@ -258,7 +258,7 @@ NEXT_PUBLIC_GSVI_TTS_BATCH_SIZE=2
 NEXT_PUBLIC_GSVI_TTS_SPEECH_RATE=1.0
 ```
 
-GSVI TTSはカスタマイズ可能な音声合成エンジンです。
+GSVI TTSはカスタマイズ可能な音声合成エンジンです。日本語、中国語（簡体字・繁体字）、英語、韓国語のUI言語で利用できます。それ以外の言語を選択した場合は、Google Text-to-Speechに自動で切り替わります。
 
 ### サーバーURL
 

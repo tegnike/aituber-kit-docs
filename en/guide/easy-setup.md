@@ -34,7 +34,7 @@ Configure the AI service, API key, model, and other fields needed to start a con
 - **AI service**: Choose OpenAI, Anthropic, Google Gemini, Azure OpenAI, and other services. Service icons are shown in the selector
 - **API key**: Enter the API key when the selected AI service requires one
 - **Model**: Select the model used by the selected AI service. Most services provide a selectable list
-- **Service-specific fields**: Enter additional values when required, such as the Azure OpenAI endpoint, Dify URL, LM Studio/Ollama URL and model name, OpenRouter model name, or Custom API endpoint
+- **Service-specific fields**: Enter additional values when required, such as the Azure OpenAI endpoint, Dify URL, LM Studio/Ollama URL and model name, OpenRouter, OrcaRouter, or API Route model name, or Custom API endpoint
 - **Custom model**: Enable this when entering a model name that is not in the list
 
 ![Easy Setup for AI and voice](/images/easy_setup_ai_voice_m9q2x.webp)

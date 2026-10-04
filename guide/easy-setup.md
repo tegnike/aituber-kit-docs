@@ -34,7 +34,7 @@ AIサービス、APIキー、モデルなど、会話を始めるために必要
 - **AIサービス**: OpenAI、Anthropic、Google Gemini、Azure OpenAIなどから選択します。選択肢には各サービスのアイコンが表示されます
 - **APIキー**: 選択したAIサービスでAPIキーが必要な場合に入力します
 - **モデル**: 選択したAIサービスで使用するモデルを選択します。多くのサービスでは一覧から選べます
-- **サービス別の追加項目**: Azure OpenAIのエンドポイント、DifyのURL、LM Studio/OllamaのURLとモデル名、OpenRouterのモデル名、Custom APIのエンドポイントなどを必要に応じて入力します
+- **サービス別の追加項目**: Azure OpenAIのエンドポイント、DifyのURL、LM Studio/OllamaのURLとモデル名、OpenRouter・OrcaRouter・API Routeのモデル名、Custom APIのエンドポイントなどを必要に応じて入力します
 - **カスタムモデル**: 一覧にないモデル名を手入力する場合に有効化します
 
 ![AIと声のかんたん設定](/images/easy_setup_ai_voice_m9q2x.webp)

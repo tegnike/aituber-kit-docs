@@ -8,7 +8,7 @@
 
 ```bash
 # 多模态功能启用设置（true/false）
-# 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时使用
+# 在Azure、OpenRouter、OrcaRouter、API Route、本地LLM、自定义API以及其他模型的自定义模型选择时使用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # 用于让AI判断是否需要使用多模态功能的提示词
@@ -26,7 +26,7 @@ NEXT_PUBLIC_CUSTOM_API_INCLUDE_MIME_TYPE="false"
 
 ## 支持的模型
 
-### Azure OpenAI、OpenRouter、LM Studio、Ollama、自定义API
+### Azure OpenAI、OpenRouter、OrcaRouter、API Route、LM Studio、Ollama、自定义API
 
 在各AI服务中设置可用的多模态启用模型后，请启用"使用多模态"设置。
 

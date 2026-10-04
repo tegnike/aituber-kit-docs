@@ -34,7 +34,7 @@
 - **AI 服务**: 从 OpenAI、Anthropic、Google Gemini、Azure OpenAI 等服务中选择。选择器中会显示各服务的图标
 - **API 密钥**: 所选 AI 服务需要 API 密钥时在此输入
 - **模型**: 选择所选 AI 服务使用的模型。大多数服务都可以从列表中选择
-- **服务专用项目**: 根据需要输入 Azure OpenAI 端点、Dify URL、LM Studio/Ollama 的 URL 和模型名、OpenRouter 的模型名、Custom API 端点等
+- **服务专用项目**: 根据需要输入 Azure OpenAI 端点、Dify URL、LM Studio/Ollama 的 URL 和模型名、OpenRouter・OrcaRouter・API Route 的模型名、Custom API 端点等
 - **自定义模型**: 输入列表中没有的模型名时启用
 
 ![AI 与语音的简易设置](/images/easy_setup_ai_voice_m9q2x.webp)

@@ -22,6 +22,8 @@ AITuberKit supports the following AI services:
 - Fireworks - Provides optimized implementations of Llama, Mixtral, etc.
 - DeepSeek - Provides DeepSeek Chat, DeepSeek Reasoner
 - OpenRouter - Provides a wide range of models
+- OrcaRouter - Provides a wide range of models (v2.79.0 and later)
+- API Route - Provides a wide range of models through an OpenAI-compatible API (v2.79.0 and later)
 - LM Studio - Provides a local LLM execution environment
 - Ollama - Provides a local LLM execution environment
 - Dify - Custom chatbot building platform
@@ -142,6 +144,8 @@ GOOGLE_API_KEY=...
 
 **Supported Models**:
 
+- gemini-3.5-flash
+- gemini-3.5-flash-lite
 - gemini-3.1-pro-preview
 - gemini-3.1-flash-image-preview
 - gemini-3.1-flash-lite-preview
@@ -160,17 +164,18 @@ API keys can be obtained from [Google AI Studio](https://aistudio.google.com/app
 #### Google Search Grounding Feature
 
 With Google Gemini, you can use the "Search Grounding" feature, which utilizes real-time web searches when generating AI responses.
-Additionally, for some models, you can set a dynamic threshold to determine whether to use the Search Grounding feature. A value of 0 will always execute searches, while a value of 1 will never execute searches.
+Search is passed to the model as a Google Search tool, and the model decides whether to actually search.
+The dynamic threshold (`NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD`) is a setting for Gemini 1.5. It has no effect on the currently supported models, and from v2.79.0 it is no longer sent to the server.
 
 ```bash
 # Enable Search Grounding feature
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
-# Dynamic threshold for Search Grounding feature
+# Dynamic threshold for Search Grounding feature (for Gemini 1.5; not used by the currently supported models)
 NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=0.3
 ```
 
 ::: tip
-The Search Grounding feature is available with Google Gemini 3.1/3 series, Gemini 2.5 series, and Gemini 2.0 Flash models.
+The Search Grounding feature is available with Google Gemini 3.5/3.1/3 series, Gemini 2.5 series, and Gemini 2.0 Flash models.
 :::
 
 ## Azure OpenAI
@@ -381,6 +386,46 @@ See [OpenRouter Models](https://openrouter.ai/models).
 
 **Getting an API Key**:
 API keys can be obtained from the [OpenRouter Dashboard](https://openrouter.ai/keys).
+
+## OrcaRouter (v2.79.0 and later)
+
+```bash
+# OrcaRouter API Key
+ORCAROUTER_API_KEY=...
+```
+
+OrcaRouter is registered as an OpenAI-compatible provider and communicates through the Chat Completions API (`/v1/chat/completions`).
+
+**Supported Models**:
+
+Enter a model ID directly (e.g. `openai/gpt-4o-mini`, `anthropic/claude-sonnet-4`). See the models page on [OrcaRouter](https://www.orcarouter.ai) for available models.
+
+To send images, specify a model that supports images and enable the "Use multimodal" setting.
+
+**Getting an API Key**:
+API keys can be obtained from [OrcaRouter](https://www.orcarouter.ai).
+
+## API Route (v2.79.0 and later)
+
+```bash
+# API Route API Key (server only)
+APIROUTE_API_KEY=...
+```
+
+API Route is registered as an OpenAI-compatible provider and communicates with `https://global.api-route.com/v1`.
+
+**Supported Models**:
+
+Enter a model ID available to your API key directly (e.g. `gpt-6.1-sol`). You can check the IDs with an authenticated `GET https://global.api-route.com/v1/models` request. Use the returned ID as is, without adding a provider prefix.
+
+To send images, specify a model that supports images and enable the "Use multimodal" setting.
+
+**Getting an API Key**:
+API keys can be obtained from the [API Route Dashboard](https://www.api-route.com/api-keys).
+
+::: tip
+`APIROUTE_API_KEY` is a server-only environment variable. It is used when no API key is entered in the settings screen, and in that case the access control described in [Server-Side Secret Environment Variables](#server-side-secret-environment-variables) applies.
+:::
 
 ## LM Studio, Ollama
 

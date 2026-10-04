@@ -80,14 +80,15 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 ## デモ表示とサブパス公開
 
-`NEXT_PUBLIC_DEMO_MODE` を有効にすると、紹介画面と設定画面にデモ利用時の注意事項を表示します。これはAPIアクセス制御の `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` とは別の表示設定です。
+`NEXT_PUBLIC_DEMO_MODE` を有効にすると、紹介画面と設定画面にデモ利用時の注意事項を表示します。v2.78.0以降は、GPT-Live、リアルタイムAPI、オーディオモード、OpenAI TTSも無効になります。OpenAI TTSを選択していた場合は、Aivis Cloud APIに切り替わります。これはAPIアクセス制御の `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` とは別の表示設定です。
 
 GitHub Pagesなどのサブパスで公開する場合は、`NEXT_PUBLIC_BASE_PATH` に先頭の `/` を含むベースパスを設定します。
 
 **環境変数**:
 
 ```bash
-# デモモードの注意表示（true/false）
+# デモモードの有効/無効（true/false）
+# 有効時はGPT-Live・リアルタイムAPI・オーディオモード・OpenAI TTSを無効化
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # サブパス公開時のベースパス（例: /aituber-kit）

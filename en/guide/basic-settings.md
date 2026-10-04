@@ -80,14 +80,15 @@ For details on restricted features, see [Restricted Mode](/en/guide/restricted-m
 
 ## Demo Display and Subpath Deployment
 
-Enable `NEXT_PUBLIC_DEMO_MODE` to display notices for demo users on the introduction and settings screens. This is a display setting and is separate from the API access control setting `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"`.
+Enable `NEXT_PUBLIC_DEMO_MODE` to display notices for demo users on the introduction and settings screens. From v2.78.0, it also disables GPT-Live, the Realtime API, audio mode, and OpenAI TTS. If OpenAI TTS was selected, the voice engine switches to Aivis Cloud API. This is a display setting and is separate from the API access control setting `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"`.
 
 When deploying under a subpath, such as on GitHub Pages, set `NEXT_PUBLIC_BASE_PATH` to the base path including the leading `/`.
 
 **Environment Variables**:
 
 ```bash
-# Display demo mode notices (true/false)
+# Enable/disable demo mode (true/false)
+# When enabled, GPT-Live, the Realtime API, audio mode, and OpenAI TTS are disabled
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # Base path for subpath deployment (e.g. /aituber-kit)

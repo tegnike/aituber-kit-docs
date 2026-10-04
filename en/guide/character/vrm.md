@@ -13,6 +13,9 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 # VRM character lighting intensity (0.1-3.0)
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 
+# Screen-blend lighting strength (0.0-2.0)
+NEXT_PUBLIC_SCREEN_LIGHTING_STRENGTH="1.0"
+
 # Enable/disable thinking pose (true/false)
 NEXT_PUBLIC_THINKING_POSE_ENABLED=false
 
@@ -58,6 +61,31 @@ By combining these operations, you can adjust the placement of the avatar on the
 ### Lighting Intensity
 
 The lighting intensity of VRM characters can be adjusted using the environment variable `NEXT_PUBLIC_LIGHTING_INTENSITY`. Values can be set in the range of 0.1 to 3.0.
+
+### Screen-Blend Lighting (v2.79.0 and later)
+
+This feature composites a selected window, game, or video into the page background and reflects its colors, brightness, and light direction onto the VRM character's lighting in real time. It makes the character look as if it were inside the screen.
+
+**How to Set Up**:
+
+1. In "Character Settings" on the settings screen, select VRM as the model type
+2. Enable "Screen-Blend Lighting"
+3. In the browser's sharing dialog, select the window, game, or video tab you want to blend into the background
+4. Adjust how strongly the screen affects the lighting with "Screen light strength" (0.0 to 2.0)
+
+**Behavior**:
+
+- AITuberKit itself and the entire screen are excluded from the choices in the sharing dialog
+- Turning the feature off or stopping screen sharing restores the original lighting
+- Existing background display settings, such as "Use shared screen or webcam as background", are not changed. The display is overridden only while screen blending is active
+- Enabling the feature turns off the webcam display
+- The enabled/disabled state is not saved. Enable it again after reopening the page. The strength is saved
+- Not available for Live2D or PNGTuber
+
+```bash
+# Screen-blend lighting strength (0.0-2.0)
+NEXT_PUBLIC_SCREEN_LIGHTING_STRENGTH="1.0"
+```
 
 ## Thinking Pose
 

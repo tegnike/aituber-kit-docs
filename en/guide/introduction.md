@@ -47,6 +47,8 @@ AITuberKit is an open-source toolkit that allows anyone to easily build web appl
 - Fireworks
 - DeepSeek
 - OpenRouter
+- OrcaRouter
+- API Route
 - Local LLM
 - Dify
 

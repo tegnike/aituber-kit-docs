@@ -22,6 +22,8 @@ AITuberKitは以下のAIサービスをサポートしています：
 - Fireworks - Llama、Mixtralなどの最適化実装を提供
 - DeepSeek - DeepSeek Chat、DeepSeek Reasonerを提供
 - OpenRouter - 幅広いモデルを提供
+- OrcaRouter - 幅広いモデルを提供（v2.79.0以降）
+- API Route - OpenAI互換APIで幅広いモデルを提供（v2.79.0以降）
 - LM Studio - ローカルLLMを提供
 - Ollama - ローカルLLMを提供
 - Dify - カスタムチャットボット構築プラットフォーム
@@ -142,6 +144,8 @@ GOOGLE_API_KEY=...
 
 **対応モデル**:
 
+- gemini-3.5-flash
+- gemini-3.5-flash-lite
 - gemini-3.1-pro-preview
 - gemini-3.1-flash-image-preview
 - gemini-3.1-flash-lite-preview
@@ -160,17 +164,18 @@ APIキーは[Google AI Studio](https://aistudio.google.com/app/apikey?hl=ja)か�
 #### Googleサーチグラウンディング機能
 
 Google Geminiでは、AIの回答生成時にリアルタイムでウェブ検索を活用する「サーチグラウンディング」機能が利用できます。
-また、一部のモデルでは、サーチグラウンディング機能を使用するかどうかを判定する動的しきい値を設定することが可能です。0の場合は常に検索を実行し、1の場合は検索を実行しません。
+検索はGoogle検索ツールとしてモデルに渡され、実際に検索するかどうかはモデルが判断します。
+動的しきい値（`NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD`）はGemini 1.5向けの設定です。現在の対応モデルでは効果がなく、v2.79.0以降はサーバーに送信しません。
 
 ```bash
 # サーチグラウンディング機能の有効化
 NEXT_PUBLIC_USE_SEARCH_GROUNDING=true
-# サーチグラウンディング機能の動的しきい値
+# サーチグラウンディング機能の動的しきい値（Gemini 1.5向け。現在の対応モデルでは使用されません）
 NEXT_PUBLIC_DYNAMIC_RETRIEVAL_THRESHOLD=0.3
 ```
 
 ::: tip
-サーチグラウンディング機能は、Google Gemini 3.1/3シリーズ、Gemini 2.5シリーズ、Gemini 2.0 Flashで利用可能です。
+サーチグラウンディング機能は、Google Gemini 3.5/3.1/3シリーズ、Gemini 2.5シリーズ、Gemini 2.0 Flashで利用可能です。
 :::
 
 ## Azure OpenAI
@@ -381,6 +386,46 @@ OPENROUTER_API_KEY=...
 
 **APIキーの取得**:
 APIキーは[OpenRouterダッシュボード](https://openrouter.ai/keys)から取得できます。
+
+## OrcaRouter（v2.79.0以降）
+
+```bash
+# OrcaRouter API キー
+ORCAROUTER_API_KEY=...
+```
+
+OrcaRouterはOpenAI互換のプロバイダーとして、Chat Completions API（`/v1/chat/completions`）で通信します。
+
+**対応モデル**:
+
+モデル識別子を直接入力します（例：`openai/gpt-4o-mini`、`anthropic/claude-sonnet-4`）。利用できるモデルは[OrcaRouter](https://www.orcarouter.ai)のモデルページを参照してください。
+
+画像を送信する場合は、画像に対応したモデルを指定したうえで「画像送信」設定を有効にしてください。
+
+**APIキーの取得**:
+APIキーは[OrcaRouter](https://www.orcarouter.ai)から取得できます。
+
+## API Route（v2.79.0以降）
+
+```bash
+# API Route API キー（サーバー専用）
+APIROUTE_API_KEY=...
+```
+
+API RouteはOpenAI互換のプロバイダーとして、`https://global.api-route.com/v1` と通信します。
+
+**対応モデル**:
+
+APIキーで利用可能なモデル識別子を直接入力します（例：`gpt-6.1-sol`）。識別子は、APIキーを付けた `GET https://global.api-route.com/v1/models` で確認できます。返された識別子をそのまま使用し、プロバイダーの接頭辞は付けません。
+
+画像を送信する場合は、画像に対応したモデルを指定したうえで「画像送信」設定を有効にしてください。
+
+**APIキーの取得**:
+APIキーは[API Routeダッシュボード](https://www.api-route.com/api-keys)から取得できます。
+
+::: tip
+`APIROUTE_API_KEY` はサーバー専用の環境変数です。設定画面でAPIキーを入力しない場合に使用され、その際は[サーバーサイド秘匿環境変数](#サーバーサイド秘匿環境変数)のアクセス制御が適用されます。
+:::
 
 ## LM Studio, Ollama
 

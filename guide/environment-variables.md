@@ -29,7 +29,8 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Cloudflareデプロイ時はtrueに設定
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
-# デモモードの注意表示（true/false）
+# デモモードの有効/無効（true/false）
+# 有効時はGPT-Live・リアルタイムAPI・オーディオモード・OpenAI TTSを無効化
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # GitHub Pages等のサブパス公開時に使うベースパス
@@ -110,6 +111,9 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 # VRMキャラクターの照明強度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 
+# 画面融合ライティングの反映強度（0.0-2.0）
+NEXT_PUBLIC_SCREEN_LIGHTING_STRENGTH="1.0"
+
 # 思考中ポーズの有効/無効（true/false）
 NEXT_PUBLIC_THINKING_POSE_ENABLED=false
 
@@ -186,7 +190,8 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```bash
 # AIサービスの選択
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
+# mistralai, perplexity, fireworks, deepseek, openrouter, orcarouter, apiroute,
+# lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 選択するAIモデル名
@@ -264,6 +269,12 @@ DEEPSEEK_API_KEY=...
 # OpenRouter API キー
 OPENROUTER_API_KEY=...
 
+# OrcaRouter API キー
+ORCAROUTER_API_KEY=...
+
+# API Route API キー（サーバー専用）
+APIROUTE_API_KEY=...
+
 # ローカルLLM URL
 # ex. Ollama: http://localhost:11434/v1/chat/completions
 # ex. LM Studio: http://localhost:1234/v1/chat/completions
@@ -335,7 +346,7 @@ AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 
 ```bash
 # マルチモーダル機能の有効化設定（true/false）
-# Azure, OpenRouter, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
+# Azure, OpenRouter, OrcaRouter, API Route, ローカルLLM, カスタムAPI および それ以外のモデルでのカスタムモデル選択時に利用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # マルチモーダル利用要否をAIに判定させる際のプロンプト

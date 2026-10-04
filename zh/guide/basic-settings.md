@@ -80,14 +80,15 @@ NEXT_PUBLIC_RESTRICTED_MODE="false"
 
 ## 演示提示与子路径部署
 
-启用 `NEXT_PUBLIC_DEMO_MODE` 后，介绍页面和设置页面会显示演示使用注意事项。此项是独立于API访问控制 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` 的显示设置。
+启用 `NEXT_PUBLIC_DEMO_MODE` 后，介绍页面和设置页面会显示演示使用注意事项。从v2.78.0起，还会禁用GPT-Live、实时API、音频模式和OpenAI TTS。如果之前选择了OpenAI TTS，则会切换为Aivis Cloud API。此项是独立于API访问控制 `AITUBERKIT_SERVER_SECRET_ACCESS_MODE="demo"` 的显示设置。
 
 部署到GitHub Pages等子路径时，请在 `NEXT_PUBLIC_BASE_PATH` 中设置包含开头 `/` 的基础路径。
 
 **环境变量**:
 
 ```bash
-# 演示模式注意事项显示（true/false）
+# 演示模式的启用/禁用（true/false）
+# 启用时禁用GPT-Live、实时API、音频模式和OpenAI TTS
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # 子路径部署的基础路径（例如: /aituber-kit）

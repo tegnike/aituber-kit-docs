@@ -7,7 +7,7 @@ In AITuberKit, you can utilize multimodal features to create a richer interactio
 **Environment Variables**:
 
 ```bash
-# Enable multimodal functionality for Azure, OpenRouter, local LLM, custom API, and other models with custom model selection
+# Enable multimodal functionality for Azure, OpenRouter, OrcaRouter, API Route, local LLM, custom API, and other models with custom model selection
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # Prompt used when asking the AI to determine whether multimodal input is needed
@@ -25,7 +25,7 @@ Use `NEXT_PUBLIC_MULTIMODAL_AI_DECISION_PROMPT` to set the initial prompt for th
 
 ## Supported Models
 
-### Azure OpenAI, OpenRouter, LM Studio, Ollama, Custom API
+### Azure OpenAI, OpenRouter, OrcaRouter, API Route, LM Studio, Ollama, Custom API
 
 After setting up multimodal-enabled models available in each AI service, please enable the "Use multimodal" setting.
 

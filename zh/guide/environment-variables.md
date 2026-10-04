@@ -29,7 +29,8 @@ NEXT_PUBLIC_CHANGE_ENGLISH_TO_JAPANESE=false
 # Cloudflare部署时设置为true
 NEXT_PUBLIC_RESTRICTED_MODE="false"
 
-# 演示模式注意事项显示（true/false）
+# 演示模式的启用/禁用（true/false）
+# 启用时禁用GPT-Live、实时API、音频模式和OpenAI TTS
 NEXT_PUBLIC_DEMO_MODE="false"
 
 # 部署到GitHub Pages等子路径时使用的基础路径
@@ -110,6 +111,9 @@ NEXT_PUBLIC_SELECTED_VRM_PATH=/vrm/nikechan_v2.vrm
 # VRM角色的照明强度（0.1-3.0）
 NEXT_PUBLIC_LIGHTING_INTENSITY=1.0
 
+# 画面融合光照的反映强度（0.0-2.0）
+NEXT_PUBLIC_SCREEN_LIGHTING_STRENGTH="1.0"
+
 # 启用/禁用思考中姿势（true/false）
 NEXT_PUBLIC_THINKING_POSE_ENABLED=false
 
@@ -186,7 +190,8 @@ NEXT_PUBLIC_SURPRISED_MOTION_GROUP=Neutral
 ```bash
 # AI服务选择
 # openai, anthropic, google, azure, xai, groq, cohere,
-# mistralai, perplexity, fireworks, deepseek, openrouter, lmstudio, ollama, dify, custom-api
+# mistralai, perplexity, fireworks, deepseek, openrouter, orcarouter, apiroute,
+# lmstudio, ollama, dify, custom-api
 NEXT_PUBLIC_SELECT_AI_SERVICE=openai
 
 # 所选AI模型名称
@@ -264,6 +269,12 @@ DEEPSEEK_API_KEY=...
 # OpenRouter API密钥
 OPENROUTER_API_KEY=...
 
+# OrcaRouter API密钥
+ORCAROUTER_API_KEY=...
+
+# API Route API密钥（仅服务器端）
+APIROUTE_API_KEY=...
+
 # 本地LLM URL
 # 例如 Ollama: http://localhost:11434/v1/chat/completions
 # 例如 LM Studio: http://localhost:1234/v1/chat/completions
@@ -335,7 +346,7 @@ AITUBERKIT_FORWARD_CUSTOM_API_METADATA="false"
 
 ```bash
 # 多模态功能启用设置（true/false）
-# 在Azure、OpenRouter、本地LLM、自定义API以及其他模型的自定义模型选择时使用
+# 在Azure、OpenRouter、OrcaRouter、API Route、本地LLM、自定义API以及其他模型的自定义模型选择时使用
 NEXT_PUBLIC_ENABLE_MULTIMODAL="true"
 
 # 用于让AI判断是否需要使用多模态功能的提示词

@@ -255,7 +255,7 @@ NEXT_PUBLIC_GSVI_TTS_BATCH_SIZE=2
 NEXT_PUBLIC_GSVI_TTS_SPEECH_RATE=1.0
 ```
 
-GSVI TTS是一种可定制的语音合成引擎。
+GSVI TTS是一种可定制的语音合成引擎。界面语言为日语、中文（简体・繁体）、英语、韩语时可以使用。选择其他语言时，会自动切换为Google Text-to-Speech。
 
 ### 服务器URL
 
